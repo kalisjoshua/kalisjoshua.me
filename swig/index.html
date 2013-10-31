@@ -6,9 +6,10 @@
 
   {% for article in articles %}
   <article class="intro">
+    <div class="published">{{article.published}}</div class="published">
     <h3><a href="{{article.link}}">{{article.title}}</a></h3>
-    <h4>{{article.published}}</h4>
     <p>{{article.intro}}</p>
+    <div class="tags">{{article.tags}}</div>
   </article>
   {% endfor %}
 

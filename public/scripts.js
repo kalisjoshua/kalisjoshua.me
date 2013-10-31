@@ -1,4 +1,5 @@
 /*jshint laxcomma:true*/
+
 $.fn.ready(function () {
   var $articles = $('article')
     , $tagsFilter = $('.tagsFilter')
@@ -115,4 +116,30 @@ $.fn.ready(function () {
   }());
 
   tagFilter(tags);
+
+  $('pre')
+    .find('code')
+    .each(function () {
+      this.innerHTML = this.innerHTML
+        .split(/\n/)
+        .map(highlight)
+        .map(function (line) {
+          return '<span>' + line + '</span>';
+        })
+        .join('\n');
+    });
 });
+
+
+function highlight(js) {
+  return js
+    .replace(/([\[\]\{\}\(\)\.,;])/g, '<span class="punctuation">$1</span>')
+    .replace(/(^|\s)(\s*\/\/[^$]*?)(?=\n|$)/g, '$1<span class="comment">$2</span>')
+    .replace(/(\/\*[.\D]*?\*\/)/g, '<span class="comment">$1</span>')
+    .replace(/('.*?')/gm, '<span class="string">$1</span>')
+    .replace(/\s+(\/.+\/)([\.\s;])/g, '<span class="string">$1</span>$2')
+    .replace(/((?=[\-+])(?:[\-+]?\d+(?:\.\d+)?)|(?:\b\d+(?:\.\d+)?))/gm, '<span class="number">$1</span>')
+    .replace(/\bnew\s+(\w+)/gm, '<span class="keyword">new</span> <span class="init">$1</span>')
+    .replace(/\breturn\b/gm, '<span class="init">return</span>')
+    .replace(/\b(break|case|catch|continue|debugger|default|delete|do|else|finally|for|function|if|in|instanceof|switch|this|throw|try|typeof|var|void|while|with)\b/gm, '<span class="keyword">$1</span>');
+}

@@ -5,11 +5,11 @@
 {% block content %}
 
   <article>
-    <div class="pubDate">{{article.published}}</div>
+    <div class="published">{{article.published}}</div>
 
     {{article.body|safe}}
 
-    <div class="tags">{{article.tags}}</div>
+    <div class="tags--nolink">{{article.tags}}</div>
   </article>
 
 {% endblock %}

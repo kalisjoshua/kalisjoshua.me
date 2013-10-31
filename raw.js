@@ -2,6 +2,7 @@
 
 var fs = require('fs')
   , http = require('http')
+  , url = require('url')
 
   // npm packages
   , marked = require('marked')
@@ -31,6 +32,42 @@ function buildCache () {
 }
 
 function cacheArticles () {
+  var _articles;
+
+  function articleObject (acc, file) {
+    var path
+      , text;
+
+    if (/\.md$/.test(file)) {
+      path = '/articles/' + file.match(/.*(?=\.md$)/);
+
+      text = fs.readFileSync('articles/' + file)
+        .toString();
+
+      acc
+        .push({
+          fullMd    : format(text),
+          intro     : intro(text),
+          link      : path,
+          published : meta('Date', text),
+          tags      : meta('Tags', text),
+          title     : meta('Title', text)
+        });
+    }
+
+    return acc;
+  }
+
+  // descending order; most recent articles first
+  function articleSort (a, b) {
+    var _a, _b;
+
+    _a = new Date(a.published);
+    _b = new Date(b.published);
+
+    return _a > _b ? -1 : _a < _b ? 1 : 0;
+  }
+
   // return contents to proper markdown
   function format (text) {
     var title = '# ' + meta('Title', text);
@@ -63,28 +100,13 @@ function cacheArticles () {
   }
 
   return fs.readdirSync('articles')
-    .reduce(function (acc, file) {
-      var path
-        , text;
+    .reduce(articleObject, [])
+    .sort(articleSort)
+    .reduce(function (acc, article) {
+      acc[article.link] = article;
 
-      if (/\.md$/.test(file)) {
-        path = '/articles/' + file.match(/.*(?=\.md$)/);
-
-        text = fs.readFileSync('articles/' + file)
-          .toString();
-
-        acc[path] = {
-          fullMd    : format(text),
-          intro     : intro(text),
-          link      : path,
-          published : meta('Date', text),
-          tags      : meta('Tags', text),
-          title     : meta('Title', text)
-        };
-
-        acc.index
-          .push(acc[path]);
-      }
+      acc.index
+        .push(acc[article.link]);
 
       return acc;
     }, {index: []});
@@ -115,15 +137,18 @@ function renderPage (tmpl, data) {
 function startServer () {
   http
     .createServer(function requestHandler (req, res) {
-      req.url = req.url
-        .replace(/^\/+/, '/');
+      var _url = url.parse(req.url);
 
-      if (!!~cache.passive.indexOf(req.url.slice(1))) {
-        res.writeHead(200, contentType[fileExt(req.url)]);
-        fs.createReadStream('public' + req.url)
+      if (/update/i.test(_url.query)) {
+        buildCache();
+      }
+
+      if (!!~cache.passive.indexOf(_url.pathname.slice(1))) {
+        res.writeHead(200, contentType[fileExt(_url.pathname)]);
+        fs.createReadStream('public' + _url.pathname)
           .pipe(res);
       } else {
-        (router(req.url) || router('error'))(req, res);
+        (router(_url.pathname) || router('error'))(req, res);
       }
     })
     .listen(process.env.PORT || 4000);
@@ -138,7 +163,10 @@ router(/^\/(?:articles)?$/, function (req, res) {
 });
 
 router(/^\/articles\/(.*)$/, function (req, res) {
-  var _article = cache.articles[req.url];
+  var _article
+    , _url = url.parse(req.url);
+
+  _article = cache.articles[_url.pathname];
 
   res.writeHead(200, contentType.html);
   res.end(renderPage('article', {
@@ -150,12 +178,6 @@ router(/^\/articles\/(.*)$/, function (req, res) {
       title: _article.title
     }
   }));
-});
-
-router(/^\/update$/, function (req, res) {
-  buildCache();
-  res.writeHead(200, contentType.html);
-  res.end('ok');
 });
 
 router('error', function (req, res) {

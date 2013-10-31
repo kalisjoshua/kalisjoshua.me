@@ -52,8 +52,8 @@ The simplest way to implement this cart - in pure JavaScript - is with no encaps
 
 To use this cart API here are some sample function calls:
 
-    addItem({name: 'Radio Flyer Wagon', price: 19.95});
-    getItems(); // returns [{name: 'Radio Flyer Wagon', price: 19.95}]
+    addItem({'name': 'Radio Flyer Wagon', 'price': 19.95});
+    getItems(); // returns [{'name': 'Radio Flyer Wagon', 'price': 19.95}]
     getTotal(); // returns 19.95
     removeItem(0); // cart emptied
 
@@ -64,24 +64,24 @@ Here, the requirements have been met with the functions defined. However, I hope
 There are a whole lot of problems in the code above and the first step towards mitigation would probably be to reduce the impact on global scope; everything is itself in the global scope. One of the early lessons in JavaScript is to not do exactly what has been done above; the suggestion is to create a namespace and include everything in one - or as few - as possible to not clutter the global scope. Let's do that now.
 
     var cart = {
-      items: [], // an empty cart
+      'items': [], // an empty cart
 
-      addItem: function (item) {
+      'addItem': function (item) {
         cart.items.push(item);
       },
 
-      getItems: function () {
+      'getItems': function () {
         return cart.items;
       },
 
-      getTotal: function () {
+      'getTotal': function () {
         return cart.items
           .reduce(function (sum, item) {
             return sum + item.price;
           }, 0);
       },
 
-      removeItem: function (indx) {
+      'removeItem': function (indx) {
         cart.items = cart.items
           .slice(0, indx)
           .concat(cart.items.slice(indx + 1));
@@ -90,8 +90,8 @@ There are a whole lot of problems in the code above and the first step towards m
 
 To use this cart API here are some sample function calls:
 
-    cart.addItem({name: 'Radio Flyer Wagon', price: 19.95});
-    cart.getItems(); // returns [{name: 'Radio Flyer Wagon', price: 19.95}]
+    cart.addItem({'name': 'Radio Flyer Wagon', 'price': 19.95});
+    cart.getItems(); // returns [{'name': 'Radio Flyer Wagon', 'price': 19.95}]
     cart.getTotal(); // returns 19.95
     cart.removeItem(0); // cart emptied
 
@@ -105,22 +105,22 @@ To hide access to resources in other languages we would use access modifiers lik
       var items = []; // an empty cart
 
       return {
-        addItem: function (item) {
+        'addItem': function (item) {
           items.push(item);
         },
 
-        getItems: function () {
+        'getItems': function () {
           return items;
         },
 
-        getTotal: function () {
+        'getTotal': function () {
           return items
             .reduce(function (sum, item) {
               return sum + item.price;
             }, 0);
         },
 
-        removeItem: function (indx) {
+        'removeItem': function (indx) {
           items = items
             .slice(0, indx)
             .concat(items.slice(indx + 1));
@@ -130,15 +130,15 @@ To hide access to resources in other languages we would use access modifiers lik
 
 To use this cart API here are some sample function calls:
 
-    cart.addItem({name: 'Radio Flyer Wagon', price: 19.95});
-    cart.getItems(); // returns [{name: 'Radio Flyer Wagon', price: 19.95}]
+    cart.addItem({'name': 'Radio Flyer Wagon', 'price': 19.95});
+    cart.getItems(); // returns [{'name': 'Radio Flyer Wagon', 'price': 19.95}]
     cart.getTotal(); // returns 19.95
     cart.removeItem(0); // cart emptied
 
 Now, the items array is hidden away from the global scope so that is good; no code can directly change it. That isn't entirely true because in the `getItems` method a reference to `items` is returned and therefore makes it accessible; this is fixable by returning a copy of the array instead of the array itself.
 
     // ...
-        getItems: function () {
+        'getItems': function () {
           return items; // don't do this
           return items.slice(0); // do this instead to return a copy
         },
@@ -152,22 +152,22 @@ But another issue is the `cart` object returned from the Closure. All of its met
       var items = []; // an empty cart
 
       var API = {
-        addItem: function (item) {
+        'addItem': function (item) {
           items.push(item);
         },
 
-        getItems: function () {
+        'getItems': function () {
           return items.slice(0);
         },
 
-        getTotal: function () {
+        'getTotal': function () {
           return items
             .reduce(function (sum, item) {
               return sum + item.price;
             }, 0);
         },
 
-        removeItem: function (indx) {
+        'removeItem': function (indx) {
           items = items
             .slice(0, indx)
             .concat(items.slice(indx + 1));
@@ -183,8 +183,8 @@ But another issue is the `cart` object returned from the Closure. All of its met
 
 To use this cart API here are some sample function calls:
 
-    cart('addItem', {name: 'Radio Flyer Wagon', price: 19.95});
-    cart('getItems'); // returns [{name: 'Radio Flyer Wagon', price: 19.95}]
+    cart('addItem', {'name': 'Radio Flyer Wagon', 'price': 19.95});
+    cart('getItems'); // returns [{'name': 'Radio Flyer Wagon', 'price': 19.95}]
     cart('getTotal'); // returns 19.95
     cart('removeItem', 0); // cart emptied
 
