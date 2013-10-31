@@ -14,8 +14,6 @@
     "url": "git://github.com/kalisjoshua/kalisjoshua.me.git"
   },
   "dependencies": {
-    "async": "~0.2.9",
-    "express": "~3.4.4",
     "marked": "~0.2.9",
     "swig": "~1.1.0"
   },
