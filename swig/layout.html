@@ -1,0 +1,46 @@
+<!doctype html />
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+
+  <meta name="description" content="{{description}}" />
+
+  <title>{% block title %}Articles written by {{site.author.name}}{% endblock %}</title>
+  <link rel="stylesheet" href="/styles.css" />
+
+<body>
+  <header id="top" role="banner">
+    <div class="drop">
+      <div class="drop--content">
+          <div class="container">
+            <ul>
+              <li class="email">~kalisjoshua~@~gmail.com~</li>
+              <li>twitter.com/<a href="//twitter.com/kalisjoshua">kalisjoshua</a></li>
+              <li>github.com/<a href="//github.com/kalisjoshua">kalisjoshua</a></li>
+              <li>linkedin/in/<a href="//linkedin/in/kalisjoshua">kalisjoshua</a></li>
+            </ul>
+          </div>
+      </div>
+
+      <div class="container">
+        <div class="drop--handle">About Me</div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h1><a href="/">{{site.author.name}}</a><small class="tagsFilter"></small></h1>
+    </div>
+  </header>
+
+  <section id="main" role="main">
+    {% block content %}default content{% endblock %}
+  </section>
+
+  <footer role="contentinfo">
+    <p>&copy; {{currentYear}} {{site.author.name}} under the MIT license.</p>
+    <p>All code snippets used in the examples are in the public domain.</p>
+  </footer>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="/scripts.js"></script>

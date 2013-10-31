@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{article.title}} by {{site.author.name}}{% endblock %}
+
+{% block content %}
+
+  <article>
+    <div class="pubDate">{{article.published}}</div>
+
+    {{article.body|safe}}
+
+    <div class="tags">{{article.tags}}</div>
+  </article>
+
+{% endblock %}

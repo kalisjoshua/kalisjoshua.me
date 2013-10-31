@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+  <h2>Articles</h2>
+
+  {% for article in articles %}
+  <article class="intro">
+    <h3><a href="{{article.link}}">{{article.title}}</a></h3>
+    <h4>{{article.published}}</h4>
+    <p>{{article.intro}}</p>
+  </article>
+  {% endfor %}
+
+{% endblock %}

@@ -1,8 +1,23 @@
 {
-  "name": "easy-breezy-node-heroku",
-  "version": "0.0.1",
+  "author": {
+    "email": "kalisjoshua@gmail.com",
+    "name": "Joshua T Kalis",
+    "twitter": "kalisjoshua",
+    "url": "//kalisjoshua.me"
+  },
+  "name": "kalisjoshua.me",
+  "description": "A collection of articles written by Joshua T Kalis.",
+  "version": "0.1.0",
+  "homepage": "//kalisjoshua.me",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kalisjoshua/kalisjoshua.me.git"
+  },
   "dependencies": {
-    "express": "2.5.4"
+    "async": "~0.2.9",
+    "express": "~3.4.4",
+    "marked": "~0.2.9",
+    "swig": "~1.1.0"
   },
   "engines": {
     "node": "0.10.x",
