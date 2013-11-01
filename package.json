@@ -7,7 +7,7 @@
   },
   "name": "kalisjoshua.me",
   "description": "A collection of articles written by Joshua T Kalis.",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "homepage": "//kalisjoshua.me",
   "devPort": 4000,
   "repository": {
