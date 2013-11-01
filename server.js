@@ -62,7 +62,8 @@ function cacheArticles () {
   // create the article object
   function articleObject (acc, file) {
     var path
-      , text;
+      , text
+      , title;
 
     if (/\.md$/.test(file)) {
       path = '/articles/' + file.match(/.*(?=\.md$)/);
@@ -70,15 +71,20 @@ function cacheArticles () {
       text = fs.readFileSync('articles/' + file)
         .toString();
 
-      acc
-        .push({
-          fullMd    : format(text),
-          intro     : intro(text),
-          link      : path,
-          published : meta('Date', text),
-          tags      : meta('Tags', text),
-          title     : meta('Title', text)
-        });
+      title = meta('Title', text);
+
+      // do not list out articles in "DRAFT" stage
+      if (!/\[DRAFT\]/.test(title)) {
+        acc
+          .push({
+            fullMd    : format(text),
+            intro     : intro(text),
+            link      : path,
+            published : meta('Date', text),
+            tags      : meta('Tags', text),
+            title     : title
+          });
+      }
     }
 
     return acc;
