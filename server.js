@@ -10,8 +10,7 @@ var cp = require('child_process')
   , swig = require('swig')
 
   // local resources
-  , config = require('./config.json')
-  , packge = require('../package.json')
+  , packge = require('./package.json')
   , router = require('./modules/router.js')
 
   // global variables
@@ -252,7 +251,7 @@ function startServer () {
         (router(_url.pathname) || router('error'))(req, res);
       }
     })
-    .listen(process.env.PORT || config.devPort);
+    .listen(process.env.PORT || packge.devPort);
 }
 
 /**
