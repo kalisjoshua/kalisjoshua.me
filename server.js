@@ -146,12 +146,12 @@ function startServer () {
         buildCache();
       }
 
-      if (/^deploy$/i.test(_url.query)) {
-        cp.exec(deploy, function (err, result) {
-          if (err) throw err;
-          else buildCache();
-        });
-      }
+      // if (/^deploy$/i.test(_url.query)) {
+      //   cp.exec(deploy, function (err, result) {
+      //     if (err) throw err;
+      //     else buildCache();
+      //   });
+      // }
 
       if (!!~cache.passive.indexOf(_url.pathname.slice(1))) {
         res.writeHead(200, contentType[fileExt(_url.pathname)]);
