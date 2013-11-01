@@ -11,7 +11,7 @@
   "homepage": "//kalisjoshua.me",
   "repository": {
     "type": "git",
-    "url": "git://github.com/kalisjoshua/kalisjoshua.me.git"
+    "url": "git@github.com:kalisjoshua/kalisjoshua.me.git"
   },
   "dependencies": {
     "marked": "~0.2.9",

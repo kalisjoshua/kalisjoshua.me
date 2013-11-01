@@ -1,6 +1,7 @@
 /*jshint laxcomma:true*/
 
-var fs = require('fs')
+var cp = require('child_process')
+  , fs = require('fs')
   , http = require('http')
   , url = require('url')
 
@@ -14,7 +15,9 @@ var fs = require('fs')
 
   // global variables
   , cache = {}
-  , contentType;
+  , contentType
+  , deploy = 'git pull --rebase %s master'
+    .replace(/%s/, info.repository.url);
 
 contentType = {
   css   : contentType('text/css'),
@@ -139,8 +142,15 @@ function startServer () {
     .createServer(function requestHandler (req, res) {
       var _url = url.parse(req.url);
 
-      if (/update/i.test(_url.query)) {
+      if (/^update$/i.test(_url.query)) {
         buildCache();
+      }
+
+      if (/^deploy$/i.test(_url.query)) {
+        cp.exec(deploy, function (err, result) {
+          if (err) throw err;
+          else buildCache();
+        });
       }
 
       if (!!~cache.passive.indexOf(_url.pathname.slice(1))) {
