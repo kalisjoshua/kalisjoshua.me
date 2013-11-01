@@ -660,14 +660,22 @@ small {
   margin-top: 1em;
 }
 
-@media screen and (max-device-width: 480px) and (orientation: portrait){
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
   h1 {font-size: 1.5em;}
   body {font-size: 110%;}
-  .published {float: none;}
+  .published {
+    float: none;
+    margin-top: .5em;
+  }
+  .published + h3 {margin-top: 0;}
 }
 
-@media screen and (max-device-width: 640px) and (orientation: landscape){
+@media screen and (max-device-width: 640px) and (orientation: landscape) {
   h1 {font-size: 1.5em;}
   body {font-size: 70%;}
-  .published {float: none;}
+  .published {
+    float: none;
+    margin-top: .5em;
+  }
+  .published + h3 {margin-top: 0;}
 }
