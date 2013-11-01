@@ -565,6 +565,10 @@ small {
   font-size: .7em;
 }
 
+.disqussion {
+  margin-top: 2em;
+}
+
 .drop {
   left: 0;
   position: relative;

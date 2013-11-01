@@ -25,7 +25,6 @@ Please Help! I could use all the help possible. Contact me if you are interested
 
 I still have a few things I need to do before I can consider this to be done.
 
-  - Disqus comments on Article pages
   - Markdown (marked) filter for Swig templates
   - Badges in footer to give props
     - Devtroit (most important!)

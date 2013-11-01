@@ -132,6 +132,10 @@ $.fn.ready(function () {
   if ($('.twitter-share-button').length) {
     tweetButton(document, 'script', 'twitter-wjs');
   }
+
+  if ($('.disqussion').length) {
+    disqusInit('joshuakalis');
+  }
 });
 
 
@@ -157,4 +161,11 @@ function tweetButton (d,s,id) {
     js.src=p+'://platform.twitter.com/widgets.js';
     fjs.parentNode.insertBefore(js,fjs);
   }
+}
+
+
+function disqusInit (disqus_shortname) {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 }
