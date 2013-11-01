@@ -128,6 +128,10 @@ $.fn.ready(function () {
         })
         .join('\n');
     });
+
+  if ($('.twitter-share-button').length) {
+    tweetButton(document, 'script', 'twitter-wjs');
+  }
 });
 
 
@@ -142,4 +146,15 @@ function highlight(js) {
     .replace(/\bnew\s+(\w+)/gm, '<span class="keyword">new</span> <span class="init">$1</span>')
     .replace(/\breturn\b/gm, '<span class="init">return</span>')
     .replace(/\b(break|case|catch|continue|debugger|default|delete|do|else|finally|for|function|if|in|instanceof|switch|this|throw|try|typeof|var|void|while|with)\b/gm, '<span class="keyword">$1</span>');
+}
+
+
+function tweetButton (d,s,id) {
+  var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+  if(!d.getElementById(id)){
+    js=d.createElement(s);
+    js.id=id;
+    js.src=p+'://platform.twitter.com/widgets.js';
+    fjs.parentNode.insertBefore(js,fjs);
+  }
 }
