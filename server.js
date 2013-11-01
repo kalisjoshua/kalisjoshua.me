@@ -16,7 +16,8 @@ var cp = require('child_process')
   // global variables
   , cache = {}
   , contentType
-  , deploy;
+  , deploy
+  , includeDrafts;
 
 // mapping from file extension to HTTP Content-Type
 contentType = {
@@ -28,6 +29,11 @@ contentType = {
 // command to pull changes from GitHub's master branch
 deploy = 'git pull --rebase %s master'
   .replace(/%s/, packge.repository.url);
+
+// command line argument to include drafts during development
+includeDrafts = process.argv
+  .toString()
+  .indexOf('--drafts') > 0;
 
 /**
  * Sugar function to rebuild in-memory representation of:
@@ -74,7 +80,7 @@ function cacheArticles () {
       title = meta('Title', text);
 
       // do not list out articles in "DRAFT" stage
-      if (!/\[DRAFT\]/.test(title)) {
+      if (!/\[DRAFT\]/.test(title) || includeDrafts) {
         acc
           .push({
             fullMd    : format(text),
