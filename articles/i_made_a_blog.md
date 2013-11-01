@@ -1,6 +1,6 @@
-Title: I Made A Blog! [DRAFT]
+Title: I Made A Blog!
 Date: 1 Nov 2013
-Tags: JavaScript, NodeJS, DIY
+Tags: NodeJS, DIY
 
 I wanted a place to publish articles I write; which would also hopefully inspire me to write more consistently, if not often.
 
@@ -25,17 +25,28 @@ When I write I find that I enjoy not being distracted by the editor. Markdown is
 
 ## What I Created
 
-  1. Simple
-    1. Router
-    2. Server
-    3. Templates
-    4. Email Obfuscater
-    5. Syntax Highlighting
-  2. Markdown Content
+I like using stuff I can understand. I didn't want to learn a whole lot to get a "working" site up and available. So I worked on reducing everything to bare necessities; what is absolutely needed.
 
-### Simple
+  1. Router
+  2. Server
+  3. Templates
+  4. Tag Filtering
 
-I like using stuff that I can understand. I didn't want to learn a whole lot to get a "working" site up and available.
+### Router
+
+I needed a router to make sure that I could reliably handle requests. So I wrote a simple one for myself. It was kind of fun, a single function which performs double duty registering and returning routes. Add in some error checking and it's all done.
+
+### Server
+
+The server was the next most important part. Once I created a way to handle a request I needed something to do all of that. Included in the server is some content caching for the styles and scripts - basically anything in the "public" folder (for right now) - and the articles. In the future I think that I would like to break this file up into at least two or three to make them more modular and replace-able or refactor-able.
+
+### Templating
+
+I used the first templating library I found that had template inheritance since I thought that would be handy; and it was. Swig was the choice but I am sure there are plenty of others that would fit the bill.
+
+### Tagging & Filtering
+
+The tags in the article files are plain text. They might not be robust but they are easy. The templates create a DOM location for the tags to be picked up by JavaScript and make useful for filtering in the page.
 
 ## Conclusion
 
