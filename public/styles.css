@@ -616,8 +616,13 @@ small {
 }
 
 .published {
-  float: right;
   font-size: .9em;
+  margin: .5em 0;
+}
+
+.published + h1,
+.published + h3 {
+  margin-top: 0;
 }
 
 .tags,
@@ -665,19 +670,9 @@ small {
 @media screen and (max-device-width: 480px) and (orientation: portrait) {
   h1 {font-size: 1.5em;}
   body {font-size: 110%;}
-  .published {
-    float: none;
-    margin-top: .5em;
-  }
-  .published + h3 {margin-top: 0;}
 }
 
 @media screen and (max-device-width: 640px) and (orientation: landscape) {
   h1 {font-size: 1.5em;}
   body {font-size: 70%;}
-  .published {
-    float: none;
-    margin-top: .5em;
-  }
-  .published + h3 {margin-top: 0;}
 }
