@@ -25,13 +25,6 @@ Please Help! I could use all the help possible. Contact me if you are interested
 
 I still have a few things I need to do before I can consider this to be done.
 
-  - Badges in footer to give props
-    - Devtroit (most important!)
-    - NodeJS
-    - Marked / Markdown
-    - Swig (templating)
-    - jQuery
-    - Normalize.css
   - Post-push deploy hook (maybe?)
   - Name and Publish npm package for server (maybe?)
   - Convert to Sass for styling

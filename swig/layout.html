@@ -40,10 +40,39 @@
   </section>
 
   <footer role="contentinfo">
-    <p>&copy; {{currentYear}} {{site.author.name}} under the MIT license.</p>
-    <p>All code snippets used in the examples are in the public domain.</p>
-    <p>GitHub holds <a href="//github.com/kalisjoshua/kalisjoshua.me">the source code</a> for this blog.</p>
+    <div>
+      <p>&copy; {{currentYear}} {{site.author.name}} under the MIT license.</p>
+      <p>All code snippets used in the examples are in the public domain.</p>
+      <p>GitHub holds <a href="//github.com/kalisjoshua/kalisjoshua.me">the source code</a> for this blog.</p>
+    </div>
+
+    <div class="devtroit">
+      <a class="svg-link" href="//devtroit.com">
+        <object alt="Devtroit SVG logo" data="/devtroit.svg" type="image/svg+xml">Devtroit</object>
+      </a>
+    </div>
   </footer>
+
+  <div class="logos">
+    {% set logos = [
+      {svg: 'nodejs', title: 'NodeJS', url: '//nodejs.org'},
+      {svg: 'npm', title: 'npm', url: '//npmjs.org'},
+      {svg: 'markdown', title: 'Markdown', url: '//github.com/chjj/marked'},
+      {svg: 'css3', title: 'CSS3', url: '//developer.mozilla.org/en-US/docs/Web/CSS/CSS3'},
+      {svg: 'html5', title: 'HTML5', url: '//w3.org/html/logo/'},
+      {svg: 'javascript', title: 'JavaScript', url: '//developer.mozilla.org/en-US/docs/Web/JavaScript'},
+      {svg: 'git', title: 'Git', url: '//git-scm.com'},
+      {svg: 'heroku', title: 'Heroku', url: '//heroku.com'},
+      {svg: 'jquery', title: 'jQuery', url: '//jquery.com'},
+      {svg: 'disqus', title: 'Disqus', url: '//disqus.com'},
+      {svg: 'twitter', title: 'Twitter', url: '//twitter.com'}
+    ] %}
+    {% for logo in logos %}
+    <a class="svg-link" href="//{{logo.url}}">
+      <object alt="{{logo.title}} SVG image" data="/{{logo.svg}}.svg" type="image/svg+xml">{{logo.title}}</object>
+    </a>
+    {% endfor %}
+  </div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="/scripts.js"></script>

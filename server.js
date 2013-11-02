@@ -49,7 +49,7 @@ function buildCache () {
 
   // FIXME: refactor into async instead of sync file IO
   cache.passive = fs
-    .readdirSync('public')
+    .readdirSync('assets')
     .map(function (path) {
       return '/' + path;
     });
@@ -251,11 +251,11 @@ function startServer () {
       //   });
       // }
 
-      // check for public files first since more requests
+      // check for assets files first since more requests
       // will come in for those than any other route.
       if (!!~cache.passive.indexOf(_url.pathname)) {
         res.writeHead(200, contentType[fileExt(_url.pathname)]);
-        fs.createReadStream('public' + _url.pathname)
+        fs.createReadStream('assets' + _url.pathname)
           .pipe(res);
       } else {
         // use the route handler defined in the router or
