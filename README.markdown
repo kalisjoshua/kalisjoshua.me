@@ -25,9 +25,14 @@ Please Help! I could use all the help possible. Contact me if you are interested
 
 I still have a few things I need to do before I can consider this to be done.
 
+  - Modularize server.js into smaller pieces
+  - Name and Publish npm package reuse (maybe?)
+  - Unify blog (kalisjoshua.me) and portfolio site (joshuakalis.com)
   - Post-push deploy hook (maybe?)
-  - Name and Publish npm package for server (maybe?)
-  - Convert to Sass for styling
+    - Heroku?
+    - AWS?
+    - Other?
+  - Convert to Sass for styling (sometime...)
 
 # License
 
