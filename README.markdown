@@ -4,24 +4,24 @@
 
 Does the world need another platform for displaying web content... sure, why not? So I did.
 
-# Installing
+## Installing
 
     $ git clone <repository>
     $ npm install
     $ node server.js
 
-# Contributing
+## Contributing
 
 Please Help! I could use all the help possible. Contact me if you are interested and we can talk about what you would like to work on to make sure that it is consistent with the philosophy of the project; namely **simple**.
 
-## Process
+### Process
 
   1. Fork the repository
   2. Do work
   3. Submit a Pull Request
   4. Repeat
 
-# TODO
+## TODO
 
 I still have a few things I need to do before I can consider this to be done.
 
@@ -34,7 +34,7 @@ I still have a few things I need to do before I can consider this to be done.
     - Other?
   - Convert to Sass for styling (sometime...)
 
-# License
+## License
 
 The MIT License (MIT)
 
