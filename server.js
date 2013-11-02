@@ -83,7 +83,7 @@ function cacheArticles () {
       if (!/\[DRAFT\]/.test(title) || includeDrafts) {
         acc
           .push({
-            fullMd    : format(text),
+            body      : format(text),
             intro     : intro(text),
             link      : path,
             published : meta('Date', text),
@@ -284,25 +284,12 @@ router(/^\/(?:articles)?$/, function (req, res) {
  *   1. /articles/{filename}
  */
 router(/^\/articles\/(.*)$/, function (req, res) {
-  var _article
-    , _url = url.parse(req.url);
-
-  // find the article object in the cache based on the pathname key;
-  // the pathname key is built in the articleCache function
-  _article = cache
-    .articles[_url.pathname];
-
   renderPage(res, 200, 'article', {
     site: packge,
-    // create the page-speicific data structure for displaying an article
-    // TODO: make a templating filter to not need to parse markdown here
-    //    article: _article // the preferred syntax for this
-    article: {
-      body: marked(_article.fullMd),
-      published: _article.published,
-      tags: _article.tags,
-      title: _article.title
-    }
+  // find the article object in the cache based on the pathname key;
+  // the pathname key is built in the articleCache function
+    article: cache
+      .articles[url.parse(req.url).pathname]
   });
 });
 
@@ -314,6 +301,10 @@ router('error', function (req, res) {
   renderPage(res, 404, 'error', {
     site: packge
   });
+});
+
+swig.setFilter('marked', function (input) {
+  return marked(input);
 });
 
 buildCache();
