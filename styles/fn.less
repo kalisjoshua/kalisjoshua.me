@@ -1,0 +1,24 @@
+
+#grayscale-contrast (@gs, @ct) {
+  -webkit-filter: grayscale(@gs) contrast(@ct);
+  -moz-filter: grayscale(@gs) contrast(@ct);
+  -ms-filter: grayscale(@gs) contrast(@ct);
+  -o-filter: grayscale(@gs) contrast(@ct);
+  filter: grayscale(@gs) contrast(@ct);
+}
+
+#hue-rotate (@deg) {
+  -webkit-filter: hue-rotate(@deg);
+  -moz-filter: hue-rotate(@deg);
+  -ms-filter: hue-rotate(@deg);
+  -o-filter: hue-rotate(@deg);
+  filter: hue-rotate(@deg);
+}
+
+#user-select (@opt: none) {
+  -webkit-user-select: @opt; /* Chrome all / Safari all */
+  -moz-user-select: @opt; /* Firefox all */
+  -ms-user-select: @opt; /* IE 10+ */
+  -o-user-select: @opt;
+  user-select: @opt;
+}

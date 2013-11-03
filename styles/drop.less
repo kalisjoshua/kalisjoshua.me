@@ -1,0 +1,50 @@
+
+.drop {
+  left: 0;
+  position: relative;
+  top: 0;
+}
+
+.drop--content {
+  background: #123123;
+  background: rgba(18, 49, 35, .6);
+  display: none;
+}
+
+.drop--content:after,
+.drop--content:before {
+  content: '';
+  display: table;
+}
+.drop--content:after {
+  clear: both;
+}
+.drop--content {
+  zoom: 1;
+}
+
+.drop--content a {
+  text-decoration: underline;
+}
+.drop--content a:hover {
+  text-decoration: none;
+}
+
+.drop--content ul {
+  float: right;
+  font-weight: 100;
+  line-height: 1.4em;
+  list-style: none;
+  padding: 0 1em 0 0;
+  text-align: right;
+}
+
+.drop--handle {
+  background: #123123;
+  background: rgba(18, 49, 35, .6);
+  border-radius: 0 0 5px 5px;
+  cursor: pointer;
+  float: right;
+  font-size: .9em;
+  padding: .25em .85em;
+}

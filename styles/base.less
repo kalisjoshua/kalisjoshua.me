@@ -1,0 +1,167 @@
+
+a {
+  color: #339900;
+  color: hsl(100, 100%, 30%);
+}
+
+blockquote {
+  font-style: italic;
+  left: 0;
+  position: relative;
+  top: 0;
+
+  &:before {
+    color: #999999;
+    content: "\201c";
+    font-size: 300%;
+    left: -.85em;
+    position: absolute;
+    top: 0;
+  }
+}
+
+body {
+  font-family: Helvetica, Verdana, Arial, sans-serif;
+  margin: 5em auto 0;
+  max-width: 40em;
+}
+
+footer {
+  border-top: 1px solid;
+  border-color: #339900;
+  border-color: hsl(100, 100%, 30%);
+  font-size: .9em;
+  margin: 2em 0;
+  padding: 1em;
+
+  > div:first-child {
+    float: left;
+    position: relative;
+    top: 0;
+    width: 70%;
+  }
+
+  .devtroit {
+    text-align: right;
+
+    .svg-link {
+      #hue-rotate(-100deg);
+
+      &:hover {
+        #hue-rotate(0deg);
+      }
+    }
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 100;
+}
+
+h1 a {
+  text-decoration: none;
+}
+
+h3 a {
+  text-decoration: none;
+}
+
+h3 + p {
+  margin-top: 0;
+}
+
+header {
+  background: #339900;
+  background: hsla(100, 100%, 30%, .85);
+  border-bottom: 3px solid #123123;
+  color: white;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+
+  a {
+    color: inherit;
+    font-weight: 100;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  h1 {
+    font-size: 1.5em;
+    margin: .5em 0;
+  }
+
+  small a {
+    font-size: .9em;
+  }
+}
+
+p code {
+  background: #efefef;
+  border: 1px solid #cdcdcd;
+  border-radius: 5px;
+  padding: 0 .3em;
+}
+
+pre {
+  background: #123123;
+  overflow: auto;
+  margin: 0 -1em;
+  padding: 1em .25em;
+
+  + div {
+    margin-top: 1em;
+  }
+
+  code {
+    color: white;
+    counter-reset: line-number;
+    display: block;
+    line-height: 1.3em;
+
+    > span {
+      counter-increment: line-number;
+      float: left;
+      white-space: pre;
+
+      &:before {
+        border-right: 1px solid;
+        border-color: white;
+        color: white;
+        color: hsla(100, 100%, 100%, .3);
+        content: counter(line-number);
+        float: left;
+        left: 0;
+        margin-right: 1em;
+        padding: 0 4px;
+        position: relative;
+        text-align: right;
+        top: 0;
+        #user-select();
+        width: 1.25em;
+      }
+
+      &:nth-child(2n):before {
+        background: white;
+        background: hsla(100, 100%, 100%, .08);
+      }
+    }
+
+    .punctuation,
+    .comment {color: #999999;}
+    .number,
+    .string {color: #fd971f;}
+    .keyword {color: #8CC9D5;}
+    .init {color: #9CC54A;}
+  }
+}
+
+section {
+  padding: 0 1em;
+}
+
+small {
+  font-size: .7em;
+}

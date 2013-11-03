@@ -1,0 +1,71 @@
+// external libraries
+@import (less) 'normalize.css';
+
+// library files
+@import 'fn.less';
+
+// application files
+@import 'base';
+@import 'drop';
+@import 'tags-filter';
+@import 'mq';
+
+// miscellaneous styles
+.container {
+  margin: 0 auto;
+  max-width: 40em;
+}
+
+.disqussion {
+  margin-top: 2em;
+}
+
+.logos {
+  background: gainsboro;
+  clear: both;
+  padding: 1em 0;
+  text-align: center;
+
+  .svg-link {
+    #grayscale-contrast(100%, 0);
+    padding: 1em;
+  }
+
+  .svg-link:hover {
+    background: white;
+    #grayscale-contrast(0%, 1);
+  }
+}
+
+.published {
+  font-size: .9em;
+  margin: .5em 0;
+
+  + h1,
+  + h3 {
+    margin-top: 0;
+  }
+}
+
+.svg-link {
+  display: inline-block;
+  position: relative;
+
+  &:after {
+    bottom: 0;
+    content: "";
+    left:0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.tweet {
+  margin-top: 1em;
+}
+
+#ccLicense .ccImage {
+  float: right;
+  margin: 0 1em;
+}

@@ -31,18 +31,18 @@
     </div>
 
     <div class="container">
-      <h1><a href="/">{{site.author.name}}</a><small class="tagsFilter"></small></h1>
+      <h1><a href="/">{{site.author.name}}</a><small class="tags--filter"></small></h1>
     </div>
   </header>
 
   <section id="main" role="main">
-    {% block content %}default content{% endblock %}
+    {% block content %}
+      default content
+    {% endblock %}
   </section>
 
   <footer role="contentinfo">
-    <div>
-      {% include 'part/creativecommons.html' %}
-    </div>
+    <div>{% include 'part/creativecommons.html' %}</div>
 
     <div class="devtroit">
       <a class="svg-link" href="//devtroit.com">
