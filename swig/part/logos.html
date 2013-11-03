@@ -1,0 +1,21 @@
+<div class="logos">
+  {% set logos = [
+    {svg: 'nodejs', title: 'NodeJS', url: '//nodejs.org'},
+    {svg: 'npm', title: 'npm', url: '//npmjs.org'},
+    {svg: 'markdown', title: 'Markdown', url: '//github.com/chjj/marked'},
+    {svg: 'css3', title: 'CSS3', url: '//developer.mozilla.org/en-US/docs/Web/CSS/CSS3'},
+    {svg: 'html5', title: 'HTML5', url: '//w3.org/html/logo/'},
+    {svg: 'javascript', title: 'JavaScript', url: '//developer.mozilla.org/en-US/docs/Web/JavaScript'},
+    {svg: 'git', title: 'Git', url: '//git-scm.com'},
+    {svg: 'octocat', title: 'GitHub', url: '//github.com/kalisjoshua/kalisjoshua.me'},
+    {svg: 'heroku', title: 'Heroku', url: '//heroku.com'},
+    {svg: 'jquery', title: 'jQuery', url: '//jquery.com'},
+    {svg: 'disqus', title: 'Disqus', url: '//disqus.com'},
+    {svg: 'twitter', title: 'Twitter', url: '//twitter.com'}
+  ] %}
+  {% for logo in logos %}
+  <a class="svg-link" href="//{{logo.url}}">
+    <object alt="{{logo.title}} SVG image" data="/{{logo.svg}}.svg" type="image/svg+xml">{{logo.title}}</object>
+  </a>
+  {% endfor %}
+</div>

@@ -444,8 +444,11 @@ footer {
   padding: 1em;
 }
 
-footer div:first-child {
+footer > div:first-child {
   float: left;
+  position: relative;
+  top: 0;
+  width: 70%;
 }
 
 footer .devtroit {
@@ -642,6 +645,7 @@ small {
 
 .logos {
   background: gainsboro;
+  clear: both;
   padding: 1em 0;
   text-align: center;
 }
@@ -728,6 +732,11 @@ small {
 
 .tweet {
   margin-top: 1em;
+}
+
+#ccLicense .ccImage {
+  float: right;
+  margin: 0 1em;
 }
 
 @media screen and (max-device-width: 480px) and (orientation: portrait) {

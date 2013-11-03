@@ -28,11 +28,12 @@ I still have a few things I need to do before I can consider this to be done.
   - Modularize server.js into smaller pieces
   - Name and Publish npm package reuse (maybe?)
   - Unify blog (kalisjoshua.me) and portfolio site (joshuakalis.com)
+    - Try BrowserifyJS instead of RequireJS
+    - Convert to Sass for styling (sometime...)
   - Post-push deploy hook (maybe?)
     - Heroku?
     - AWS?
     - Other?
-  - Convert to Sass for styling (sometime...)
 
 ## License
 
