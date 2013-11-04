@@ -10,8 +10,9 @@ var cp = require('child_process')
   , swig = require('swig')
 
   // local resources
+  , contact = fs.readFileSync('./src/contact.md', 'utf8')
   , packge = require('./package.json')
-  , router = require('./modules/router.js')
+  , router = require('./src/modules/router.js')
 
   // global variables
   , cache = {}
@@ -23,7 +24,8 @@ var cp = require('child_process')
 contentType = {
   css   : {'Content-Type': 'text/css'},
   html  : {'Content-Type': 'text/html'},
-  js    : {'Content-Type': 'text/javascript'}
+  js    : {'Content-Type': 'text/javascript'},
+  json  : {'Content-Type': 'application/json'}
 };
 
 // command to pull changes from GitHub's master branch
@@ -219,7 +221,7 @@ function renderPage (res, code, tmpl, data) {
  */
 function renderTemplate (tmpl, data) {
   return swig
-    .compileFile('./swig/' + tmpl + '.html')(data || {});
+    .compileFile('./src/swig/' + tmpl + '.html')(data || {});
 }
 
 /**
@@ -273,9 +275,10 @@ function startServer () {
  */
 router(/^\/(?:articles)?$/, function (req, res) {
   renderPage(res, 200, 'index', {
-    site: packge,
     // use the array of article objects to iterate over for the articles listing
-    articles: cache.articles.index
+    articles: cache.articles.index,
+    contact: contact,
+    site: packge
   });
 });
 
@@ -285,11 +288,12 @@ router(/^\/(?:articles)?$/, function (req, res) {
  */
 router(/^\/articles\/(.*)$/, function (req, res) {
   renderPage(res, 200, 'article', {
-    site: packge,
-  // find the article object in the cache based on the pathname key;
-  // the pathname key is built in the articleCache function
+    // find the article object in the cache based on the pathname key;
+    // the pathname key is built in the articleCache function
     article: cache
-      .articles[url.parse(req.url).pathname]
+      .articles[url.parse(req.url).pathname],
+    contact: contact,
+    site: packge
   });
 });
 
@@ -299,6 +303,7 @@ router(/^\/articles\/(.*)$/, function (req, res) {
  */
 router('error', function (req, res) {
   renderPage(res, 404, 'error', {
+    contact: contact,
     site: packge
   });
 });

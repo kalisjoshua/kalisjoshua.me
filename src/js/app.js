@@ -104,17 +104,6 @@ $.fn.ready(function () {
       .join(join || ', ');
   }
 
-  (function () {
-    var rPattern = /~([^~]+?)~@~([^~]+?)~/,
-        rString = '@$2 <a href="mailto:$1@$2">$1</a>';
-
-    $('.email')
-      .each(function () {
-        this.innerHTML = this.innerHTML
-          .replace(rPattern, rString);
-      });
-  }());
-
   tagFilter(tags);
 
   $('pre')
