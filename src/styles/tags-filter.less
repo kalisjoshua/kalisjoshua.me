@@ -11,11 +11,9 @@
 }
 
 .tags--filter a {
-  background: #123123;
-  background: rgba(18, 49, 35, .4);
+  background: @theme--dark;
   border: 1px solid;
-  border-color: #123123;
-  border-color: rgba(18, 49, 35, .4);
+  border-color: @theme--dark-hex;
   border-radius: 3px;
   display: inline-block;
   padding: .15em .35em;
@@ -24,8 +22,7 @@
 
 .tags--filter a:after {
   border-left: 1px solid;
-  border-color: #123123;
-  border-color: rgba(18, 49, 35, .4);
+  border-color: @theme--dark-hex;
   content: ' \00D7';
   display: inline-block;
   font-weight: bold;

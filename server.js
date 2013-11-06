@@ -10,7 +10,9 @@ var cp = require('child_process')
   , swig = require('swig')
 
   // local resources
-  , contact = fs.readFileSync('./src/contact.md', 'utf8')
+  , contact
+  , menu
+  , notice
   , packge = require('./package.json')
   , router = require('./src/modules/router.js')
 
@@ -18,7 +20,10 @@ var cp = require('child_process')
   , cache = {}
   , contentType
   , deploy
-  , includeDrafts;
+  , includeDrafts
+  , rPageFilter = ''
+
+  , DEFAULT_DATA;
 
 // mapping from file extension to HTTP Content-Type
 contentType = {
@@ -55,6 +60,27 @@ function buildCache () {
     .map(function (path) {
       return '/' + path;
     });
+
+  // FIXME: refactor into async instead of sync file IO
+  cache.pages = fs
+    .readdirSync('pages')
+    .map(function (path) {
+      rPageFilter += '|' + path.match(/(.*)\.md/).pop();
+      return '/' + path;
+    });
+
+  rPageFilter = new RegExp('^\\/(?:' + rPageFilter.slice(1) + ')$');
+
+  contact = fs.readFileSync('./src/contact.md', 'utf8');
+  menu = fs.readFileSync('./src/menu.md', 'utf8');
+  notice = fs.readFileSync('./src/notice.md', 'utf8');
+
+  DEFAULT_DATA = {
+    contact: contact,
+    menu: menu,
+    notice: notice,
+    site: packge
+  };
 }
 
 /**
@@ -186,6 +212,28 @@ function fileExt (path) {
 }
 
 /**
+ * Add the keys from the data object to the DEFAULT_DATA.
+ *
+ * @param  {Object} data
+ *         The specific data for a page.
+ *
+ * @return {Object}
+ *         The complete data object for a page.
+ */
+function pageData (data) {
+  return Object.keys(data)
+    .reduce(function (acc, key) {
+      if (acc[key]) {
+        throw new Error('Attempting to reassign data key in PageData.');
+      } else {
+        acc[key] = data[key];
+      }
+
+      return acc;
+    }, JSON.parse(JSON.stringify(DEFAULT_DATA)));
+}
+
+/**
  * Sugar function to make page rendering easier and centralized.
  *
  * @param  {Object} res
@@ -268,18 +316,17 @@ function startServer () {
     .listen(process.env.PORT || packge.devPort);
 }
 
+buildCache();
+
 /**
  * Route for:
  *   1. /
  *   2. /articles
  */
 router(/^\/(?:articles)?$/, function (req, res) {
-  renderPage(res, 200, 'index', {
-    // use the array of article objects to iterate over for the articles listing
-    articles: cache.articles.index,
-    contact: contact,
-    site: packge
-  });
+  renderPage(res, 200, 'index', pageData({
+    articles: cache.articles.index
+  }));
 });
 
 /**
@@ -287,14 +334,27 @@ router(/^\/(?:articles)?$/, function (req, res) {
  *   1. /articles/{filename}
  */
 router(/^\/articles\/(.*)$/, function (req, res) {
-  renderPage(res, 200, 'article', {
-    // find the article object in the cache based on the pathname key;
-    // the pathname key is built in the articleCache function
-    article: cache
-      .articles[url.parse(req.url).pathname],
-    contact: contact,
-    site: packge
-  });
+  // find the article object in the cache based on the pathname key;
+  // the pathname key is built in the articleCache function
+  renderPage(res, 200, 'article', pageData({
+    article: cache.articles[url.parse(req.url).pathname]
+  }));
+});
+
+/**
+ * Route pattern for all pages:
+ *   1. /[about portfolio projects resume]
+ */
+router(rPageFilter, function (req, res) {
+  // FIXME: async IO
+  var pathname = url.parse(req.url).pathname
+    , mdContent = fs.readFileSync('pages' + pathname + '.md', 'utf8')
+    , title = mdContent.match(/^#+\s?([^\n]+)/).pop();
+
+  renderPage(res, 200, 'page', pageData({
+    content: mdContent,
+    title: title
+  }));
 });
 
 /**
@@ -302,15 +362,11 @@ router(/^\/articles\/(.*)$/, function (req, res) {
  * TODO: make this page more helpful/entertaining than it is
  */
 router('error', function (req, res) {
-  renderPage(res, 404, 'error', {
-    contact: contact,
-    site: packge
-  });
+  renderPage(res, 404, 'error', DEFAULT_DATA);
 });
 
 swig.setFilter('marked', function (input) {
   return marked(input);
 });
 
-buildCache();
 startServer();

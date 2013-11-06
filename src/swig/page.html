@@ -1,0 +1,7 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{title}} - {{site.author.name}}{% endblock %}
+
+{% block content %}
+  {{content|safe|marked}}
+{% endblock %}

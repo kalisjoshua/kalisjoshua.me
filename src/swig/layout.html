@@ -10,14 +10,26 @@
   <link rel="stylesheet" href="/styles.css" />
 
 <body>
+  <p class="visuallyhidden"><a href="#main">Skip Navigation</a></p>
+
   <header id="top" role="banner">
     <div class="drop">
-      <div class="drop--content">
-          <div class="container">{{contact|safe|marked}}</div>
+      <div class="drop--content drop--content__menu">
+        <nav class="container" role="navigation">
+          <a class="drop--close" href="#drop-close">&times;</a>
+          {{menu|safe|marked}}
+        </nav>
+      </div>
+      <div class="drop--content drop--content__notice">
+        <div class="container">
+          <a class="drop--close" href="#drop-close">&times;</a>
+          {{notice|safe|marked}}
+        </div>
       </div>
 
       <div class="container">
-        <div class="drop--handle">Contact Me</div>
+        <div class="drop--handle" data-drop=".drop--content__menu">Menu</div>
+        <div class="drop--handle notice" data-drop=".drop--content__notice">Notice to Recruiters</div>
       </div>
     </div>
 
@@ -26,7 +38,8 @@
     </div>
   </header>
 
-  <section id="main" role="main">
+  <!-- FIXME: add meta info to pages for cssClassName for sectioning -->
+  <section class="{{title|lower|replace('\s', '_', 'g')}}" id="main" role="main">
     {% block content %}
       default content
     {% endblock %}
@@ -40,6 +53,9 @@
         <object alt="Devtroit SVG logo" data="/devtroit.svg" type="image/svg+xml">Devtroit</object>
       </a>
     </div>
+
+    <a href="#contact" id="contact"></a>
+    <div>{{contact|safe|marked}}</div>
   </footer>
 
   {% include 'part/logos.html' %}

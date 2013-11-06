@@ -1,7 +1,10 @@
 
 a {
-  color: #339900;
-  color: hsl(100, 100%, 30%);
+  color: @theme;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 blockquote {
@@ -28,11 +31,15 @@ body {
 
 footer {
   border-top: 1px solid;
-  border-color: #339900;
-  border-color: hsl(100, 100%, 30%);
+  border-color: @theme--dark;
   font-size: .9em;
-  margin: 2em 0;
+  margin: 2em 0 0;
   padding: 1em;
+
+  h4 {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -52,9 +59,8 @@ h3 + p {
 }
 
 header {
-  background: #339900;
-  background: hsla(100, 100%, 30%, .85);
-  border-bottom: 3px solid #123123;
+  background: @theme;
+  border-bottom: 3px solid @theme--dark;
   color: white;
   left: 0;
   position: fixed;
@@ -92,7 +98,7 @@ p code {
 }
 
 pre {
-  background: #123123;
+  background: @theme--dark-hex;
   overflow: auto;
   margin: 0 -1em;
   padding: 1em .25em;

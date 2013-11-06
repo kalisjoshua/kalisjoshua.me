@@ -3,10 +3,24 @@
 $.fn.ready(function () {
   var $articles = $('article')
     , $body = $('body')
+    , $doc = $(document)
     , $tagsFilter = $('.tags--filter')
 
     , hash = window.location.hash
     , tags = [];
+
+  function ancient_history (event) {
+    $(this)
+      .toggleClass('toggleOpen');
+
+    $('.ancient-history')
+      .slideToggle();
+  }
+
+  function body_scroll_handler (event) {
+    $body
+      .toggleClass('scrolled', $body.scrollTop() > 20);
+  }
 
   function disqusInit (disqus_shortname) {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -15,10 +29,29 @@ $.fn.ready(function () {
   }
 
   function dropClickHandler () {
-    $(this)
+    var $drops
+      , $handle
+      , $target;
+
+    $handle = $(this);
+
+    $target = $($handle
+      .data('drop'));
+
+    $drops = $handle
       .closest('.drop')
-      .find('.drop--content')
-      .slideToggle();
+      .find('.drop--content');
+
+    if ($target.is(':visible')) {
+      $target
+        .slideUp();
+    } else {
+      $drops
+        .slideUp();
+
+      $target
+        .slideDown();
+    }
   }
 
   function highlight(js) {
@@ -130,13 +163,16 @@ $.fn.ready(function () {
         .html(tagLinks(blockTags));
     });
 
-  $(document)
+  $doc
     .on('click', '.addTag', tagClickHandler)
     .on('click', '.drop--handle', dropClickHandler)
-    .on('scroll', function body_scroll_handler (event) {
-      $body
-        .toggleClass('scrolled', $body.scrollTop() > 20);
-    });
+    .on('click', '.drop--close', function (event) {
+      event.preventDefault();
+      $('.drop--content')
+        .slideUp();
+    })
+    .on('click', '.ancient-history--title', ancient_history)
+    .on('scroll', body_scroll_handler);
 
   tagFilter(tags);
 
@@ -159,4 +195,13 @@ $.fn.ready(function () {
   if ($('.disqussion').length) {
     disqusInit('joshuakalis');
   }
+
+  $('.resume')
+    .find('h3')
+    .last()
+    .addClass('ancient-history--title')
+    .nextUntil()
+    .wrapAll('<div>')
+    .parent()
+    .addClass('ancient-history');
 });

@@ -1,0 +1,41 @@
+
+.resume {
+  h3 {
+    border-bottom: 1px solid gainsboro;
+    padding-bottom: .5em;
+    text-align: center;
+  }
+
+  h4 {
+    font-weight: 600;
+    margin: .25em 0;
+  }
+
+  h5 {
+    font-size: 1em;
+    margin-left: 1em;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .ancient-history--title {
+    cursor: pointer;
+
+    &:after {
+      content: '(hidden, click to show)';
+      font-size: .75em;
+      margin-left: 1em;
+      text-decoration: underline;
+    }
+
+    &.toggleOpen:after {
+      content: '(shown, click to hide)';
+    }
+  }
+
+  .ancient-history {
+    display: none;
+  }
+}
