@@ -22,3 +22,11 @@
   -o-user-select: @opt;
   user-select: @opt;
 }
+
+#transition (...) {
+  @props: ~`"@{arguments}".replace(/[\[\]]/g, '')`;
+  -webkit-transition: @props;
+  -moz-transition: @props;
+  -o-transition: @props;
+  transition: @props;
+}
