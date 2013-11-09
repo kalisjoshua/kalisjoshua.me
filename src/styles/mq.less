@@ -1,10 +1,34 @@
 
+#both (@bodyFontSize) {
+  body {
+    font-size: @bodyFontSize;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  header nav li {
+    left: 0;
+    overflow: hidden;
+    position: relative;
+    text-indent: 100%;
+    top: 0;
+    white-space: nowrap;
+
+    a {
+      position: absolute;
+      right: 0;
+      text-transform: capitalize;
+      top: 0;
+    }
+  }
+}
+
 @media screen and (max-device-width: 480px) and (orientation: portrait) {
-  h1 {font-size: 1.5em;}
-  body {font-size: 110%;}
+  #both(110%);
 }
 
 @media screen and (max-device-width: 640px) and (orientation: landscape) {
-  h1 {font-size: 1.5em;}
-  body {font-size: 70%;}
+  #both(70%);
 }
