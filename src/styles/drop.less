@@ -5,6 +5,29 @@
   top: 0;
 }
 
+.drop--close {
+  background: hsla(100%, 100%, 100%, 0.3);
+  border-radius: 3em;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.4em;
+  font-weight: bold;
+  line-height: 0;
+  margin: 1em 0;
+  padding: .2em .5em .25em;
+  position: absolute;
+  right: 0;
+  text-decoration: none;
+  top: 0;
+  z-index: 99;
+
+  &:hover {
+    color: @theme--dark;
+    background: white;
+  }
+}
+
 .drop--content {
   background: @theme--dark;
   color: gainsboro;
@@ -44,26 +67,6 @@
     list-style: none;
     padding: 0 1em 0 0;
     text-align: right;
-  }
-
-  .drop--close {
-    background: hsla(100%, 100%, 100%, 0.3);
-    border-radius: 3em;
-    color: white;
-    display: inline-block;
-    font-size: 1.4em;
-    font-weight: bold;
-    line-height: 0;
-    padding: .2em .5em .25em;
-    position: absolute;
-    right: 0;
-    text-decoration: none;
-    top: 0;
-
-    &:hover {
-      color: @theme--dark;
-      background: white;
-    }
   }
 }
 
