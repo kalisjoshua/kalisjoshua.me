@@ -23,6 +23,16 @@
       top: 0;
     }
   }
+
+  .drop--handle span {
+    display: none;
+  }
+
+  .TOC {
+    clear: both;
+    display: block;
+    float: none;
+  }
 }
 
 @media screen and (max-device-width: 480px) and (orientation: portrait) {
@@ -31,12 +41,4 @@
 
 @media screen and (max-device-width: 640px) and (orientation: landscape) {
   #both(70%);
-}
-
-@media screen and (max-width: 400px) {
-  .TOC {
-    clear: both;
-    display: block;
-    float: none;
-  }
 }
