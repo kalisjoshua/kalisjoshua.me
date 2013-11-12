@@ -108,6 +108,38 @@ $.fn.ready(function ($) {
       .each(highlight(javascript));
   }());
 
+  // table of contents in article
+  (function () {
+    if (!/articles/.test(window.location.pathname)) {
+      return;
+    }
+
+    var $article = $('article')
+
+      , headings
+      , TOC = '<aside class="TOC"><h2>Table Of Contents</h2><ol>%</ol></aside>';
+
+    headings = $article
+      .find('h2')
+      .has('a')
+      .map(function (_, el) {
+        el = $(el)
+          .find('a');
+
+        return '<li><a href="#%">%</a></li>'
+          .replace(/%/, el.attr('name'))
+          .replace(/%/, el.text());
+      })
+      .toArray()
+      .join('');
+
+    if (headings.length) {
+      $article
+        .find('h1')
+        .after(TOC.replace(/%/, headings));
+    }
+  }());
+
   // tags 'module'
   (function () {
     var hash = window.location.hash

@@ -6,13 +6,6 @@ I agree with almost everything in the [Airbnb JavaScript Style Guide](//github.c
 
 Some - if not most - of my reasoning may be subjective but when your primary responsibility is to author / edit code - no matter the language - you should make it as enjoyable an experience as possible. There is a delicate balance that must be kept between execution performance and developer experience; with most conflicts being resolved in favor of performance as that is what will impact the end user.
 
-  + [Accessors](#Accessors)
-  + [Commas](#Commas)
-  + [Functions](#Functions)
-  + [Variables](#Variables)
-  + [Whitespace](#Whitespace)
-  + [Additions](#Additions)
-
 ## <a name="Functions">Functions</a>
 
 I will include the code sample from the original publication here for comparison to what I think is better.
@@ -232,7 +225,7 @@ I think a better patter is to have a single function for getting and setting eac
       }
     };
 
-## Conclusion(s)
+## <a name="Conclusions">Conclusion(s)</a>
 
 With the exception of the [Accessors](#Accessors) I don't think that anything I have identified here in this article would cause any problems outside preferential experience.
 
@@ -242,10 +235,7 @@ I think the most important rule after performance is consistency. Every effort s
 
 There are, however, some things that were not spelled out in the style guide and that could leave some openings for inconsistency such as the following:
 
- + [Commas Extended](#CommasX)
- + [Whitespace Extended](#WhitespaceX)
-
-## <a name="WhitespaceX">Whitespace Extended</a>
+## <a name="Whitespace-Extended">Whitespace Extended</a>
 
   1. A whitespace character should follow every keyword or control structure (with a few exceptions):
 
@@ -305,10 +295,10 @@ There are, however, some things that were not spelled out in the style guide and
 
     *The additional whitespace in these instances helps improve readability.*
 
-## <a name="CommasX">Commas Extended</a>
+## <a name="Commas-Extended">Commas Extended</a>
 
 The one additional rule I would add to the commas section is, 'Every comma should be followed by a single whitespace character or newline.'
 
-## Final Conclusion
+## <a name="Final-Conclusion">Final Conclusion</a>
 
 The more explicit we can be without imposing too much restriction - to the point of limiting the effectiveness of a developer - the better I think. The bigger problem is getting to a point where a large majority agree on standards. I think we are getting better, but we still can make improvements.

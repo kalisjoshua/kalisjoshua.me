@@ -6,7 +6,7 @@ I wanted a place to publish articles I write; which would also hopefully inspire
 
 I wanted to find something that would do everything that I want in a blog platform without much effort. And, I wanted some very specific things, which I thought others would have already developed; so I didn't have to.
 
-## What I Want(ed)
+## <a name="What-I-Wanted">What I Want(ed)</a>
 
 Let me explain what I was looking for - and eventually - did not find, and so wrote it myself. Maybe someone else will find it useful and use it themselves. Comments and criticisms always welcome.
 
@@ -23,7 +23,7 @@ I wanted to use as few external dependencies as possible. I am a JavaScript deve
 
 When I write I find that I enjoy not being distracted by the editor. Markdown is great for that since it is very streamlined and to the point. So the rule I set was that all content editing would be done in Markdown files and rendered through a standard parser; nothing custom.
 
-## What I Created
+## <a name="What-I-Created">What I Created</a>
 
 I like using stuff I can understand. I didn't want to learn a whole lot to get a "working" site up and available. So I worked on reducing everything to bare necessities; what is absolutely needed.
 
@@ -48,6 +48,6 @@ I used the first templating library I found that had template inheritance since 
 
 The tags in the article files are plain text. They might not be robust but they are easy. The templates create a DOM location for the tags to be picked up by JavaScript and make useful for filtering in the page.
 
-## Conclusion
+## <a name="Conclusion">Conclusion</a>
 
 Obviously some shortcuts were taken and therefore the long-term scalability of it as a large blog is highly suspect, but it is a start and will work for a while. Time will tell how bad - or good - a thing I have created.
