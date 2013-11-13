@@ -61,7 +61,7 @@ Here is the original sample:
 ... and, mine:
 
     // language = javascript
-    // good
+    // better
     function yup (name, options, args) {
       // ...stuff...
     }
@@ -97,7 +97,7 @@ Here is the original sample:
 .. and, mine:
 
     // language = javascript
-    // good
+    // better
     var dragonball,
         goSportsTeam = true,
         i = 0,
@@ -292,7 +292,7 @@ There are, however, some things that were not spelled out in the style guide and
           myArray = [ ];
           myObject.toString( );
 
-          // bad
+          // good
           myObject = {};
           myArray = [];
           myObject.toString();
