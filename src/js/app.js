@@ -50,9 +50,11 @@ $.fn.ready(function ($) {
 
   // highlight 'module'
   (function () {
-    var javascript;
+    var rLang = /\s*\/\/\s*lang(?:uage)?\s*=\s*(javascript|js)\n/i
+      , syntaxes = {};
 
-    javascript = []
+    syntaxes.js =
+    syntaxes.javascript = []
       .concat([[
         /([\(\)\.,;])/g
         , '<span class="punctuation">$1</span>']])
@@ -81,16 +83,23 @@ $.fn.ready(function ($) {
         /\b(break|case|catch|continue|debugger|default|delete|do|else|finally|for|function|if|in|instanceof|switch|this|throw|try|typeof|var|void|while|with)\b/gm
         , '<span class="keyword">$1</span>']]);
 
-    function highlight (syntax) {
-      return function highlight_syntax () {
+    function highlight () {
+      var syntax;
+
+      if (rLang.test(this.innerHTML)) {
+        syntax = rLang
+          .exec(this.innerHTML)
+          .pop();
+
         this.innerHTML = this.innerHTML
+          .replace(rLang, '')
           .split(/\n/)
-          .map(syntaxes.bind(null, syntax))
+          .map(process.bind(null, syntaxes[syntax]))
           .join('\n');
-      };
+      }
     }
 
-    function syntaxes (lang, line) {
+    function process (lang, line) {
       var copy = lang.slice(0)
         , current;
 
@@ -105,7 +114,7 @@ $.fn.ready(function ($) {
 
     $('pre')
       .find('code')
-      .each(highlight(javascript));
+      .each(highlight);
   }());
 
   // table of contents in article

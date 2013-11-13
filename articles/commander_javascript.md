@@ -27,6 +27,7 @@ I think that is enough to get started; not a fully feature complete shopping car
 
 The simplest way to implement this cart - in pure JavaScript - is with no encapsulation or security around it. This is something that will work perfectly if you are sure that no one will ever open a console on your shopping site and meddle with the code.
 
+    // lang = js
     var cart = []; // an empty cart
 
     function addItem (item) {
@@ -52,6 +53,7 @@ The simplest way to implement this cart - in pure JavaScript - is with no encaps
 
 To use this cart API here are some sample function calls:
 
+    // language = javascript
     addItem({'name': 'Radio Flyer Wagon', 'price': 19.95});
     getItems(); // returns [{'name': 'Radio Flyer Wagon', 'price': 19.95}]
     getTotal(); // returns 19.95
@@ -63,6 +65,7 @@ Here, the requirements have been met with the functions defined. However, I hope
 
 There are a whole lot of problems in the code above and the first step towards mitigation would probably be to reduce the impact on global scope; everything is itself in the global scope. One of the early lessons in JavaScript is to not do exactly what has been done above; the suggestion is to create a namespace and include everything in one - or as few - as possible to not clutter the global scope. Let's do that now.
 
+    // language = javascript
     var cart = {
       'items': [], // an empty cart
 
@@ -90,6 +93,7 @@ There are a whole lot of problems in the code above and the first step towards m
 
 To use this cart API here are some sample function calls:
 
+    // language = javascript
     cart.addItem({'name': 'Radio Flyer Wagon', 'price': 19.95});
     cart.getItems(); // returns [{'name': 'Radio Flyer Wagon', 'price': 19.95}]
     cart.getTotal(); // returns 19.95
@@ -101,6 +105,7 @@ This is a lot *better* than the first attempt. The bigger problem still remains 
 
 To hide access to resources in other languages we would use access modifiers like: private, static, protected, et.al. JavaScript does not provide anything like these so we have to get creative. JavaScript does provide Closure scope and that is what we can use to great benefit.
 
+    // language = javascript
     var cart = (function () {
       var items = []; // an empty cart
 
@@ -130,6 +135,7 @@ To hide access to resources in other languages we would use access modifiers lik
 
 To use this cart API here are some sample function calls:
 
+    // language = javascript
     cart.addItem({'name': 'Radio Flyer Wagon', 'price': 19.95});
     cart.getItems(); // returns [{'name': 'Radio Flyer Wagon', 'price': 19.95}]
     cart.getTotal(); // returns 19.95
@@ -137,17 +143,17 @@ To use this cart API here are some sample function calls:
 
 Now, the items array is hidden away from the global scope so that is good; no code can directly change it. That isn't entirely true because in the `getItems` method a reference to `items` is returned and therefore makes it accessible; this is fixable by returning a copy of the array instead of the array itself.
 
-    // ...
+    // language = javascript
         'getItems': function () {
           return items; // don't do this
           return items.slice(0); // do this instead to return a copy
         },
-    // ...
 
 ## <a name="Use-The-Command-Pattern">Use The Command Pattern</a>
 
 But another issue is the `cart` object returned from the Closure. All of its methods are accessible; which you might think is a good thing. Callable is a good thing, changeable is not. As it stands, this code allows all of the provided methods to be overwritten in any way someone would like. It would be nice to allow the methods to be called but not changed or overwritten; until ES6 is available the Command Pattern is a good alternative.
 
+    // language = javascript
     var cart = (function () {
       var items = []; // an empty cart
 
@@ -183,6 +189,7 @@ But another issue is the `cart` object returned from the Closure. All of its met
 
 To use this cart API here are some sample function calls:
 
+    // language = javascript
     cart('addItem', {'name': 'Radio Flyer Wagon', 'price': 19.95});
     cart('getItems'); // returns [{'name': 'Radio Flyer Wagon', 'price': 19.95}]
     cart('getTotal'); // returns 19.95

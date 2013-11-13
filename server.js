@@ -144,7 +144,7 @@ function cacheArticles () {
 
     // remove the meta data
     text = text
-      .replace(/[^\n]\w+:[^\n]+\n/g, '');
+      .replace(/(?:[^\n]\w+:[^\n]+\n)+/, '');
 
     return title + text;
   }

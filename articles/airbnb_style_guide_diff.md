@@ -10,6 +10,7 @@ Some - if not most - of my reasoning may be subjective but when your primary res
 
 I will include the code sample from the original publication here for comparison to what I think is better.
 
+    // language = javascript
     // anonymous function expression
     var anonymous = function() {
       return true;
@@ -29,6 +30,7 @@ I like adding an additional space before the arguments list - in parens - to hel
 
 I also like to bring the invoke-ing parens inside the wrapping parens when writing an Immediately-Invoked Function Expression (IIFE). I admit that I originally followed this from The Crockford but I have grown to like it as it feels more natural to type; the entire statement is in the enclosing parens and the only character outside is the semicolon.
 
+    // language = javascript
     // anonymous function expression
     var anonymous = function () {
       return true;
@@ -50,6 +52,7 @@ One more for good measure.
 
 Here is the original sample:
 
+    // language = javascript
     // good
     function yup(name, options, args) {
       // ...stuff...
@@ -57,6 +60,7 @@ Here is the original sample:
 
 ... and, mine:
 
+    // language = javascript
     // good
     function yup (name, options, args) {
       // ...stuff...
@@ -82,6 +86,7 @@ This extends beyond JavaScript so, for instance, I also alphabetize HTML element
 
 Here is the original sample:
 
+    // language = javascript
     // good
     var items = getItems(),
         goSportsTeam = true,
@@ -91,6 +96,7 @@ Here is the original sample:
 
 .. and, mine:
 
+    // language = javascript
     // good
     var dragonball,
         goSportsTeam = true,
@@ -104,6 +110,7 @@ Another restriction I like to pose upon my code is that I don't like to include 
 
 Here is the original sample:
 
+    // language = javascript
     // bad
     var leds = stage.selectAll('.led').data(data).enter().append('svg:svg').class('led', true)
         .attr('width',  (radius + margin) * 2).append('svg:g')
@@ -124,6 +131,7 @@ What I like to do is bring all of that logic down away from the declaration. Tha
 
 .. and, mine:
 
+    // language = javascript
     // better
     var leds;
 
@@ -140,6 +148,7 @@ What I like to do is bring all of that logic down away from the declaration. Tha
 
 Another example might make it more clear:
 
+    // language = javascript
     // bad
     var $groupOfElement = $('.someParentObject')
           .find('.targetElements')
@@ -188,6 +197,7 @@ The idea of 'being consistent' is the only thing that I agree with in this secti
 
 Here is the original sample:
 
+    // language = javascript
     function Jedi(options) {
       options || (options = {});
       var lightsaber = options.lightsaber || 'blue';
@@ -208,6 +218,7 @@ I think a better patter is to have a single function for getting and setting eac
 
 .. and, mine:
 
+    // language = javascript
     function Jedi (options) {
       options || (options = {});
       var lightsaber = options.lightsaber || 'blue';
@@ -239,6 +250,7 @@ There are, however, some things that were not spelled out in the style guide and
 
   1. A whitespace character should follow every keyword or control structure (with a few exceptions):
 
+          // language = javascript
           // bad
           if(this === that) {}
           while(limit--) {}
@@ -259,6 +271,7 @@ There are, however, some things that were not spelled out in the style guide and
 
   2. No leading or trailing space should be included in a group of statements:
 
+          // language = javascript
           // bad
           { "name": "Homer" }
           [ 1, 2, 3 ]
@@ -273,6 +286,7 @@ There are, however, some things that were not spelled out in the style guide and
 
     *This follows from the rule to be consistent as often as possible.*
 
+          // language = javascript
           // bad
           myObject = { };
           myArray = [ ];
@@ -285,6 +299,7 @@ There are, however, some things that were not spelled out in the style guide and
 
   3. A whitespace character should be included before and after operators:
 
+          // language = javascript
           // bad
           if (arguments.length===2) {}
           var result=a+b;
