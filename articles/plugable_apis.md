@@ -1,8 +1,8 @@
-Title: Plug-able APIs [DRAFT]
-Date: 24 Nov 2013
+Title: Plug-able APIs
+Date: 30 Nov 2013
 Tags: Best Practices, JavaScript, Opinion
 
-The most important idea - or technique - I ever learned in JavaScript programming, I learned from looking through the jQuery source code.
+The most important idea I ever learned in JavaScript programming, I learned from looking through the jQuery source.
 
 The abstract idea is quite simple and even has a phrase in common use to describe it; 'Eat Your Own Dog Food'. Or in the case of an API; 'Consume Your Own API'. This will subtly affect many decisions during development.
 
@@ -14,8 +14,8 @@ The first rule I set for myself is that the only thing that is built directly in
 
 So the most important methods to add will be:
 
-  1. Add - to add a new method to the API
-  2. Remove - to remove an existing method from the API
+  1. Add - simply add a new method to the API if it doesn't already exist
+  2. Remove - remove an existing method from the API
   3. Override - (optional) this is essentially doing the two steps above in a single call rather than forcing people to do them individually
 
 Let's see some code.
@@ -169,6 +169,98 @@ It's good to be explicit about this because of the silent failures and errors th
       return API;
     }());
 
+Which I would probably suggest to be refactored into the following:
+
+    // wrap implementation in an IIFE for cleanliness
+    var library = (function () {
+      var API
+        , CORE_METHODS;
+
+      // provide #add() and #override()
+      function insertInto_API (override, name, fn) {
+        if (CORE_METHODS.indexOf(name) >= 0) {
+          // throw an error because the program should not silently fail
+          throw new Error('Attempting to change core method: ' + name);
+        }
+
+        if (!override && API[name]) {
+          // throw an error because the program should not silently fail
+          throw new Error('Attempting to override existing method: ' + name);
+        }
+
+        API[name] = fn;
+      }
+
+      // provide #remove()
+      function removeFrom_API (name) {
+        delete API[name];
+      }
+
+      // add the functions as part of the API so they can be called
+      API = {
+        add: insertInto_API.bind(null, false),
+        override: insertInto_API.bind(null, true),
+        remove: removeFrom_API
+      };
+
+      // get an array of the core method names to check
+      // against before adding anything new to the API
+      CORE_METHODS = Object.keys(API);
+
+      // expose the public API
+      return API;
+    }());
+
+The reasons for this refactor are:
+
+  * It will be easier to add pre and post execution functions to one location than it will be for two locations; more on this later.
+  * This keeps similar code together for debugging and editing in the future.
+  * Removes the need to abstract the 'CORE_METHODS check' into another function to be called multiple times.
+
+## Advantages
+
+Now you might be thinking that you could avoid all of what I have written so far by simply using an object literal for a library container and you would be correct; mostly. One feature that you would not have is the ability to automatically customize the methods being added with consistent functionality such as: logging, memoization, or pre/post execution hooks.
+
+Say you created a library with the object literal pattern:
+
+    var library = {
+      someFunction: function (a, b) {
+        /* ... */
+      }
+    };
+
+If you wanted to add hooks, as mentioned above, to this function it would be trivial but how about as the library grows and the number of methods becomes very large? Basically, is maintaining one definition of a function easier than many of the exact same definition? Even if you abstract the hooks into a library function and call them where necessary it is still an implementation detail for each new method in the library to get correct; and if there is something we can be sure of, it is that humans make mistakes.
+
+    var library = {
+      _hook_post: function () {},
+      _hook_pre: function () {},
+      someFunction: function (a, b) {
+        this._hook_pre();
+        /* ... */
+        this._hook_post();
+      }
+    };
+
+This might work, but what about when the context of the method is changed? By accident or intentionally. That too can be fixed with binding the methods ahead of time but that is merely putting band-aid on a bigger problem.
+
+Using the refactored code we have been building up in this article, adding this functionality becomes trivial. We can simply replace:
+
+    // ...
+        API[name] = fn;
+    // ...
+
+... with something like this:
+
+    // ...
+        API['pre_execution'] && API['pre_execution']();
+        API[name] = fn;
+        API['post_execution'] && API['post_execution']();
+    // ...
+
+There are more elegant ways to accomplish this but this should illustrate the point sufficiently. Depending on the need this could also be more robust allowing for further arguments to be passed in, or allowing these function to be passed in at runtime for more flexibility, the sky is the limit; JavaScript is so great!
+
 ## Conclusion
 
-Now, this library is capable of augmenting itself and thus being self-testing by nature. There are some shortcomings of this overall design but that is beyond the scop of this article.
+Now, this library is capable of augmenting itself and thus being self-testing by nature. There are some shortcomings of this overall design the biggest of which is that there is nothing preventing anyone using this library from changing the methods in the API directly - without using the add/override/remove methods provided - or changing the context - the value of the `this` variable - inside the methods being called. There may be others that are smaller but to mitigate all of these problems I would say that a new strategy would be needed; I would suggest the Command Pattern, and I have [written about that](//kalisjoshua.me/articles/commander_javascript) before.
+
+Please let me know what I have missed or what I could have covered more completely, correctly, or accurately.
