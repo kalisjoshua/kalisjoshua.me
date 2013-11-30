@@ -22,6 +22,7 @@ Let's see some code.
 
 *In these code samples I am going to not include the Command Pattern in an attempt to keep the focus on the topic of this article and not another.*
 
+    // lang=js
     // wrap implementation in an IIFE for cleanliness
     var library = (function () {
       var API;
@@ -48,6 +49,7 @@ Let's see some code.
 
 Some use cases might look like the following:
 
+    // lang=js
     library.add('formatName', function (first, last) {/* ... */});
     var formattedName = library.formatName('Joshua', 'Kalis');
 
@@ -73,6 +75,7 @@ This first code sample accomplished a lot quickly. However, it does leave some h
 
 The first thing we should do is secure the core methods of the API so they cannot be tampered with either accidentally or not.
 
+    // lang=js
     // wrap implementation in an IIFE for cleanliness
     var library = (function () {
       var API
@@ -109,6 +112,7 @@ The first thing we should do is secure the core methods of the API so they canno
 
 Now, immediately after we define the core methods for the API we cache an array of their names. That array of names is then used to prevent any attempts to over write those methods. Any attempts will result in an error being thrown.
 
+    // lang=js
     library.add('add', function () {/* anything */});
     // Error: Attempting to change core method: add
 
@@ -118,6 +122,7 @@ The next step to be taken in securing this API and making it more explicit is to
 
 It's good to be explicit about this because of the silent failures and errors that could happen that make debugging difficult. If a method is defined and working and then re-defined elsewhere and causes working code to suddenly stop working that is often times very difficult to track down. Making the override feature more explicit makes it more obvious that it is happening and provides a point in the code to recognize that you might be doing something you shouldn't without restricting the library so much as to completely prevent the option.
 
+    // lang=js
     // wrap implementation in an IIFE for cleanliness
     var library = (function () {
       var API
@@ -171,6 +176,7 @@ It's good to be explicit about this because of the silent failures and errors th
 
 Which I would probably suggest to be refactored into the following:
 
+    // lang=js
     // wrap implementation in an IIFE for cleanliness
     var library = (function () {
       var API
@@ -223,6 +229,7 @@ Now you might be thinking that you could avoid all of what I have written so far
 
 Say you created a library with the object literal pattern:
 
+    // lang=js
     var library = {
       someFunction: function (a, b) {
         /* ... */
@@ -231,6 +238,7 @@ Say you created a library with the object literal pattern:
 
 If you wanted to add hooks, as mentioned above, to this function it would be trivial but how about as the library grows and the number of methods becomes very large? Basically, is maintaining one definition of a function easier than many of the exact same definition? Even if you abstract the hooks into a library function and call them where necessary it is still an implementation detail for each new method in the library to get correct; and if there is something we can be sure of, it is that humans make mistakes.
 
+    // lang=js
     var library = {
       _hook_post: function () {},
       _hook_pre: function () {},
@@ -245,12 +253,14 @@ This might work, but what about when the context of the method is changed? By ac
 
 Using the refactored code we have been building up in this article, adding this functionality becomes trivial. We can simply replace:
 
+    // lang=js
     // ...
         API[name] = fn;
     // ...
 
 ... with something like this:
 
+    // lang=js
     // ...
         API['pre_execution'] && API['pre_execution']();
         API[name] = fn;
