@@ -5,6 +5,12 @@
     [ ] Why Functional Programming can help us all
     [ ] Refactoring - in JavaScript - and how tdd helps
     [ ] Project: Coding Style Linter
+    [ ] Website Integrations
+      [ ] [Node School](//nodeschool.io)
+      [ ] [Code Wars](//codewars.com)
+      [ ] [Khan Academy](//khanacademy.com)
+      [ ] [Linked In](//linkedin.com) - recommendations
+      [ ] Openspource Report Card
     [ ] Terse.js - markdown like language for slideshow markup
     [ ] UserCam.js bookmarklet
     [x] BrowserSlides - Github presentation framework
