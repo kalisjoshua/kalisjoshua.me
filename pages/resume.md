@@ -10,11 +10,14 @@
 
 
 April 2012 - present
-#### Software Engineer
+#### Sr. Software Engineer
 *[Quicken Loans](//quickenloans.com)*
 
   + Environment: Apache, CSS, Git, HTML5, JavaScript, jQuery, PHP, RequireJS, SiteCatalyst, UglifyJS, Zend Server
-  + JavaScript Architect for [Rocket Loan](//rocket.quickenloans.com)
+  + Frontend Architect for [Rocket Loan](//rocket.quickenloans.com)
+  + Cross-team JavaScript mentor
+  + Git workflow guru
+  + Functional Programming enthusiast and advocate
 
 September 2010 - April 2012
 #### Senior UI Engineer
