@@ -2,9 +2,13 @@
 
 ### Everyday Tools
 
-  + Languages: CSS, HTML5, JavaScript, jQuery
-  + Software: Adobe CS5, Chrome, Firefox, Sublime Text 2
-  + Version Control: Git
+  + CSS: [LESS](//lesscss.org) and [SASS (SCSS)](//sass-lang.com) + [Compass](//compass-style.org)
+  + [Chrome](www.google.com/intl/en/chrome/browser) + DevTools
+  + [HTML5](//www.w3.org/html/logo) (Semantics)
+  + JavaScript ([Vanilla](//developer.mozilla.org/en-US/docs/Web/JavaScript) and [jQuery](//jQuery.com))
+  + [NodeJS](//nodejs.org) + [npm](//npmjs.org)
+  + [SublimeText](//www.sublimetext.com)
+  + [Git](//git-scm.com)
 
 ### Recent Employment
 
