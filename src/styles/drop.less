@@ -29,7 +29,7 @@
 }
 
 .drop--content {
-  background: @theme--dark;
+  background: @theme--dark-hex;
   color: gainsboro;
   display: none;
   left: 0;
@@ -71,13 +71,13 @@
 }
 
 .drop--handle {
-  background: @theme--dark;
+  background: @theme--dark-hex;
   border-radius: 0 0 5px 5px;
+  color: white;
   cursor: pointer;
   float: right;
   font-size: .9em;
   left: 0;
-  margin-left: 1em;
   padding: .25em .85em;
   position: relative;
   top: 0;
@@ -85,6 +85,11 @@
 
   &.notice {
     background: @notice--bg;
+    color: @theme--dark-hex;
     text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 }

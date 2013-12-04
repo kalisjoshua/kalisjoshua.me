@@ -59,14 +59,16 @@ h3 + p {
 }
 
 header {
-  background: @theme;
-  border-bottom: 3px solid @theme--dark;
-  color: white;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 9999;
+
+  .design {
+    background: @header__bg;
+    border-bottom: 2px solid @theme;
+  }
 
   a {
     color: inherit;
@@ -77,6 +79,7 @@ header {
 
   h1 {
     font-size: 1.5em;
+    margin: 0;
     margin: .5em 0;
     #transition(font .5s);
 
@@ -104,66 +107,66 @@ p code {
 }
 
 pre {
-  background: @theme--dark-hex;
-  overflow: auto;
+  background: @header__bg;
   margin: 0 -1em;
+  overflow: auto;
   padding: 1em .25em;
+
+  &[lang] {
+    background: @theme--dark-hex;
+
+    code {
+      color: white;
+      counter-reset: line-number;
+      display: block;
+      line-height: 1.3em;
+
+      > span {
+        counter-increment: line-number;
+        float: left;
+        white-space: pre;
+
+        &:before {
+          border-right: 1px solid;
+          border-color: white;
+          color: white;
+          color: hsla(100, 100%, 100%, .3);
+          content: counter(line-number);
+          float: left;
+          left: 0;
+          margin-right: 1em;
+          padding: 0 4px;
+          position: relative;
+          text-align: right;
+          top: 0;
+          #user-select();
+          width: 1.25em;
+        }
+
+        &:nth-child(2n):before {
+          background: white;
+          background: hsla(100, 100%, 100%, .08);
+        }
+      }
+
+      .punctuation,
+      .comment,
+      .comment .number,
+      .comment .string,
+      .comment .keyword,
+      .comment .init {color: #999999;}
+      .number,
+      .string {color: #fd971f;}
+      .keyword {color: #8CC9D5;}
+      .init {color: #9CC54A;}
+    }
+  }
 
   + div {
     margin-top: 1em;
-  }
-
-  code {
-    color: white;
-    counter-reset: line-number;
-    display: block;
-    line-height: 1.3em;
-
-    > span {
-      counter-increment: line-number;
-      float: left;
-      white-space: pre;
-
-      &:before {
-        border-right: 1px solid;
-        border-color: white;
-        color: white;
-        color: hsla(100, 100%, 100%, .3);
-        content: counter(line-number);
-        float: left;
-        left: 0;
-        margin-right: 1em;
-        padding: 0 4px;
-        position: relative;
-        text-align: right;
-        top: 0;
-        #user-select();
-        width: 1.25em;
-      }
-
-      &:nth-child(2n):before {
-        background: white;
-        background: hsla(100, 100%, 100%, .08);
-      }
-    }
-
-    .punctuation,
-    .comment,
-    .comment .number,
-    .comment .string,
-    .comment .keyword,
-    .comment .init {color: #999999;}
-    .number,
-    .string {color: #fd971f;}
-    .keyword {color: #8CC9D5;}
-    .init {color: #9CC54A;}
   }
 }
 
 section {
   padding: 0 1em;
-}
-
-small {
-  font-size: .7em;
 }

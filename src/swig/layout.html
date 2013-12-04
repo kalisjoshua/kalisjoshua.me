@@ -15,8 +15,14 @@
   <header id="top" role="banner">
     {% include 'part/drop.html' %}
 
+    <div class="clearfix design">
+      <div class="container">
+        <h1><a href="/">{{site.author.name}}</a></h1>
+      </div>
+    </div>
+
     <div class="container">
-      <h1><a href="/">{{site.author.name}}</a><small class="tags--filter"></small></h1>
+      <p class="tags--filter"><small class="tags--filter__content"></small></p>
     </div>
   </header>
 

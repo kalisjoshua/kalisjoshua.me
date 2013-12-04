@@ -91,6 +91,9 @@ $.fn.ready(function ($) {
           .exec(this.innerHTML)
           .pop();
 
+        $(this.parentNode)
+          .attr('lang', syntax);
+
         this.innerHTML = this.innerHTML
           .replace(rLang, '')
           .split(/\n/)
@@ -221,8 +224,9 @@ $.fn.ready(function ($) {
       }
 
       $tagsFilter
-        .html(tagLinks(filter, ' , ').replace(/(.*),/, '$1 and'))
-        .toggle(!!filter.length);
+        .toggle(!!filter.length)
+        .find('.tags--filter__content')
+        .html(tagLinks(filter, ' , ').replace(/(.*),/, '$1 and'));
     }
 
     function tagLinks (tags, join) {
