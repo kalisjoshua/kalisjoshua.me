@@ -71,7 +71,7 @@
         email = kalisjoshua@gmail.com
     [alias]
         count = rev-list --count HEAD
-        lg = log --all --decorate --graph --oneline
+        lg = log --decorate --graph --oneline
         squash = !sh -c 'git rebase -i $(git merge-base HEAD $1)' -
     [push]
         default = simple
@@ -88,6 +88,7 @@
             "Markdown",
             "Vintage"
         ],
+        "index_files": false,
         "rulers":
         [
             80,
