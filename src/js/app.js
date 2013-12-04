@@ -1,8 +1,11 @@
 /*jshint laxcomma:true*/
 
 $.fn.ready(function ($) {
-  var $body = $('body')
-    , $doc = $(document);
+  var $body = $('body'),
+      $design = $('.design'),
+      $doc = $(document),
+      $header = $('header'),
+      $headerContent = $design.add('.drop');
 
   // drop 'module'
   (function () {
@@ -263,8 +266,23 @@ $.fn.ready(function ($) {
   }
 
   function bodyScrollHandler (event) {
+    var reveal = $body.scrollTop() < 0;
+
     $body
       .toggleClass('scrolled', $body.scrollTop() > 20);
+
+    $headerContent
+      .css({
+        'opacity': !reveal ? 1 : 1 - Math.abs($body.scrollTop() * 2 / 100)
+      })
+
+    $header
+      .toggleClass('reveal', reveal);
+
+    $design
+      .css({
+        'padding': !reveal ? 0 : Math.abs($body.scrollTop()) * 4
+      });
   }
 
   $doc
