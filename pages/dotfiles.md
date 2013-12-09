@@ -6,8 +6,7 @@
     # echo "set completion-ignore-case On" > ~/.inputrc
     # git config --global color.ui true
 
-
-    export PATH=/usr/local/heroku/bin:/usr/local/zend/bin:~/bin:$PATH
+    export PATH=/usr/local/heroku/bin:/usr/local/zend/bin:~/bin:$PATH:~/.rvm/bin
     source /usr/local/git/contrib/completion/git-completion.bash
 
 
@@ -92,8 +91,8 @@
 
         function post_command {
             local textreset="\033[0m"
-            local magenta="\033[0;31m"
-            echo -e "\t$magenta`date`$textreset"
+            local color="\033[0;31m"
+            echo -e "\t$color`date`$textreset"
         }
 
         # executes after each command
@@ -104,6 +103,9 @@
 
     colorize_ls
     customize_prompt
+
+    [[ -s "~/.rvm/scripts/rvm" ]] && source "~/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
 
 
 ### ~/.gitconfig
@@ -117,7 +119,7 @@
         email = kalisjoshua@gmail.com
     [alias]
         count = rev-list --count HEAD
-        lg = log --graph --pretty=format:'%green%h%Creset -%d %s (%Cgreen%ar%Creset) %an'
+        lg = log --graph --pretty=format:'%Cgreen%h%Creset -%d %s (%Cgreen%ar%Creset) %an'
         squash = !sh -c 'git rebase -i $(git merge-base HEAD $1)' -
         who = shortlog -s --
     [push]

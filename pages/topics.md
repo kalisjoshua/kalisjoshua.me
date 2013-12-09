@@ -5,6 +5,7 @@
     [ ] Why Functional Programming can help us all
     [ ] Refactoring - in JavaScript - and how tdd helps
     [ ] Project: Coding Style Linter
+    [ ] VI migration and customization
     [ ] Website Integrations
       [ ] [Node School](//nodeschool.io)
       [ ] [Code Wars](//codewars.com)
