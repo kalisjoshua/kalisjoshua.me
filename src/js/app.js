@@ -5,7 +5,7 @@ $.fn.ready(function ($) {
       $design = $('.design'),
       $doc = $(document),
       $header = $('header'),
-      $headerContent = $design.add('.drop');
+      $headerContent = $design.add('.drop, .tags--filter');
 
   // drop 'module'
   (function () {
