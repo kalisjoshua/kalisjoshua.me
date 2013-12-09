@@ -117,8 +117,9 @@
         email = kalisjoshua@gmail.com
     [alias]
         count = rev-list --count HEAD
-        lg = log --decorate --graph --oneline
+        lg = log --graph --pretty=format:'%green%h%Creset -%d %s (%Cgreen%ar%Creset) %an'
         squash = !sh -c 'git rebase -i $(git merge-base HEAD $1)' -
+        who = shortlog -s --
     [push]
         default = simple
 
