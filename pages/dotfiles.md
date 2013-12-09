@@ -2,11 +2,16 @@
 
 ### ~/.bash_profile
 
-    parse_git_branch() {
-        git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(branch \1)/'
-    }
+    # only need be run once
+    # echo "set completion-ignore-case On" > ~/.inputrc
+    # git config --global color.ui true
 
-    # Colors for ls
+
+    export PATH=/usr/local/heroku/bin:/usr/local/zend/bin:~/bin:$PATH
+    source /usr/local/git/contrib/completion/git-completion.bash
+
+
+    function colorize_ls {
         # The color designators are as follows:
 
         # a     black
@@ -41,24 +46,65 @@
         # 10.  directory writable to others, with sticky bit
         # 11.  directory writable to others, without sticky bit
 
-        #            exfxcxdxbxegedabagacad
-        #            1 2 3 4 5 6 7 8 9 0 1
-    export LSCOLORS="gxbxdxbxcxexGxFxFxhxhx"
-    export CLICOLOR='Yes'
-    export LS_OPTIONS='--color=auto'
+        #                exfxcxdxbxegedabagacad
+        #                1 2 3 4 5 6 7 8 9 0 1
+        export LSCOLORS="gxbxdxbxcxexGxFxFxhxhx"
+        export CLICOLOR='Yes'
+        export LS_OPTIONS='--color=auto'
+    }
 
-    source /usr/local/git/contrib/completion/git-completion.bash
+    function customize_prompt {
+        local reset="\[\033[0m\]"    # unsets color to term's fg color
 
-    echo "set completion-ignore-case On" > ~/.inputrc
+        # regular colors
+        # local black="\[\033[0;30m\]"      # black
+        # local red="\[\033[0;31m\]"        # red
+        local green="\[\033[0;32m\]"      # green
+        # local yellow="\[\033[0;33m\]"     # yellow
+        # local blue="\[\033[0;34m\]"       # blue
+        # local magenta="\[\033[0;35m\]"    # magenta
+        local cyan="\[\033[0;36m\]"       # cyan
+        # local white="\[\033[0;37m\]"      # white
 
-    export PATH=/usr/local/git:$PATH
+        # emphasized (bolded) colors
+        # local b_black="\[\033[1;30m\]"      # black
+        # local b_red="\[\033[1;31m\]"        # red
+        # local b_green="\[\033[1;32m\]"      # green
+        # local b_yellow="\[\033[1;33m\]"     # yellow
+        # local b_blue="\[\033[1;34m\]"       # blue
+        # local b_magenta="\[\033[1;35m\]"    # magenta
+        # local b_cyan="\[\033[1;36m\]"       # cyan
+        # local b_white="\[\033[1;37m\]"      # white
 
-    export PS1="\n\u@\h \w \$(parse_git_branch)\n\d \t :> "
+        # background colors
+        # local bg_black="\[\033[40m\]"        # black
+        # local bg_red="\[\033[41m\]"          # red
+        # local bg_green="\[\033[42m\]"        # green
+        # local bg_yellow="\[\033[43m\]"       # yellow
+        # local bg_blue="\[\033[44m\]"         # blue
+        # local bg_magenta="\[\033[45m\]"      # magenta
+        # local bg_cyan="\[\033[46m\]"         # cyan
+        # local bg_white="\[\033[47m\]"        # white
 
-    export PATH=/usr/local/zend/bin:~/bin:$PATH
+        function git_branch {
+            git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(branch \1)/'
+        }
 
-    ### Added by the Heroku Toolbelt
-    export PATH="/usr/local/heroku/bin:$PATH"
+        function post_command {
+            local textreset="\033[0m"
+            local magenta="\033[0;31m"
+            echo -e "\t$magenta`date`$textreset"
+        }
+
+        # executes after each command
+        PROMPT_COMMAND=post_command
+
+        export PS1="\n\w $cyan\$(git_branch)$reset \n\u$green@\h$reset $ "
+    }
+
+    colorize_ls
+    customize_prompt
+
 
 ### ~/.gitconfig
 
