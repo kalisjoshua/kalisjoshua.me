@@ -95,7 +95,8 @@ function cacheArticles () {
 
   // create the article object
   function articleObject (acc, file) {
-    var path
+    var date
+      , path
       , text
       , title;
 
@@ -104,6 +105,9 @@ function cacheArticles () {
 
       text = fs.readFileSync('articles/' + file)
         .toString();
+
+      date = meta('Date', text);
+      date = date === '?' ? +new Date() : date;
 
       title = meta('Title', text);
 
@@ -114,7 +118,7 @@ function cacheArticles () {
             body      : format(text),
             intro     : intro(text),
             link      : path,
-            published : meta('Date', text),
+            published : date,
             tags      : meta('Tags', text),
             title     : title
           });
@@ -166,7 +170,7 @@ function cacheArticles () {
 
   // gather meta data from markdown file
   function meta (field, text) {
-    var regex = new RegExp(field + '\\s*?:\\s*?([^\\n]+)');
+    var regex = new RegExp(field + '\\s*:\\s*([^\\n]+)');
 
     return text
       // capture the first instance of the pattern
