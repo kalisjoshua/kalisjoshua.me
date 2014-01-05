@@ -1,0 +1,32 @@
+{
+  "globals": {
+    "$": true,
+    "console": true,
+    "define": true,
+    "module": true,
+    "require": true,
+    "requirejs": true,
+    "Rocket": true
+  },
+  "bitwise": false,
+  "browser": true,
+  "curly": true,
+  "eqeqeq": true,
+  "eqnull": true,
+  "freeze": true,
+  "immed": true,
+  "indent": 2,
+  "latedef": "nofunc",
+  "maxcomplexity": 15,
+  "maxdepth": 5,
+  "newcap": true,
+  "noempty": true,
+  "nonew": true,
+  "onevar": true,
+  "quotmark": true,
+  "strict": true,
+  "trailing": true,
+  "undef": true,
+  "unused": true,
+  "white": true
+}
