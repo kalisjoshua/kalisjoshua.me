@@ -89,15 +89,6 @@
             git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(branch \1)/'
         }
 
-        function post_command {
-            local textreset="\033[0m"
-            local color="\033[0;31m"
-            echo -e "\t$color`date`$textreset"
-        }
-
-        # executes after each command
-        PROMPT_COMMAND=post_command
-
         export PS1="\n\w $cyan\$(git_branch)$reset \n\u$green@\h$reset $ "
     }
 
