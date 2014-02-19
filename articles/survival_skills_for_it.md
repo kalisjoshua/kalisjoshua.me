@@ -1,4 +1,4 @@
-Title: Survival Skills for IT
+Title: Survival Skills for IT Weekend
 Date: 18 Feb 2014
 Tags: Survival Skills, Adventure, Learning, Friends
 
