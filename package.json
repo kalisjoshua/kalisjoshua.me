@@ -8,7 +8,7 @@
   "name": "Articles",
   "description": "I am a problem solver, a code poet, a software engineering artisan, and JavaScript journeyman.",
   "version": "1.3.3",
-  "homepage": "//kalisjoshua.me",
+  "homepage": "http://kalisjoshua.me",
   "devPort": 4000,
   "repository": {
     "type": "git",
