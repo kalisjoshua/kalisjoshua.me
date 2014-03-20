@@ -9,7 +9,7 @@
     "Rocket": true
   },
   "bitwise": false,
-  "browser": true,
+  "browser": false,
   "curly": true,
   "eqeqeq": true,
   "eqnull": true,
@@ -24,7 +24,7 @@
   "nonew": true,
   "onevar": true,
   "quotmark": true,
-  "strict": true,
+  "strict": false,
   "trailing": true,
   "undef": true,
   "unused": true,

@@ -1,7 +1,7 @@
 /*jshint laxcomma:true*/
+/*global process*/
 
-var cp = require('child_process')
-  , fs = require('fs')
+var fs = require('fs')
   , http = require('http')
   , url = require('url')
 
@@ -48,7 +48,7 @@ includeDrafts = process.argv
  *    2. Articles
  *    3. Public files
  */
-function buildCache () {
+function buildCache() {
   // clear templates cached in memory
   swig.invalidateCache();
 
@@ -90,11 +90,9 @@ function buildCache () {
  * @return {Object}
  *         Collection of all articles as a hashmap and index.
  */
-function cacheArticles () {
-  var _articles;
-
+function cacheArticles() {
   // create the article object
-  function articleObject (acc, file) {
+  function articleObject(acc, file) {
     var date
       , path
       , text
@@ -129,7 +127,7 @@ function cacheArticles () {
   }
 
   // descending date order; most recent articles first
-  function articleSort (a, b) {
+  function articleSort(a, b) {
     var _a, _b;
 
     _a = new Date(a.published);
@@ -143,7 +141,7 @@ function cacheArticles () {
 
   // return contents to proper markdown; exclude the meta
   // data and create the first title line in the markdown
-  function format (text) {
+  function format(text) {
     var title = '# ' + meta('Title', text);
 
     // remove the meta data
@@ -154,7 +152,7 @@ function cacheArticles () {
   }
 
   // get the first paragraph from the markdown
-  function intro (text) {
+  function intro(text) {
     return marked
       .lexer(text)
       .reduce(function (found, token) {
@@ -169,7 +167,7 @@ function cacheArticles () {
   }
 
   // gather meta data from markdown file
-  function meta (field, text) {
+  function meta(field, text) {
     var regex = new RegExp(field + '\\s*:\\s*([^\\n]+)');
 
     return text
@@ -209,7 +207,7 @@ function cacheArticles () {
  * @return {String}
  *         The file extension.
  */
-function fileExt (path) {
+function fileExt(path) {
   return path
     .match(/\w+$/i) // capture the final characters of the string
     .pop();
@@ -224,7 +222,7 @@ function fileExt (path) {
  * @return {Object}
  *         The complete data object for a page.
  */
-function pageData (data) {
+function pageData(data) {
   return Object.keys(data)
     .reduce(function (acc, key) {
       if (acc[key]) {
@@ -254,7 +252,7 @@ function pageData (data) {
  *
  * @return {undefined}
  */
-function renderPage (res, code, tmpl, data) {
+function renderPage(res, code, tmpl, data) {
   res.writeHead(code, contentType.html);
   res.end(renderTemplate(tmpl, data));
 }
@@ -271,7 +269,7 @@ function renderPage (res, code, tmpl, data) {
  * @return {String}
  *         Templating output.
  */
-function renderTemplate (tmpl, data) {
+function renderTemplate(tmpl, data) {
   return swig
     .compileFile('./src/swig/' + tmpl + '.html')(data || {});
 }
@@ -283,9 +281,9 @@ function renderTemplate (tmpl, data) {
  *
  * @return {undefined}
  */
-function startServer () {
+function startServer() {
   http
-    .createServer(function requestHandler (req, res) {
+    .createServer(function requestHandler(req, res) {
       var _url = url.parse(req.url);
 
       // update the cache(s); not sure this is at all necessary with the
@@ -318,6 +316,10 @@ function startServer () {
       }
     })
     .listen(process.env.PORT || packge.devPort);
+
+  if (!process.env.PORT) {
+    console.log('Server running at - http://localhost:' + packge.devPort);
+  }
 }
 
 buildCache();

@@ -7,4 +7,7 @@ css:
 js:
 	node node_modules/uglify-js/bin/uglifyjs src/js/app.js -o assets/scripts.js
 
-.PHONY: all css js
+start: all
+	@node server.js
+
+.PHONY: all css js start
