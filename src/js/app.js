@@ -1,22 +1,18 @@
-/*jshint laxcomma:true*/
-
+/*globals $, document, window*/
 $.fn.ready(function ($) {
   var $body = $('body'),
-      $design = $('.design'),
-      $doc = $(document),
-      $header = $('header'),
-      $headerContent = $design.add('.drop, .tags--filter');
+      $doc = $(document);
 
   // drop 'module'
   (function () {
-    var $drops = $('.drop--content')
-      , $closer;
+    var $drops = $('.drop--content'),
+        $closer;
 
     $closer = $drops
       .closest('.drop')
       .find('.drop--close');
 
-    function drops_click () {
+    function drops_click() {
       var section = $(this).data('drop');
 
       $drops
@@ -28,7 +24,7 @@ $.fn.ready(function ($) {
         .slideToggle(showCloser);
     }
 
-    function drops_close () {
+    function drops_close(event) {
       if (/drop-close/.test(this.href)) {
         event.preventDefault();
       }
@@ -40,7 +36,7 @@ $.fn.ready(function ($) {
         .hide();
     }
 
-    function showCloser () {
+    function showCloser() {
       $closer.toggle($drops.filter(':visible').length > 0);
     }
 
@@ -53,40 +49,67 @@ $.fn.ready(function ($) {
 
   // highlight 'module'
   (function () {
-    var rLang = /\s*\/\/\s*lang(?:uage)?\s*=\s*(javascript|js)\n/i
-      , syntaxes = {};
+    var rLang = /\s*\/\/\s*lang(?:uage)?\s*=\s*(javascript|js)\n/i,
+        syntaxes = {};
 
     syntaxes.js =
     syntaxes.javascript = []
-      .concat([[
-        /([\(\)\.,;])/g
-        , '<span class="punctuation">$1</span>']])
-      .concat([[
-        /(^|\s)(\s*\/\/[^$]*?)(?=\n|$)/g
-        , '$1<span class="comment">$2</span>']])
-      .concat([[
-        /(\/\*[.\D]*?\*\/)/g
-        , '<span class="comment">$1</span>']])
-      .concat([[
-        /('.*?')/gm
-        , '<span class="string">$1</span>']])
-      .concat([[
-        /\s+(\/.+\/)([\.\s;])/g
-        , '<span class="string">$1</span>$2']])
-      .concat([[
-        /((?=[\-+])(?:[\-+]?\d+(?:\.\d+)?)|(?:\b\d+(?:\.\d+)?))/gm
-        , '<span class="number">$1</span>']])
-      .concat([[
-        /\bnew\s+(\w+)/gm
-        , '<span class="keyword">new</span> <span class="init">$1</span>']])
-      .concat([[
-        /\breturn\b/gm
-        , '<span class="init">return</span>']])
-      .concat([[
-        /\b(break|case|catch|continue|debugger|default|delete|do|else|finally|for|function|if|in|instanceof|switch|this|throw|try|typeof|var|void|while|with)\b/gm
-        , '<span class="keyword">$1</span>']]);
+      .concat([
+        [
+          /([\(\)\.,;])/g,
+          '<span class="punctuation">$1</span>'
+        ]
+      ])
+      .concat([
+        [
+          /(^|\s)(\s*\/\/[^$]*?)(?=\n|$)/g,
+          '$1<span class="comment">$2</span>'
+        ]
+      ])
+      .concat([
+        [
+          /(\/\*[.\D]*?\*\/)/g,
+          '<span class="comment">$1</span>'
+        ]
+      ])
+      .concat([
+        [
+          /('.*?')/gm,
+          '<span class="string">$1</span>'
+        ]
+      ])
+      .concat([
+        [
+          /\s+(\/.+\/)([\.\s;])/g,
+          '<span class="string">$1</span>$2'
+        ]
+      ])
+      .concat([
+        [
+          /((?=[\-+])(?:[\-+]?\d+(?:\.\d+)?)|(?:\b\d+(?:\.\d+)?))/gm,
+          '<span class="number">$1</span>'
+        ]
+      ])
+      .concat([
+        [
+          /\bnew\s+(\w+)/gm,
+          '<span class="keyword">new</span> <span class="init">$1</span>'
+        ]
+      ])
+      .concat([
+        [
+          /\breturn\b/gm,
+          '<span class="init">return</span>'
+        ]
+      ])
+      .concat([
+        [
+          /\b(break|case|catch|continue|debugger|default|delete|do|else|finally|for|function|if|in|instanceof|switch|this|throw|try|typeof|var|void|while|with)\b/gm,
+          '<span class="keyword">$1</span>'
+        ]
+      ]);
 
-    function highlight () {
+    function highlight() {
       var syntax;
 
       if (rLang.test(this.innerHTML)) {
@@ -105,9 +128,9 @@ $.fn.ready(function ($) {
       }
     }
 
-    function process (lang, line) {
-      var copy = lang.slice(0)
-        , current;
+    function process(lang, line) {
+      var copy = lang.slice(0),
+          current;
 
       while (copy.length) {
         current = copy.shift();
@@ -129,40 +152,48 @@ $.fn.ready(function ($) {
       return;
     }
 
-    var $article = $('article')
+    var $article = $('article'),
 
-      , headings
-      , TOC = '<aside class="TOC"><h2>Table Of Contents</h2><ol>%</ol></aside>';
+        headings,
+        TOC = '<aside class="TOC"><h2>Table Of Contents</h2><ol>%</ol></aside>';
 
     headings = $article
       .find('h2')
-      .has('a')
+      .slice(1)
       .map(function (_, el) {
+        var anchor,
+            text;
+
         el = $(el)
-          .find('a');
+
+        text = el.text();
+
+        anchor = text.replace(/[^\w\d]/g, '_');
+
+        el.wrapInner('<a name="' + anchor + '"></a>');
 
         return '<li><a href="#%">%</a></li>'
-          .replace(/%/, el.attr('name'))
-          .replace(/%/, el.text());
+          .replace(/%/, anchor)
+          .replace(/%/, text);
       })
       .toArray()
       .join('');
 
     if (headings.length) {
       $article
-        .find('h1')
+        .find('h1 + h2')
         .after(TOC.replace(/%/, headings));
     }
   }());
 
   // tags 'module'
   (function () {
-    var hash = window.location.hash
-      , tags = []
-      , $articles = $('article')
-      , $tagsFilter = $('.tags--filter');
+    var hash = window.location.hash,
+        tags = [],
+        $articles = $('article'),
+        $tagsFilter = $('.tags--filter');
 
-    function createTagLinks (indx) {
+    function createTagLinks() {
       var article,
           blockTags,
           tagsBlock;
@@ -180,7 +211,7 @@ $.fn.ready(function ($) {
         .html(tagLinks(blockTags));
     }
 
-    function tagClickHandler (event) {
+    function tagClickHandler(event) {
       var el = event.currentTarget,
           indx = tags.indexOf(el.innerHTML);
 
@@ -200,12 +231,12 @@ $.fn.ready(function ($) {
       el.href = (tags.length ? '#filter=' + tags.join() : '#');
     }
 
-    function tagFilter (filter) {
+    function tagFilter(filter) {
       if (!filter.length) {
         $articles.show();
       } else {
         $articles
-          .each(function toggleArticleBasedOnFilter (indx, article) {
+          .each(function toggleArticleBasedOnFilter(indx, article) {
             var found,
                 tagsOnArticle;
 
@@ -218,6 +249,7 @@ $.fn.ready(function ($) {
 
             found = tags
               .reduce(function (acc, tag) {
+
                 return acc && !!~tagsOnArticle.indexOf(tag);
               }, true);
 
@@ -232,10 +264,11 @@ $.fn.ready(function ($) {
         .html(tagLinks(filter, ' , ').replace(/(.*),/, '$1 and'));
     }
 
-    function tagLinks (tags, join) {
+    function tagLinks(tags, join) {
       return !tags.length ? '' : tags
         .sort()
         .map(function (tag) {
+
           return '<a class="addTag" href="#filter">' + tag + '</a>';
         })
         .join(join || ', ');
@@ -257,7 +290,7 @@ $.fn.ready(function ($) {
     tagFilter(tags);
   }());
 
-  function ancientHistory (event) {
+  function ancientHistory() {
     $(this)
       .toggleClass('toggleOpen');
 
@@ -265,7 +298,7 @@ $.fn.ready(function ($) {
       .slideToggle();
   }
 
-  function bodyScrollHandler (event) {
+  function bodyScrollHandler() {
     $body
       .toggleClass('scrolled', $body.scrollTop() > 20);
   }
@@ -275,20 +308,26 @@ $.fn.ready(function ($) {
     .on('scroll', bodyScrollHandler);
 
   if ($('.twitter-share-button').length) {
-    (function twitterInit (d,s,id) {
-      var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
-      if(!d.getElementById(id)){
-        js=d.createElement(s);
-        js.id=id;
-        js.src=p+'://platform.twitter.com/widgets.js';
-        fjs.parentNode.insertBefore(js,fjs);
+    (function twitterInit(d, s, id) {
+      var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location) ? 'http' : 'https';
+
+      if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = p + '://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js, fjs);
       }
     })(document, 'script', 'twitter-wjs');
   }
 
   if ($('.disqussion').length) {
-    (function disqusInit (disqus_shortname) {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    (function disqusInit(disqus_shortname) {
+      var dsq = document.createElement('script');
+
+      dsq.type = 'text/javascript';
+      dsq.async = true;
       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }('joshuakalis'));

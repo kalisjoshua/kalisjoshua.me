@@ -26,17 +26,12 @@ Please Help! I could use all the help possible. Contact me if you are interested
 
 I still have a few things I need to do before I can consider this to be done.
 
-  - Unit test router
   - Modularize server.js into smaller pieces
     - Name and Publish npm package for reuse (maybe?)
     - Async the file IO
     - Unit test
   - Unify blog (kalisjoshua.me) and portfolio site (joshuakalis.com)
     - Try BrowserifyJS instead of RequireJS
-  - Post-push deploy hook (maybe?)
-    - Heroku?
-    - AWS?
-    - Other?
 
 ## License
 

@@ -1,12 +1,11 @@
-Title: Plug-able APIs
-Date: 30 Nov 2013
-Tags: Best Practices, JavaScript, Opinion
+# Plug-able APIs
+## 30 Nov 2013
 
 The most important idea I ever learned in JavaScript programming, I learned from looking through the jQuery source.
 
 The abstract idea is quite simple and even has a phrase in common use to describe it; 'Eat Your Own Dog Food'. Or in the case of an API; 'Consume Your Own API'. This will subtly affect many decisions during development.
 
-## <a name="nothing-builtin">Nothing Built-In</a>
+## Nothing Built-In
 
 OK, not nothing. But very little.
 
@@ -71,7 +70,7 @@ Some use cases might look like the following:
 
 This first code sample accomplished a lot quickly. However, it does leave some holes in its implementation. The first is that the `add` functionality doesn't protect from overriding a method in the API. Second, we have no security around our core methods: add and remove.
 
-## <a name="secure-core-methods">Secure The Core Methods</a>
+## Secure The Core Methods
 
 The first thing we should do is secure the core methods of the API so they cannot be tampered with either accidentally or not.
 
@@ -116,7 +115,7 @@ Now, immediately after we define the core methods for the API we cache an array 
     library.add('add', function () {/* anything */});
     // Error: Attempting to change core method: add
 
-## <a name="breakup-and-override">Breakup And Override</a>
+## Breakup And Override
 
 The next step to be taken in securing this API and making it more explicit is to separate the functionalities of adding to and overriding existing methods in the API.
 
@@ -223,7 +222,7 @@ The reasons for this refactor are:
   * This keeps similar code together for debugging and editing in the future.
   * Removes the need to abstract the 'CORE_METHODS check' into another function to be called multiple times.
 
-## <a name="advantages">Advantages</a>
+## Advantages
 
 Now you might be thinking that you could avoid all of what I have written so far by simply using an object literal for a library container and you would be correct; mostly. One feature that you would not have is the ability to automatically customize the methods being added with consistent functionality such as: logging, memoization, or pre/post execution hooks.
 
@@ -269,8 +268,14 @@ Using the refactored code we have been building up in this article, adding this 
 
 There are more elegant ways to accomplish this but this should illustrate the point sufficiently. Depending on the need this could also be more robust allowing for further arguments to be passed in, or allowing these function to be passed in at runtime for more flexibility, the sky is the limit; JavaScript is so great!
 
-## <a name="conclusion">Conclusion</a>
+## Conclusion
 
 Now, this library is capable of augmenting itself and thus being self-testing by nature. There are some shortcomings of this overall design the biggest of which is that there is nothing preventing anyone using this library from changing the methods in the API directly - without using the add/override/remove methods provided - or changing the context - the value of the `this` variable - inside the methods being called. There may be others that are smaller but to mitigate all of these problems I would say that a new strategy would be needed; I would suggest the Command Pattern, and I have [written about that](//kalisjoshua.me/articles/commander_javascript) before.
 
 Please let me know what I have missed or what I could have covered more completely, correctly, or accurately.
+
+**Tags**
+
+  + [Best Practices](/#filter=Best Practices)
+  + [JavaScript](/#filter=JavaScript)
+  + [Opinion](/#filter=Opinion)

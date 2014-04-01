@@ -1,12 +1,11 @@
-Title: Airbnb Style Guide Diff
-Date: 11 Nov 2013
-Tags: JavaScript, Best Practices, Opinion
+# Airbnb Style Guide Diff
+## 11 Nov 2013
 
 I agree with almost everything in the [Airbnb JavaScript Style Guide](//github.com/airbnb/javascript). I will discuss some of my discrepancies with it. I will admit that I have been influenced by the one, the only, Douglas Crockford (papa-Crock).
 
 Some - if not most - of my reasoning may be subjective but when your primary responsibility is to author / edit code - no matter the language - you should make it as enjoyable an experience as possible. There is a delicate balance that must be kept between execution performance and developer experience; with most conflicts being resolved in favor of performance as that is what will impact the end user.
 
-## <a name="Functions">Functions</a>
+## Functions
 
 I will include the code sample from the original publication here for comparison to what I think is better.
 
@@ -66,7 +65,7 @@ Here is the original sample:
       // ...stuff...
     }
 
-## <a name="Variables">Variables</a>
+## Variables
 
 I like the reasoning for the variables organization / ordering but disagree on a slightly higher level.
 
@@ -104,7 +103,7 @@ Here is the original sample:
         items = getItems(),
         length;
 
-## <a name="Whitespace">Whitespace</a>
+## Whitespace
 
 Another restriction I like to pose upon my code is that I don't like to include large blocks of code in the declaration section of a function. What I mean is that I like each variable being declared to have one and only one line in the declaration section.
 
@@ -187,11 +186,11 @@ Another example might make it more clear:
 
 Hopefully it is obvious that the second sample is easier to understand the variables being declared at a glance and if the developer would like to know more they can look at the details below for the variable they are interested in.
 
-## <a name="Commas">Commas</a>
+## Commas
 
 I don't personally have a strong aversion to the 'comma-first' style and in fact like it for my personal projects; as somewhat of an experiment and haven't had reason to abandon them yet. But at work more people dislike it than like it so I write in the standard form suggested by the consensus.
 
-## <a name="Accessors">Accessors</a>
+## Accessors
 
 The idea of 'being consistent' is the only thing that I agree with in this section. The rest of the rule seem to me to be more of programming style or design patterns rather than coding standards. I don't like the example given at the end showing a simple set of a getter and setter.
 
@@ -236,17 +235,17 @@ I think a better patter is to have a single function for getting and setting eac
       }
     };
 
-## <a name="Conclusions">Conclusion(s)</a>
+## Conclusion(s)
 
 With the exception of the [Accessors](#Accessors) I don't think that anything I have identified here in this article would cause any problems outside preferential experience.
 
 I think the most important rule after performance is consistency. Every effort should be made to remain consistent across rules so that one rule is not conflicting with another.
 
-## <a name="Additions">Additions</a>
+## Additions
 
 There are, however, some things that were not spelled out in the style guide and that could leave some openings for inconsistency such as the following:
 
-## <a name="Whitespace-Extended">Whitespace Extended</a>
+## Whitespace Extended
 
   1. A whitespace character should follow every keyword or control structure (with a few exceptions):
 
@@ -310,10 +309,16 @@ There are, however, some things that were not spelled out in the style guide and
 
     *The additional whitespace in these instances helps improve readability.*
 
-## <a name="Commas-Extended">Commas Extended</a>
+## Commas Extended
 
 The one additional rule I would add to the commas section is, 'Every comma should be followed by a single whitespace character or newline.'
 
-## <a name="Final-Conclusion">Final Conclusion</a>
+## Final Conclusion
 
 The more explicit we can be without imposing too much restriction - to the point of limiting the effectiveness of a developer - the better I think. The bigger problem is getting to a point where a large majority agree on standards. I think we are getting better, but we still can make improvements.
+
+**Tags**
+
+  + [JavaScript](/#filter=JavaScript)
+  + [Best Practices](/#filter=Best Practices)
+  + [Opinion](/#filter=Opinion)

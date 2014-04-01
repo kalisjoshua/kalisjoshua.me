@@ -1,6 +1,5 @@
-Title: Coding Kata
-Date: 12 March 2014
-Tags: JavaScript, Learning
+# Coding Kata
+## 12 March 2014
 
 Kata are exercises that are meant to convert deliberate actions into muscle memory. They are exercises to help you become more natural at a given action. Simply completing an action is not the goal of a Kata, one must repeatedly practice to convert action to in-action; the very zen statement "do nothing" does not mean to simply be lazy.
 
@@ -21,3 +20,8 @@ Here are a few examples from the repo:
 <script src="https://gist.github.com/kalisjoshua/9515871.js"></script>
 
 <script src="https://gist.github.com/kalisjoshua/9515994.js"></script>
+
+**Tags**
+
+  + [JavaScript](/#filter=JavaScript)
+  + [Learning](/#filter=Learning)

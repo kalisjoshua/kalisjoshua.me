@@ -1,6 +1,5 @@
-Title: Getting Started With Git
-Date: 20 March 2014
-Tags: Git, Best Practices, Opinion
+# Getting Started With Git
+## 20 March 2014
 
 Version control is not just for large teams or enterprises. Version control is for anyone, with a desire to gain some piece of mind when making changes to any system of any size, with ease.
 
@@ -56,3 +55,9 @@ As an example, the most basic setup could be two developers with another locatio
 I encourage anyone to start learning Git and version control. It will make your development life better.
 
 Please comment on anything that I have glossed over or stated incorrectly. If you loved this article or would like to know more I would love to hear about that as well.
+
+**Tags**
+
+  + [Git](/#filter=Git)
+  + [Best Practices](/#filter=Best Practices)
+  + [Opinion](/#filter=Opinion)

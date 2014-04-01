@@ -1,6 +1,5 @@
-Title: Survival Skills for IT Weekend
-Date: 18 Feb 2014
-Tags: Survival Skills, Adventure, Learning, Friends
+# Survival Skills for IT Weekend
+## 18 Feb 2014
 
 What good is it if you have the materials but not the expertise?
 
@@ -46,5 +45,9 @@ Let's start a tradition. Super simple. A small group of people get together for 
 
 I'm not suggesting that we will be able to cover all, or even a majority, of these in a single weekend. I think it would be cool to pick just a few and tackle them together and exercise our skills a few times so that we gain some competence. The theme that inspired me to propose this is, "what good is it if you have the materials but not the expertise".
 
+**Tags**
 
-
+  + [Survival Skills](/#filter=Survival Skills)
+  + [Adventure](/#filter=Adventure)
+  + [Learning](/#filter=Learning)
+  + [Friends](/#filter=Friends)

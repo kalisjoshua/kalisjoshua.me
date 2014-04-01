@@ -1,10 +1,9 @@
-Title: BrowserSlides
-Date: 4 Oct 2013
-Tags: CSS, HTML, JavaScript, jQuery, Markdown
+# BrowserSlides
+## 4 Oct 2013
 
 I wrote a simple slides parser / formatter and presenter library in JavaScript, jQuery, and Markdown; OK, and some CSS and HTML.
 
-## <a name="History">History</a>
+## History
 
 I was asked by a former colleague to give a presentation on jQuery plugins to a few people he worked with at my former place of work. I thought it might be cute and a good exercise to write a plugin that converted a block of markdown text into HTML with the goal of using that HTML as the slide deck for the presentation.
 
@@ -12,7 +11,7 @@ As it turned out I rather liked the idea of having presentation slides as a mark
 
 So this simple idea that I had actually grew larger than I had expected but took me on a fun journey of learning and exploration. As it turns out other people soon had a similar idea and new libraries and tools have started coming out a similar outcome: https://github.com/tmcw/biggie, and https://github.com/gnab/remark are just a few; so it must not have been too bad an idea.
 
-## <a name="Approach">Approach</a>
+## Approach
 
 I started with a standalone file for my first presentation but as soon as I had the idea to create another presentation I immediately saw that the way I developed my first solution was not going to scale at all. I decided to abstract out what was going to change over time and keep that separate from what was not going to change between presentations.
 
@@ -30,7 +29,7 @@ The most significant addition has to be the slide-ending identifier; simply an u
 
 I made the core (index) file the entry point and included a Table of Contents as the default content. This was if no presentation is selected at least something shows up to help the user get to something. Each link is simply an anchor link that loads the content via a server request for a document. The document returned would be the presentation file in the syntax I defined. Once the file is retrieved it would get parsed and the presentation would be ready.
 
-## <a name="Restrictions">Restrictions</a>
+## Restrictions
 
 In creating this and using it I have restricted the functionality of a presentation. In most presentation softwares there are features for animations, formatting, fonts, sounds, and in general a whole bunch of things that, for one, I don't care about nor do I think are truly beneficial to the content.
 
@@ -38,7 +37,7 @@ Mobile devices prove to be challenging and that is one area that still needs som
 
 Given the restrictions I know I am not creating the next big thing in software for presentations any time soon but I like it for my amateur presenting.
 
-## <a name="Benefits">Benefits</a>
+## Benefits
 
 The first goal of the file format I was aiming for is gaining the ability to version control presentations. I love Git and all that it offers for version control, and creating presentations in a text file is awesome for version control.
 
@@ -46,7 +45,7 @@ Another wonderful benefit was that this format allows me to edit my presentation
 
 I work on the web and I like it when content I am looking for is easily accessible via a browser. Why shouldn't the slides for a presentation be viewable in a browser?
 
-## <a name="Lessons">Lessons</a>
+## Lessons
 
 I think the first lesson I learned was that I wanted more features included than I had originally thought. If I had been asked I would have said it would be extremely easy to create what I wanted because "I only wanted: headings, paragraphs, and lists" but as it turned out I wanted a lot more than that: code-blocks, pre-formatted text, links, block-quotes, title slides, and more. I think at this point it probably has a bare minimum of features.
 
@@ -54,7 +53,7 @@ Another lesson was how complex parsing can be, how helpful regular expressions c
 
 Others as well I am sure.
 
-## <a name="Expansion">Expansion</a>
+## Expansion
 
 I have lots of ideas of where I can go with more development on this project. Here are just a few:
 
@@ -65,7 +64,14 @@ I have lots of ideas of where I can go with more development on this project. He
   3. Markdown Migration - I need to abandon the syntax I created and simply use standard Markdown and parse its output appropriately.
   4. SaaS - I think it would be cool to create a service similar to http://slid.es, http://slideshare.net, et al. for what I have created.
 
-## <a name="Conclusion">Conclusion</a>
+## Conclusion
 
 I had a lot of fun creating this project and evolving it. Maybe one day it will be something that someone other then myself will use for their presentation(s); if not I am happy to be its only user.
 
+**Tags**
+
+  + [CSS](/#filter=CSS)
+  + [HTML](/#filter=HTML)
+  + [JavaScript](/#filter=JavaScript)
+  + [jQuery](/#filter=jQuery)
+  + [Markdown](/#filter=Markdown)

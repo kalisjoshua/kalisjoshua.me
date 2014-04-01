@@ -6,11 +6,9 @@
   <a href="https://twitter.com/share" class="twitter-share-button" data-via="kalisjoshua">Tweet</a>
 
   <article>
-    <div class="published">{{article.published}}</div>
+    <time class="published" datetime="{{article.published | date('Y-m-d')}}">{{article.published | date('d M Y')}}</time>
 
     {{article.body|safe|marked}}
-
-    <div class="tags--nolink">{{article.tags}}</div>
   </article>
 
   <div class="disqussion">

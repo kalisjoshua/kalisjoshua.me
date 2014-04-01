@@ -1,10 +1,9 @@
-Title: I Want To Do This
-Date: 8 Oct 2013
-Tags: Idea
+# I Want To Do This
+## 8 Oct 2013
 
 I sometimes have good ideas, and some of those times I actually attempt to do something about them. This is not one of those times so I am going to write about it to hopefully inspire someone to do it for me and thank me endlessly for the idea.
 
-## <a name="Sometimes-I-Procrastinate">Sometimes I Procrastinate</a>
+## Sometimes I Procrastinate
 
 A while ago I found, or was shown, the GitHub Resume which I thought was absolutely awesome. Then fairly recently I was shown The Opensource Report Card which is potentially a smidgen more awesome. I looked through these things and thought to myself “what a great idea someone had and actually acted upon”. And in reading through their content I had the passing thought:
 
@@ -16,7 +15,7 @@ And I sat and looked at these two products and reveled in their collective ingen
 
 But today I realized that maybe there are people out there with too much time on their hands — I know there are people like that on the internet — who themseleves are brilliant but don’t have an idea to work on. And here I am sitting on a golden ticket of an idea. So maybe I could write about it — to get the word out a little bit more — so they could help out.
 
-## <a name="Here-Are-Some-Ideas">Here Are Some Ideas</a>
+## Here Are Some Ideas
 
 GitHub has all of this data about people — developers mostly — and it is all easily accessible via their API. I think there are more interesting things that could be done with that data for a project like this. Like going a little deeper into connections with other people: who they are following, who is following them, stars on projects and who has starred (if that is even possible, forks, pull requests, issues, commits, branches, etc.). The point is, there are so many different ways of looking at the data that there are probably cool things waiting to be found.
 
@@ -24,7 +23,7 @@ LinkedIn was my first mashup candidate. I was thinking about their recommendatio
 
 Now ,I am not one much for social media sites like Google+ or Facebook, but I hear that some people like them. I’m sure there is some interesting information that people include on sites like these that could be incorporated. For instance, Twitter could be searched for conversations about topics and cross-referenced with projects in the GitHub list of repositories to indicate dedication to support or development with the community at large. StackOverflow could be searched for questions asked and answers provided.
 
-## <a name="Yeah-But-What-About-Processing">Yeah, But What About Processing</a>
+## Yeah, But What About Processing
 
 What about it? These are simple on-demand utilities used for some information about someone — or maybe yourself. What? You don’t Google yourself from time to time? Right. Point is, they don’t have to be instant and not all information needs to be filled in or even returned at the same time. Portions of the results could come back at different times and change other portions based on new information.
 
@@ -34,3 +33,7 @@ Maybe there could be a way to download a data object (JSON) to be used to show a
 Ideas abound and I have only spent a short time actually thinking about this and even less time writing this article. Maybe more people will contribute ideas in the comments and hopefully someone with more time than me will be able to pick this up and run with it.
 
 I can promise no fame or fortune, only gratitude.
+
+**Tags**
+
+  + [Idea](/#filter=Idea)
