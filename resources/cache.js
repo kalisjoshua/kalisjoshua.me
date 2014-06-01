@@ -76,8 +76,8 @@ function cacheArticlesReduce(acc, article) {
 
 // descending date order; most recent articles first
 function sortByDate(a, b) {
-  a = new Date(a.published);
-  b = new Date(b.published);
+  a = a.published ? new Date(a.published) : today;
+  b = b.published ? new Date(b.published) : today;
 
   // if a > b return -1
   // if a < b return  1

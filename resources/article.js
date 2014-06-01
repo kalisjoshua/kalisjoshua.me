@@ -1,6 +1,8 @@
 var fs = require('fs'),
+    rDRAFT = /DRAFT/i,
 
-    marked = require('marked');
+    marked = require('marked'),
+    today = new Date();
 
 // create the article object
 function articleObject(file) {
@@ -12,20 +14,22 @@ function articleObject(file) {
     .toString();
 
   try {
-    date = text.match(/##\s([^\n]+)/)[1];
-  } catch (err) {
-    date = '' + new Date(); // force to the top of the list so it is visible
-    console.log('[WARNING] Article has no published date.');
-  }
+    date = new Date(text.match(/##\s([^\n]+)/)[1]);
+  } catch (e) {}
 
   title = text.match(/#\s([^\n]+)/)[1];
 
+  if (!date || date == 'Invalid Date') {
+    date = today; // force to the top of the list so it is visible
+    console.log('[WARNING] Article has no published date.\n%s'.replace('%s', file));
+  }
+
   return {
       body      : text,
-      draft     : /\[DRAFT\]/.test(title),
+      draft     : rDRAFT.test(title) || rDRAFT.test(file),
       intro     : intro(text),
       link      : '/articles/' + file.match(/.*(?=\.md$)/),
-      published : date,
+      published : '' + date,
       tags      : tags(text),
       title     : title
     };
