@@ -41,12 +41,12 @@ The above command should out put something like:
 $ kill %1
 ````
 
-## Tell, Shut Up
+## Tell It To Shut Up
 
 The next thing I found was that most times, I want to actually use the terminal window as if it wasn't the output location for whatever is running. To do that we simply redirect output.
 
 ````bash
-$ python SimpleHTTPServer -m 9000 1>&- 2>&-
+$ python -m SimpleHTTPServer $PORT > /dev/null 2>&1
 ````
 
 That should quiet the output of the traffic that would normally be logged to the console.
@@ -56,7 +56,34 @@ That should quiet the output of the traffic that would normally be logged to the
 The final command makes life sweet.
 
 ````bash
-$ python SimpleHTTPServer -m 9000 1>&- 2>&- &
+$ python -m SimpleHTTPServer $PORT > /dev/null 2>&1 &
+````
+
+## Use It Anywhere
+
+Now I'm lazy and don't like to type things; partially because my typing is pretty bad. But typing less and accomplishing the same thing is called productivity. So creating an alias is a great way to use this.
+
+````bash
+alias serve="python -m SimpleHTTPServer $PORT > /dev/null 2>&1 &"
+````
+
+### Make It Better
+
+That alias is great and all but what if you wanted to run more than one at a time? If you did you would want to provide the PORT number as your call to start it, right?
+
+````bash
+simpleServer() {
+  local PORT=$1
+
+  if [ $# -eq 0 ]
+  then
+    PORT=9000
+  fi
+
+  python -m SimpleHTTPServer $PORT > /dev/null 2>&1 &
+}
+
+alias serve=simpleServer
 ````
 
 **Tags**
