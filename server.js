@@ -1,4 +1,5 @@
-var lib = require('modmod')('fs', 'url'),
+var http = require('http'),
+    lib = require('modmod')('fs', 'url'),
 
     // local resources
     cache = require('./resources/cache'),
@@ -6,11 +7,17 @@ var lib = require('modmod')('fs', 'url'),
     router = require('./resources/router'),
 
     devPort = 9000,
-    localPort = process.env.PORT;
+    localPort = process.env.PORT,
+    thirtyMinutes = 30 * 60 * 1000;
 
 cache.build();
 
 require('./resources/routes');
+
+function ping() {
+  http.get('http://kalisjoshua.me');
+  setTimeout(ping, thirtyMinutes);
+}
 
 function requestHandler(req, res) {
   var fileExt,
@@ -46,4 +53,6 @@ require('http')
 
 if (!localPort) {
   console.log('Server running at - http://localhost:' + devPort);
+} else {
+  ping();
 }
