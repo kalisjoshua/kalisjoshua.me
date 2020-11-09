@@ -4,8 +4,7 @@ const path = require('path')
 const handlebars = require('handlebars')
 const marked = require('marked')
 
-const package = require('../package.json')
-const treeWalker = require('./treeWalker')
+const package = require('./package.json')
 
 const dist = (...args) => path.join(process.cwd(), 'dist', ...args)
 const {html, md} = treeWalker(path.join(process.cwd(), 'content'))
@@ -75,6 +74,32 @@ function publishPage (file, main, about) {
     `,
     rel,
   }), 'utf-8')
+}
+
+function treeWalker (dir) {
+  return fs.readdirSync(dir)
+    .reduce(visitor.bind({dir}), {})
+}
+
+function visitor (acc, segment) {
+  const currentPath = path.join(this.dir, segment)
+
+  if (fs.statSync(currentPath).isDirectory()) {
+    const {html, md} = treeWalker(currentPath)
+
+    acc.html[segment] = html && html._template
+    acc.md[segment] = md
+  } else {
+    const [name, type] = /^(.+?)\.(html|md)/
+      .exec(segment)
+      .slice(1)
+
+    acc[type] = acc[type] || {}
+
+    acc[type][name] = fs.readFileSync(currentPath, 'utf-8')
+  }
+
+  return acc
 }
 
 fs.rmdirSync(dist(), {recursive: true})

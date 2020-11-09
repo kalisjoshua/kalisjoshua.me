@@ -1,37 +1,34 @@
 # Joshua T Kalis - Articles
 
-**I made a blog!**
+Here is how I generate my personal website.
 
-Does the world need another platform for displaying web content... sure, why not? So I did.
 
-## Installing
+## How To Generate Pages
 
-    $ git clone <repository>
-    $ npm install
-    $ make
-    $ node server.js
+``` bash
+npm run pages
+```
 
-## Contributing
+This will generate all content pages from the `content` folder.
 
-Please Help! I could use all the help possible. Contact me if you are interested and we can talk about what you would like to work on to make sure that it is consistent with the philosophy of the project; namely **simple**.
+``` bash
+npm run watch
+```
 
-### Process
+Will watch for file changes and re-run the static generation process.
 
-  1. Fork the repository
-  2. Do work
-  3. Submit a Pull Request
-  4. Repeat
 
 ## TODO
 
-I still have a few things I need to do before I can consider this to be done.
+  - Add Sass for easier style writing
+  - Add HTML minification
+  - Run Lighthouse against deployed site (#curious)
+  - Add code syntax highlighting
+  - Add notice for recruiters
+  - Classify DRAFT articles
+  - Add unit tests
+  - Create publishing pipeline
 
-  - Modularize server.js into smaller pieces
-    - Name and Publish npm package for reuse (maybe?)
-    - Async the file IO
-    - Unit test
-  - Unify blog (kalisjoshua.me) and portfolio site (joshuakalis.com)
-    - Try BrowserifyJS instead of RequireJS
 
 ## License
 

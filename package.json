@@ -26,7 +26,7 @@
   "scripts": {
     "build": "npm run pages && npm run static",
     "dev": "npm run test -- --watch",
-    "pages": "node ./sanguine",
+    "pages": "node ./sanguine.js",
     "static": "cp -r ./public/* ./dist",
     "test": "jest sanguine src",
     "watch": "npm-watch"
