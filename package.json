@@ -5,29 +5,36 @@
     "twitter": "kalisjoshua",
     "url": "//kalisjoshua.me"
   },
-  "name": "Articles",
-  "description": "I am a problem solver, a code poet, a software engineering journeyman, and JavaScript artisan.",
-  "version": "1.4.3",
+  "name": "kalisjoshua.me",
+  "description": "Personal website and resume for Joshua Kalis.",
+  "version": "2.0.0",
   "homepage": "http://kalisjoshua.me",
   "repository": {
     "type": "git",
     "url": "git@github.com:kalisjoshua/kalisjoshua.me.git"
   },
-  "dependencies": {
-    "less": "~1.5.0",
-    "marked": "~0.2.10",
-    "swig": "~1.1.0",
-    "uglify-js": "~2.4.1",
-    "modmod": "~0.1.1"
-  },
+  "dependencies": {},
   "engines": {
-    "node": "0.10.x"
+    "node": "14.13.1"
   },
   "devDependencies": {
-    "chai": "~1.9.1",
-    "mocha": "~1.18.2"
+    "handlebars": "^4.7.6",
+    "jest": "^26.6.2",
+    "marked": "^1.2.2",
+    "npm-watch": "^0.7.0"
   },
   "scripts": {
-    "postinstall": "make"
+    "build": "npm run pages && npm run static",
+    "dev": "npm run test -- --watch",
+    "pages": "node ./sanguine",
+    "static": "cp -r ./public/* ./dist",
+    "test": "jest sanguine src",
+    "watch": "npm-watch"
+  },
+  "watch": {
+    "build": {
+      "extensions": "css,html,js,md",
+      "patterns": ["content", "public", "sanguine"]
+    }
   }
 }

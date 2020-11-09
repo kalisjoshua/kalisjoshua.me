@@ -1,0 +1,72 @@
+<!doctype html />
+<html class="no-js" lang="" />
+<head>
+  <meta charset="utf-8" />
+  <title>{{author}}</title>
+  <meta name="description" content="{{description}}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="{{rel}}css/normalize.css" />
+  <link rel="stylesheet" href="{{rel}}css/h5bp.css" />
+  <link rel="stylesheet" href="{{rel}}css/kalisjoshua.css" />
+
+<body>
+  <p class="sr-only"><a href="#main">Skip navigation</a></p>
+
+  <div class="layout">
+    <main class="main" id="main" role="main">
+      <header role="banner">
+        <h1><a href="{{rel}}index.html">{{{header}}}</a></h1>
+
+        {{#if about}}
+          {{{about}}}
+        {{/if}}
+      </header>
+
+      {{{main}}}
+
+      {{#if isArticle}}
+      <footer class="contentinfo">
+        <p>Written by <a class="resume" href="{{rel}}index.html">{{{header}}}</a>.</p>
+      </footer>
+      {{/if}}
+    </main>
+
+    <aside role="banner">
+      <nav class="navigation" role="navigation">
+        {{{navigation}}}
+      </nav>
+
+      <a class="jk-logo" href="{{rel}}index.html">
+        <img src="{{rel}}images/jk-logo-square.svg" title="Joshua Kalis' logo" />
+      </a>
+
+      <footer role="contentinfo">
+        {{{contact}}}
+      </footer>
+
+      {{#if projects}}
+      <div class="projects">
+        {{{projects}}}
+      </div>
+      {{/if}}
+
+      <figure class="dev-icons" title="Common web technologies I use.">
+        <img alt="CSS3 logo" src="{{rel}}images/css3.svg" />
+        <img alt="HTML5 logo" src="{{rel}}images/html5.svg" />
+        <img alt="JavaScript logo" src="{{rel}}images/javascript.svg" />
+        <img alt="Markdown logo" src="{{rel}}images/markdown.svg" />
+
+        <br />
+
+        <img alt="nodeJS logo" src="{{rel}}images/nodejs.svg" />
+        <img alt="npm logo" src="{{rel}}images/npm.svg" />
+
+        <br />
+
+        <img alt="Git logo" src="{{rel}}images/git.svg" />
+      </figure>
+    </aside>
+  </div>
+
+  <div class="cicada"></div>
