@@ -296,6 +296,49 @@ pre code[class*="language-"] {
 }
 
 
+@media print {
+  @page {
+    margin: 2mm;
+    padding: 0;
+  }
+
+  * {color: black !important;}
+
+  a[href]:after {content: "" !important;}
+
+  h1 {line-height: 0;}
+
+  h2 {font-size: 120%;}
+
+  aside,
+  .cicada,
+  .resume.non-it,
+  .sr-only,
+  #non-information-technology {display: none;}
+
+  .layout {
+    box-shadow: unset;
+    display: block !important;
+    max-width: unset;
+  }
+
+  .main {
+    padding-top: 0;
+  }
+
+  .main > .resume > * {
+    padding-left: 14ex;
+  }
+
+  .main > .resume hr + p {
+    float: left;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 11ex;
+  }
+} /* @media print */
+
 @media screen and (min-width: 900px) {
   .layout {
     display: grid;
@@ -317,4 +360,4 @@ pre code[class*="language-"] {
     position: relative;
     width: 11ex;
   }
-}
+} /* @media screen and (min-width: 900px) */
