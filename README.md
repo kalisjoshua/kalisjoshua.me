@@ -22,7 +22,6 @@ Will watch for file changes and re-run the static generation process.
 
   - Add Sass for easier style writing
   - Add HTML minification
-  - Run Lighthouse against deployed site (#curious)
   - Add code syntax highlighting
   - Add notice for recruiters
   - Classify DRAFT articles
