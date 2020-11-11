@@ -4,7 +4,7 @@ const path = require('path')
 const handlebars = require('handlebars')
 const marked = require('marked')
 
-const package = require('./package.json')
+const package = require('../package.json')
 
 const dist = (...args) => path.join(process.cwd(), 'dist', ...args)
 const {html, md} = treeWalker(path.join(process.cwd(), 'content'))
@@ -44,6 +44,7 @@ const meta = {
 const navLinks = [
   ['Resume', 'index.html', /^index/],
   ['Articles', 'articles/index.html', /^articles/],
+  ['Notice to recruiters', 'recruiters.html', /^recruiters/],
 ]
 
 function addPronouns (name) {
@@ -58,7 +59,7 @@ function publishPage (file, main, about) {
   const {length} = file.match(/\//g) || []
   const rel = Array(length + 1).join('../')
 
-  fs.writeFileSync(dist(file), render({
+  const html = render({
     ...meta,
     about,
     isArticle: /^articles\/(?!index\.html$)/.test(file),
@@ -73,7 +74,9 @@ function publishPage (file, main, about) {
       </ul>
     `,
     rel,
-  }), 'utf-8')
+  })
+
+  fs.writeFileSync(dist(file), html, 'utf-8')
 }
 
 function treeWalker (dir) {
@@ -121,3 +124,5 @@ articles
   .forEach(({content, name}) => {
     publishPage(`articles/${name}.html`, marked(content))
   })
+
+publishPage('recruiters.html', marked(md.recruiters))

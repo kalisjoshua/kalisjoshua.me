@@ -1,98 +1,53 @@
-/*
 // highlight "module"
-var rLang = /\s*\/\/\s*lang(?:uage)?\s*=\s*(javascript|js)\n/i,
-    syntaxes = {};
-
-syntaxes.js =
-syntaxes.javascript = []
-  .concat([
+document.addEventListener('DOMContentLoaded', function codeSyntaxHighlight () {
+  const parts = [
     [
       /([\(\)\.,;])/g,
-      '<span class="punctuation">$1</span>'
-    ]
-  ])
-  .concat([
+      '<span class="hightlighter--punctuation">$1</span>',
+    ],
     [
       /(^|\s)(\s*\/\/[^$]*?)(?=\n|$)/g,
-      '$1<span class="comment">$2</span>'
-    ]
-  ])
-  .concat([
+      '$1<span class="hightlighter--comment">$2</span>',
+    ],
     [
       /(\/\*[.\D]*?\*\/)/g,
-      '<span class="comment">$1</span>'
-    ]
-  ])
-  .concat([
+      '<span class="hightlighter--comment">$1</span>',
+    ],
     [
       /('.*?')/gm,
-      '<span class="string">$1</span>'
-    ]
-  ])
-  .concat([
+      '<span class="hightlighter--string">$1</span>',
+    ],
     [
       /\s+(\/.+\/)([\.\s;])/g,
-      '<span class="string">$1</span>$2'
-    ]
-  ])
-  .concat([
+      '<span class="hightlighter--string">$1</span>$2',
+    ],
     [
       /((?=[\-+])(?:[\-+]?\d+(?:\.\d+)?)|(?:\b\d+(?:\.\d+)?))/gm,
-      '<span class="number">$1</span>'
-    ]
-  ])
-  .concat([
+      '<span class="hightlighter--number">$1</span>',
+    ],
     [
       /\bnew\s+(\w+)/gm,
-      '<span class="keyword">new</span> <span class="init">$1</span>'
-    ]
-  ])
-  .concat([
+      '<span class="hightlighter--keyword">new</span> <span class="hightlighter--init">$1</span>',
+    ],
     [
       /\breturn\b/gm,
-      '<span class="init">return</span>'
-    ]
-  ])
-  .concat([
+      '<span class="hightlighter--init">return</span>',
+    ],
     [
       /\b(break|case|catch|continue|debugger|default|delete|do|else|finally|for|function|if|in|instanceof|switch|this|throw|try|typeof|var|void|while|with)\b/gm,
-      '<span class="keyword">$1</span>'
-    ]
-  ]);
+      '<span class="hightlighter--keyword">$1</span>',
+    ],
+  ]
 
-function highlight() {
-  var syntax;
-
-  if (rLang.test(this.innerHTML)) {
-    syntax = rLang
-      .exec(this.innerHTML)
-      .pop();
-
-    $(this.parentNode)
-      .attr('lang', syntax);
-
-    this.innerHTML = this.innerHTML
-      .replace(rLang, '')
+  function highlight (node) {
+    node.innerHTML = node.innerHTML
       .split(/\n/)
-      .map(process.bind(null, syntaxes[syntax]))
-      .join('\n');
-  }
-}
-
-function process(lang, line) {
-  var copy = lang.slice(0),
-      current;
-
-  while (copy.length) {
-    current = copy.shift();
-    line = line.replace(current[0], current[1]);
+      .map((line) => parts.reduce((acc, [regex, span]) => acc.replace(regex, span), line))
+      .map((line) => `<span>${line}</span>`)
+      .join('\n')
   }
 
-  return line
-    .replace(/(.*)/, '<span>$1</span>');
-}
-
-$('pre')
-  .find('code')
-  .each(highlight);
-*/
+  Array.from(document
+  	.querySelectorAll('pre code[class="language-js"]'))
+    .forEach(highlight)
+})

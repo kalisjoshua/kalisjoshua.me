@@ -3,12 +3,12 @@
     "email": "kalisjoshua@gmail.com",
     "name": "Joshua T Kalis",
     "twitter": "kalisjoshua",
-    "url": "//kalisjoshua.me"
+    "url": "https://kalisjoshua.me"
   },
   "name": "kalisjoshua.me",
   "description": "Personal website and resume for Joshua Kalis.",
-  "version": "2.0.0",
-  "homepage": "http://kalisjoshua.me",
+  "version": "2.1.0",
+  "homepage": "https://kalisjoshua.me",
   "repository": {
     "type": "git",
     "url": "git@github.com:kalisjoshua/kalisjoshua.me.git"
@@ -19,22 +19,23 @@
   },
   "devDependencies": {
     "handlebars": "^4.7.6",
-    "jest": "^26.6.2",
     "marked": "^1.2.2",
     "npm-watch": "^0.7.0"
   },
   "scripts": {
     "build": "npm run pages && npm run static",
-    "dev": "npm run test -- --watch",
-    "pages": "node ./sanguine.js",
+    "pages": "node ./sanguine",
     "static": "cp -r ./public/* ./dist",
-    "test": "jest sanguine src",
     "watch": "npm-watch"
   },
   "watch": {
     "build": {
       "extensions": "css,html,js,md",
-      "patterns": ["content", "public", "sanguine"]
+      "patterns": [
+        "content",
+        "public",
+        "sanguine"
+      ]
     }
   }
 }
