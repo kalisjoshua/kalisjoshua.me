@@ -11,7 +11,7 @@ Thank you for your time. If we meet or are in contact please make reference to t
 -->
 
 
-
+<!--
 Notice to Recruiters!
 
 I am not currently looking for a new position. I am currently working with Quicken Loans. I want to help rebuild Detroit. Please do not contact me with new positions at this time.
@@ -31,3 +31,4 @@ Tech Requirements
     I will also need: a 27" Apple Thunderbolt display, an Apple keyboard, and external trackpad for working in the office.
 
 Thank you and have a good day.
+-->
