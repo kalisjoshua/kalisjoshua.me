@@ -1,0 +1,187 @@
+<!doctype html />
+<html class="no-js" lang="en-US" />
+<head>
+  <meta charset="utf-8" />
+  <title>Joshua T Kalis</title>
+  <meta name="description" content="Personal website and resume for Joshua Kalis." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="../css/normalize.css" />
+  <link rel="stylesheet" href="../css/h5bp.css" />
+  <link rel="stylesheet" href="../css/kalisjoshua.css" />
+
+<body>
+  <p class="sr-only"><a href="#main">Skip navigation</a></p>
+
+  <div class="layout">
+    <main class="main" id="main" role="main">
+      <header role="banner">
+        <h1><a href="../index.html">
+    Joshua T Kalis
+    <small>
+      <a href="https://medium.com/gender-inclusivit/why-i-put-pronouns-on-my-email-signature-and-linkedin-profile-and-you-should-too-d3dc942c8743" title="Why I put my pronouns on my email signature and you should too">
+        he/him</a></small></a></h1>
+
+      </header>
+
+      <h2 id="browserslides">BrowserSlides</h2>
+<h3 id="4-oct-2013">4 Oct 2013</h3>
+<p>I wrote a simple slides parser / formatter and presenter library in JavaScript, jQuery, and Markdown; OK, and some CSS and HTML.</p>
+<h3 id="history">History</h3>
+<p>I was asked by a former colleague to give a presentation on jQuery plugins to a few people he worked with at my former place of work. I thought it might be cute and a good exercise to write a plugin that converted a block of markdown text into HTML with the goal of using that HTML as the slide deck for the presentation.</p>
+<p>As it turned out I rather liked the idea of having presentation slides as a markdown file rather than in a standard presentation software specific file format. I am a programmer through and through so I guess it should be no surprise to myself, or others, that I like, nay prefer, the markdown file format and don&#39;t mind working in it at length.</p>
+<p>So this simple idea that I had actually grew larger than I had expected but took me on a fun journey of learning and exploration. As it turns out other people soon had a similar idea and new libraries and tools have started coming out a similar outcome: <a href="https://github.com/tmcw/biggie">https://github.com/tmcw/biggie</a>, and <a href="https://github.com/gnab/remark">https://github.com/gnab/remark</a> are just a few; so it must not have been too bad an idea.</p>
+<h3 id="approach">Approach</h3>
+<p>I started with a standalone file for my first presentation but as soon as I had the idea to create another presentation I immediately saw that the way I developed my first solution was not going to scale at all. I decided to abstract out what was going to change over time and keep that separate from what was not going to change between presentations.</p>
+<p>Once written, and working, the CSS, HTML, and JavaScript will change relatively rarely compared to the presentation content. The presentation content is where I, or any presenter, will be spending the most time. So the file that needs to be edited only contains the content for the presenter; nothing else.</p>
+<h4 id="editing">Editing</h4>
+<p>I liked Markdown but had some reservations about some of its&#39; syntax. There are parts that I don&#39;t like so I decided to create my own syntax; admittedly, not the best decision I have ever made but oh well.</p>
+<p>I changed some of the syntax and created new stuff as well. Some features of Markdown I left out completely since I wanted to keep the syntax terse and simple to parse; since I was writing the parser myself.</p>
+<p>The most significant addition has to be the slide-ending identifier; simply an underscore at the beginning of a line. This allowed me to parse per-slide and to wrap in a div for the navigation control.</p>
+<h4 id="viewing">Viewing</h4>
+<p>I made the core (index) file the entry point and included a Table of Contents as the default content. This was if no presentation is selected at least something shows up to help the user get to something. Each link is simply an anchor link that loads the content via a server request for a document. The document returned would be the presentation file in the syntax I defined. Once the file is retrieved it would get parsed and the presentation would be ready.</p>
+<h3 id="restrictions">Restrictions</h3>
+<p>In creating this and using it I have restricted the functionality of a presentation. In most presentation softwares there are features for animations, formatting, fonts, sounds, and in general a whole bunch of things that, for one, I don&#39;t care about nor do I think are truly beneficial to the content.</p>
+<p>Mobile devices prove to be challenging and that is one area that still needs some attention; not to mention navigation concerns. On some smaller or odd shaped browser sizes there can be problems with overflow of text and accessibility of content.</p>
+<p>Given the restrictions I know I am not creating the next big thing in software for presentations any time soon but I like it for my amateur presenting.</p>
+<h3 id="benefits">Benefits</h3>
+<p>The first goal of the file format I was aiming for is gaining the ability to version control presentations. I love Git and all that it offers for version control, and creating presentations in a text file is awesome for version control.</p>
+<p>Another wonderful benefit was that this format allows me to edit my presentation in my editor of choice; I use SublimeText. I am already comfortable with working in my editor why would I want to learn something else for something that I don&#39;t do very often?</p>
+<p>I work on the web and I like it when content I am looking for is easily accessible via a browser. Why shouldn&#39;t the slides for a presentation be viewable in a browser?</p>
+<h3 id="lessons">Lessons</h3>
+<p>I think the first lesson I learned was that I wanted more features included than I had originally thought. If I had been asked I would have said it would be extremely easy to create what I wanted because &quot;I only wanted: headings, paragraphs, and lists&quot; but as it turned out I wanted a lot more than that: code-blocks, pre-formatted text, links, block-quotes, title slides, and more. I think at this point it probably has a bare minimum of features.</p>
+<p>Another lesson was how complex parsing can be, how helpful regular expressions can be and where they fall down at times. I think that I am completely convinced that if you have a problem and you attempt to solve it with regex, you now have two problems; but I will not shy away from them in any case.</p>
+<p>Others as well I am sure.</p>
+<h3 id="expansion">Expansion</h3>
+<p>I have lots of ideas of where I can go with more development on this project. Here are just a few:</p>
+<ol>
+<li>Speaker Notes - sometimes it is nice to have notes, only for the speaker to see during a presentation, that help keep them on topic and sure that they cover all that they wanted to during preparation.</li>
+<li>Mobile Integrations<ol>
+<li>Speaker Notes</li>
+<li>Control - presenters often like to move around, walk up to a screen and point at something, but as it is right now the only way to navigate is with the keyboard of the computer displaying the presentation; it would be cool to be able to pair with a mobile device and use that while moving about.</li>
+</ol>
+</li>
+<li>Markdown Migration - I need to abandon the syntax I created and simply use standard Markdown and parse its output appropriately.</li>
+<li>SaaS - I think it would be cool to create a service similar to <a href="http://slid.es">http://slid.es</a>, <a href="http://slideshare.net">http://slideshare.net</a>, et al. for what I have created.</li>
+</ol>
+<h3 id="conclusion">Conclusion</h3>
+<p>I had a lot of fun creating this project and evolving it. Maybe one day it will be something that someone other then myself will use for their presentation(s); if not I am happy to be its only user.</p>
+<p><strong>Tags</strong></p>
+<ul>
+<li><a href="/#filter=CSS">CSS</a></li>
+<li><a href="/#filter=HTML">HTML</a></li>
+<li><a href="/#filter=JavaScript">JavaScript</a></li>
+<li><a href="/#filter=jQuery">jQuery</a></li>
+<li><a href="/#filter=Markdown">Markdown</a></li>
+</ul>
+
+
+      <footer class="contentinfo">
+        <p>Written by <a class="resume" href="../index.html">
+    Joshua T Kalis
+    <small>
+      <a href="https://medium.com/gender-inclusivit/why-i-put-pronouns-on-my-email-signature-and-linkedin-profile-and-you-should-too-d3dc942c8743" title="Why I put my pronouns on my email signature and you should too">
+        he/him</a></small></a>.</p>
+      </footer>
+    </main>
+
+    <aside role="banner">
+      <nav class="navigation" role="navigation">
+        
+      <ul>
+        
+            <li><a href="../index.html">Resume</a></li>
+          
+
+            <li class="active"><a href="../articles/index.html">Articles</a></li>
+          
+
+            <li><a href="../recruiters.html">Notice to recruiters</a></li>
+          
+      </ul>
+    
+      </nav>
+
+      <a class="jk-logo" href="../index.html">
+        <img src="../images/jk-logo-square.svg" title="Joshua Kalis' logo" />
+      </a>
+
+      <footer role="contentinfo">
+        <h2 id="contact">Contact</h2>
+<ul>
+<li><a href="mailto:&#107;&#x61;&#x6c;&#105;&#x73;&#x6a;&#111;&#x73;&#x68;&#x75;&#x61;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;">&#107;&#x61;&#x6c;&#105;&#x73;&#x6a;&#111;&#x73;&#x68;&#x75;&#x61;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;</a></li>
+<li>github.com/<a href="https://github.com/kalisjoshua">kalisjoshua</a></li>
+<li>linkedin.com/in/<a href="https://linkedin.com/in/kalisjoshua">kalisjoshua</a></li>
+<li>twitter.com/<a href="https://twitter.com/kalisjoshua">kalisjoshua</a></li>
+</ul>
+
+      </footer>
+
+      <div class="projects">
+        <h2 id="projects">Projects</h2>
+<ul>
+<li><p><a href="https://github.com/kalisjoshua/kalisjoshua.me">kalisjoshua.me</a> -
+My personal website; this site.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/factorio-recipes-worksheet">Recipes Worksheet</a> -
+A generic calculator application for some video games I play.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/lux-core">Lux</a> -
+Frontend application framework to build ReactJS components from API responses leveraging hypermedia.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/koans-js">KoanJS</a> -
+JavaScript koans to progressively learn JavaScript through TDD in the browser.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/Jasper">Jasper</a> -
+A series of JavaScript challenges run in the browser console.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/BrowserSlides">BrowserSlides</a> -
+Markdown-based slides library to generate presentation slide that display in a browser.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/adumbrate-ui">Adumbrate UI</a> -
+Brainstorming-like flexibility when identifying hierarchies of work milestones.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/hyaloid">Hyaloid</a> -
+A very simple, zero-dependency, text editor html component.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/AlexaSkill-ConversationTopics">Conversation Topics</a> -
+An Alexa skill that provides topics for conversation.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/jawa">Jawa</a> -
+Working with some legacy code I decided to wrap an API around a library file to provide advanced functionality to it.</p>
+</li>
+</ul>
+
+      </div>
+
+      <figure class="dev-icons" title="Common web technologies I use.">
+        <img alt="CSS3 logo" src="../images/css3.svg" />
+        <img alt="HTML5 logo" src="../images/html5.svg" />
+        <img alt="JavaScript logo" src="../images/javascript.svg" />
+        <img alt="Markdown logo" src="../images/markdown.svg" />
+
+        <br />
+
+        <img alt="nodeJS logo" src="../images/nodejs.svg" />
+        <img alt="npm logo" src="../images/npm.svg" />
+
+        <br />
+
+        <img alt="Git logo" src="../images/git.svg" />
+      </figure>
+    </aside>
+  </div>
+
+  <div class="cicada"></div>
+
+  <script src="../js/highlighter.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-19419400-2', 'kalisjoshua.me');
+    ga('send', 'pageview');
+  </script>

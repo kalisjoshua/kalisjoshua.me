@@ -1,0 +1,184 @@
+<!doctype html />
+<html class="no-js" lang="en-US" />
+<head>
+  <meta charset="utf-8" />
+  <title>Joshua T Kalis</title>
+  <meta name="description" content="Personal website and resume for Joshua Kalis." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="../css/normalize.css" />
+  <link rel="stylesheet" href="../css/h5bp.css" />
+  <link rel="stylesheet" href="../css/kalisjoshua.css" />
+
+<body>
+  <p class="sr-only"><a href="#main">Skip navigation</a></p>
+
+  <div class="layout">
+    <main class="main" id="main" role="main">
+      <header role="banner">
+        <h1><a href="../index.html">
+    Joshua T Kalis
+    <small>
+      <a href="https://medium.com/gender-inclusivit/why-i-put-pronouns-on-my-email-signature-and-linkedin-profile-and-you-should-too-d3dc942c8743" title="Why I put my pronouns on my email signature and you should too">
+        he/him</a></small></a></h1>
+
+      </header>
+
+      <h2 id="i-learned-something-old">I Learned Something Old</h2>
+<h3 id="31-may-2014">31 May 2014</h3>
+<p>Often times I am working in terminal - bash - and I find that I have 2 - 3 tabs open for a given project. What I learned - and am writing about - is how to send jobs to the background so I can again use the terminal tab / window as well as kill jobs and restart them.</p>
+<p>I will comonly have tabs for: running a local server, file watchers watching Sass or Stylus and JS files, and one tab dedicated to running Git commands. I thought I would share incase others would like a simple walkthrough of it; and so I can have a record of it if I forget or need to explain it to someone else. I say that I learned something old because I don&#39;t imagine that this is something new by any stretch of the imagiation.</p>
+<h3 id="a-sample-command">A Sample Command</h3>
+<p>For this article I will be using the Pything simple HTTP server as an example of a command that I would like to run in the background and ignore otherwise while I am developing.</p>
+<pre><code class="language-bash">$ python SimpleHTTPServer -m 9000</code></pre>
+<h3 id="send-to-background">Send To Background</h3>
+<p>The first step will be to send the job to the background. Follow the command with a trailing space and ampersand to tell the shell to immediately send the execution of the command into the background. The resulting output will be the job number - in square brackets - and the last ... um ... something in the pipeline. I don&#39;t really care about that stuff just now but might find a use for it in the future. For now, the job is in the backgound and that is what I care about.</p>
+<pre><code class="language-bash">$ python SimpleHTTPServer -m 9000 &amp;</code></pre>
+<p>One thing you might want at this point is the ability to get access to the command; most specifically, to be able to stop and restart it. There are two options I see for this: 1. use <code>fg</code> to bring the job into the foreground and then <code>ctrl+c</code> to kill it, or 2. use <code>jobs</code> to list the jobs in the current context and then <code>kill %{job-id}</code> replacing the &#39;{job-id}&#39; part with the actual number listed in the jobs listing.</p>
+<h4 id="list-running-jobs">List Running Jobs</h4>
+<pre><code class="language-bash">$ jobs</code></pre>
+<p>The above command should out put something like:</p>
+<pre><code class="language-bash">[1]+  Running                 python -m SimpleHTTPServer 9000 &amp;</code></pre>
+<h4 id="kill-jobs">Kill Jobs</h4>
+<pre><code class="language-bash">$ kill %1</code></pre>
+<h3 id="tell-it-to-shut-up">Tell It To Shut Up</h3>
+<p>The next thing I found was that most times, I want to actually use the terminal window as if it wasn&#39;t the output location for whatever is running. To do that we simply redirect output.</p>
+<pre><code class="language-bash">$ python -m SimpleHTTPServer $PORT &gt; /dev/null 2&gt;&amp;1</code></pre>
+<p>That should quiet the output of the traffic that would normally be logged to the console.</p>
+<h4 id="put-it-all-together">Put It All Together</h4>
+<p>The final command makes life sweet.</p>
+<pre><code class="language-bash">$ python -m SimpleHTTPServer $PORT &gt; /dev/null 2&gt;&amp;1 &amp;</code></pre>
+<h3 id="use-it-anywhere">Use It Anywhere</h3>
+<p>Now I&#39;m lazy and don&#39;t like to type things; partially because my typing is pretty bad. But typing less and accomplishing the same thing is called productivity. So creating an alias is a great way to use this.</p>
+<pre><code class="language-bash">alias serve=&quot;python -m SimpleHTTPServer $PORT &gt; /dev/null 2&gt;&amp;1 &amp;&quot;</code></pre>
+<h4 id="make-it-better">Make It Better</h4>
+<p>That alias is great and all but what if you wanted to run more than one at a time? If you did you would want to provide the PORT number as your call to start it, right?</p>
+<pre><code class="language-bash">simpleServer() {
+  local PORT=$1
+
+  if [ $# -eq 0 ]
+  then
+    PORT=9000
+  fi
+
+  python -m SimpleHTTPServer $PORT &gt; /dev/null 2&gt;&amp;1 &amp;
+}
+
+alias serve=simpleServer</code></pre>
+<p><strong>Tags</strong></p>
+<ul>
+<li><a href="../#filter=Bash">Bash</a></li>
+<li>[Cool Stuff](../#filter=Cool Stuff)</li>
+<li><a href="../#filter=Productivity">Productivity</a></li>
+</ul>
+
+
+      <footer class="contentinfo">
+        <p>Written by <a class="resume" href="../index.html">
+    Joshua T Kalis
+    <small>
+      <a href="https://medium.com/gender-inclusivit/why-i-put-pronouns-on-my-email-signature-and-linkedin-profile-and-you-should-too-d3dc942c8743" title="Why I put my pronouns on my email signature and you should too">
+        he/him</a></small></a>.</p>
+      </footer>
+    </main>
+
+    <aside role="banner">
+      <nav class="navigation" role="navigation">
+        
+      <ul>
+        
+            <li><a href="../index.html">Resume</a></li>
+          
+
+            <li class="active"><a href="../articles/index.html">Articles</a></li>
+          
+
+            <li><a href="../recruiters.html">Notice to recruiters</a></li>
+          
+      </ul>
+    
+      </nav>
+
+      <a class="jk-logo" href="../index.html">
+        <img src="../images/jk-logo-square.svg" title="Joshua Kalis' logo" />
+      </a>
+
+      <footer role="contentinfo">
+        <h2 id="contact">Contact</h2>
+<ul>
+<li><a href="mailto:&#107;&#x61;&#x6c;&#105;&#x73;&#x6a;&#111;&#x73;&#x68;&#x75;&#x61;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;">&#107;&#x61;&#x6c;&#105;&#x73;&#x6a;&#111;&#x73;&#x68;&#x75;&#x61;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;</a></li>
+<li>github.com/<a href="https://github.com/kalisjoshua">kalisjoshua</a></li>
+<li>linkedin.com/in/<a href="https://linkedin.com/in/kalisjoshua">kalisjoshua</a></li>
+<li>twitter.com/<a href="https://twitter.com/kalisjoshua">kalisjoshua</a></li>
+</ul>
+
+      </footer>
+
+      <div class="projects">
+        <h2 id="projects">Projects</h2>
+<ul>
+<li><p><a href="https://github.com/kalisjoshua/kalisjoshua.me">kalisjoshua.me</a> -
+My personal website; this site.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/factorio-recipes-worksheet">Recipes Worksheet</a> -
+A generic calculator application for some video games I play.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/lux-core">Lux</a> -
+Frontend application framework to build ReactJS components from API responses leveraging hypermedia.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/koans-js">KoanJS</a> -
+JavaScript koans to progressively learn JavaScript through TDD in the browser.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/Jasper">Jasper</a> -
+A series of JavaScript challenges run in the browser console.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/BrowserSlides">BrowserSlides</a> -
+Markdown-based slides library to generate presentation slide that display in a browser.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/adumbrate-ui">Adumbrate UI</a> -
+Brainstorming-like flexibility when identifying hierarchies of work milestones.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/hyaloid">Hyaloid</a> -
+A very simple, zero-dependency, text editor html component.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/AlexaSkill-ConversationTopics">Conversation Topics</a> -
+An Alexa skill that provides topics for conversation.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/jawa">Jawa</a> -
+Working with some legacy code I decided to wrap an API around a library file to provide advanced functionality to it.</p>
+</li>
+</ul>
+
+      </div>
+
+      <figure class="dev-icons" title="Common web technologies I use.">
+        <img alt="CSS3 logo" src="../images/css3.svg" />
+        <img alt="HTML5 logo" src="../images/html5.svg" />
+        <img alt="JavaScript logo" src="../images/javascript.svg" />
+        <img alt="Markdown logo" src="../images/markdown.svg" />
+
+        <br />
+
+        <img alt="nodeJS logo" src="../images/nodejs.svg" />
+        <img alt="npm logo" src="../images/npm.svg" />
+
+        <br />
+
+        <img alt="Git logo" src="../images/git.svg" />
+      </figure>
+    </aside>
+  </div>
+
+  <div class="cicada"></div>
+
+  <script src="../js/highlighter.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-19419400-2', 'kalisjoshua.me');
+    ga('send', 'pageview');
+  </script>

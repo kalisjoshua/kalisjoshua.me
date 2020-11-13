@@ -1,0 +1,371 @@
+<!doctype html />
+<html class="no-js" lang="en-US" />
+<head>
+  <meta charset="utf-8" />
+  <title>Joshua T Kalis</title>
+  <meta name="description" content="Personal website and resume for Joshua Kalis." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="../css/normalize.css" />
+  <link rel="stylesheet" href="../css/h5bp.css" />
+  <link rel="stylesheet" href="../css/kalisjoshua.css" />
+
+<body>
+  <p class="sr-only"><a href="#main">Skip navigation</a></p>
+
+  <div class="layout">
+    <main class="main" id="main" role="main">
+      <header role="banner">
+        <h1><a href="../index.html">
+    Joshua T Kalis
+    <small>
+      <a href="https://medium.com/gender-inclusivit/why-i-put-pronouns-on-my-email-signature-and-linkedin-profile-and-you-should-too-d3dc942c8743" title="Why I put my pronouns on my email signature and you should too">
+        he/him</a></small></a></h1>
+
+      </header>
+
+      <h2 id="plug-able-apis">Plug-able APIs</h2>
+<h3 id="30-nov-2013">30 Nov 2013</h3>
+<p>The most important idea I ever learned in JavaScript programming, I learned from looking through the jQuery source.</p>
+<p>The abstract idea is quite simple and even has a phrase in common use to describe it; &#39;Eat Your Own Dog Food&#39;. Or in the case of an API; &#39;Consume Your Own API&#39;. This will subtly affect many decisions during development.</p>
+<h3 id="nothing-built-in">Nothing Built-In</h3>
+<p>OK, not nothing. But very little.</p>
+<p>The first rule I set for myself is that the only thing that is built directly into the core of the API is the ability to augment, or change, the API itself. So methods to add something to the API, or remove, or overwrite are the only things that are put into the core. Then there will need to be some security around those methods to prevent tampering with them in some adverse way.</p>
+<p>So the most important methods to add will be:</p>
+<ol>
+<li>Add - simply add a new method to the API if it doesn&#39;t already exist</li>
+<li>Remove - remove an existing method from the API</li>
+<li>Override - (optional) this is essentially doing the two steps above in a single call rather than forcing people to do them individually</li>
+</ol>
+<p>Let&#39;s see some code.</p>
+<p><em>In these code samples I am going to not include the Command Pattern in an attempt to keep the focus on the topic of this article and not another.</em></p>
+<pre><code class="language-js">// wrap implementation in an IIFE for cleanliness
+var library = (function () {
+  var API;
+
+  // provide #add() and #override()
+  function addTo_API (name, fn) {
+    API[name] = fn;
+  }
+
+  // provide #remove()
+  function removeFrom_API (name) {
+    delete API[name];
+  }
+
+  // add the functions as part of the API so they can be called
+  API = {
+    add: addTo_API,
+    remove: removeFrom_API
+  };
+
+  // expose the public API
+  return API;
+}());</code></pre>
+<p>Some use cases might look like the following:</p>
+<pre><code class="language-js">library.add(&#39;formatName&#39;, function (first, last) {/* ... */});
+var formattedName = library.formatName(&#39;Joshua&#39;, &#39;Kalis&#39;);
+
+library.add(&#39;commission&#39;, function (sales, points) {/* ... */});
+var commish1 = library.commission(42, 100);
+var commish2 = library.commission(100, 30);
+
+// looking for trouble
+library.add(&#39;commission&#39;, function () {/* do nothing */});
+var commish3 = library.commission(400, 100);
+// silent failure, commish3 is assigned the value &#39;undefined&#39;
+
+// overwrite #add(), which will cause problems
+library.add(&#39;add&#39;, function () {/* do nothing */});
+library.add(&#39;somethingNew&#39;, function () {
+  return &#39;something new&#39;;
+});
+library.somethingNew(); // TypeError: Object has no method &#39;somethingNew&#39;</code></pre>
+<p>This first code sample accomplished a lot quickly. However, it does leave some holes in its implementation. The first is that the <code>add</code> functionality doesn&#39;t protect from overriding a method in the API. Second, we have no security around our core methods: add and remove.</p>
+<h3 id="secure-the-core-methods">Secure The Core Methods</h3>
+<p>The first thing we should do is secure the core methods of the API so they cannot be tampered with either accidentally or not.</p>
+<pre><code class="language-js">// wrap implementation in an IIFE for cleanliness
+var library = (function () {
+  var API
+    , CORE_METHODS;
+
+  // provide #add() and #override()
+  function addTo_API (name, fn) {
+    if (CORE_METHODS.indexOf(name) &gt;= 0) {
+      // throw an error because the program should not silently fail
+      throw new Error(&#39;Attempting to change core method: &#39; + name);
+    }
+
+    API[name] = fn;
+  }
+
+  // provide #remove()
+  function removeFrom_API (name) {
+    delete API[name];
+  }
+
+  // add the functions as part of the API so they can be called
+  API = {
+    add: addTo_API,
+    remove: removeFrom_API
+  };
+
+  // get an array of the core method names to check
+  // against before adding anything new to the API
+  CORE_METHODS = Object.keys(API);
+
+  // expose the public API
+  return API;
+}());</code></pre>
+<p>Now, immediately after we define the core methods for the API we cache an array of their names. That array of names is then used to prevent any attempts to over write those methods. Any attempts will result in an error being thrown.</p>
+<pre><code class="language-js">library.add(&#39;add&#39;, function () {/* anything */});
+// Error: Attempting to change core method: add</code></pre>
+<h3 id="breakup-and-override">Breakup And Override</h3>
+<p>The next step to be taken in securing this API and making it more explicit is to separate the functionalities of adding to and overriding existing methods in the API.</p>
+<p>It&#39;s good to be explicit about this because of the silent failures and errors that could happen that make debugging difficult. If a method is defined and working and then re-defined elsewhere and causes working code to suddenly stop working that is often times very difficult to track down. Making the override feature more explicit makes it more obvious that it is happening and provides a point in the code to recognize that you might be doing something you shouldn&#39;t without restricting the library so much as to completely prevent the option.</p>
+<pre><code class="language-js">// wrap implementation in an IIFE for cleanliness
+var library = (function () {
+  var API
+    , CORE_METHODS;
+
+  // provide #add()
+  function addTo_API (name, fn) {
+    coreMethodCheck(name);
+
+    if (API[name]) {
+      // throw an error because the program should not silently fail
+      throw new Error(&#39;Attempting to override existing method: &#39; + name);
+    }
+
+    API[name] = fn;
+  }
+
+  function coreMethodCheck (name) {
+    if (CORE_METHODS.indexOf(name) &gt;= 0) {
+      // throw an error because the program should not silently fail
+      throw new Error(&#39;Attempting to change core method: &#39; + name);
+    }
+  }
+
+  // provide #override()
+  function overrideMethodIn_API (name, fn) {
+    coreMethodCheck(name);
+
+    API[name] = fn;
+  }
+
+  // provide #remove()
+  function removeFrom_API (name) {
+    delete API[name];
+  }
+
+  // add the functions as part of the API so they can be called
+  API = {
+    add: addTo_API,
+    override: overrideMethodIn_API,
+    remove: removeFrom_API
+  };
+
+  // get an array of the core method names to check
+  // against before adding anything new to the API
+  CORE_METHODS = Object.keys(API);
+
+  // expose the public API
+  return API;
+}());</code></pre>
+<p>Which I would probably suggest to be refactored into the following:</p>
+<pre><code class="language-js">// wrap implementation in an IIFE for cleanliness
+var library = (function () {
+  var API
+    , CORE_METHODS;
+
+  // provide #add() and #override()
+  function insertInto_API (override, name, fn) {
+    if (CORE_METHODS.indexOf(name) &gt;= 0) {
+      // throw an error because the program should not silently fail
+      throw new Error(&#39;Attempting to change core method: &#39; + name);
+    }
+
+    if (!override &amp;&amp; API[name]) {
+      // throw an error because the program should not silently fail
+      throw new Error(&#39;Attempting to override existing method: &#39; + name);
+    }
+
+    API[name] = fn;
+  }
+
+  // provide #remove()
+  function removeFrom_API (name) {
+    delete API[name];
+  }
+
+  // add the functions as part of the API so they can be called
+  API = {
+    add: insertInto_API.bind(null, false),
+    override: insertInto_API.bind(null, true),
+    remove: removeFrom_API
+  };
+
+  // get an array of the core method names to check
+  // against before adding anything new to the API
+  CORE_METHODS = Object.keys(API);
+
+  // expose the public API
+  return API;
+}());</code></pre>
+<p>The reasons for this refactor are:</p>
+<ul>
+<li>It will be easier to add pre and post execution functions to one location than it will be for two locations; more on this later.</li>
+<li>This keeps similar code together for debugging and editing in the future.</li>
+<li>Removes the need to abstract the &#39;CORE_METHODS check&#39; into another function to be called multiple times.</li>
+</ul>
+<h3 id="advantages">Advantages</h3>
+<p>Now you might be thinking that you could avoid all of what I have written so far by simply using an object literal for a library container and you would be correct; mostly. One feature that you would not have is the ability to automatically customize the methods being added with consistent functionality such as: logging, memoization, or pre/post execution hooks.</p>
+<p>Say you created a library with the object literal pattern:</p>
+<pre><code class="language-js">var library = {
+  someFunction: function (a, b) {
+    /* ... */
+  }
+};</code></pre>
+<p>If you wanted to add hooks, as mentioned above, to this function it would be trivial but how about as the library grows and the number of methods becomes very large? Basically, is maintaining one definition of a function easier than many of the exact same definition? Even if you abstract the hooks into a library function and call them where necessary it is still an implementation detail for each new method in the library to get correct; and if there is something we can be sure of, it is that humans make mistakes.</p>
+<pre><code class="language-js">var library = {
+  _hook_post: function () {},
+  _hook_pre: function () {},
+  someFunction: function (a, b) {
+    this._hook_pre();
+    /* ... */
+    this._hook_post();
+  }
+};</code></pre>
+<p>This might work, but what about when the context of the method is changed? By accident or intentionally. That too can be fixed with binding the methods ahead of time but that is merely putting band-aid on a bigger problem.</p>
+<p>Using the refactored code we have been building up in this article, adding this functionality becomes trivial. We can simply replace:</p>
+<pre><code class="language-js">// ...
+    API[name] = fn;
+// ...</code></pre>
+<p>... with something like this:</p>
+<pre><code class="language-js">// ...
+    API[&#39;pre_execution&#39;] &amp;&amp; API[&#39;pre_execution&#39;]();
+    API[name] = fn;
+    API[&#39;post_execution&#39;] &amp;&amp; API[&#39;post_execution&#39;]();
+// ...</code></pre>
+<p>There are more elegant ways to accomplish this but this should illustrate the point sufficiently. Depending on the need this could also be more robust allowing for further arguments to be passed in, or allowing these function to be passed in at runtime for more flexibility, the sky is the limit; JavaScript is so great!</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>Now, this library is capable of augmenting itself and thus being self-testing by nature. There are some shortcomings of this overall design the biggest of which is that there is nothing preventing anyone using this library from changing the methods in the API directly - without using the add/override/remove methods provided - or changing the context - the value of the <code>this</code> variable - inside the methods being called. There may be others that are smaller but to mitigate all of these problems I would say that a new strategy would be needed; I would suggest the Command Pattern, and I have <a href="//kalisjoshua.me/articles/commander_javascript">written about that</a> before.</p>
+<p>Please let me know what I have missed or what I could have covered more completely, correctly, or accurately.</p>
+<p><strong>Tags</strong></p>
+<ul>
+<li>[Best Practices](/#filter=Best Practices)</li>
+<li><a href="/#filter=JavaScript">JavaScript</a></li>
+<li><a href="/#filter=Opinion">Opinion</a></li>
+</ul>
+
+
+      <footer class="contentinfo">
+        <p>Written by <a class="resume" href="../index.html">
+    Joshua T Kalis
+    <small>
+      <a href="https://medium.com/gender-inclusivit/why-i-put-pronouns-on-my-email-signature-and-linkedin-profile-and-you-should-too-d3dc942c8743" title="Why I put my pronouns on my email signature and you should too">
+        he/him</a></small></a>.</p>
+      </footer>
+    </main>
+
+    <aside role="banner">
+      <nav class="navigation" role="navigation">
+        
+      <ul>
+        
+            <li><a href="../index.html">Resume</a></li>
+          
+
+            <li class="active"><a href="../articles/index.html">Articles</a></li>
+          
+
+            <li><a href="../recruiters.html">Notice to recruiters</a></li>
+          
+      </ul>
+    
+      </nav>
+
+      <a class="jk-logo" href="../index.html">
+        <img src="../images/jk-logo-square.svg" title="Joshua Kalis' logo" />
+      </a>
+
+      <footer role="contentinfo">
+        <h2 id="contact">Contact</h2>
+<ul>
+<li><a href="mailto:&#107;&#x61;&#x6c;&#105;&#x73;&#x6a;&#111;&#x73;&#x68;&#x75;&#x61;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;">&#107;&#x61;&#x6c;&#105;&#x73;&#x6a;&#111;&#x73;&#x68;&#x75;&#x61;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;</a></li>
+<li>github.com/<a href="https://github.com/kalisjoshua">kalisjoshua</a></li>
+<li>linkedin.com/in/<a href="https://linkedin.com/in/kalisjoshua">kalisjoshua</a></li>
+<li>twitter.com/<a href="https://twitter.com/kalisjoshua">kalisjoshua</a></li>
+</ul>
+
+      </footer>
+
+      <div class="projects">
+        <h2 id="projects">Projects</h2>
+<ul>
+<li><p><a href="https://github.com/kalisjoshua/kalisjoshua.me">kalisjoshua.me</a> -
+My personal website; this site.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/factorio-recipes-worksheet">Recipes Worksheet</a> -
+A generic calculator application for some video games I play.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/lux-core">Lux</a> -
+Frontend application framework to build ReactJS components from API responses leveraging hypermedia.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/koans-js">KoanJS</a> -
+JavaScript koans to progressively learn JavaScript through TDD in the browser.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/Jasper">Jasper</a> -
+A series of JavaScript challenges run in the browser console.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/BrowserSlides">BrowserSlides</a> -
+Markdown-based slides library to generate presentation slide that display in a browser.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/adumbrate-ui">Adumbrate UI</a> -
+Brainstorming-like flexibility when identifying hierarchies of work milestones.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/hyaloid">Hyaloid</a> -
+A very simple, zero-dependency, text editor html component.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/AlexaSkill-ConversationTopics">Conversation Topics</a> -
+An Alexa skill that provides topics for conversation.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/jawa">Jawa</a> -
+Working with some legacy code I decided to wrap an API around a library file to provide advanced functionality to it.</p>
+</li>
+</ul>
+
+      </div>
+
+      <figure class="dev-icons" title="Common web technologies I use.">
+        <img alt="CSS3 logo" src="../images/css3.svg" />
+        <img alt="HTML5 logo" src="../images/html5.svg" />
+        <img alt="JavaScript logo" src="../images/javascript.svg" />
+        <img alt="Markdown logo" src="../images/markdown.svg" />
+
+        <br />
+
+        <img alt="nodeJS logo" src="../images/nodejs.svg" />
+        <img alt="npm logo" src="../images/npm.svg" />
+
+        <br />
+
+        <img alt="Git logo" src="../images/git.svg" />
+      </figure>
+    </aside>
+  </div>
+
+  <div class="cicada"></div>
+
+  <script src="../js/highlighter.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-19419400-2', 'kalisjoshua.me');
+    ga('send', 'pageview');
+  </script>

@@ -25,9 +25,7 @@
   "scripts": {
     "build": "npm run pages && npm run static",
     "pages": "node ./sanguine",
-    "publish": ". .publish",
-    "prepublish": "npm run build",
-    "static": "cp -r ./public/* ./dist",
+    "static": "cp -r ./public/* ./docs",
     "watch": "npm-watch"
   },
   "watch": {

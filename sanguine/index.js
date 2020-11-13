@@ -6,7 +6,7 @@ const marked = require('marked')
 
 const package = require('../package.json')
 
-const dist = (...args) => path.join(process.cwd(), 'dist', ...args)
+const output = (...args) => path.join(process.cwd(), 'docs', ...args)
 const {html, md} = treeWalker(path.join(process.cwd(), 'content'))
 const render = handlebars.compile(html._template)
 
@@ -76,7 +76,7 @@ function publishPage (file, main, about) {
     rel,
   })
 
-  fs.writeFileSync(dist(file), html, 'utf-8')
+  fs.writeFileSync(output(file), html, 'utf-8')
 }
 
 function treeWalker (dir) {
@@ -105,12 +105,12 @@ function visitor (acc, segment) {
   return acc
 }
 
-fs.rmdirSync(dist(), {recursive: true})
-fs.mkdirSync(dist())
+fs.rmdirSync(output(), {recursive: true})
+fs.mkdirSync(output())
 
 publishPage('index.html', marked(md.resume), marked(md.about))
 
-fs.mkdirSync(dist('articles'))
+fs.mkdirSync(output('articles'))
 
 publishPage('articles/index.html', marked(articles
   .map(({date, intro, name, title}) => `  1. [${title}](${name}.html)${date && ' - ' + date}
