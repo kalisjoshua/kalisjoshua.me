@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "handlebars": "^4.7.6",
-    "marked": "^1.2.2",
+    "marked": "^2.0.0",
     "npm-watch": "^0.7.0"
   },
   "scripts": {
