@@ -1,4 +1,7 @@
-# Formatting Large Numbers of Seconds for Humans to Read
+## Formatting Large Numbers of Seconds for Humans to Read
+### 5 Aug 2021
+
+A little exercise in a trivial, and already solved, problem; for the funzies.
 
 
 ``` javascript

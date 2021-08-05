@@ -6,6 +6,9 @@
   - [Zaephyr.us](http://zaephyr.us) -
     An API for serving various side projects I build for fun.
 
+  - [My Advent of Code](https://github.com/kalisjoshua/adventofcode/) -
+    My solutions to some fun coding challenges. [Advent of Code](https://adventofcode.com/).
+
   - [Recipes Worksheet](https://github.com/kalisjoshua/factorio-recipes-worksheet) -
     A generic calculator application for some video games I play.
 

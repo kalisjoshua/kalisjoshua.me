@@ -313,6 +313,27 @@ pre code[class*="language-"] {
   margin: 0;
 }
 
+.resume.resume__details summary {
+  cursor: pointer;
+  list-style: none;
+  padding-left: 0;
+  user-select: none;
+}
+
+.resume__details summary > *:before{
+  display: inline-block;
+  text-align: center;
+  width: 2ex;
+}
+
+.resume__details:not([open]) summary > *:before {
+  content: "-";
+}
+
+.resume__details[open] summary > *:before {
+  content: "+";
+}
+
 .resume hr + p {
   margin: 0;
 }

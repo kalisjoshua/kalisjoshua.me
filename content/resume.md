@@ -6,18 +6,13 @@
 May 2006
 ### Telecommunication, Information Studies, and Media - BA
 *Michigan State University*
-<!--
-  + Study Abroad - Post-modern Studies
-      - Belgium
-      - France
-      - Germany
-      - Italy
-      - The Netherlands
+
+  + Study Abroad - Belgium, France, Germany, Italy, The Netherlands
   + Extracurricular
       - Broad International Business Forum
-      - Center for Research & Professional Development
-      - Global Business Club
-      - Student Greenhouse Project -->
+      <!-- - Center for Research & Professional Development -->
+      <!-- - Global Business Club -->
+      - Student Greenhouse Project
 
 </div>
 
@@ -29,7 +24,7 @@ May 2006
 ---
 Apr 2012 - present
 ### Team Leader, Engineering
-*Quicken Loans / Rocket Companies*
+*Quicken Loans / Rocket Mortgage*
 <!--
   1. Software Engineer
   2. Sr. Software Engineer
@@ -87,7 +82,7 @@ Apr 2003 - Sep 2008
 *Academy of International Business (http://aib.msu.edu) - International Business Center - Michigan State University*
 
   + Environment: AJAX, ASP (classic), CSS, JavaScript, SQL Server 2005, XHTML, XML, XSLT
-  + Built event scheduling application for annual conference
+  + Built event scheduling application for annual international conference
   + Developed book review system
   + Designed collateral, following U.S. Postal guidelines
   + Revamped advertisement campaign
@@ -104,10 +99,10 @@ Apr 2003 - Sep 2008
 </div>
 
 
-## Non-Information Technology
-
-<div class="resume non-it">
-
+<details class="resume resume__details" open>
+  <summary>
+    <h2 title="Click to expand section">Non-Information Technology</h2>
+  </summary>
 
 ---
 Apr 2001 - Aug 2005
@@ -167,4 +162,4 @@ Sep 1994 - May 1996
   + Mediated service of an average of 900 meals per night
   + Adapted to work in high demand environments
 
-</div>
+</details>

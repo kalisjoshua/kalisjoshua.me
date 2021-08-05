@@ -24,58 +24,56 @@
 
       </header>
 
-      <ol>
-<li><p><a href="benefits_of_hypermedia.html">The Benefits of Hypermedia</a></p>
-<p>Hypermedia can benefit: any API, the developers of an API, the developers of</p>
-</li>
-<li><p><a href="dotfiles.html">My Dotfiles</a></p>
-<p>These are most of my common settings.</p>
-</li>
-<li><p><a href="formatting_seconds_for_humans.html">Formatting Large Numbers of Seconds for Humans to Read</a> - 5 Aug 2021</p>
+      <h2 id="formatting-large-numbers-of-seconds-for-humans-to-read">Formatting Large Numbers of Seconds for Humans to Read</h2>
+<h3 id="5-aug-2021">5 Aug 2021</h3>
 <p>A little exercise in a trivial, and already solved, problem; for the funzies.</p>
-</li>
-<li><p><a href="syllabus_2015.html">Syllabus 2015</a> - 31 Dec 2014</p>
-<p>So this year, I am a little less ambitious with the breadth of topics I would</p>
-</li>
-<li><p><a href="i_learned_something_old.html">I Learned Something Old</a> - 31 May 2014</p>
-<p>Often times I am working in terminal - bash - and I find that I have 2 - 3 tabs open for a given project. What I learned - and am writing about - is how to send jobs to the background so I can again use the terminal tab / window as well as kill jobs and restart them.</p>
-</li>
-<li><p><a href="getting_started_with_git.html">Getting Started With Git</a> - 20 March 2014</p>
-<p>Version control is not just for large teams or enterprises. Version control is for anyone, with a desire to gain some piece of mind when making changes to any system of any size, with ease.</p>
-</li>
-<li><p><a href="coding_kata.html">Coding Kata</a> - 12 March 2014</p>
-<p>Kata are exercises that are meant to convert deliberate actions into muscle memory. They are exercises to help you become more natural at a given action. Simply completing an action is not the goal of a Kata, one must repeatedly practice to convert action to in-action; the very zen statement &quot;do nothing&quot; does not mean to simply be lazy.</p>
-</li>
-<li><p><a href="survival_skills_for_it.html">Survival Skills for IT Weekend</a> - 18 Feb 2014</p>
-<p>What good is it if you have the materials but not the expertise?</p>
-</li>
-<li><p><a href="syllabus_2014.html">My 2014 Syllabus</a> - 13 Jan 2014</p>
-<p>I have a lot that I would like to learn and accomplish <em>professionally</em> this year (2014). In an effort to organize myself and an attempt to make good on -at least some of - these I think it would be good - if not daunting - to make a list and refer back to it later.</p>
-</li>
-<li><p><a href="plugable_apis.html">Plug-able APIs</a> - 30 Nov 2013</p>
-<p>The most important idea I ever learned in JavaScript programming, I learned from looking through the jQuery source.</p>
-</li>
-<li><p><a href="airbnb_style_guide_diff.html">Airbnb Style Guide Diff</a> - 11 Nov 2013</p>
-<p>I agree with almost everything in the <a href="//github.com/airbnb/javascript">Airbnb JavaScript Style Guide</a>. I will discuss some of my discrepancies with it. I will admit that I have been influenced by the one, the only, Douglas Crockford (papa-Crock).</p>
-</li>
-<li><p><a href="i_made_a_blog.html">I Made A Blog!</a> - 1 Nov 2013</p>
-<p>I wanted a place to publish articles I write; which would also hopefully inspire me to write more consistently, if not often.</p>
-</li>
-<li><p><a href="commander_javascript.html">Commander JavaScript</a> - 9 Oct 2013</p>
-<p>A simple introduction to the Command Pattern and some reasons why it might be a great pattern to use in JavaScript.</p>
-</li>
-<li><p><a href="i_want_to_do_this.html">I Want To Do This</a> - 8 Oct 2013</p>
-<p>I sometimes have good ideas, and some of those times I actually attempt to do something about them. This is not one of those times so I am going to write about it to hopefully inspire someone to do it for me and thank me endlessly for the idea.</p>
-</li>
-<li><p><a href="be_good_at_your_job.html">Be Good At Your Job</a> - 7 Oct 2013</p>
-<p>You have one job in life and that is to be good at whatever it is you do.</p>
-</li>
-<li><p><a href="browserslides.html">BrowserSlides</a> - 4 Oct 2013</p>
-<p>I wrote a simple slides parser / formatter and presenter library in JavaScript, jQuery, and Markdown; OK, and some CSS and HTML.</p>
-</li>
-</ol>
+<pre><code class="language-javascript">function friendlyFormatOfSeconds (seconds) {
+  const pluralize = (full, num) =&gt; num !== &#39;1&#39; ? `${full}s` : full
+  const segments = [
+    [&#39;day&#39;, 86400],
+    [&#39;hour&#39;, 3600],
+    [&#39;minute&#39;, 60],
+    [&#39;second&#39;,  1],
+  ]
+  const templateFill = (acc, [label, limit]) =&gt; {
+    const count = parseInt(seconds / limit, 10)
+
+    seconds = seconds - limit * count
+
+    return count ? `${acc} ${count} ${label}` : acc
+  }
+
+  return segments
+    .reduce(templateFill, &#39;&#39;)
+    .replace(/\b(\d+)\s\w+/g, pluralize)
+    .trim()
+}
+
+[
+  [30, &#39;30 seconds&#39;],
+  [60, &#39;1 minute&#39;],
+  [102, &#39;1 minute 42 seconds&#39;],
+  [3600, &#39;1 hour&#39;],
+  [3601, &#39;1 hour 1 second&#39;],
+  [86403, &#39;1 day 3 seconds&#39;],
+].forEach(([input, output]) =&gt; {
+  const result = friendlyFormatOfSeconds(input)
+
+  if (result !== output) {
+    console.log(input, result)
+  } else {
+    console.log(&#39;Success!&#39;, result)
+  }
+})</code></pre>
 
 
+      <footer class="contentinfo">
+        <p>Written by <a class="resume" href="../index.html">
+    Joshua T Kalis
+    <small>
+      <a href="https://medium.com/gender-inclusivit/why-i-put-pronouns-on-my-email-signature-and-linkedin-profile-and-you-should-too-d3dc942c8743" title="Why I put my pronouns on my email signature and you should too">
+        he/him</a></small></a>.</p>
+      </footer>
     </main>
 
     <aside role="banner">
