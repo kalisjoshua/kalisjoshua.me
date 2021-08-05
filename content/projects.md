@@ -3,6 +3,9 @@
   - [kalisjoshua.me](https://github.com/kalisjoshua/kalisjoshua.me) -
     My personal website; this site.
 
+  - [Zaephyr.us](http://zaephyr.us) -
+    An API for serving various side projects I build for fun.
+
   - [Recipes Worksheet](https://github.com/kalisjoshua/factorio-recipes-worksheet) -
     A generic calculator application for some video games I play.
 
