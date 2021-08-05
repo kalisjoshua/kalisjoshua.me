@@ -1,22 +1,3 @@
-## Education
-
-<div class="resume education">
-
----
-May 2006
-### Telecommunication, Information Studies, and Media - BA
-*Michigan State University*
-
-  + Study Abroad - Belgium, France, Germany, Italy, The Netherlands
-  + Extracurricular
-      - Broad International Business Forum
-      <!-- - Center for Research & Professional Development -->
-      <!-- - Global Business Club -->
-      - Student Greenhouse Project
-
-</div>
-
-
 ## Employment History
 
 <div class="resume current">
@@ -95,6 +76,25 @@ Apr 2003 - Sep 2008
   + Implemented home-grown content management system (CMS)
   + Designed flexible non-destructive relational database for home-grown CMS
   + Created projects management system and bug tracker
+
+</div>
+
+
+## Education
+
+<div class="resume education">
+
+---
+May 2006
+### Telecommunication, Information Studies, and Media - BA
+*Michigan State University*
+
+  + Study Abroad - Belgium, France, Germany, Italy, The Netherlands
+  + Extracurricular
+      - Broad International Business Forum
+      <!-- - Center for Research & Professional Development -->
+      <!-- - Global Business Club -->
+      - Student Greenhouse Project
 
 </div>
 
