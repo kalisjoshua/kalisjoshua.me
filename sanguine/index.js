@@ -92,6 +92,8 @@ function visitor (acc, segment) {
 
     acc.html[segment] = html && html._template
     acc.md[segment] = md
+  } else if (segment === '.DS_store') {
+    // do nothing
   } else {
     const [name, type] = /^(.+?)\.(html|md)/
       .exec(segment)
