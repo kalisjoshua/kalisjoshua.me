@@ -7,7 +7,7 @@
   },
   "name": "kalisjoshua.me",
   "description": "Personal website and resume for Joshua Kalis.",
-  "version": "9.1.0",
+  "version": "9.2.0",
   "homepage": "https://kalisjoshua.me",
   "repository": {
     "type": "git",
@@ -24,6 +24,8 @@
   },
   "scripts": {
     "build": "npm run pages && npm run static",
+    "prebuild": "mv ./docs/CNAME .",
+    "postbuild": "mv ./CNAME docs/CNAME",
     "pages": "node ./sanguine",
     "static": "cp -r ./public/* ./docs",
     "watch": "npm-watch"
