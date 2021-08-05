@@ -99,7 +99,7 @@ Apr 2003 - Sep 2008
 </div>
 
 
-<details class="resume resume__details" open>
+<details class="resume resume__details">
   <summary>
     <h2 title="Click to expand section">Non-Information Technology</h2>
   </summary>
