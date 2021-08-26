@@ -6,13 +6,14 @@
 Apr 2012 - present
 ### Team Leader, Engineering
 *Quicken Loans / Rocket Mortgage*
-<!--
-  1. Software Engineer
-  2. Sr. Software Engineer
-  3. Integration Solutions Architect
-  4. Cloud Solutions Architect
-  5. Team Leader
--->
+  <!--
+  1. Apr 2012 - Software Engineer                 | ~2 years
+  2. ??? 2014 - Sr. Software Engineer             | ~2 years
+  3. Nov 2015 - Integration Solutions Architect   | 1/2 year
+  4. Apr 2016 - Sr. Software Engineer             | 1/2 year
+  5. Nov 2017 - Cloud Solutions Architect         | 1/2 year
+  6. Mar 2018 - Team Leader                       | 3 years
+  -->
 
   + Leader and inspirer of wonderful people accomplishing great things
   + Git coach for fellow leaders
