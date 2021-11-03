@@ -47,7 +47,8 @@ var named = function named() {
 // immediately-invoked function expression (IIFE)
 (function() {
   console.log(&#39;Welcome to the Internet. Please follow me.&#39;);
-})();</code></pre>
+})();
+</code></pre>
 <p>I like adding an additional space before the arguments list - in parens - to help the future developer while scanning the code to realize that it is a function definition and not a call (invocation). Even though the <code>function</code> keyword precedes and looks nothing like an invocation due to the following curlies.</p>
 <p>I also like to bring the invoke-ing parens inside the wrapping parens when writing an Immediately-Invoked Function Expression (IIFE). I admit that I originally followed this from The Crockford but I have grown to like it as it feels more natural to type; the entire statement is in the enclosing parens and the only character outside is the semicolon.</p>
 <pre><code class="language-js">// anonymous function expression
@@ -63,19 +64,22 @@ var named = function named () {
 // immediately-invoked function expression (IIFE)
 (function () {
   console.log(&#39;Welcome to the Internet. Please follow me.&#39;);
-}());</code></pre>
+}());
+</code></pre>
 <p>The fact is this has no impact on performance either in un-minified nor compressed JavaScript. If there is no down-side and there is a possible up-side why not add a little more readability?</p>
 <p>One more for good measure.</p>
 <p>Here is the original sample:</p>
 <pre><code class="language-js">// good
 function yup(name, options, args) {
   // ...stuff...
-}</code></pre>
+}
+</code></pre>
 <p>... and, mine:</p>
 <pre><code class="language-js">// better
 function yup (name, options, args) {
   // ...stuff...
-}</code></pre>
+}
+</code></pre>
 <h3 id="variables">Variables</h3>
 <p>I like the reasoning for the variables organization / ordering but disagree on a slightly higher level.</p>
 <p>For some background, I like to be organized almost to a fault. I&#39;m not sure where I picked this up but it might help to explain me a little more. Paraphrased:</p>
@@ -99,14 +103,16 @@ var items = getItems(),
     goSportsTeam = true,
     dragonball,
     length,
-    i;</code></pre>
+    i;
+</code></pre>
 <p>.. and, mine:</p>
 <pre><code class="language-js">// better
 var dragonball,
     goSportsTeam = true,
     i = 0,
     items = getItems(),
-    length;</code></pre>
+    length;
+</code></pre>
 <h3 id="whitespace">Whitespace</h3>
 <p>Another restriction I like to pose upon my code is that I don&#39;t like to include large blocks of code in the declaration section of a function. What I mean is that I like each variable being declared to have one and only one line in the declaration section.</p>
 <p>Here is the original sample:</p>
@@ -124,7 +130,8 @@ var leds = stage.selectAll(&#39;.led&#39;)
     .attr(&#39;width&#39;,  (radius + margin) * 2)
   .append(&#39;svg:g&#39;)
     .attr(&#39;transform&#39;, &#39;translate(&#39; + (radius + margin) + &#39;,&#39; + (radius + margin) + &#39;)&#39;)
-    .call(tron.led);</code></pre>
+    .call(tron.led);
+</code></pre>
 <p>What I like to do is bring all of that logic down away from the declaration. That way the declaration section of functions is more easily scan-able.</p>
 <p>.. and, mine:</p>
 <pre><code class="language-js">// better
@@ -139,7 +146,8 @@ leds = stage
   .attr(&#39;width&#39;,  (radius + margin) * 2)
   .append(&#39;svg:g&#39;)
   .attr(&#39;transform&#39;, &#39;translate(&#39; + (radius + margin) + &#39;,&#39; + (radius + margin) + &#39;)&#39;)
-  .call(tron.led);</code></pre>
+  .call(tron.led);
+</code></pre>
 <p>Another example might make it more clear:</p>
 <pre><code class="language-js">// bad
 var $groupOfElement = $(&#39;.someParentObject&#39;)
@@ -175,7 +183,8 @@ objectsOfInterest = $(&#39;.interesting&#39;)
   })
   .on(&#39;click&#39;, function (event) {
     // ... do some stuff.
-  });</code></pre>
+  });
+</code></pre>
 <p>Hopefully it is obvious that the second sample is easier to understand the variables being declared at a glance and if the developer would like to know more they can look at the details below for the variable they are interested in.</p>
 <h3 id="commas">Commas</h3>
 <p>I don&#39;t personally have a strong aversion to the &#39;comma-first&#39; style and in fact like it for my personal projects; as somewhat of an experiment and haven&#39;t had reason to abandon them yet. But at work more people dislike it than like it so I write in the standard form suggested by the consensus.</p>
@@ -194,7 +203,8 @@ Jedi.prototype.set = function(key, val) {
 
 Jedi.prototype.get = function(key) {
   return this[key];
-};</code></pre>
+};
+</code></pre>
 <p>I think that a pattern like this puts too much burden on single functions for all instantiated objects: <code>get</code> and <code>set</code>. If this pattern is used then all validation and error checking for all values being set on objects need be in a single function.</p>
 <p>I think a better patter is to have a single function for getting and setting each property necessary. This way the specific validation and error checking logic for a specific property is consolidated into a location which makes sense and is where it will be found if looked for.</p>
 <p>.. and, mine:</p>
@@ -213,7 +223,8 @@ Jedi.prototype.lightsaber = function(val) {
   if (arguments.length === 0) {
     return this._lightsaber;
   }
-};</code></pre>
+};
+</code></pre>
 <h3 id="conclusions">Conclusion(s)</h3>
 <p>With the exception of the <a href="#Accessors">Accessors</a> I don&#39;t think that anything I have identified here in this article would cause any problems outside preferential experience.</p>
 <p>I think the most important rule after performance is consistency. Every effort should be made to remain consistent across rules so that one rule is not conflicting with another.</p>
@@ -221,8 +232,10 @@ Jedi.prototype.lightsaber = function(val) {
 <p>There are, however, some things that were not spelled out in the style guide and that could leave some openings for inconsistency such as the following:</p>
 <h3 id="whitespace-extended">Whitespace Extended</h3>
 <ol>
-<li><p>A whitespace character should follow every keyword or control structure (with a few exceptions):</p>
-<pre><code class="language-js">
+<li>A whitespace character should follow every keyword or control structure (with a few exceptions):</li>
+</ol>
+<pre><code>``` js
+
 // bad
 if(this === that) {}
 while(limit--) {}
@@ -237,11 +250,16 @@ return isValid ? something : nothing;
 break;
 case:
 return;
-this.&lt;property&gt;</code></pre>
-<p><em>For keywords that have a following set of parens this will again reinforce that it is not a function invocation.</em></p>
-</li>
-<li><p>No leading or trailing space should be included in a group of statements:</p>
-<pre><code class="language-js">
+this.&lt;property&gt;
+```
+
+*For keywords that have a following set of parens this will again reinforce that it is not a function invocation.*
+</code></pre>
+<ol start="2">
+<li>No leading or trailing space should be included in a group of statements:</li>
+</ol>
+<pre><code>``` js
+
 // bad
 { &quot;name&quot;: &quot;Homer&quot; }
 [ 1, 2, 3 ]
@@ -252,9 +270,13 @@ alert( &#39;Hello World!&#39; );
 {&quot;name&quot;: &quot;Homer&quot;}
 [1, 2, 3]
 function (a, b, c) {}
-alert(&#39;Hello World!&#39;);</code></pre>
-<p><em>This follows from the rule to be consistent as often as possible.</em></p>
-<pre><code class="language-js">
+alert(&#39;Hello World!&#39;);
+```
+
+*This follows from the rule to be consistent as often as possible.*
+
+``` js
+
 // bad
 myObject = { };
 myArray = [ ];
@@ -263,20 +285,25 @@ myObject.toString( );
 // good
 myObject = {};
 myArray = [];
-myObject.toString();</code></pre>
-</li>
-<li><p>A whitespace character should be included before and after operators:</p>
-<pre><code class="language-js">
+myObject.toString();
+```
+</code></pre>
+<ol start="3">
+<li>A whitespace character should be included before and after operators:</li>
+</ol>
+<pre><code>``` js
+
 // bad
 if (arguments.length===2) {}
 var result=a+b;
 
 // good
 if (arguments.length === 2) {}
-var result = a + b;</code></pre>
-<p><em>The additional whitespace in these instances helps improve readability.</em></p>
-</li>
-</ol>
+var result = a + b;
+```
+
+*The additional whitespace in these instances helps improve readability.*
+</code></pre>
 <h3 id="commas-extended">Commas Extended</h3>
 <p>The one additional rule I would add to the commas section is, &#39;Every comma should be followed by a single whitespace character or newline.&#39;</p>
 <h3 id="final-conclusion">Final Conclusion</h3>
@@ -290,7 +317,7 @@ var result = a + b;</code></pre>
 
 
       <footer class="contentinfo">
-        <p>Written by <a class="resume" href="../index.html">
+        <p>Written by <a href="../index.html">
     Joshua T Kalis
     <small>
       <a href="https://medium.com/gender-inclusivit/why-i-put-pronouns-on-my-email-signature-and-linkedin-profile-and-you-should-too-d3dc942c8743" title="Why I put my pronouns on my email signature and you should too">
@@ -315,14 +342,10 @@ var result = a + b;</code></pre>
     
       </nav>
 
-      <a class="jk-logo" href="../index.html">
-        <img src="../images/jk-logo-square.svg" title="Joshua Kalis' logo" />
-      </a>
-
       <footer role="contentinfo">
         <h2 id="contact">Contact</h2>
 <ul>
-<li><a href="mailto:&#x6b;&#x61;&#x6c;&#105;&#115;&#106;&#x6f;&#x73;&#104;&#117;&#x61;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d;">&#x6b;&#x61;&#x6c;&#105;&#115;&#106;&#x6f;&#x73;&#104;&#117;&#x61;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d;</a></li>
+<li><a href="mailto:&#x6b;&#x61;&#x6c;&#105;&#x73;&#106;&#111;&#x73;&#x68;&#x75;&#97;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#x6b;&#x61;&#x6c;&#105;&#x73;&#106;&#111;&#x73;&#x68;&#x75;&#97;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a></li>
 <li>github.com/<a href="https://github.com/kalisjoshua">kalisjoshua</a></li>
 <li>linkedin.com/in/<a href="https://linkedin.com/in/kalisjoshua">kalisjoshua</a></li>
 <li>twitter.com/<a href="https://twitter.com/kalisjoshua">kalisjoshua</a></li>
@@ -372,6 +395,10 @@ Working with some legacy code I decided to wrap an API around a library file to 
 </ul>
 
       </div>
+
+      <a href="../index.html" id="jk-logo">
+        <img src="../images/jk-logo-square.svg" title="Joshua Kalis' logo" />
+      </a>
 
       <figure class="dev-icons" title="Common web technologies I use.">
         <img alt="CSS3 logo" src="../images/css3.svg" />

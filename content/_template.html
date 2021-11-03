@@ -31,7 +31,7 @@
 
       {{#if isArticle}}
       <footer class="contentinfo">
-        <p>Written by <a class="resume" href="{{rel}}index.html">{{{header}}}</a>.</p>
+        <p>Written by <a href="{{rel}}index.html">{{{header}}}</a>.</p>
       </footer>
       {{/if}}
     </main>
@@ -40,10 +40,6 @@
       <nav class="navigation" role="navigation">
         {{{navigation}}}
       </nav>
-
-      <a class="jk-logo" href="{{rel}}index.html">
-        <img src="{{rel}}images/jk-logo-square.svg" title="Joshua Kalis' logo" />
-      </a>
 
       <footer role="contentinfo">
         {{{contact}}}
@@ -54,6 +50,10 @@
         {{{projects}}}
       </div>
       {{/if}}
+
+      <a href="{{rel}}index.html" id="jk-logo">
+        <img src="{{rel}}images/jk-logo-square.svg" title="Joshua Kalis' logo" />
+      </a>
 
       <figure class="dev-icons" title="Common web technologies I use.">
         <img alt="CSS3 logo" src="{{rel}}images/css3.svg" />

@@ -65,7 +65,8 @@ var library = (function () {
 
   // expose the public API
   return API;
-}());</code></pre>
+}());
+</code></pre>
 <p>Some use cases might look like the following:</p>
 <pre><code class="language-js">library.add(&#39;formatName&#39;, function (first, last) {/* ... */});
 var formattedName = library.formatName(&#39;Joshua&#39;, &#39;Kalis&#39;);
@@ -84,7 +85,8 @@ library.add(&#39;add&#39;, function () {/* do nothing */});
 library.add(&#39;somethingNew&#39;, function () {
   return &#39;something new&#39;;
 });
-library.somethingNew(); // TypeError: Object has no method &#39;somethingNew&#39;</code></pre>
+library.somethingNew(); // TypeError: Object has no method &#39;somethingNew&#39;
+</code></pre>
 <p>This first code sample accomplished a lot quickly. However, it does leave some holes in its implementation. The first is that the <code>add</code> functionality doesn&#39;t protect from overriding a method in the API. Second, we have no security around our core methods: add and remove.</p>
 <h3 id="secure-the-core-methods">Secure The Core Methods</h3>
 <p>The first thing we should do is secure the core methods of the API so they cannot be tampered with either accidentally or not.</p>
@@ -120,10 +122,12 @@ var library = (function () {
 
   // expose the public API
   return API;
-}());</code></pre>
+}());
+</code></pre>
 <p>Now, immediately after we define the core methods for the API we cache an array of their names. That array of names is then used to prevent any attempts to over write those methods. Any attempts will result in an error being thrown.</p>
 <pre><code class="language-js">library.add(&#39;add&#39;, function () {/* anything */});
-// Error: Attempting to change core method: add</code></pre>
+// Error: Attempting to change core method: add
+</code></pre>
 <h3 id="breakup-and-override">Breakup And Override</h3>
 <p>The next step to be taken in securing this API and making it more explicit is to separate the functionalities of adding to and overriding existing methods in the API.</p>
 <p>It&#39;s good to be explicit about this because of the silent failures and errors that could happen that make debugging difficult. If a method is defined and working and then re-defined elsewhere and causes working code to suddenly stop working that is often times very difficult to track down. Making the override feature more explicit makes it more obvious that it is happening and provides a point in the code to recognize that you might be doing something you shouldn&#39;t without restricting the library so much as to completely prevent the option.</p>
@@ -176,7 +180,8 @@ var library = (function () {
 
   // expose the public API
   return API;
-}());</code></pre>
+}());
+</code></pre>
 <p>Which I would probably suggest to be refactored into the following:</p>
 <pre><code class="language-js">// wrap implementation in an IIFE for cleanliness
 var library = (function () {
@@ -216,7 +221,8 @@ var library = (function () {
 
   // expose the public API
   return API;
-}());</code></pre>
+}());
+</code></pre>
 <p>The reasons for this refactor are:</p>
 <ul>
 <li>It will be easier to add pre and post execution functions to one location than it will be for two locations; more on this later.</li>
@@ -230,7 +236,8 @@ var library = (function () {
   someFunction: function (a, b) {
     /* ... */
   }
-};</code></pre>
+};
+</code></pre>
 <p>If you wanted to add hooks, as mentioned above, to this function it would be trivial but how about as the library grows and the number of methods becomes very large? Basically, is maintaining one definition of a function easier than many of the exact same definition? Even if you abstract the hooks into a library function and call them where necessary it is still an implementation detail for each new method in the library to get correct; and if there is something we can be sure of, it is that humans make mistakes.</p>
 <pre><code class="language-js">var library = {
   _hook_post: function () {},
@@ -240,18 +247,21 @@ var library = (function () {
     /* ... */
     this._hook_post();
   }
-};</code></pre>
+};
+</code></pre>
 <p>This might work, but what about when the context of the method is changed? By accident or intentionally. That too can be fixed with binding the methods ahead of time but that is merely putting band-aid on a bigger problem.</p>
 <p>Using the refactored code we have been building up in this article, adding this functionality becomes trivial. We can simply replace:</p>
 <pre><code class="language-js">// ...
     API[name] = fn;
-// ...</code></pre>
+// ...
+</code></pre>
 <p>... with something like this:</p>
 <pre><code class="language-js">// ...
     API[&#39;pre_execution&#39;] &amp;&amp; API[&#39;pre_execution&#39;]();
     API[name] = fn;
     API[&#39;post_execution&#39;] &amp;&amp; API[&#39;post_execution&#39;]();
-// ...</code></pre>
+// ...
+</code></pre>
 <p>There are more elegant ways to accomplish this but this should illustrate the point sufficiently. Depending on the need this could also be more robust allowing for further arguments to be passed in, or allowing these function to be passed in at runtime for more flexibility, the sky is the limit; JavaScript is so great!</p>
 <h3 id="conclusion">Conclusion</h3>
 <p>Now, this library is capable of augmenting itself and thus being self-testing by nature. There are some shortcomings of this overall design the biggest of which is that there is nothing preventing anyone using this library from changing the methods in the API directly - without using the add/override/remove methods provided - or changing the context - the value of the <code>this</code> variable - inside the methods being called. There may be others that are smaller but to mitigate all of these problems I would say that a new strategy would be needed; I would suggest the Command Pattern, and I have <a href="//kalisjoshua.me/articles/commander_javascript">written about that</a> before.</p>
@@ -265,7 +275,7 @@ var library = (function () {
 
 
       <footer class="contentinfo">
-        <p>Written by <a class="resume" href="../index.html">
+        <p>Written by <a href="../index.html">
     Joshua T Kalis
     <small>
       <a href="https://medium.com/gender-inclusivit/why-i-put-pronouns-on-my-email-signature-and-linkedin-profile-and-you-should-too-d3dc942c8743" title="Why I put my pronouns on my email signature and you should too">
@@ -290,14 +300,10 @@ var library = (function () {
     
       </nav>
 
-      <a class="jk-logo" href="../index.html">
-        <img src="../images/jk-logo-square.svg" title="Joshua Kalis' logo" />
-      </a>
-
       <footer role="contentinfo">
         <h2 id="contact">Contact</h2>
 <ul>
-<li><a href="mailto:&#x6b;&#x61;&#x6c;&#105;&#115;&#106;&#x6f;&#x73;&#104;&#117;&#x61;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d;">&#x6b;&#x61;&#x6c;&#105;&#115;&#106;&#x6f;&#x73;&#104;&#117;&#x61;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d;</a></li>
+<li><a href="mailto:&#x6b;&#x61;&#x6c;&#105;&#x73;&#106;&#111;&#x73;&#x68;&#x75;&#97;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#x6b;&#x61;&#x6c;&#105;&#x73;&#106;&#111;&#x73;&#x68;&#x75;&#97;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a></li>
 <li>github.com/<a href="https://github.com/kalisjoshua">kalisjoshua</a></li>
 <li>linkedin.com/in/<a href="https://linkedin.com/in/kalisjoshua">kalisjoshua</a></li>
 <li>twitter.com/<a href="https://twitter.com/kalisjoshua">kalisjoshua</a></li>
@@ -347,6 +353,10 @@ Working with some legacy code I decided to wrap an API around a library file to 
 </ul>
 
       </div>
+
+      <a href="../index.html" id="jk-logo">
+        <img src="../images/jk-logo-square.svg" title="Joshua Kalis' logo" />
+      </a>
 
       <figure class="dev-icons" title="Common web technologies I use.">
         <img alt="CSS3 logo" src="../images/css3.svg" />

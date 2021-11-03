@@ -67,12 +67,14 @@ function removeItem (indx) {
   cart = cart
     .slice(0, indx)
     .concat(cart.slice(indx + 1));
-}</code></pre>
+}
+</code></pre>
 <p>To use this cart API here are some sample function calls:</p>
 <pre><code class="language-js">addItem({&#39;name&#39;: &#39;Radio Flyer Wagon&#39;, &#39;price&#39;: 19.95});
 getItems(); // returns [{&#39;name&#39;: &#39;Radio Flyer Wagon&#39;, &#39;price&#39;: 19.95}]
 getTotal(); // returns 19.95
-removeItem(0); // cart emptied</code></pre>
+removeItem(0); // cart emptied
+</code></pre>
 <p>Here, the requirements have been met with the functions defined. However, I hope that no one would feel comfortable putting this code into a production environment when these are globally accessible; that is if the organization likes to be accurate when it comes to their sales.</p>
 <h3 id="clean-up-the-global-scope">Clean Up The Global Scope</h3>
 <p>There are a whole lot of problems in the code above and the first step towards mitigation would probably be to reduce the impact on global scope; everything is itself in the global scope. One of the early lessons in JavaScript is to not do exactly what has been done above; the suggestion is to create a namespace and include everything in one - or as few - as possible to not clutter the global scope. Let&#39;s do that now.</p>
@@ -99,12 +101,14 @@ removeItem(0); // cart emptied</code></pre>
       .slice(0, indx)
       .concat(cart.items.slice(indx + 1));
   }
-};</code></pre>
+};
+</code></pre>
 <p>To use this cart API here are some sample function calls:</p>
 <pre><code class="language-js">cart.addItem({&#39;name&#39;: &#39;Radio Flyer Wagon&#39;, &#39;price&#39;: 19.95});
 cart.getItems(); // returns [{&#39;name&#39;: &#39;Radio Flyer Wagon&#39;, &#39;price&#39;: 19.95}]
 cart.getTotal(); // returns 19.95
-cart.removeItem(0); // cart emptied</code></pre>
+cart.removeItem(0); // cart emptied
+</code></pre>
 <p>This is a lot <em>better</em> than the first attempt. The bigger problem still remains however; everything is still globally accessible. Keeping everything globally accessible like this does not prevent any code from changing the items array directly. There are other problems but lets address them later.</p>
 <h3 id="using-closure-for-hiding">Using Closure For Hiding</h3>
 <p>To hide access to resources in other languages we would use access modifiers like: private, static, protected, et.al. JavaScript does not provide anything like these so we have to get creative. JavaScript does provide Closure scope and that is what we can use to great benefit.</p>
@@ -133,12 +137,14 @@ cart.removeItem(0); // cart emptied</code></pre>
         .concat(items.slice(indx + 1));
     }
   };
-}());</code></pre>
+}());
+</code></pre>
 <p>To use this cart API here are some sample function calls:</p>
 <pre><code class="language-js">cart.addItem({&#39;name&#39;: &#39;Radio Flyer Wagon&#39;, &#39;price&#39;: 19.95});
 cart.getItems(); // returns [{&#39;name&#39;: &#39;Radio Flyer Wagon&#39;, &#39;price&#39;: 19.95}]
 cart.getTotal(); // returns 19.95
-cart.removeItem(0); // cart emptied</code></pre>
+cart.removeItem(0); // cart emptied
+</code></pre>
 <p>Now, the items array is hidden away from the global scope so that is good; no code can directly change it. That isn&#39;t entirely true because in the <code>getItems</code> method a reference to <code>items</code> is returned and therefore makes it accessible; this is fixable by returning a copy of the array instead of the array itself.</p>
 <pre><code class="language-js">{
   // ...
@@ -147,7 +153,8 @@ cart.removeItem(0); // cart emptied</code></pre>
     return items.slice(0); // do this instead to return a copy
   },
   // ...
-}</code></pre>
+}
+</code></pre>
 <h3 id="use-the-command-pattern">Use The Command Pattern</h3>
 <p>But another issue is the <code>cart</code> object returned from the Closure. All of its methods are accessible; which you might think is a good thing. Callable is a good thing, changeable is not. As it stands, this code allows all of the provided methods to be overwritten in any way someone would like. It would be nice to allow the methods to be called but not changed or overwritten; until ES6 is available the Command Pattern is a good alternative.</p>
 <pre><code class="language-js">var cart = (function () {
@@ -181,12 +188,14 @@ cart.removeItem(0); // cart emptied</code></pre>
   return function (method) {
     return API[method].call(this, slice.call(arguments, 1));
   };
-}());</code></pre>
+}());
+</code></pre>
 <p>To use this cart API here are some sample function calls:</p>
 <pre><code class="language-js">cart(&#39;addItem&#39;, {&#39;name&#39;: &#39;Radio Flyer Wagon&#39;, &#39;price&#39;: 19.95});
 cart(&#39;getItems&#39;); // returns [{&#39;name&#39;: &#39;Radio Flyer Wagon&#39;, &#39;price&#39;: 19.95}]
 cart(&#39;getTotal&#39;); // returns 19.95
-cart(&#39;removeItem&#39;, 0); // cart emptied</code></pre>
+cart(&#39;removeItem&#39;, 0); // cart emptied
+</code></pre>
 <p>Using this pattern everything is hidden away. The only way to call a method is to call the function <code>cart</code> and pass in the method you would like to invoke, along with any arguments you would like to pass into the method.</p>
 <p><strong>Tags</strong></p>
 <ul>
@@ -196,7 +205,7 @@ cart(&#39;removeItem&#39;, 0); // cart emptied</code></pre>
 
 
       <footer class="contentinfo">
-        <p>Written by <a class="resume" href="../index.html">
+        <p>Written by <a href="../index.html">
     Joshua T Kalis
     <small>
       <a href="https://medium.com/gender-inclusivit/why-i-put-pronouns-on-my-email-signature-and-linkedin-profile-and-you-should-too-d3dc942c8743" title="Why I put my pronouns on my email signature and you should too">
@@ -221,14 +230,10 @@ cart(&#39;removeItem&#39;, 0); // cart emptied</code></pre>
     
       </nav>
 
-      <a class="jk-logo" href="../index.html">
-        <img src="../images/jk-logo-square.svg" title="Joshua Kalis' logo" />
-      </a>
-
       <footer role="contentinfo">
         <h2 id="contact">Contact</h2>
 <ul>
-<li><a href="mailto:&#x6b;&#x61;&#x6c;&#105;&#115;&#106;&#x6f;&#x73;&#104;&#117;&#x61;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d;">&#x6b;&#x61;&#x6c;&#105;&#115;&#106;&#x6f;&#x73;&#104;&#117;&#x61;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d;</a></li>
+<li><a href="mailto:&#x6b;&#x61;&#x6c;&#105;&#x73;&#106;&#111;&#x73;&#x68;&#x75;&#97;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#x6b;&#x61;&#x6c;&#105;&#x73;&#106;&#111;&#x73;&#x68;&#x75;&#97;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a></li>
 <li>github.com/<a href="https://github.com/kalisjoshua">kalisjoshua</a></li>
 <li>linkedin.com/in/<a href="https://linkedin.com/in/kalisjoshua">kalisjoshua</a></li>
 <li>twitter.com/<a href="https://twitter.com/kalisjoshua">kalisjoshua</a></li>
@@ -278,6 +283,10 @@ Working with some legacy code I decided to wrap an API around a library file to 
 </ul>
 
       </div>
+
+      <a href="../index.html" id="jk-logo">
+        <img src="../images/jk-logo-square.svg" title="Joshua Kalis' logo" />
+      </a>
 
       <figure class="dev-icons" title="Common web technologies I use.">
         <img alt="CSS3 logo" src="../images/css3.svg" />

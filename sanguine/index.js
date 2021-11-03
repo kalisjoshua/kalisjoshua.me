@@ -115,10 +115,7 @@ publishPage('index.html', marked(md.resume), marked(md.about))
 fs.mkdirSync(output('articles'))
 
 publishPage('articles/index.html', marked(articles
-  .map(({date, intro, name, title}) => `  1. [${title}](${name}.html)${date && ' - ' + date}
-
-  ${intro}
-  `)
+  .map(({date, intro, name, title}, index) => `  ${index + 1}. [${title}](${name}.html)${date && ' - ' + date}\n\n      ${intro}`)
   .join('\n')
 ))
 
