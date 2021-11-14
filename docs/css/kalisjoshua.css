@@ -319,6 +319,11 @@ pre code[class*="language-"] {
   margin-left: 3ex;
 }
 
+#pride-ally {
+  margin-top: 8ex;
+  text-align: center;
+}
+
 #resume__non-tech summary {
   cursor: pointer;
   list-style: none;
