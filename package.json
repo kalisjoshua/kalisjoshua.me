@@ -15,7 +15,7 @@
   },
   "dependencies": {},
   "engines": {
-    "node": "14.13.1"
+    "node": ">=14.3.x"
   },
   "devDependencies": {
     "handlebars": "^4.7.7",
