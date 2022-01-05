@@ -10,29 +10,6 @@ const output = (...args) => path.join(process.cwd(), 'docs', ...args)
 const {html, md} = treeWalker(path.join(process.cwd(), 'content'))
 const render = handlebars.compile(html._template)
 
-const articles = Reflect.ownKeys(md.articles)
-  .reduce((acc, name) => {
-    const content = md.articles[name]
-    const [date] = content.match(/### ([^\n]+)/).slice(1)
-    const [intro] = content.match(/\n(?!#)([^\n]+)/).slice(1)
-    const [title] = content.match(/## ([^\n]+)/).slice(1)
-
-    acc.push({
-      content,
-      date: Date.parse(date) ? date : '',
-      intro,
-      name,
-      sorting: Date.parse(date)
-        ? new Date(date).getTime()
-        : Number.MAX_SAFE_INTEGER,
-      title,
-    })
-
-    return acc
-  }, [])
-  .sort((a, b) => b.sorting - a.sorting)
-  // .map(Function('obj', 'with (obj) return {content, date, intro, title}'))
-
 const meta = {
   author: package.author.name,
   contact: marked(md.contact),
@@ -41,10 +18,31 @@ const meta = {
   projects: marked(md.projects),
 }
 
-const navLinks = [
-  ['Resume', 'index.html', /^index/],
-  ['Articles', 'articles/index.html', /^articles/],
-  ['Notice to recruiters', 'recruiters.html', /^recruiters/],
+const siteMap = [
+  {
+    cssActive: /^index/,
+    href: 'index.html',
+    publish: () => publishPage('index.html', marked(md.resume), marked(md.about)),
+    text: 'Resume',
+  },
+  {
+    cssActive: /^articles/,
+    href: 'articles/index.html',
+    publish: () => publishSection('articles', md.articles),
+    text: 'Articles',
+  },
+  {
+    cssActive: /^slides/,
+    href: 'slides/index.html',
+    publish: () => publishSection('slides', md.slides),
+    text: 'Slides',
+  },
+  {
+    cssActive: /^recruiters/,
+    href: 'recruiters.html',
+    publish: () => publishPage('recruiters.html', marked(md.recruiters)),
+    text: 'Notice to recruiters',
+  },
 ]
 
 function addPronouns (name) {
@@ -58,25 +56,62 @@ function addPronouns (name) {
 function publishPage (file, main, about) {
   const {length} = file.match(/\//g) || []
   const rel = Array(length + 1).join('../')
+  const navLink = ({href, cssActive: regex, text}) => `
+    <li${regex.test(file) ? ' class="active"' : ''}>
+      <a href="${rel}${href}">${text}</a>
+    </li>
+  `
 
   const html = render({
     ...meta,
     about,
     isArticle: /^articles\/(?!index\.html$)/.test(file),
     main,
-    navigation: `
-      <ul>
-        ${navLinks
-          .map(([text, href, regex]) => `
-            <li${regex.test(file) ? ' class="active"' : ''}><a href="${rel}${href}">${text}</a></li>
-          `)
-          .join('\n')}
-      </ul>
-    `,
+    navigation: `<ul>${siteMap.map(navLink).join('\n')}</ul>`,
     rel,
   })
 
   fs.writeFileSync(output(file), html, 'utf-8')
+}
+
+function publishSection (label, markdown) {
+  const pull = (content, regex) => ((content.match(regex) || []).slice(1))
+  const pages = Reflect.ownKeys(markdown)
+    .reduce((acc, name) => {
+      const content = markdown[name]
+      const [date] = pull(content, /### ([^\n]+)/)
+      const [intro] = pull(content, /\n(?!#+|(?:\s*[-*+]|\d+\.\s*)[^\n]+)(.+)/)
+      const [title] = pull(content, /## ([^\n]+)/)
+
+      acc.push({
+        content,
+        date: Date.parse(date) ? date : '',
+        intro,
+        name,
+        sorting: Date.parse(date)
+          ? new Date(date).getTime()
+          : Number.MAX_SAFE_INTEGER,
+        title,
+      })
+
+      return acc
+    }, [])
+    .sort((a, b) => b.sorting - a.sorting)
+
+    fs.mkdirSync(output(label))
+
+    publishPage(`${label}/index.html`, marked(pages
+      .flatMap(({date, intro, name, title}, index) => [
+        `**[${title}](${name}.html)**${date && ' - ' + date}`,
+        intro,
+      ])
+      .join('\n\n')
+    ))
+
+    pages
+      .forEach(({content, name}) => {
+        publishPage(`${label}/${name}.html`, marked(content))
+      })
 }
 
 function treeWalker (dir) {
@@ -95,33 +130,24 @@ function visitor (acc, segment) {
   } else if (segment === '.DS_store') {
     // do nothing
   } else {
-    const [name, type] = /^(.+?)\.(html|md)/
-      .exec(segment)
-      .slice(1)
+    try {
+      const [name, type] = /^(.+?)\.(html|md)/
+        .exec(segment)
+        .slice(1)
 
-    acc[type] = acc[type] || {}
+      acc[type] = acc[type] || {}
 
-    acc[type][name] = fs.readFileSync(currentPath, 'utf-8')
+      acc[type][name] = fs.readFileSync(currentPath, 'utf-8')
+    } catch (e) {
+      console.error(`Failed for file: "${segment}".`)
+    }
   }
 
   return acc
 }
 
-fs.rmdirSync(output(), {recursive: true})
+fs.rmSync(output(), {recursive: true})
 fs.mkdirSync(output())
 
-publishPage('index.html', marked(md.resume), marked(md.about))
-
-fs.mkdirSync(output('articles'))
-
-publishPage('articles/index.html', marked(articles
-  .map(({date, intro, name, title}, index) => `  ${index + 1}. [${title}](${name}.html)${date && ' - ' + date}\n\n      ${intro}`)
-  .join('\n')
-))
-
-articles
-  .forEach(({content, name}) => {
-    publishPage(`articles/${name}.html`, marked(content))
-  })
-
-publishPage('recruiters.html', marked(md.recruiters))
+siteMap
+  .forEach((section) => section.publish())

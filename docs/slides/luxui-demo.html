@@ -1,0 +1,253 @@
+<!doctype html />
+<html class="no-js" lang="en-US" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Joshua T Kalis</title>
+  <meta name="description" content="Personal website and resume for Joshua Kalis." />
+
+  <link href="../favicon.ico" rel="icon" />
+  <link href="../jk-logo.svg" rel="icon" type="image/svg+xml" />
+
+  <link href="../css/lib/normalize.css" rel="stylesheet" />
+  <link href="../css/lib/h5bp.css" rel="stylesheet" />
+
+  <link href="../css/kalisjoshua.css" rel="stylesheet" />
+
+<body>
+  <p class="sr-only"><a href="#main">Skip navigation</a></p>
+
+  <div class="layout">
+    <main class="main" id="main" role="main">
+      <header role="banner">
+        <h1><a href="../index.html">
+    Joshua T Kalis
+    <small>
+      <a href="https://medium.com/gender-inclusivit/why-i-put-pronouns-on-my-email-signature-and-linkedin-profile-and-you-should-too-d3dc942c8743" title="Why I put my pronouns on my email signature and you should too">
+        he/him/his</a></small></a></h1>
+
+      </header>
+
+      <h2 id="luxui">LuxUI</h2>
+<p>Hypermedia driven web UIs.</p>
+<pre><code>Joshua T. Kalis
+Sr. Software Engineer
+Quicken Loans
+</code></pre>
+<hr>
+<h2 id="what-is-lux">What is Lux?</h2>
+<p>LuxUI is a UI rendering framework for hypermedia APIs with the goal of giving
+<strong>complete</strong> control of all application logic to the API.</p>
+<hr>
+<h2 id="how">How?</h2>
+<p>The strategy LuxUI uses enforces a strict separation between the concepts of
+&quot;what&quot; (server) and &quot;how&quot; (client) to render a UI.</p>
+<hr>
+<p><img src="http://oi66.tinypic.com/2eg9zbl.jpg" alt="Traditional Web Applications"></p>
+<hr>
+<p><img src="http://oi67.tinypic.com/2i92nw7.jpg" alt="LuxUI Web Applications venn diagram"></p>
+<hr>
+<h2 id="why">Why?</h2>
+<hr>
+<h3 id="create-the-carrot">Create the carrot</h3>
+<p>Hypermedia is not simple and developers haven&#39;t readily adopted it. LuxUI is my
+attempt to create a compelling reason for API developers to employ hypermedia
+to alleviate the need to create UIs for APIs.</p>
+<hr>
+<h3 id="empower-everyone">Empower everyone</h3>
+<p>API developers do not need to be UI engineers; and vice versa. LuxUI aims to
+empower both side of application development to do their best work and as
+independently as possible.</p>
+<hr>
+<h3 id="stop-the-madness">Stop the madness</h3>
+<p>Many problems have been solved in the application UI space: simple information
+display, linking to resources, basic form data-entry (fields). LuxUI aims to
+remove the need to re-implement solutions to solved problems and leverage
+reusable/shareable components.</p>
+<hr>
+<h2 id="show-some-code">Show some code!</h2>
+<hr>
+<h3 id="demo-outline">Demo outline.</h3>
+<ol>
+<li>Application setup</li>
+<li>Static Page</li>
+<li>API Collection resource</li>
+<li>API Item resource</li>
+<li>Custom components</li>
+<li>Form actions</li>
+<li>Action handlers</li>
+</ol>
+<hr>
+<h4 id="1-application-setup">1. Application setup</h4>
+<p><em>((api-1.js -&gt; api.js &amp; index-1.js -&gt; index.js))</em></p>
+<ol>
+<li>First API Resource (root)</li>
+<li>Import LuxUI</li>
+<li>LuxUI Configuration</li>
+<li>Start the application</li>
+<li>Custom Styles</li>
+</ol>
+<hr>
+<h4 id="2-static-page">2. Static Page</h4>
+<p><em>((api-2.js -&gt; api.js &amp; index.js -&gt; index.js))</em></p>
+<ol>
+<li>Add the route to the API <code>links</code></li>
+<li>Define a ReactJS component</li>
+<li>Import ReactJS (for JSX)</li>
+<li>Static page routes</li>
+<li>Default page (window.location)</li>
+</ol>
+<hr>
+<h4 id="3-api-collection-resource">3. API Collection resource</h4>
+<p><em>((api-3.js -&gt; api.js))</em></p>
+<ol>
+<li>Link object in &quot;root&quot; resource</li>
+<li>New endpoint    1. Resource <code>class</code>    2. <code>entities</code>    3. <code>properties</code></li>
+</ol>
+<hr>
+<h4 id="4-api-item-resource">4. API Item resource</h4>
+<p><em>((api-4.js -&gt; api.js))</em></p>
+<ol>
+<li>New Endpoint    1. Resource <code>class</code>    2. <code>actions</code>    3. Action <code>class</code>    4. Action <code>fields</code>    5. Link &quot;self&quot;</li>
+</ol>
+<hr>
+<h4 id="5-custom-components">5. Custom components</h4>
+<p><em>((api-5.js -&gt; api.js &amp;&amp; index-5.js -&gt; index.js))</em></p>
+<ol>
+<li>Add the field entry in the API</li>
+<li>Define a new ReactJS component</li>
+<li>Register the new component with the application</li>
+</ol>
+<hr>
+<h4 id="6-form-actions">6. Form actions</h4>
+<p><em>((api-6.js -&gt; api.js))</em></p>
+<ol>
+<li>Submit the form</li>
+<li>Delete the resource</li>
+</ol>
+<hr>
+<h4 id="7-action-handlers">7. Action handlers</h4>
+<p><em>((api-7.js -&gt; api.js))</em></p>
+<ol>
+<li>Update resource</li>
+</ol>
+<hr>
+<h2 id="thank-you">Thank you</h2>
+
+
+    </main>
+
+    <aside role="banner">
+      <nav class="navigation" role="navigation">
+        <ul>
+    <li>
+      <a href="../index.html">Resume</a>
+    </li>
+  
+
+    <li>
+      <a href="../articles/index.html">Articles</a>
+    </li>
+  
+
+    <li class="active">
+      <a href="../slides/index.html">Slides</a>
+    </li>
+  
+
+    <li>
+      <a href="../recruiters.html">Notice to recruiters</a>
+    </li>
+  </ul>
+      </nav>
+
+      <footer role="contentinfo">
+        <h2 id="contact">Contact</h2>
+<ul>
+<li><a href="mailto:&#x6b;&#97;&#108;&#105;&#x73;&#x6a;&#x6f;&#x73;&#104;&#x75;&#x61;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;">&#x6b;&#97;&#108;&#105;&#x73;&#x6a;&#x6f;&#x73;&#104;&#x75;&#x61;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;</a></li>
+<li>github.com/<a href="https://github.com/kalisjoshua">kalisjoshua</a></li>
+<li>linkedin.com/in/<a href="https://linkedin.com/in/kalisjoshua">kalisjoshua</a></li>
+<li>twitter.com/<a href="https://twitter.com/kalisjoshua">kalisjoshua</a></li>
+</ul>
+
+      </footer>
+
+      <div class="projects">
+        <h2 id="projects">Projects</h2>
+<ul>
+<li><p><a href="https://github.com/kalisjoshua/kalisjoshua.me">kalisjoshua.me</a> -
+My personal website; this site.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/zaephyrus">Zaephyr.us</a> -
+An API for serving various side projects I build for fun.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/adventofcode/">My Advent of Code</a> -
+My solutions to some fun coding challenges. <a href="https://adventofcode.com/">Advent of Code</a>.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/factorio-recipes-worksheet">Recipes Worksheet</a> -
+A generic calculator application for some video games I play.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/lux-core">Lux</a> -
+Frontend application framework to build ReactJS components from API responses leveraging hypermedia.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/koans-js">KoanJS</a> -
+JavaScript koans to progressively learn JavaScript through TDD in the browser.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/Jasper">Jasper</a> -
+A series of JavaScript challenges run in the browser console.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/BrowserSlides">BrowserSlides</a> -
+Markdown-based slides library to generate presentation slide that display in a browser.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/adumbrate-ui">Adumbrate UI</a> -
+Brainstorming-like flexibility when identifying hierarchies of work milestones.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/hyaloid">Hyaloid</a> -
+A very simple, zero-dependency, text editor html component.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/AlexaSkill-ConversationTopics">Conversation Topics</a> -
+An Alexa skill that provides topics for conversation.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/jawa">Jawa</a> -
+Working with some legacy code I decided to wrap an API around a library file to provide advanced functionality to it.</p>
+</li>
+</ul>
+
+      </div>
+
+      <a href="../index.html" id="jk-logo">
+        <img src="../images/jk-logo-square.svg" title="Joshua Kalis' logo" />
+      </a>
+
+      <figure class="dev-icons" title="Common web technologies I use.">
+        <img alt="CSS3 logo" src="../images/css3.svg" />
+        <img alt="HTML5 logo" src="../images/html5.svg" />
+        <img alt="JavaScript logo" src="../images/javascript.svg" />
+        <img alt="Markdown logo" src="../images/markdown.svg" />
+
+        <br />
+
+        <img alt="nodeJS logo" src="../images/nodejs.svg" />
+        <img alt="npm logo" src="../images/npm.svg" />
+
+        <br />
+
+        <img alt="Git logo" src="../images/git.svg" />
+      </figure>
+
+      <figure id="pride-ally">
+        <a href="https://queerintheworld.com/straight-ally-pride-flag/">
+          <img alt="Pride Ally Flag" src="../images/pride-progress.svg" />
+        </a>
+        <br />
+        <br />
+        <figcaption>Proud to be a Pride Ally</figcaption>
+      </figure>
+    </aside>
+  </div>
+
+  <div class="cicada"></div>
+
+  <script defer src="../js/highlighter.js"></script>
+  <script defer src="../js/slides.js"></script>

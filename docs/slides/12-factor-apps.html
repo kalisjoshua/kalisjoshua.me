@@ -1,0 +1,372 @@
+<!doctype html />
+<html class="no-js" lang="en-US" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Joshua T Kalis</title>
+  <meta name="description" content="Personal website and resume for Joshua Kalis." />
+
+  <link href="../favicon.ico" rel="icon" />
+  <link href="../jk-logo.svg" rel="icon" type="image/svg+xml" />
+
+  <link href="../css/lib/normalize.css" rel="stylesheet" />
+  <link href="../css/lib/h5bp.css" rel="stylesheet" />
+
+  <link href="../css/kalisjoshua.css" rel="stylesheet" />
+
+<body>
+  <p class="sr-only"><a href="#main">Skip navigation</a></p>
+
+  <div class="layout">
+    <main class="main" id="main" role="main">
+      <header role="banner">
+        <h1><a href="../index.html">
+    Joshua T Kalis
+    <small>
+      <a href="https://medium.com/gender-inclusivit/why-i-put-pronouns-on-my-email-signature-and-linkedin-profile-and-you-should-too-d3dc942c8743" title="Why I put my pronouns on my email signature and you should too">
+        he/him/his</a></small></a></h1>
+
+      </header>
+
+      <h2 id="twelve-factor-apps">Twelve-Factor Apps</h2>
+<p>A set of broad conceptual solutions, and a shared vocabulary, for systemic problems seen in modern application development.</p>
+<hr>
+<h2 id="twelve-factor-apps-1">Twelve-Factor Apps</h2>
+<p>A set of ideal app development practices to isolate concerns well enough to make them configurable for future flexibility with minimal changes.</p>
+<hr>
+<h3 id="the-twelve-factors">The Twelve Factors</h3>
+<ol>
+<li><strong><a href="#1-codebase-noun">Codebase</a></strong> -
+One codebase tracked in revision control, many deploys</li>
+<li><strong><a href="#2-dependencies-verb">Dependencies</a></strong> -
+Explicitly declare and isolate dependencies</li>
+<li><strong><a href="#3-config-noun">Config</a></strong> -
+Store config in the environment</li>
+<li><strong><a href="#4-backing-services-noun">Backing Services</a></strong> -
+Treat backing services as attached resources</li>
+<li><strong><a href="#5-build-release-run-verbs">Build, Release, Run</a></strong> -
+Strictly separate build and run stages</li>
+<li><strong><a href="#6-processes">Processes</a></strong> -
+Execute the app as one or more stateless processes</li>
+<li><strong><a href="#7-port-binding">Port Binding</a></strong> -
+Export services via port binding</li>
+<li><strong><a href="#8-concurrency">Concurrency</a></strong> -
+Scale out via the process model</li>
+<li><strong><a href="#9-disposability">Disposability</a></strong> -
+Maximize robustness with fast startup and graceful shutdown</li>
+<li><strong><a href="#10-devprod-parity">Dev/Prod Parity</a></strong> -
+Keep development, staging, and production as similar as possible</li>
+<li><strong><a href="#11-logs">Logs</a></strong> -
+Treat logs as event streams</li>
+<li><strong><a href="#12-admin-processes">Admin Processes</a></strong> -
+Run admin/management tasks as one-off processes</li>
+</ol>
+<p>Original work available: <a href="https://12factor.net/">https://12factor.net/</a></p>
+<hr>
+<h3 id="groups">Groups</h3>
+<ol>
+<li>Code<ol>
+<li>Codebase</li>
+<li>Dependencies</li>
+<li>Config</li>
+<li>Backing Services</li>
+</ol>
+</li>
+<li>Deploy<ol>
+<li>Build, Release, Run</li>
+<li>Processes</li>
+<li>Port Binding</li>
+<li>Concurrency</li>
+</ol>
+</li>
+<li>Operate / Run<ol>
+<li>Disposability</li>
+<li>Dev/Prod Parity</li>
+<li>Logs</li>
+<li>Admin Processes</li>
+</ol>
+</li>
+</ol>
+<p><a href="https://speakerdeck.com/asatrya/how-to-build-12-factor-application-in-nodejs-using-docker?slide=20">Aditya Satrya</a></p>
+<hr>
+<h3 id="groups-cont">Groups (cont.)</h3>
+<ol>
+<li>What you do<ol>
+<li>Codebase</li>
+<li>Dependencies</li>
+<li>Config</li>
+<li>Backing Services</li>
+<li>Build, Release, Run</li>
+</ol>
+</li>
+<li>What you get<ol>
+<li>Processes</li>
+<li>Port Binding</li>
+<li>Concurrency</li>
+<li>Disposability</li>
+<li>Dev/Prod Parity</li>
+</ol>
+</li>
+<li>Monitoring<ol>
+<li>Logs</li>
+<li>Admin Processes</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="1-codebase-noun">1. <a href="https://12factor.net/codebase">Codebase</a> (noun)</h3>
+<p>There is one and only one codebase for an app and an app has only one codebase. This is the source of truth for what is &quot;the app&quot;. The codebase ties everything together.</p>
+<ul>
+<li>Source code<ul>
+<li>Application/service</li>
+<li>Infrastructure</li>
+</ul>
+</li>
+<li>Configuration</li>
+<li>Deployment pipeline(s)*</li>
+<li>Documentation<ul>
+<li>Text descriptions of processes</li>
+<li>Visual diagrams of how things connect</li>
+</ul>
+</li>
+</ul>
+<p><em>All of this SHOULD be version controlled in some way and kept together.</em></p>
+<hr>
+<h3 id="2-dependencies-verb">2. <a href="https://12factor.net/dependencies">Dependencies</a> (verb)</h3>
+<ul>
+<li>Declaration<ul>
+<li>Explicit definition of what the app expects to use at runtime</li>
+<li>Enables the concept of code sharing/reuse</li>
+<li>Improves the maintainability of common solutions</li>
+</ul>
+</li>
+<li>Isolation<ul>
+<li>The ability to run the app in a consistent and deterministic environment</li>
+<li>Prevents dependency on environmental tools that might change unpredictably</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-config-noun">3. <a href="https://12factor.net/config">Config</a> (noun)</h3>
+<p>These are the &quot;variables&quot; that are <strong>likely</strong> to change between deployments/environments (dev, test, beta, prod, etc). Some obvious examples are:</p>
+<ul>
+<li>Database connection details</li>
+<li>External services credentials</li>
+<li>Anything that would be considered secret</li>
+</ul>
+<p>The - environment - config variables are the secrets that make the app work in the environments they will be deployed to; <em>including locally on a developers machine</em>.</p>
+<p><strong>These values (above) should not be stored in the <a href="#1-codebase-noun">Codebase</a>.</strong></p>
+<p>Other values - that are not secret - can be stored in <a href="#1-codebase-noun">Codebase</a> config files.</p>
+<ul>
+<li>Per-environment service routes/URLs</li>
+<li>Instance counts for load-balanced servers</li>
+<li>Exponential backoff timing</li>
+</ul>
+<hr>
+<h3 id="4-backing-services-noun">4. <a href="https://12factor.net/backing-services">Backing Services</a> (noun)</h3>
+<p>These are the resources that enable the Twelve-factor App to function but are &quot;larger&quot;, or more generic, than the just the app. Similar Backing Services should be considered/treated as interchangeable without needing changes in the <a href="#1-codebase-noun">Codebase</a>; e.g. multiple SMTP (email) services.</p>
+<blockquote>
+<p>If a capability is not core to the purpose of the app it should likely be treated as a Backing Service and therefor externalized in the same way.</p>
+</blockquote>
+<p><em>Access to Backing Services should be achieved through <a href="#3-config-noun">Config</a> values consumed and used at runtime by the app.</em></p>
+<hr>
+<h3 id="5-build-release-run-verbs">5. <a href="https://12factor.net/build-release-run">Build, Release, Run</a> (verbs)</h3>
+<ol>
+<li>Build<ul>
+<li>The fetching and bundling of defined <a href="#2-dependencies-verb">Dependencies</a> and <em>compiled</em> code - from the <a href="#1-codebase-noun">Codebase</a> - into a single unit; a <strong>build artifact</strong>: dmg, exe, jar/war, tar, zip, etc.</li>
+<li>This build artifact is <strong>environment independent</strong>; it should be able to run in any environment without changes needing to be made to anything inside of it</li>
+</ul>
+</li>
+<li>Release<ul>
+<li>The combination of the &quot;build&quot;, &quot;artifact&quot;, or &quot;build artifact&quot; with all of the <a href="#3-config-noun">Config</a> for a given environment in the runtime environment: container, server, whatever</li>
+</ul>
+</li>
+<li>Run<ul>
+<li>The phase/stage when an app is running in an environment</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="6-processes">6. <a href="https://12factor.net/processes">Processes</a></h3>
+<ul>
+<li>A Twelve-factor App is executed in the runtime environment as one, or more, <strong>stateless</strong> processes</li>
+<li>Persistence of any kind must be accomplished through <a href="#4-backing-services-noun">Backing Services</a>; supports statelessness</li>
+<li>Processes and statelessness enables extreme scalability based on request volume</li>
+</ul>
+<hr>
+<h3 id="7-port-binding">7. <a href="https://12factor.net/port-binding">Port Binding</a></h3>
+<p>A Twelve-factor App will include everything needed to handle requests coming from ports and will indicate which ports it is expecting to receive requests through.</p>
+<ul>
+<li>Everything needed to handle requests will be internal to the twelve-factor app</li>
+<li>All requests will come to the twelve-factor app through one or more ports<ul>
+<li><code>:22</code> - SSH</li>
+<li><code>:53</code> - DNS</li>
+<li><code>:80</code> - HTTP</li>
+<li><code>:443</code> - HTTPS</li>
+</ul>
+</li>
+<li>Expected ports should be well identified by the twelve-factor app: <code>:5000</code>, <code>:8080</code>, etc.<ul>
+<li>This can be done in the <a href="#3-config-noun">Config</a> to allow for variance; between environments for instance</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="8-concurrency">8. <a href="https://12factor.net/concurrency">Concurrency</a></h3>
+<ul>
+<li>Concurrency is enabled through stateless <a href="#6-processes">Processes</a></li>
+<li>A Twelve-factor App is able to scale &quot;out&quot; - rather than &quot;up&quot; - and run multiple instance concurrently<ul>
+<li>Out - multiple instances; behind a load balancer<ul>
+<li>Seamless, no downtime</li>
+</ul>
+</li>
+<li>Up - more resources: memory, processing (CPU), disk<ul>
+<li>Requires downtime</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="9-disposability">9. <a href="https://12factor.net/disposability">Disposability</a></h3>
+<p>Any single instance of a Twelve-factor App should not assume that it will be successful; software &quot;bugs&quot;, or hardware failures can cause <a href="#6-processes">Processes</a> to fail. Since success is never a guarantee failure must always be planned for.</p>
+<hr>
+<h3 id="10-devprod-parity">10. <a href="https://12factor.net/dev-prod-parity">Dev/Prod Parity</a></h3>
+<ul>
+<li>All environments (dev, test, beta, prod, etc) should be as similar as possible</li>
+<li>&quot;Drift&quot; between environments is fertile ground for defects</li>
+<li>Modern tooling enables near parity for local dev; with data being an acceptable exception</li>
+</ul>
+<hr>
+<h3 id="11-logs">11. <a href="https://12factor.net/logs">Logs</a></h3>
+<ul>
+<li>A Twelve-factor App sends log output to stdout</li>
+<li>Logs are a stream of &quot;consciousness&quot; from the running app and are unfiltered or sorted</li>
+<li>Logs are sent from the app in a &quot;Fire and forget&quot; strategy</li>
+</ul>
+<hr>
+<h3 id="12-admin-processes">12. <a href="https://12factor.net/admin-processes">Admin Processes</a></h3>
+<ul>
+<li>Common use cases should be coded and stored within the app not coded adhoc</li>
+<li>These utilities are for rare runtime inspection to help with debugging or running admin tasks that are non-routine</li>
+</ul>
+<hr>
+<h2 id="joshua-t-kalis">Joshua T Kalis</h2>
+<h3 id="jan-2022">Jan 2022</h3>
+
+
+    </main>
+
+    <aside role="banner">
+      <nav class="navigation" role="navigation">
+        <ul>
+    <li>
+      <a href="../index.html">Resume</a>
+    </li>
+  
+
+    <li>
+      <a href="../articles/index.html">Articles</a>
+    </li>
+  
+
+    <li class="active">
+      <a href="../slides/index.html">Slides</a>
+    </li>
+  
+
+    <li>
+      <a href="../recruiters.html">Notice to recruiters</a>
+    </li>
+  </ul>
+      </nav>
+
+      <footer role="contentinfo">
+        <h2 id="contact">Contact</h2>
+<ul>
+<li><a href="mailto:&#x6b;&#97;&#108;&#105;&#x73;&#x6a;&#x6f;&#x73;&#104;&#x75;&#x61;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;">&#x6b;&#97;&#108;&#105;&#x73;&#x6a;&#x6f;&#x73;&#104;&#x75;&#x61;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;</a></li>
+<li>github.com/<a href="https://github.com/kalisjoshua">kalisjoshua</a></li>
+<li>linkedin.com/in/<a href="https://linkedin.com/in/kalisjoshua">kalisjoshua</a></li>
+<li>twitter.com/<a href="https://twitter.com/kalisjoshua">kalisjoshua</a></li>
+</ul>
+
+      </footer>
+
+      <div class="projects">
+        <h2 id="projects">Projects</h2>
+<ul>
+<li><p><a href="https://github.com/kalisjoshua/kalisjoshua.me">kalisjoshua.me</a> -
+My personal website; this site.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/zaephyrus">Zaephyr.us</a> -
+An API for serving various side projects I build for fun.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/adventofcode/">My Advent of Code</a> -
+My solutions to some fun coding challenges. <a href="https://adventofcode.com/">Advent of Code</a>.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/factorio-recipes-worksheet">Recipes Worksheet</a> -
+A generic calculator application for some video games I play.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/lux-core">Lux</a> -
+Frontend application framework to build ReactJS components from API responses leveraging hypermedia.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/koans-js">KoanJS</a> -
+JavaScript koans to progressively learn JavaScript through TDD in the browser.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/Jasper">Jasper</a> -
+A series of JavaScript challenges run in the browser console.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/BrowserSlides">BrowserSlides</a> -
+Markdown-based slides library to generate presentation slide that display in a browser.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/adumbrate-ui">Adumbrate UI</a> -
+Brainstorming-like flexibility when identifying hierarchies of work milestones.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/hyaloid">Hyaloid</a> -
+A very simple, zero-dependency, text editor html component.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/AlexaSkill-ConversationTopics">Conversation Topics</a> -
+An Alexa skill that provides topics for conversation.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/jawa">Jawa</a> -
+Working with some legacy code I decided to wrap an API around a library file to provide advanced functionality to it.</p>
+</li>
+</ul>
+
+      </div>
+
+      <a href="../index.html" id="jk-logo">
+        <img src="../images/jk-logo-square.svg" title="Joshua Kalis' logo" />
+      </a>
+
+      <figure class="dev-icons" title="Common web technologies I use.">
+        <img alt="CSS3 logo" src="../images/css3.svg" />
+        <img alt="HTML5 logo" src="../images/html5.svg" />
+        <img alt="JavaScript logo" src="../images/javascript.svg" />
+        <img alt="Markdown logo" src="../images/markdown.svg" />
+
+        <br />
+
+        <img alt="nodeJS logo" src="../images/nodejs.svg" />
+        <img alt="npm logo" src="../images/npm.svg" />
+
+        <br />
+
+        <img alt="Git logo" src="../images/git.svg" />
+      </figure>
+
+      <figure id="pride-ally">
+        <a href="https://queerintheworld.com/straight-ally-pride-flag/">
+          <img alt="Pride Ally Flag" src="../images/pride-progress.svg" />
+        </a>
+        <br />
+        <br />
+        <figcaption>Proud to be a Pride Ally</figcaption>
+      </figure>
+    </aside>
+  </div>
+
+  <div class="cicada"></div>
+
+  <script defer src="../js/highlighter.js"></script>
+  <script defer src="../js/slides.js"></script>

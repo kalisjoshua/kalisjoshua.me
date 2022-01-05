@@ -1,69 +1,69 @@
 // highlight "module"
 
 (function () {
-  const parts = [
+  const invert = (obj) => Object.entries(obj)
+    .reduce((acc, [key, val]) => ({...acc, [val]: key}), {})
+  const unwrap = (regex) => regex.toString().replace(/\\/g, "\\").slice(1, -1)
+  const rTokens = [
     [
-      /([\(\)\.,;])/g,
-      '<span class="hightlighter--punctuation">$1</span>',
+      ["comment", /\s*?\/\/\s*?.*/],
+      ["keyword", /\b(?:break|case|catch|continue|debugger|default|delete|do|else|finally|for|function|if|in|instanceof|new|return|switch|this|throw|try|typeof|var|void|while|with)\b/],
+      ["number", /(?=[\-+])(?:[\-+]?\d+(?:\.\d+)?)|(?:\b\d+(?:\.\d+)?)/],
+      ["object", /(?:^|\b)\w[\w\d]+(?=\.)/],
+      ["callable", /(?:^|\b)\w[\w\d]+(?=\s*?\()/],
+      // ["punctuation", /[\(\)\[\]\.,;]/], // for some reason ";" matches "&"?!
+      ["punctuation", /[\(\)\[\]\.,]/],
+      ["regex", /(?<=[\b\s\(])\/.+?\/(?=[\b\n\s\)])?/],
+      ["string", /(['"`])[^\1]+?\1/],
+      ["operator", /[-+=:\?!%<>\/\*]+/],
     ],
-    [
-      /(^|\s)(\s*\/\/[^$]*?)(?=\n|$)/g,
-      '$1<span class="hightlighter--comment">$2</span>',
-    ],
-    [
-      /(\/\*[.\D]*?\*\/)/g,
-      '<span class="hightlighter--comment">$1</span>',
-    ],
-    [
-      /('.*?')/gm,
-      '<span class="hightlighter--string">$1</span>',
-    ],
-    [
-      /\s+(\/.+\/)([\.\s;])/g,
-      '<span class="hightlighter--string">$1</span>$2',
-    ],
-    [
-      /((?=[\-+])(?:[\-+]?\d+(?:\.\d+)?)|(?:\b\d+(?:\.\d+)?))/gm,
-      '<span class="hightlighter--number">$1</span>',
-    ],
-    [
-      /\bnew\s+(\w+)/gm,
-      '<span class="hightlighter--keyword">new</span> <span class="hightlighter--init">$1</span>',
-    ],
-    [
-      /\breturn\b/gm,
-      '<span class="hightlighter--init">return</span>',
-    ],
-    [
-      /\b(break|case|catch|continue|debugger|default|delete|do|else|finally|for|function|if|in|instanceof|switch|this|throw|try|typeof|var|void|while|with)\b/gm,
-      '<span class="hightlighter--keyword">$1</span>',
-    ],
-  ]
+
+    (tokens) => tokens
+      .map(([key, regex], index) => [
+        key,
+        unwrap(regex)
+          .replace(/\d/g, (match) => `${parseInt(match) + index + 1}`),
+      ]),
+
+    (tokens) => tokens
+      .map(([name, regex]) => `(?<${name}>${regex})`)
+      .join("|"),
+
+    (pattern) => new RegExp(pattern, "g"),
+  ].reduce((acc, fn) => fn(acc))
 
   const style = document.createElement('style')
 
   style.textContent = `
     .hightlighter {
-      background: #123123;
-      color: #FFFFFF;
+      --operator: #E84A5F;
+      --callable: #FF847C;
+      --comment: #999999;
+      --keyword: #99B898;
+      --ink: #FECEA8;
+      --ink: #FFFFFF;
+      --value: #FECEA8;
+
+      background: var(--bg-dark);
+      color: var(--ink);
       line-height: 1.3em;
     }
 
-    .hightlighter > span {
+    .hightlighter > div {
       counter-increment: line-number;
       float: left;
       white-space: pre;
     }
 
-    .hightlighter > span:before {
-      border-right: 1px solid #FFFFFF;
-      color: #FFFFFF;
+    .hightlighter > div:before {
+      border-right: 1px solid var(--ink);
+      color: var(--ink);
       color: rgba(255, 255, 255, 0.3);
       content: counter(line-number);
       float: left;
       left: 0;
       margin-right: 1em;
-      padding: 0 4px;
+      padding-right: 1ex;
       position: relative;
       text-align: right;
       top: 0;
@@ -72,25 +72,35 @@
       -ms-user-select: none;
       -o-user-select: none;
       user-select: none;
-      width: 1.25em;
+      width: 2em;
     }
 
-    .hightlighter .hightlighter--comment {color: #999999;}
-    .hightlighter .hightlighter--init {color: #9cc54a;}
-    .hightlighter .hightlighter--keyword {color: #8cc9d5;}
-    .hightlighter .hightlighter--number {color: #fd971f;}
-    .hightlighter .hightlighter--punctuation {color: #999999;}
-    .hightlighter .hightlighter--string {color: #fd971f;}
+    .hightlighter .lum--callable {color: var(--callable);}
+    .hightlighter .lum--comment {color: var(--comment);}
+    .hightlighter .lum--keyword {color: var(--keyword);}
+    .hightlighter .lum--number {color: var(--value);}
+    .hightlighter .lum--operator {color: var(--keyword);}
+    .hightlighter .lum--object {color: var(--value);}
+    .hightlighter .lum--punctuation {color: var(--comment);}
+    .hightlighter .lum--regex {color: var(--keyword);}
+    .hightlighter .lum--string {color: var(--value);}
   `
 
   function highlight (node) {
     node.classList.add('hightlighter')
 
     node.innerHTML = node.innerHTML
-      .split(/\n/)
-      .map((line) => parts.reduce((acc, [regex, span]) => acc.replace(regex, span), line))
-      .map((line) => `<span>${line}</span>`)
-      .join('\n')
+      .trim()
+      .split("\n")
+      .map((line) => {
+        const result = line
+          .replace(rTokens, (match, ...rest) =>
+            `<span class="lum--${invert(rest.pop())[match]}">${match}</span>`
+          )
+
+        return `<div>${result}</div>`
+      })
+      .join("\n")
   }
 
   function init () {

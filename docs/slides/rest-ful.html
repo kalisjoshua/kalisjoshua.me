@@ -1,0 +1,533 @@
+<!doctype html />
+<html class="no-js" lang="en-US" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Joshua T Kalis</title>
+  <meta name="description" content="Personal website and resume for Joshua Kalis." />
+
+  <link href="../favicon.ico" rel="icon" />
+  <link href="../jk-logo.svg" rel="icon" type="image/svg+xml" />
+
+  <link href="../css/lib/normalize.css" rel="stylesheet" />
+  <link href="../css/lib/h5bp.css" rel="stylesheet" />
+
+  <link href="../css/kalisjoshua.css" rel="stylesheet" />
+
+<body>
+  <p class="sr-only"><a href="#main">Skip navigation</a></p>
+
+  <div class="layout">
+    <main class="main" id="main" role="main">
+      <header role="banner">
+        <h1><a href="../index.html">
+    Joshua T Kalis
+    <small>
+      <a href="https://medium.com/gender-inclusivit/why-i-put-pronouns-on-my-email-signature-and-linkedin-profile-and-you-should-too-d3dc942c8743" title="Why I put my pronouns on my email signature and you should too">
+        he/him/his</a></small></a></h1>
+
+      </header>
+
+      <h2 id="rest">REST</h2>
+<p>Relax. You can do it.</p>
+<hr>
+<h2 id="the-rest-you-know">The REST You Know</h2>
+<hr>
+<p>... is (probably) wrong.</p>
+<hr>
+<p><img src="http://fc00.deviantart.net/fs70/i/2012/042/f/a/gasp_base_by_yumi_and_zb-d4pfzjl.png" alt="Gasp"></p>
+<hr>
+<h2 id="but-thats-ok">But That&#39;s OK.</h2>
+<p>We&#39;re all in the same boat, so you&#39;re not alone.</p>
+<hr>
+<h2 id="ready-to-get-better">Ready to get better?</h2>
+<p>[Audience participation]</p>
+<hr>
+<h2 id="i-wont-do-that-again">I wont do that again.</h2>
+<p>Promise.</p>
+<hr>
+<h2 id="what-is-rest-and-why-do-i-care">What is REST and why do I care?</h2>
+<hr>
+<h3 id="agenda">Agenda</h3>
+<p>Here&#39;s what we are gonna cover.</p>
+<ul>
+<li>What is REST<ul>
+<li>Definition</li>
+<li>Clarification</li>
+</ul>
+</li>
+<li>Examples<ul>
+<li>A simple object collection</li>
+<li>Less-obvious event modeling</li>
+</ul>
+</li>
+<li>Why does anyone care?</li>
+</ul>
+<hr>
+<h3 id="what-rest-is-not">What REST is not?</h3>
+<ul>
+<li>Mapping DB tables to URIs</li>
+<li>URIs without file extensions<ul>
+<li>/index vs. /index.html</li>
+</ul>
+</li>
+<li>SEO-friendly URIs<ul>
+<li>/user-settings</li>
+<li>/User/Settings</li>
+</ul>
+</li>
+<li>Task-based URIs responding only to POST<ul>
+<li>/SaveUserData</li>
+<li>/GetUserData</li>
+<li>/UpdateUserData</li>
+<li>/DeleteUserData</li>
+</ul>
+</li>
+<li>Much more...</li>
+</ul>
+<hr>
+<h3 id="what-is-rest">What is REST?</h3>
+<ul>
+<li>An architectural style - a set of architectural constraints</li>
+<li><strong>REST</strong> - REpresentational State Transfer</li>
+<li>REST is not HTTP, but HTTP does exhibit REST</li>
+</ul>
+<blockquote>
+<p>&quot;The World Wide Web represents the largest implementation of a system conforming to the REST architectural style.&quot; ~ <a href="http://en.wikipedia.org/wiki/REST">wikipedia</a></p>
+</blockquote>
+<hr>
+<h3 id="architectural-constraints">Architectural Constraints</h3>
+<ol>
+<li>Client-Server</li>
+<li>Stateless</li>
+<li>Cache (cacheable)</li>
+<li>Uniform Interface    + Resources    + Representations    + Messages    + Hypermedia</li>
+<li>Layered System</li>
+<li>Code On-demand [optional]</li>
+</ol>
+<hr>
+<h2 id="congratulations">Congratulations</h2>
+<p>Do these things and you are RESTful.</p>
+<p><em>Missing any of them, however, means you are not.</em></p>
+<hr>
+<h2 id="unrestful">UnRESTful</h2>
+<p>Which is totally fine; just don&#39;t call it REST.</p>
+<hr>
+<h2 id="resources--representations">Resources + Representations</h2>
+<h3 id="-will-guide-you-towards-rest">... will guide you towards REST</h3>
+<p><em>My personal belief.</em></p>
+<hr>
+<h3 id="maturity-model">Maturity Model</h3>
+<p>The Richardson Maturity Model describes the three steps towards the glory of REST.</p>
+<pre><code>RESTful enlightenment
+(Level 3) Hypermedia Controls
+(Level 2) HTTP Verbs &amp; Status Codes
+(Level 1) Resources
+The swamp of POX - Plain &#39;ole XML
+</code></pre>
+<hr>
+<h3 id="some-basics---urls">Some Basics - URLs</h3>
+<pre><code>&lt;scheme&gt;://&lt;host&gt;:&lt;port&gt;/&lt;path&gt;?&lt;search&gt;#&lt;fragment&gt;
+</code></pre>
+<h4 id="breakdown">Breakdown</h4>
+<table>
+<thead>
+<tr>
+<th>URL piece</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>scheme</td>
+<td>http or [https, ftp, etc.]</td>
+</tr>
+<tr>
+<td>port</td>
+<td>80 (80 is default; assumed if nothing is provided)</td>
+</tr>
+<tr>
+<td>host</td>
+<td>example.com</td>
+</tr>
+<tr>
+<td>path</td>
+<td>/path-to/resource</td>
+</tr>
+<tr>
+<td>search</td>
+<td>?filter=active</td>
+</tr>
+<tr>
+<td>fragment</td>
+<td>#anchor - references an [id, name] in the page</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="uris">URIs</h3>
+<pre><code>&lt;scheme&gt;://&lt;host&gt;:&lt;port&gt;/&lt;path&gt;?&lt;search&gt;#&lt;fragment&gt;
+</code></pre>
+<ul>
+<li>The <code>path</code> should identify a resource<ul>
+<li>A collection of objects</li>
+<li>A single object with a unique identity</li>
+</ul>
+</li>
+<li>The <code>search</code> should filter or refine what is addressed by the <code>path</code><ul>
+<li>Filtering a list of object based on a criteria</li>
+<li>Returning only a subset of properties on a resource</li>
+</ul>
+</li>
+</ul>
+<p>RESTful HTTP APIs will be concerned with the <code>path</code> and <code>search</code> portions of the URI.</p>
+<hr>
+<h3 id="http-verbs">HTTP Verbs</h3>
+<ul>
+<li><strong>Idempotent</strong> - repeating a request will not continually change the system</li>
+<li><strong>Side-effects</strong> - changes will occur as a result of the request</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Verb</th>
+<th>Action</th>
+<th>Idempotent</th>
+<th>Side-effects</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST</td>
+<td>Create</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>Read</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>Update</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>Delete</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>OPTION*</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>HEAD*</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>PATCH*</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>* <em>Left as an exercise for the brave and over-achieving.</em></p>
+<hr>
+<h2 id="example-time">Example Time</h2>
+<hr>
+<h3 id="bad-examples">BAD Examples</h3>
+<ol>
+<li><code>/v3/json/GetUser/1234</code> or <code>/v3/GetUser/1234.json</code>    + Don&#39;t put the media type in the URI; put it in the request (accept) headers    + Don&#39;t add verbs to the resource; use the proper HTTP verb    + Pluralize the resource since it is a collection; &#39;Users&#39; not &#39;User&#39;</li>
+<li><code>/MyCollectionOfThings/789/InstanceOfObject/432/NameOfGrouping/Property</code>    + Don&#39;t filter properties in the URI; use a query to filter    + Don&#39;t nest the URIs to match the data modeling; move resources closest to root as possible</li>
+</ol>
+<p><em>The APIs that offer these endpoints are not RESTful.</em></p>
+<hr>
+<h2 id="you-want-to-design-a-good-api">You Want To Design A Good API?</h2>
+<hr>
+<h2 id="you-want-to-design-a-good-api-1">You Want To Design A Good API.</h2>
+<hr>
+<h3 id="do-these-things-first">Do These Things First</h3>
+<ol>
+<li>Evaluate business process*</li>
+<li>Identify objects (Resources) that need be represented in the API</li>
+<li>Define Verbs for each Resource</li>
+</ol>
+<p>* <em>We are not going to cover this here.</em></p>
+<hr>
+<h3 id="plan">Plan</h3>
+<p>A sample API plan for some pets.</p>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>POST</th>
+<th>GET</th>
+<th>PUT</th>
+<th>DELETE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>/cats</td>
+<td>Create a new cat resource</td>
+<td>Retrieve a list of all Cats</td>
+<td>Update the list of all Cats</td>
+<td>Empty the list of all Cats</td>
+</tr>
+<tr>
+<td>/cats/{id}</td>
+<td>error</td>
+<td>Retrieve Cat information</td>
+<td>Update info about a specific Cat</td>
+<td>Remove the Cat from the list of all Cats</td>
+</tr>
+<tr>
+<td>/dogs</td>
+<td>Create a new dog resource</td>
+<td>Retrieve a list of all Dogs</td>
+<td>Update the list of all Dogs</td>
+<td>Empty the list of all Dogs</td>
+</tr>
+<tr>
+<td>/dogs/{id}</td>
+<td>error</td>
+<td>Retrieve Dog information</td>
+<td>Update info about a specific Dog</td>
+<td>Remove the Dog from the list of all Dogs</td>
+</tr>
+<tr>
+<td>/pets</td>
+<td>error</td>
+<td>Retrieve a list of all Pets</td>
+<td>error</td>
+<td>Empty the list of all Pets</td>
+</tr>
+<tr>
+<td>/pets/{id}</td>
+<td>error</td>
+<td>Retrieve Pet information</td>
+<td>error</td>
+<td>Remove the Pet from the list of all Pets</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="best-practices">Best Practices</h3>
+<ul>
+<li>Use pluralized Resource endpoints<ul>
+<li>Dogs</li>
+<li>Cats</li>
+<li>Persons or People?</li>
+</ul>
+</li>
+<li>Use singular-ized nouns for namespaces</li>
+<li>Model Resources as close to root of the API as:<ul>
+<li>Possible</li>
+<li>Makes sense for the domain</li>
+</ul>
+</li>
+<li>Be <strong>consistent</strong> across all Resources</li>
+</ul>
+<hr>
+<h2 id="why-does-anyone-care">Why Does Anyone Care?</h2>
+<hr>
+<h3 id="library-helper---angularjs">Library (Helper) - <a href="https://docs.angularjs.org/api/ngResource/service/$resource">AngularJS</a></h3>
+<pre><code class="language-javascript">angular.module(&#39;app&#39;)
+  .service(&#39;API&#39;, function ($resource) {
+
+    return {
+        Dogs: $resoure(&#39;/dogs&#39;)
+      };
+  });
+
+angular.module(&#39;app&#39;)
+  .controller(&#39;MainCtrl&#39;, function (API) {
+    API.Dogs
+      .get(function (data) {
+        // Do something with data
+      });
+
+    API.Dogs
+      .save({
+        // New Dog representation saved to collection
+      });
+  });
+</code></pre>
+<hr>
+<h3 id="library---fermata">Library - <a href="https://github.com/natevw/fermata">Fermata</a></h3>
+<pre><code class="language-javascript">var api = fermata.json(&#39;http://example.com&#39;),
+    Dogs = api.dogs;
+
+Dogs.get(function (err, data) {
+  // data is a JavaScript object
+});
+
+Dogs.post({/* data */}, function (err, result) {
+  // report success or failure
+});
+</code></pre>
+<hr>
+<h3 id="good-reasons">Good Reasons</h3>
+<ul>
+<li>Be part of a community</li>
+<li>Help others; outside your immediate team<ul>
+<li>Learn from people using your API</li>
+</ul>
+</li>
+<li>Get help from others; outside your immediate team</li>
+<li>Benefit from the mistakes of other people; stand on the shoulders of giants</li>
+</ul>
+<hr>
+<h3 id="better-reasons">Better Reasons</h3>
+<ul>
+<li>Performance</li>
+<li>Scalability</li>
+<li>Simplicity</li>
+<li>Modifiability</li>
+<li>Visibility</li>
+<li>Portability</li>
+<li>Reliability</li>
+</ul>
+<p>All of the above are achievable with REST if employed correctly and consistently.</p>
+<hr>
+<h2 id="and-the-best-reason">And the best reason...</h2>
+<hr>
+<h2 id="look-like-a-genius">Look like a genius</h2>
+<hr>
+<h3 id="thank-you">Thank You</h3>
+<h4 id="joshua-t-kalis">Joshua T Kalis</h4>
+<ul>
+<li><a href="http://twitter.com/kalisjoshua">http://twitter.com/kalisjoshua</a></li>
+<li><a href="http://github.com/kalisjoshua">http://github.com/kalisjoshua</a></li>
+</ul>
+<hr>
+<h4 id="resources">Resources</h4>
+<ul>
+<li><a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm">http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Representational_state_transfer">http://en.wikipedia.org/wiki/Representational_state_transfer</a></li>
+<li><a href="http://blog.steveklabnik.com/posts/2011-07-03-nobody-understands-rest-or-http">http://blog.steveklabnik.com/posts/2011-07-03-nobody-understands-rest-or-http</a></li>
+<li><a href="http://nicksda.apotomo.de/2010/10/rails-misapprehensions-crud-is-not-rest">http://nicksda.apotomo.de/2010/10/rails-misapprehensions-crud-is-not-rest</a></li>
+<li><a href="http://kellabyte.com/2011/09/04/clarifying-rest/">http://kellabyte.com/2011/09/04/clarifying-rest/</a></li>
+</ul>
+
+
+    </main>
+
+    <aside role="banner">
+      <nav class="navigation" role="navigation">
+        <ul>
+    <li>
+      <a href="../index.html">Resume</a>
+    </li>
+  
+
+    <li>
+      <a href="../articles/index.html">Articles</a>
+    </li>
+  
+
+    <li class="active">
+      <a href="../slides/index.html">Slides</a>
+    </li>
+  
+
+    <li>
+      <a href="../recruiters.html">Notice to recruiters</a>
+    </li>
+  </ul>
+      </nav>
+
+      <footer role="contentinfo">
+        <h2 id="contact">Contact</h2>
+<ul>
+<li><a href="mailto:&#x6b;&#97;&#108;&#105;&#x73;&#x6a;&#x6f;&#x73;&#104;&#x75;&#x61;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;">&#x6b;&#97;&#108;&#105;&#x73;&#x6a;&#x6f;&#x73;&#104;&#x75;&#x61;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;</a></li>
+<li>github.com/<a href="https://github.com/kalisjoshua">kalisjoshua</a></li>
+<li>linkedin.com/in/<a href="https://linkedin.com/in/kalisjoshua">kalisjoshua</a></li>
+<li>twitter.com/<a href="https://twitter.com/kalisjoshua">kalisjoshua</a></li>
+</ul>
+
+      </footer>
+
+      <div class="projects">
+        <h2 id="projects">Projects</h2>
+<ul>
+<li><p><a href="https://github.com/kalisjoshua/kalisjoshua.me">kalisjoshua.me</a> -
+My personal website; this site.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/zaephyrus">Zaephyr.us</a> -
+An API for serving various side projects I build for fun.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/adventofcode/">My Advent of Code</a> -
+My solutions to some fun coding challenges. <a href="https://adventofcode.com/">Advent of Code</a>.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/factorio-recipes-worksheet">Recipes Worksheet</a> -
+A generic calculator application for some video games I play.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/lux-core">Lux</a> -
+Frontend application framework to build ReactJS components from API responses leveraging hypermedia.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/koans-js">KoanJS</a> -
+JavaScript koans to progressively learn JavaScript through TDD in the browser.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/Jasper">Jasper</a> -
+A series of JavaScript challenges run in the browser console.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/BrowserSlides">BrowserSlides</a> -
+Markdown-based slides library to generate presentation slide that display in a browser.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/adumbrate-ui">Adumbrate UI</a> -
+Brainstorming-like flexibility when identifying hierarchies of work milestones.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/hyaloid">Hyaloid</a> -
+A very simple, zero-dependency, text editor html component.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/AlexaSkill-ConversationTopics">Conversation Topics</a> -
+An Alexa skill that provides topics for conversation.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/jawa">Jawa</a> -
+Working with some legacy code I decided to wrap an API around a library file to provide advanced functionality to it.</p>
+</li>
+</ul>
+
+      </div>
+
+      <a href="../index.html" id="jk-logo">
+        <img src="../images/jk-logo-square.svg" title="Joshua Kalis' logo" />
+      </a>
+
+      <figure class="dev-icons" title="Common web technologies I use.">
+        <img alt="CSS3 logo" src="../images/css3.svg" />
+        <img alt="HTML5 logo" src="../images/html5.svg" />
+        <img alt="JavaScript logo" src="../images/javascript.svg" />
+        <img alt="Markdown logo" src="../images/markdown.svg" />
+
+        <br />
+
+        <img alt="nodeJS logo" src="../images/nodejs.svg" />
+        <img alt="npm logo" src="../images/npm.svg" />
+
+        <br />
+
+        <img alt="Git logo" src="../images/git.svg" />
+      </figure>
+
+      <figure id="pride-ally">
+        <a href="https://queerintheworld.com/straight-ally-pride-flag/">
+          <img alt="Pride Ally Flag" src="../images/pride-progress.svg" />
+        </a>
+        <br />
+        <br />
+        <figcaption>Proud to be a Pride Ally</figcaption>
+      </figure>
+    </aside>
+  </div>
+
+  <div class="cicada"></div>
+
+  <script defer src="../js/highlighter.js"></script>
+  <script defer src="../js/slides.js"></script>

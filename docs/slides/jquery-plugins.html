@@ -1,0 +1,496 @@
+<!doctype html />
+<html class="no-js" lang="en-US" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Joshua T Kalis</title>
+  <meta name="description" content="Personal website and resume for Joshua Kalis." />
+
+  <link href="../favicon.ico" rel="icon" />
+  <link href="../jk-logo.svg" rel="icon" type="image/svg+xml" />
+
+  <link href="../css/lib/normalize.css" rel="stylesheet" />
+  <link href="../css/lib/h5bp.css" rel="stylesheet" />
+
+  <link href="../css/kalisjoshua.css" rel="stylesheet" />
+
+<body>
+  <p class="sr-only"><a href="#main">Skip navigation</a></p>
+
+  <div class="layout">
+    <main class="main" id="main" role="main">
+      <header role="banner">
+        <h1><a href="../index.html">
+    Joshua T Kalis
+    <small>
+      <a href="https://medium.com/gender-inclusivit/why-i-put-pronouns-on-my-email-signature-and-linkedin-profile-and-you-should-too-d3dc942c8743" title="Why I put my pronouns on my email signature and you should too">
+        he/him/his</a></small></a></h1>
+
+      </header>
+
+      <h2 id="jquery-plugins">jQuery Plugins</h2>
+<p>Why, and How?</p>
+<hr>
+<h4 id="why">Why?</h4>
+<ul>
+<li>Portability</li>
+<li>Reusability</li>
+<li>Abstraction</li>
+<li>Name-spacing</li>
+<li>Security</li>
+<li>Support</li>
+</ul>
+<hr>
+<h4 id="portability">Portability</h4>
+<ul>
+<li>Include the same code in multiple projects</li>
+<li>Encapsulated code can be distributed to the community</li>
+</ul>
+<hr>
+<h4 id="reusability">Reusability</h4>
+<ul>
+<li>Apply the same functionality to many different objects</li>
+</ul>
+<pre><code class="language-javascript">$(&quot;div.special&quot;).someCoolPlugin();
+
+$(&quot;div.other&quot;).someCoolPlugin({different: &quot;options&quot;});
+
+$(&quot;div.react&quot;).someCoolPlugin(function () {
+  // wonderful event handler
+});
+</code></pre>
+<hr>
+<h4 id="abstraction">Abstraction</h4>
+<ul>
+<li>Don’t clutter up your implementation code with plugin logic</li>
+</ul>
+<pre><code class="language-javascript">$(document)
+  .ready(function ($) {
+    var options = {
+      background: &quot;#ABABAB&quot;,
+      color: &quot;#EFEFEF&quot;
+      // other options definitions
+    };
+
+    $(&quot;#specialObject&quot;)
+      .find(&quot;a&quot;)
+        .css({
+          background: options.background,
+          color: options.color
+          // other css definitions
+        })
+        .end()
+      .fadeIn(function () {
+        // custom callback code here
+      });
+});
+</code></pre>
+<hr>
+<h4 id="abstraction-1">Abstraction</h4>
+<ul>
+<li>Easier to look at and understand at a glance</li>
+</ul>
+<pre><code class="language-javascript">$(document)
+  .ready(function () {
+    $(&quot;#specialObject&quot;)
+      .customPlugin({
+        background: &quot;#ABABAB&quot;,
+        color: &quot;#EFEFEF&quot;
+      });
+  });
+</code></pre>
+<hr>
+<h4 id="name-spacing">Name-spacing</h4>
+<ul>
+<li>Global values are evil<ul>
+<li>Could be overwritten or</li>
+<li>Overwrite other variables</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-javascript">var usefulVariable = 0;
+
+var funStuff = function () {
+  // perfect feature implementation
+};
+
+function eventHandler (event) {
+  // respond to user interaction
+}
+</code></pre>
+<hr>
+<h4 id="name-spacing-1">Name-spacing</h4>
+<ul>
+<li>A better way<ul>
+<li>Still accessible to code</li>
+<li>Yet more protected</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-javascript">var myLib = {
+  usefulVariable: 0,
+
+  funStuff: function () {
+    // perfect feature implementation
+  },
+
+  eventHandler: function (event) {
+    // respond to user interaction
+  }
+};
+</code></pre>
+<hr>
+<h4 id="name-spacing-2">Name-spacing</h4>
+<ul>
+<li>Name-spacing with the object-literal notation makes everything public</li>
+</ul>
+<pre><code class="language-javascript">var myLib = {
+  usefulVariable: 0,
+
+  funStuff: function () {
+    // perfect feature implementation
+  },
+
+  eventHandler: function (event) {
+    // respond to user interaction
+  }
+};
+
+myLib.usefulVariable; // access value = 0
+myLib.funStuff(); // call the function
+
+myLib.eventHandler = function () {};
+// oops, now the eventHandler has been reassigned
+</code></pre>
+<hr>
+<h4 id="security">Security</h4>
+<ul>
+<li>You want private variables and methods?<ul>
+<li>We can do that using function scope...</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-javascript">var Wierdo = function (str) {
+  var hidden = &quot;blah&quot;;
+
+  this.func = function() {
+    return hidden + &quot; &quot; + str;
+  };
+};
+</code></pre>
+<hr>
+<h4 id="support">Support</h4>
+<ul>
+<li>Distributing plugins to the large user community has benefits</li>
+<li>Many eyes looking at the code will be a strong crowd-sourced debug team</li>
+<li>Public repositories<ul>
+<li>BitBucket (Mercurial)</li>
+<li>Github (Git)</li>
+<li>GoogleCode (Mercurial or SVN)</li>
+<li>etc.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="final-reasons">Final Reasons</h4>
+<ul>
+<li>It’s just plain easy to do</li>
+<li>And it can be a lot of fun</li>
+</ul>
+<hr>
+<h4 id="know-these">Know These</h4>
+<ul>
+<li>Scope and implied global variables</li>
+<li>IIFE (Immediately Invoking Function Expression)</li>
+<li>“Closure” (potentially the most important)</li>
+</ul>
+<hr>
+<h4 id="javascript-scope">JavaScript Scope</h4>
+<ul>
+<li>There is only function scope</li>
+<li>The var keyword assigns a variable’s scope to its executing function</li>
+<li>If scope is not assigned explicitly, it is implicitly made to be global</li>
+</ul>
+<pre><code class="language-javascript">var foo = &quot;&quot;;
+var scope = function () {
+  foo = &quot;bar&quot;;
+};
+
+console.log(&quot;foo =&quot;, foo); // value is &quot;&quot;
+scope();
+console.log(&quot;foo =&quot;, foo); // value is &quot;bar&quot;
+
+/* ** */
+
+var baz = &quot;&quot;;
+var scope = function () {
+  var baz = &quot;fiz&quot;;
+};
+
+console.log(&quot;baz =&quot;, baz); // value is &quot;&quot;
+scope();
+console.log(&quot;baz =&quot;, baz); // value is &quot;&quot;
+</code></pre>
+<hr>
+<h4 id="iife">IIFE</h4>
+<ul>
+<li>Immediately Invoking Function Expression</li>
+<li>Formerly called Self-execution-anonymous-function</li>
+<li>Sandbox some one-off logic in an anonymous function that will run only once</li>
+</ul>
+<pre><code class="language-javascript">foo = function () {
+  // cool things happen in here
+};
+
+foo(); // execute the function
+</code></pre>
+<hr>
+<h4 id="iife-1">IIFE</h4>
+<ul>
+<li>Like algebraic variables, substitution applies here</li>
+</ul>
+<pre><code class="language-javascript">// step 1
+foo = (function () {}); // define the function object
+
+// step 2
+foo(); // execute the function object
+
+// step 3
+(function () {})(); // execute a function without naming it
+</code></pre>
+<hr>
+<h4 id="closures">Closures</h4>
+<ul>
+<li>Definition: objects and functions have access to the scope in which they were created</li>
+<li>Any variables in-scope when an object or function is created are available when that object or function is invoked</li>
+</ul>
+<pre><code class="language-javascript">var myAPI = (function (salt) {
+  var privateValue = 1.23;
+
+  return {
+    calc: function (input) {
+      return salt + input * privateValue;
+    }
+  }
+}(2.1));
+
+console.log(myAPI.calc(123.4)); // result is 153.882
+</code></pre>
+<hr>
+<h4 id="builder-functions">Builder Functions</h4>
+<pre><code class="language-javascript">var builder = function (privateValue) {
+  return function (input) {
+    return input * privateValue;
+  };
+}
+var doubler = builder(2);
+
+console.log(doubler(3)); // result is 6
+</code></pre>
+<hr>
+<h4 id="how">How?</h4>
+<ul>
+<li>Use of the IIFE structure<ul>
+<li>Localize reference to jQuery object passed in<ul>
+<li>Small performance boost, not having to traverse scope</li>
+</ul>
+</li>
+<li>Hide private variables and functions</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-javascript">(function ($) {
+  // define private members
+  var defaults = {
+    // css values
+    // numeric settings for: timeouts, effects, etc.
+  },
+  calc = function () {
+    // custom hidden calculations
+  };
+}(jQuery));
+</code></pre>
+<hr>
+<h4 id="jquery-plugin">jQuery Plugin</h4>
+<ul>
+<li>Assign the plugin function to the prototype object of jQuery<ul>
+<li>The “fn” property of jQuery is an alias to its prototype</li>
+<li>The “this” keyword refers to the jQuery collection of objects inside the plugin function</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-javascript">(function ($) {
+  // define private members ...
+
+  $.fn.pluginName = function () {
+    // inside here the &quot;this&quot; keyword refers to the
+    // jQuery collection of objects selected
+  };
+}(jQuery));
+</code></pre>
+<hr>
+<h4 id="put-it-together">Put it Together</h4>
+<ul>
+<li>Use the private stuff and augment with user input</li>
+<li>Maintaining chaining and the theory of jQuery</li>
+</ul>
+<pre><code class="language-javascript">(function ($) {
+  // define private members ...
+
+  $.fn.pluginName = function (options) {
+    options = $.extend({}, defaults, options);
+
+    // do cool stuff here for plugin...
+
+    return this; // do not break chaining
+  };
+}(jQuery));
+</code></pre>
+<hr>
+<h4 id="using-the-plugin">Using the Plugin</h4>
+<ul>
+<li>When properly done it will be useable by many object collections and within the chain</li>
+</ul>
+<pre><code class="language-javascript">$(function () {
+  // synonymous with $(document).ready(function ($) {});
+
+  $(&quot;a.specificClass&quot;)
+    .pluginName()
+    .click(function () {
+      // event handler
+    });
+
+  $(&quot;a.notherClass&quot;)
+    .hover(function () {
+      // while hovering
+    },
+    function () {
+      // after hovering
+    })
+    .pluginName()
+});
+</code></pre>
+<hr>
+<h2 id="winning">#Winning</h2>
+<p>... with jQuery</p>
+<hr>
+<h2 id="joshua-t-kalis">Joshua T Kalis</h2>
+<p>March 2011</p>
+
+
+    </main>
+
+    <aside role="banner">
+      <nav class="navigation" role="navigation">
+        <ul>
+    <li>
+      <a href="../index.html">Resume</a>
+    </li>
+  
+
+    <li>
+      <a href="../articles/index.html">Articles</a>
+    </li>
+  
+
+    <li class="active">
+      <a href="../slides/index.html">Slides</a>
+    </li>
+  
+
+    <li>
+      <a href="../recruiters.html">Notice to recruiters</a>
+    </li>
+  </ul>
+      </nav>
+
+      <footer role="contentinfo">
+        <h2 id="contact">Contact</h2>
+<ul>
+<li><a href="mailto:&#x6b;&#97;&#108;&#105;&#x73;&#x6a;&#x6f;&#x73;&#104;&#x75;&#x61;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;">&#x6b;&#97;&#108;&#105;&#x73;&#x6a;&#x6f;&#x73;&#104;&#x75;&#x61;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;</a></li>
+<li>github.com/<a href="https://github.com/kalisjoshua">kalisjoshua</a></li>
+<li>linkedin.com/in/<a href="https://linkedin.com/in/kalisjoshua">kalisjoshua</a></li>
+<li>twitter.com/<a href="https://twitter.com/kalisjoshua">kalisjoshua</a></li>
+</ul>
+
+      </footer>
+
+      <div class="projects">
+        <h2 id="projects">Projects</h2>
+<ul>
+<li><p><a href="https://github.com/kalisjoshua/kalisjoshua.me">kalisjoshua.me</a> -
+My personal website; this site.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/zaephyrus">Zaephyr.us</a> -
+An API for serving various side projects I build for fun.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/adventofcode/">My Advent of Code</a> -
+My solutions to some fun coding challenges. <a href="https://adventofcode.com/">Advent of Code</a>.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/factorio-recipes-worksheet">Recipes Worksheet</a> -
+A generic calculator application for some video games I play.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/lux-core">Lux</a> -
+Frontend application framework to build ReactJS components from API responses leveraging hypermedia.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/koans-js">KoanJS</a> -
+JavaScript koans to progressively learn JavaScript through TDD in the browser.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/Jasper">Jasper</a> -
+A series of JavaScript challenges run in the browser console.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/BrowserSlides">BrowserSlides</a> -
+Markdown-based slides library to generate presentation slide that display in a browser.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/adumbrate-ui">Adumbrate UI</a> -
+Brainstorming-like flexibility when identifying hierarchies of work milestones.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/hyaloid">Hyaloid</a> -
+A very simple, zero-dependency, text editor html component.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/AlexaSkill-ConversationTopics">Conversation Topics</a> -
+An Alexa skill that provides topics for conversation.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/jawa">Jawa</a> -
+Working with some legacy code I decided to wrap an API around a library file to provide advanced functionality to it.</p>
+</li>
+</ul>
+
+      </div>
+
+      <a href="../index.html" id="jk-logo">
+        <img src="../images/jk-logo-square.svg" title="Joshua Kalis' logo" />
+      </a>
+
+      <figure class="dev-icons" title="Common web technologies I use.">
+        <img alt="CSS3 logo" src="../images/css3.svg" />
+        <img alt="HTML5 logo" src="../images/html5.svg" />
+        <img alt="JavaScript logo" src="../images/javascript.svg" />
+        <img alt="Markdown logo" src="../images/markdown.svg" />
+
+        <br />
+
+        <img alt="nodeJS logo" src="../images/nodejs.svg" />
+        <img alt="npm logo" src="../images/npm.svg" />
+
+        <br />
+
+        <img alt="Git logo" src="../images/git.svg" />
+      </figure>
+
+      <figure id="pride-ally">
+        <a href="https://queerintheworld.com/straight-ally-pride-flag/">
+          <img alt="Pride Ally Flag" src="../images/pride-progress.svg" />
+        </a>
+        <br />
+        <br />
+        <figcaption>Proud to be a Pride Ally</figcaption>
+      </figure>
+    </aside>
+  </div>
+
+  <div class="cicada"></div>
+
+  <script defer src="../js/highlighter.js"></script>
+  <script defer src="../js/slides.js"></script>

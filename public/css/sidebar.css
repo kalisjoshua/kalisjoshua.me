@@ -1,0 +1,54 @@
+aside {
+  background: #18453b;
+  color: #e5e5e5;
+  grid-area: aside;
+  overflow: hidden;
+  padding: 2ex;
+}
+
+aside a {
+  color: inherit;
+}
+
+aside ul {
+  padding-left: 2ex;
+}
+
+.dev-icons {
+  background: #612e3f;
+  border: 8px solid gainsboro;
+  border-left: 0;
+  border-right: 0;
+  box-shadow:
+    inset 0 100px 100px 0px rgba(0, 0, 0, 0.2),
+    0 0 100px 10px rgba(0, 0, 0, 0.5);
+  box-sizing: unset;
+  margin: 0 -2ex;
+  padding: 4ex 2ex;
+  text-align: center;
+}
+
+.dev-icons img {
+  background: white;
+  border-radius: 5px;
+  box-sizing: unset;
+  height: 30px;
+  margin: 5px;
+  padding: 6px;
+}
+
+#jk-logo {
+  display: table !important;
+  margin: 10ex auto;
+}
+
+#jk-logo img {
+  background: white;
+  height: 150px;
+  padding: 6px;
+}
+
+#pride-ally {
+  margin-top: 8ex;
+  text-align: center;
+}

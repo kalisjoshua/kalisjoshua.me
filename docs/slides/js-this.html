@@ -1,0 +1,403 @@
+<!doctype html />
+<html class="no-js" lang="en-US" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Joshua T Kalis</title>
+  <meta name="description" content="Personal website and resume for Joshua Kalis." />
+
+  <link href="../favicon.ico" rel="icon" />
+  <link href="../jk-logo.svg" rel="icon" type="image/svg+xml" />
+
+  <link href="../css/lib/normalize.css" rel="stylesheet" />
+  <link href="../css/lib/h5bp.css" rel="stylesheet" />
+
+  <link href="../css/kalisjoshua.css" rel="stylesheet" />
+
+<body>
+  <p class="sr-only"><a href="#main">Skip navigation</a></p>
+
+  <div class="layout">
+    <main class="main" id="main" role="main">
+      <header role="banner">
+        <h1><a href="../index.html">
+    Joshua T Kalis
+    <small>
+      <a href="https://medium.com/gender-inclusivit/why-i-put-pronouns-on-my-email-signature-and-linkedin-profile-and-you-should-too-d3dc942c8743" title="Why I put my pronouns on my email signature and you should too">
+        he/him/his</a></small></a></h1>
+
+      </header>
+
+      <h2 id="what-is-this">What Is <code>this</code>?</h2>
+<hr>
+<h2 id="lets-talk-about-this">Let&#39;s talk about <code>this</code>.</h2>
+<hr>
+<h2 id="warning-there-might-be-a-few-bad-puns">Warning, there might be a few bad puns.</h2>
+<p>Hopefully, <code>this</code> will not be too much of a problem.</p>
+<hr>
+<h3 id="terminology">Terminology</h3>
+<p><strong>Context</strong></p>
+<p>With regard to JavaScript, the &#39;context&#39; of a function is the value of the <code>this</code> keyword within a function body.</p>
+<p><strong>Function vs. Method*</strong></p>
+<p>A <em>function</em> is something created in a scope that is not attached to an object, whereas a <em>method</em> is a function that is a member of an object.</p>
+<p>* <em>This is my terminology for the purposes of this talk and when I am trying to speak about the difference between the two concepts. It is my attempt to be more clear about what I am talking about.</em></p>
+<hr>
+<h3 id="the-goal">The Goal</h3>
+<h4 id="understand-function-context-in-javascript">Understand function context in JavaScript</h4>
+<p>You should be able to, with good confidence, reason about what the value of the <code>this</code> keyword is going to be, in a function during its&#39; execution.</p>
+<hr>
+<h3 id="first-rule-of-thumb">First Rule Of Thumb</h3>
+<p>The context of function execution is the object that called the function; if no scope is explicitly set, assume &#39;global&#39;.</p>
+<hr>
+<h3 id="simple-global-scope-execution">Simple Global Scope Execution</h3>
+<pre><code class="language-javascript">function testScope() {
+  console.log(this);
+}
+
+// the context of this function
+// execution is the global object
+testScope();
+</code></pre>
+<hr>
+<h3 id="object-methods">Object Methods</h3>
+<pre><code class="language-javascript">var myObj = {
+  method: function () {
+    console.log(this);
+  }
+};
+
+// the context of this method
+// execution is the `myObj` object
+myObj.method();
+</code></pre>
+<hr>
+<h3 id="with-classes">With &#39;Classes&#39;</h3>
+<pre><code class="language-javascript">function OurObject() {
+  this.method = function () {
+    console.log(this);
+  };
+}
+
+// using &#39;new&#39; below changes the context
+// the function executes in so that it
+// can be use for object creation
+var myObj = new OurObject();
+
+// the context of this method
+// execution is an empty object
+myObj.method();
+</code></pre>
+<hr>
+<h3 id="now-with-prototypes">Now, With Prototypes</h3>
+<pre><code class="language-javascript">function OurObject() {}
+
+OurObject.prototype.method = function () {
+  console.log(this);
+};
+
+// using &#39;new&#39; below changes the context
+// the function executes in so that it
+// can be use for object creation
+var myObj = new OurObject();
+
+// the context of this method
+// execution is an empty object
+myObj.method();
+</code></pre>
+<hr>
+<h2 id="thats-great">That&#39;s Great</h2>
+<h3 id="but-what-about-modifying-context-after-function-definition">But what about modifying context after function definition?</h3>
+<hr>
+<h3 id="business-requirement">Business Requirement</h3>
+<p>Create a function that can accept any number of arguments and will return true if the number 9 was passed in and false otherwise.</p>
+<pre><code class="language-javascript">includesNumber9();        // false
+includesNumber9(1);       // false
+includesNumber9(2, 3);    // false
+includesNumber9(9);       // true
+includesNumber9(7, 8, 9); // true
+includesNumber9(19);      // false
+</code></pre>
+<hr>
+<h3 id="iterating-arguments">Iterating Arguments</h3>
+<pre><code class="language-javascript">function includesNumber9() {
+  var counter = 0,
+      length = arguments.length
+      found = false;
+
+  while (!found &amp;&amp; counter &lt; length) {
+    if (arguments[counter] === 9) {
+      found = true;
+    }
+
+    counter += 1;
+  }
+
+  return found;
+}
+
+console.log(includesNumber9(1, 2, 3, 4, 9));
+</code></pre>
+<hr>
+<h2 id="is-there-a-better-way">Is there a better way?</h2>
+<h3 id="possibly-with-less-code">Possibly with less code.</h3>
+<hr>
+<h3 id="using-arrays-indexof">Using Array&#39;s <code>indexOf</code></h3>
+<p>Noticing that the arguments object is very similar to an array we could make the computer do our work for us.</p>
+<pre><code class="language-javascript">function includesNumber9() {
+
+  // &#39;TypeError: undefined is not a function&#39;
+  // the &#39;arguments&#39; object is not an array; it&#39;s
+  // an object and doesn&#39;t have an indexOf method
+  return -1 !== arguments.indexOf(9);
+}
+
+console.log(includesNumber9(1, 2, 3, 4, 9));
+</code></pre>
+<hr>
+<h2 id="function-methods">Function Methods</h2>
+<h3 id="change-function-execution-context">Change function execution context</h3>
+<hr>
+<h2 id="bend-javascript-to-your-will">Bend JavaScript to your will</h2>
+<hr>
+<h3 id="the-abcs-of-context-manipulation">The ABCs of Context Manipulation</h3>
+<p><code>Function.prototype</code> methods allow you to take control - to some extent - what context an function/method executes with.</p>
+<ul>
+<li><code>apply</code></li>
+<li><code>bind</code></li>
+<li><code>call</code></li>
+</ul>
+<hr>
+<h3 id="functionprototypeapply"><code>Function.prototype.apply</code></h3>
+<blockquote>
+<p>&quot;The apply() method calls a function with a given this value and arguments provided as an array (or an array-like object).&quot; ~ <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">MDN</a></p>
+</blockquote>
+<pre><code class="language-javascript">function testFn() {
+  console.log(this);
+}
+
+testFn();               // logs global object
+testFn.apply(9);        // logs Number object
+testFn.apply(&#39;Hello&#39;);  // logs String object
+</code></pre>
+<p><em>For now, we will ignore the additional argument that <code>apply</code> accpets.</em></p>
+<hr>
+<h3 id="functionprototypecall"><code>Function.prototype.call</code></h3>
+<blockquote>
+<p>&quot;The call() method calls a function with a given this value and arguments provided individually.&quot; ~ <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call">MDN</a></p>
+</blockquote>
+<pre><code class="language-javascript">function testFn() {
+  console.log(this);
+}
+
+testFn();               // logs global object
+testFn.call(9);         // logs Number object
+testFn.call(&#39;Hello&#39;);   // logs String object
+</code></pre>
+<p><em>For now, we will ignore the additional arguments that <code>call</code> accpets.</em></p>
+<hr>
+<h2 id="over-simplification">Over-simplification</h2>
+<p>Ignoring argument(s) after the first, <code>apply</code> and <code>call</code> are identical.</p>
+<p>They invoke a function/method.</p>
+<hr>
+<h3 id="functionprototypebind"><code>Function.prototype.bind</code></h3>
+<blockquote>
+<p>&quot;The bind() method creates a new function that, when called, has its this keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.&quot; ~ <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">MDN</a></p>
+</blockquote>
+<pre><code class="language-javascript">function testFn() {
+  console.log(this);
+}
+
+var bound9 = testFn.bind(9);
+var boundHello = testFn.bind(&#39;Hello&#39;);
+
+testFn();             // global object
+bound9(9);            // Number object
+boundHello(&#39;Hello&#39;);  // String object
+</code></pre>
+<p><em>For now, we will ignore the additional arguments that <code>bind</code> accpets.</em></p>
+<hr>
+<h2 id="when-would-any-of-these-be-needed">When would any of these be needed?</h2>
+<hr>
+<h3 id="array-methods-on-arguments">Array Methods On <code>arguments</code></h3>
+<pre><code class="language-javascript">function includesNumber9() {
+  var args;
+
+  args = Array.prototype
+    .slice
+    .call(arguments, 0);
+
+  return -1 !== args.indexOf(9);
+}
+
+console.log(includesNumber9(8, 9)); // true
+console.log(includesNumber9(4, 5)); // false
+</code></pre>
+<hr>
+<h3 id="array-methods-on-arguments-continued">Array Methods On <code>arguments</code> (continued)</h3>
+<pre><code class="language-javascript">function includesNumber9() {
+
+  return -1 !== [].indexOf.call(arguments, 9);
+}
+
+console.log(includesNumber9(8, 9)); // true
+console.log(includesNumber9(4, 5)); // false
+</code></pre>
+<ul>
+<li>Compare with <a href="#iterating-arguments">Iterating Arguments</a></li>
+<li>Performance concerns</li>
+</ul>
+<hr>
+<h3 id="gauranteed-context">Gauranteed Context</h3>
+<pre><code class="language-javascript">var customObj,
+    url = &#39;awesome/url&#39;;
+
+customObj = {
+  statement: &#39;Yay!&#39;
+};
+
+function callback() {
+  console.log(this.statement);
+}
+
+mythicalAjax(url, callback); // undefined
+mythicalAjax(url, callback.bind(customObj)); // &#39;Yay!&#39;;
+</code></pre>
+<ul>
+<li>[Imagine] <code>callback</code> does not have scope access to <code>customObj</code></li>
+<li>But the call-location of mythicalAjax has scope access to both</li>
+</ul>
+<hr>
+<h3 id="once-bound">Once Bound</h3>
+<p>Be careful however. Once a function has context bound using bind that context is forever.</p>
+<pre><code class="language-javascript">var bound;
+
+function Foo() {
+  console.log(this);
+}
+
+bound = Foo.bind(&#39;Bar&#39;);
+
+bound.call(&#39;Foo&#39;); // &#39;Bar&#39;
+</code></pre>
+<hr>
+<h2 id="was-this-goodhelpful">Was <code>this</code> Good/Helpful?</h2>
+<hr>
+<h2 id="any-questions-about-this">Any Questions About <code>this</code>?</h2>
+
+
+    </main>
+
+    <aside role="banner">
+      <nav class="navigation" role="navigation">
+        <ul>
+    <li>
+      <a href="../index.html">Resume</a>
+    </li>
+  
+
+    <li>
+      <a href="../articles/index.html">Articles</a>
+    </li>
+  
+
+    <li class="active">
+      <a href="../slides/index.html">Slides</a>
+    </li>
+  
+
+    <li>
+      <a href="../recruiters.html">Notice to recruiters</a>
+    </li>
+  </ul>
+      </nav>
+
+      <footer role="contentinfo">
+        <h2 id="contact">Contact</h2>
+<ul>
+<li><a href="mailto:&#x6b;&#97;&#108;&#105;&#x73;&#x6a;&#x6f;&#x73;&#104;&#x75;&#x61;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;">&#x6b;&#97;&#108;&#105;&#x73;&#x6a;&#x6f;&#x73;&#104;&#x75;&#x61;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;</a></li>
+<li>github.com/<a href="https://github.com/kalisjoshua">kalisjoshua</a></li>
+<li>linkedin.com/in/<a href="https://linkedin.com/in/kalisjoshua">kalisjoshua</a></li>
+<li>twitter.com/<a href="https://twitter.com/kalisjoshua">kalisjoshua</a></li>
+</ul>
+
+      </footer>
+
+      <div class="projects">
+        <h2 id="projects">Projects</h2>
+<ul>
+<li><p><a href="https://github.com/kalisjoshua/kalisjoshua.me">kalisjoshua.me</a> -
+My personal website; this site.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/zaephyrus">Zaephyr.us</a> -
+An API for serving various side projects I build for fun.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/adventofcode/">My Advent of Code</a> -
+My solutions to some fun coding challenges. <a href="https://adventofcode.com/">Advent of Code</a>.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/factorio-recipes-worksheet">Recipes Worksheet</a> -
+A generic calculator application for some video games I play.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/lux-core">Lux</a> -
+Frontend application framework to build ReactJS components from API responses leveraging hypermedia.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/koans-js">KoanJS</a> -
+JavaScript koans to progressively learn JavaScript through TDD in the browser.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/Jasper">Jasper</a> -
+A series of JavaScript challenges run in the browser console.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/BrowserSlides">BrowserSlides</a> -
+Markdown-based slides library to generate presentation slide that display in a browser.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/adumbrate-ui">Adumbrate UI</a> -
+Brainstorming-like flexibility when identifying hierarchies of work milestones.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/hyaloid">Hyaloid</a> -
+A very simple, zero-dependency, text editor html component.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/AlexaSkill-ConversationTopics">Conversation Topics</a> -
+An Alexa skill that provides topics for conversation.</p>
+</li>
+<li><p><a href="https://github.com/kalisjoshua/jawa">Jawa</a> -
+Working with some legacy code I decided to wrap an API around a library file to provide advanced functionality to it.</p>
+</li>
+</ul>
+
+      </div>
+
+      <a href="../index.html" id="jk-logo">
+        <img src="../images/jk-logo-square.svg" title="Joshua Kalis' logo" />
+      </a>
+
+      <figure class="dev-icons" title="Common web technologies I use.">
+        <img alt="CSS3 logo" src="../images/css3.svg" />
+        <img alt="HTML5 logo" src="../images/html5.svg" />
+        <img alt="JavaScript logo" src="../images/javascript.svg" />
+        <img alt="Markdown logo" src="../images/markdown.svg" />
+
+        <br />
+
+        <img alt="nodeJS logo" src="../images/nodejs.svg" />
+        <img alt="npm logo" src="../images/npm.svg" />
+
+        <br />
+
+        <img alt="Git logo" src="../images/git.svg" />
+      </figure>
+
+      <figure id="pride-ally">
+        <a href="https://queerintheworld.com/straight-ally-pride-flag/">
+          <img alt="Pride Ally Flag" src="../images/pride-progress.svg" />
+        </a>
+        <br />
+        <br />
+        <figcaption>Proud to be a Pride Ally</figcaption>
+      </figure>
+    </aside>
+  </div>
+
+  <div class="cicada"></div>
+
+  <script defer src="../js/highlighter.js"></script>
+  <script defer src="../js/slides.js"></script>
