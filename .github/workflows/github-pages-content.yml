@@ -1,0 +1,16 @@
+name: github-pages-content
+on: [push]
+jobs:
+  auto-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm ci
+      - run: npm run build
+      - run: git config user.email "spacely@sprockets.com"
+      - run: git config user.name "Spacely Sprockets"
+      - run: git commit -am "auto build using github actions workflow"
+      - run: git push
