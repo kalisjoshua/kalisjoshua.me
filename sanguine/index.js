@@ -37,12 +37,12 @@ const siteMap = [
     publish: () => publishSection('slides', md.slides),
     text: 'Slides',
   },
-  {
-    cssActive: /^recruiters/,
-    href: 'recruiters.html',
-    publish: () => publishPage('recruiters.html', marked(md.recruiters)),
-    text: 'Notice to recruiters',
-  },
+  // {
+  //   cssActive: /^recruiters/,
+  //   href: 'recruiters.html',
+  //   publish: () => publishPage('recruiters.html', marked(md.recruiters)),
+  //   text: 'Notice to recruiters',
+  // },
 ]
 
 function addPronouns (name) {
@@ -79,6 +79,9 @@ function publishSection (label, markdown) {
   const pages = Reflect.ownKeys(markdown)
     .reduce((acc, name) => {
       const content = markdown[name]
+
+      if (/draft/i.test(content)) return acc
+
       const [date] = pull(content, /### ([^\n]+)/)
       const [intro] = pull(content, /\n(?!#+|(?:\s*[-*+]|\d+\.\s*)[^\n]+)(.+)/)
       const [title] = pull(content, /## ([^\n]+)/)
