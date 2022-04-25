@@ -1,25 +1,24 @@
 .resume {
-  --indent: 10ex;
+  --indent: 4ex;
 }
 
-.resume > :not(h3, h4, h5, h6) {
+.resume > ul {
   margin-left: var(--indent);
 }
 
-.resume h3 {
+.main .resume h3 {
   border-top: 1px solid #444;
+  margin-bottom: 2ex;
   padding-top: 1ex;
 }
 
 .resume h4 {
-  display: flex;
+  float: left;
 }
 
-.resume h4 strong {
-  flex: 0 0 auto;
-  font-weight: normal;
-  overflow: hidden;
-  width: var(--indent);
+.resume h4 + p {
+  margin-top: 0;
+  text-align: right;
 }
 
 .resume ol,
