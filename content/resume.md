@@ -4,15 +4,16 @@
 
 ### Rocket Mortgage / Quicken Loans
 
-#### Engineering Manager <!-- Team Leader, Engineering (SRE) -->
+#### Team Leader, Engineering
 Mar 2018 - Dec 2021
 
-I help people achieve their professional goals and be their best self through clear and consistent communication. I led an excellent team of talented software and systems engineers building: infrastructure, RESTful APIs, apps, and application templates for our team members and applications to use. We are leveraging the latest tools and services available within AWS and the industry.
+I help people achieve their professional goals and be their best self through clear and consistent communication. I led an excellent team of talented software and systems engineers building: infrastructure, RESTful APIs, apps, and application templates for our team members and applications to use. We leveraged the latest tools and services available within AWS and the industry.
 
   * Defined expectations of SREs and established an SRE community of practice
   * Empowered the multi-region migration of Rocket Mortgage
   * Championed work on automated observability testing for all systems; preliminary work to full chaos engineering
-  * Lead team, defining SLAs and SLOs for applications and automating their monitoring; eventually to limit deployments based on meeting those
+  * Evangelized the need for adopting SRE best practices around SLAs and SLOs
+  * Defined OKRs for the team and helped coach other leaders to produce their own OKRs for their teams
 
 #### Solutions Architect
 Nov 2015 - Mar 2018
