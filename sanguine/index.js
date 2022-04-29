@@ -149,7 +149,7 @@ function visitor (acc, segment) {
   return acc
 }
 
-fs.rmSync(output(), {recursive: true})
+fs.rmdirSync(output(), {recursive: true})
 fs.mkdirSync(output())
 
 siteMap
