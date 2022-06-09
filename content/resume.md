@@ -4,33 +4,32 @@
 
 ### Rocket Mortgage / Quicken Loans
 
-#### Team Leader, Engineering
+#### Engineering Manager
 Mar 2018 - Dec 2021
 
-I help people achieve their professional goals and be their best self through clear and consistent communication. I led an excellent team of talented software and systems engineers building: infrastructure, RESTful APIs, apps, and application templates for our team members and applications to use. We leveraged the latest tools and services available within AWS and the industry.
-
-  * Defined expectations of SREs and established an SRE community of practice
-  * Empowered the multi-region migration of Rocket Mortgage
-  * Championed work on automated observability testing for all systems; preliminary work to full chaos engineering
-  * Evangelized the need for adopting SRE best practices around SLAs and SLOs
-  * Defined OKRs for the team and helped coach other leaders to produce their own OKRs for their teams
+  * Organized expectations of Site Reliability Engineering (SRE) in a widely adopted Manifesto
+  * Built and systematized a Community of Practice for SRE
+  * Drove the adoption of SRE best practices around Service Level Agreements (SLA) and Service Level Objectives (SLO)
+  * Propelled an initiative fully realizing Rocket Mortgage as a multi-region application
+  * Championed work on automated observability testing for all systems; preliminary work for chaos engineering
+  * Defined Objectives and Key Results (OKRs) for the team and helped coach other leaders in producing their OKRs
 
 #### Solutions Architect
 Nov 2015 - Mar 2018
 
-I worked with many teams on RESTful integration patterns between HTTP APIs; initially focusing on Mulesoft API gateway implementations. I also worked with teams on planning and building out cloud architectures in Amazon Web Services (AWS); heavily leveraging services such as: API Gateway, Lambda, Fargate, DynamoDB, Aurora (MySQL), and others.
-
-  * Mentored/taught RESTful practices and accepted, or common, integration patterns
-  * Defined integration layer requirements for API documentation
+  * Worked with many teams on API design and Hypermedia in RESTful integration patterns
+  * Accelerated adoption of, and defined enterprise standards for using, AWS
+  * Guided data-driven selection of vendor products for enterprise integration layer
+  * Consolidated knowledge of API-first design processes and evangelized tools
+  * Facilitated learning sessions for teams working through migrations from SOAP to REST
 
 #### Sr. Software Engineer
 Apr 2012 - Nov 2015
 
-I have had the honor to work on, and influence direction in, most public-facing, and some internal, websites at Quicken Loans. I consult with many teams within Quicken Loans on topics such as: AngularJS, Hypermedia, JavaScript frameworks and toolsets, REST, single-page applications, and software engineering best practices.
-
-  * Created first deployable solutions for what would become Rocket Mortgage
-  * Defined a DSL for pricing calculation adjustments
-  * Modernized user analytics tracking
+  * Influenced the direction of web applications development
+  * Developed - in partnership with enterprise stakeholders - initial versions of Rocket Mortgage user experience and technical implementation
+  * Proposed, presented, and developed an innovative solution for mortgage pricing calculation rules helping to improve user experience and execution performance using a Domain Specific Language (DSL)
+  * Consulted with many teams on topics such as web accessibility, JavaScript frameworks and toolsets, and software engineering best practices
 
 
 ### Centurion Medical Products
@@ -38,47 +37,33 @@ I have had the honor to work on, and influence direction in, most public-facing,
 #### Senior UI Engineer
 Sep 2010 - Apr 2012
 
-  * Environment: CSS, Git, HTML5, JavaScript, jQuery
-  * Developed Umbraco CMS solution to replace existing corporate website(s)
-  * Migrated projects from Microsoft TFS 2010 to Git for more flexible version control
-  * Designed new overall look and feel for all internal web-applications
-  * Established static content server for CSS, images, and JavaScript for internal applications
-  * Teaching myself: Objective-C, HTML5 canvas, local storage
+  * Collaborated with leaders from Marketing and Technology to produce a new corporate website
+  * Migrated source control from Microsoft TFS 2010 to Git
 
 
 ### Academic Information Systems - Michigan State University
 
-#### Information Technologist
+#### Lead UI/UX Engineer
 Sep 2008 - Jun 2010
 
-  * Environment: ASP (classic), CSS, CVSNT, HTML 4/5, Java, JavaScript, SQL Server 2005
-  * Supervised user experience design for Java development team
-  * Adopted Agile development methodologies
-  * Developed dynamic data entry user interface
-  * Coauthor of browser stack standards and guidelines
+  * Agile coach and mentor
+  * Evangelized browser-stack standards, guidelines, and best practices
+  * Modernized technology for version control and CI/CD
+  * Supervised user experience design of student login
 
 
 ### International Business Center - Michigan State University
 
-#### Information Technologist
+#### Graphic Designer and Lead UI/UX Engineer
 Apr 2003 - Sep 2008
 
-**Academy of International Business (http://aib.msu.edu)**
-
-  * Environment: AJAX, ASP (classic), CSS, JavaScript, SQL Server 2005, XHTML, XML, XSLT
-  * Built event scheduling application for annual international conference
-  * Developed book review system
-  * Designed collateral, following U.S. Postal guidelines
-  * Revamped advertisement campaign
-
-**globalEDGE.msu.edu (http://globaledge.msu.edu)**
-
-  * Environment: AJAX, ASP (classic), CSS, JavaScript, SQL Server 2005, XHTML
-  * Normalized multiple public databases into a single data warehouse
-  * Wrote JavaScript form validation library
-  * Implemented home-grown content management system (CMS)
-  * Designed flexible non-destructive relational database for home-grown CMS
-  * Created projects management system and bug tracker
+  * Academy of International Business (http://aib.msu.edu)
+      - Streamlined international conference event scheduling
+      - Spearheaded academic publishing book review system
+  * globalEDGE (http://globaledge.msu.edu)
+      - Cultivated a simple UI for multiple international time-series datasets
+      - Optimized a custom content management system (CMS) for student contributors
+      - Implemented a projects management system and bug tracker for department projects
 
 </div>
 

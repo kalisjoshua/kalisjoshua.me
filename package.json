@@ -7,18 +7,18 @@
   },
   "name": "kalisjoshua.me",
   "description": "Personal website and resume for Joshua Kalis.",
-  "version": "9.9.0",
+  "version": "10.0.0",
   "homepage": "https://kalisjoshua.me",
   "repository": {
     "type": "git",
     "url": "git@github.com:kalisjoshua/kalisjoshua.me.git"
   },
-  "dependencies": {},
   "engines": {
     "node": ">=14.3.x"
   },
   "devDependencies": {
     "handlebars": "^4.7.7",
+    "http-server": "^14.1.1",
     "marked": "^2.1.3",
     "npm-watch": "^0.7.0"
   },
@@ -26,6 +26,7 @@
     "build": "npm run pages && npm run static",
     "postbuild": "echo kalisjoshua.me > ./docs/CNAME",
     "pages": "node ./sanguine",
+    "start": "http-server ./docs/",
     "static": "cp -r ./public/* ./docs",
     "tag": "git tag v$npm_package_version && git push --tags",
     "watch": "npm-watch"

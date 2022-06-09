@@ -35,6 +35,10 @@
   margin-left: 3ex;
 }
 
+#resume__non-tech {
+  display: none;
+}
+
 #resume__non-tech summary {
   cursor: pointer;
   list-style: none;
