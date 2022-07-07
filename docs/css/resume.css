@@ -1,38 +1,32 @@
-.resume {
-  --indent: 4ex;
+.section-resume .main h2 {
+  border-bottom: 1px solid;
 }
 
-.resume > ul {
-  margin-left: var(--indent);
-}
-
-.main .resume h3 {
-  border-top: 1px solid #444;
-  margin-bottom: 2ex;
-  padding-top: 1ex;
-}
-
-.resume h4 {
+.section-resume .main h3 {
   float: left;
 }
 
-.resume h4 + p {
-  margin-top: 0;
+.section-resume h3 + p {
   text-align: right;
 }
 
-.resume ol,
-.resume ul {
-  padding: 0ex;
+.section-resume h4 {
+  clear: left;
 }
 
-.resume > ol li,
-.resume > ul li {
-  margin-left: 0;
+.section-resume h4 {
+  float: left;
+  padding-right: 1ex;
 }
 
-.resume li li {
-  margin-left: 3ex;
+.section-resume h4 + p {
+  font-size: 95%;
+}
+.section-resume h4 + p:after {content: ")"}
+.section-resume h4 + p:before {content: "("}
+
+.section-resume h4 + *:not(p) {
+  clear: both;
 }
 
 #resume__non-tech {

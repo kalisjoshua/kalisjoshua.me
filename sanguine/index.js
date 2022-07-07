@@ -69,6 +69,7 @@ function publishPage (file, main, about) {
     main,
     navigation: `<ul>${siteMap.map(navLink).join('\n')}</ul>`,
     rel,
+    section: section(file),
   })
 
   fs.writeFileSync(output(file), html, 'utf-8')
@@ -115,6 +116,20 @@ function publishSection (label, markdown) {
       .forEach(({content, name}) => {
         publishPage(`${label}/${name}.html`, marked(content))
       })
+}
+
+function section (file) {
+  switch (true) {
+    case /^articles/.test(file):
+
+      return "article"
+    case /^slides/.test(file):
+
+      return "slides"
+    default:
+
+      return "resume"
+  }
 }
 
 function treeWalker (dir) {

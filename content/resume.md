@@ -1,94 +1,108 @@
-## Employment History
+## Experience
 
-<div class="resume">
+<!--
+### Guaranteed Rate
+Dec 2021 - Present
+
+#### Engineering Manager
+
+  *
+
+-->
+
 
 ### Rocket Mortgage / Quicken Loans
+Apr 2012 - Dec 2021
 
 #### Engineering Manager
 Mar 2018 - Dec 2021
 
-  * Organized expectations of Site Reliability Engineering (SRE) in a widely adopted Manifesto
-  * Built and systematized a Community of Practice for SRE
-  * Drove the adoption of SRE best practices around Service Level Agreements (SLA) and Service Level Objectives (SLO)
-  * Propelled an initiative fully realizing Rocket Mortgage as a multi-region application
-  * Championed work on automated observability testing for all systems; preliminary work for chaos engineering
-  * Defined Objectives and Key Results (OKRs) for the team and helped coach other leaders in producing their OKRs
+I enjoy helping people. As a leader, I have had the opportunity to help more people and the responsibility to do so at a much more impactful level than I did as an individual contributor. I empower people to advance their careers technically and socially.
+
+I arranged an infrastructure rebuild in a new region as the first step toward a multi-region conclusion. I was instrumental in leveraging both good communication and strong collaboration across various technology teams.
+
+  * Maintained a healthy team environment achieving 97% team member retention, including our transition to 100% remote work as a result of a global pandemic
+  * Increased team gender and cultural diversity from 0% to 40% through strategic hiring and recruiting
+  * Mentored 10 team members in regular 1-on-1 sessions to a 50% promotion rate
+  * Organized expectations of Site Reliability Engineering (SRE) into a widely adopted Manifesto adopted by at least ~50 team members up to the CTO
+  * Drove adoption of SLIs to track an enterprise-wide SLA of 90% uptime
+  * Built partner integrations API for multiple third-party lead ingestion arrangements
+  * Deployed Kubernetes (K8s) infrastructure and migrated first 5 services as part of a plan to migrate dozens of services into the cluster
+  * Optimized AWS spend following Trusted Advisor suggestions: DB sizing, EC2 instances reservations, Lambda reserved concurrency, S3 storage selections, etc.
+  * Status Page
+
+RMA, RMO, PRO, Mobile
+
+I was responsible for the Site Reliability Engineers of all commercial client and partner facing digital storefronts, and third-party lead-buy integrations. Our clients were able to shop for, start, close, and manage the servicing of their mortgages on either the web or mobile apps as a result of the efforts of my team.
 
 #### Solutions Architect
 Nov 2015 - Mar 2018
 
-  * Worked with many teams on API design and Hypermedia in RESTful integration patterns
-  * Accelerated adoption of, and defined enterprise standards for using, AWS
-  * Guided data-driven selection of vendor products for enterprise integration layer
-  * Consolidated knowledge of API-first design processes and evangelized tools
-  * Facilitated learning sessions for teams working through migrations from SOAP to REST
+I expanded beyond my expertise in browser applications into REST and integration platforms. I took on a coaching role where my communication skills and ability to understand what technology solutions teams were trying to create allowed me to help them make smart decisions that would optimize their efforts and outcomes.
 
-#### Sr. Software Engineer
+  * Focused data-driven evaluation of multi-million dollar integration platform contracts
+  * Supported teams during more than 100 integration platform service migrations
+  * Automated API deployments, reducing review time by 90% and design time by 40%
+  * Quickly learned essential AWS services and guided their adoption during pivotal transformation
+  * Provided backup UI solution for Billion Dollar Bracket sweepstakes
+
+#### Senior Software Engineer
 Apr 2012 - Nov 2015
 
-  * Influenced the direction of web applications development
-  * Developed - in partnership with enterprise stakeholders - initial versions of Rocket Mortgage user experience and technical implementation
-  * Proposed, presented, and developed an innovative solution for mortgage pricing calculation rules helping to improve user experience and execution performance using a Domain Specific Language (DSL)
-  * Consulted with many teams on topics such as web accessibility, JavaScript frameworks and toolsets, and software engineering best practices
+I joined as one of the first software engineers to work on what would eventually become Rocket Mortgage. I also worked on some very high-profile projects before and after my time working on Rocket Mortgage as a software engineer.
+
+  * Originated $40B per year Rocket Mortgage client experience
+  * Improved rule execution performance for mortgage pricing calculation 10x or more
+  * Streamlined user experience efficiency when editing mortgage pricing rules by 70%
+  * Created client experience for HARP, bringing in $12M in the first year
 
 
 ### Centurion Medical Products
-
-#### Senior UI Engineer
 Sep 2010 - Apr 2012
 
-  * Collaborated with leaders from Marketing and Technology to produce a new corporate website
+#### Senior Software Engineer
+
+  * Cut $3M in spend during the development of a new corporate website
   * Migrated source control from Microsoft TFS 2010 to Git
 
 
-### Academic Information Systems - Michigan State University
-
-#### Lead UI/UX Engineer
+### Michigan State University - Academic Information Systems
 Sep 2008 - Jun 2010
 
-  * Agile coach and mentor
-  * Evangelized browser-stack standards, guidelines, and best practices
-  * Modernized technology for version control and CI/CD
-  * Supervised user experience design of student login
+#### Software Engineer
+
+  * Assisted coaching and mentoring in agile practices
+  * Defined and evangelized browser-stack standards, guidelines, and best practices
+  * Modernized technology choices for version control and CI/CD tooling
+  * Consolidated user experience design of student login
 
 
-### International Business Center - Michigan State University
-
-#### Graphic Designer and Lead UI/UX Engineer
+### Michigan State University - International Business Center
 Apr 2003 - Sep 2008
 
-  * Academy of International Business (http://aib.msu.edu)
-      - Streamlined international conference event scheduling
-      - Spearheaded academic publishing book review system
-  * globalEDGE (http://globaledge.msu.edu)
-      - Cultivated a simple UI for multiple international time-series datasets
-      - Optimized a custom content management system (CMS) for student contributors
-      - Implemented a projects management system and bug tracker for department projects
+#### Software Engineer
 
-</div>
+  * Developed interactive automated event scheduling utility
+  * Spearheaded academic publishing book review system
+  * Crafted a simple UI for multiple international time-series datasets
+  * Optimized a custom content management system (CMS) for student contributors
 
 
 ## Education
 
-<div class="resume">
-
 ### Michigan State University
-
-#### Telecommunication, Information Studies, and Media - BA
 May 2006
 
-  * Study Abroad: The Netherlands, Belgium, France, Italy, and Germany
-  * [Student Greenhouse Project](http://sgp.msu.edu/home/) website
+#### Telecommunication, Information Studies, and Media - BA
 
-</div>
+  * Study Abroad: The Netherlands, Belgium, France, Italy, and Germany
+  * Student Greenhouse Project website
 
 
 <details id="resume__non-tech">
   <summary>
     <h2 title="Click to expand section">Non-Information Technology</h2>
   </summary>
-
-  <div class="resume">
 
 ### Aquamen Landscaping, White Lake, MI
 
@@ -122,7 +136,7 @@ Mar 2002 - Apr 2003
 #### Machinist
 Jun 1999 - Jan 2002
 
-  * Streamlined production of multi-million dollar prototype manufacturing jobs
+  * Refined production of multi-million dollar prototype manufacturing jobs
   * Modified machining techniques to reduce down time
   * Verified quality control specifications
 
@@ -154,5 +168,4 @@ Sep 1994 - May 1996
   * Mediated service of an average of 900 meals per night
   * Adapted to work in high demand environments
 
-  </div>
 </details>
