@@ -6,8 +6,8 @@ Jan 2021 - Jun 2022
 
 #### Engineering Manager
 
-  * Helped stabilize team attrition.
-  * Attempted to help improve the company culture.
+  * Stabilized team attrition.
+  * Authored inner source development standard process.
 
 
 ### Rocket Mortgage / Quicken Loans
