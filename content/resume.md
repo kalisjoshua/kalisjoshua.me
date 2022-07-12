@@ -1,60 +1,68 @@
 ## Experience
 
-<!--
+
 ### Guaranteed Rate
-Dec 2021 - Present
+Jan 2021 - Jun 2022
 
 #### Engineering Manager
 
-  *
-
--->
+  * Helped stabilize team attrition.
+  * Attempted to help improve the company culture.
 
 
 ### Rocket Mortgage / Quicken Loans
 Apr 2012 - Dec 2021
 
+
 #### Engineering Manager
 Mar 2018 - Dec 2021
 
-I enjoy helping people. As a leader, I have had the opportunity to help more people and the responsibility to do so at a much more impactful level than I did as an individual contributor. I empower people to advance their careers technically and socially.
+Led and developed an SRE team of up to 10 members that included software and systems engineers responsible for the reliability of client and partner-facing digital storefronts, company’s infrastructure, post-incident response and root cause analysis, API development, and ad hoc projects.
 
-I arranged an infrastructure rebuild in a new region as the first step toward a multi-region conclusion. I was instrumental in leveraging both good communication and strong collaboration across various technology teams.
+  * Ensured incident root causes were deeply researched and oversaw planning to prevent regressions.
+  * Managed development of a highly scalable leads ingestion API, capable of handling a large proportion of external integrations for lead purchasing.
+  * Spearheaded the development of a status page aggregation to improve visibility on systems availability during incidents and outages.
+  * Authored a Manifesto to organize the expectations for the SRE organization, define best practices, and set parameters for the scope of work to improve transparency and clarity. The document prompted introduction of increased monitoring and root cause analysis, and was accepted by leadership up to the CTO.
+  * Built and systematized a Community of Practice for SRE and introduced monthly Lean Coffee sessions to share lessons learned and details of current projects to increase transparency.
+  * Drove the adoption of SRE best practices around Service Level Agreements (SLA) and Service Level Objectives (SLO), and adoption of Service Level Indicators (SLI) to track uptime as an enterprise SLA.
+  * Led team in infrastructure modification to support transition to a multi-region application, with project guided by AWS best practices.
+  * Championed work on automated observability testing for all systems and preliminary work for chaos engineering.
+  * Defined SRE team Objectives and Key Results (OKRs) and coached other leaders in producing their OKRs.
+      - Fostered a healthy team culture and championed diversity & inclusion.  
+      - Achieved 97% retention and increased team diversity to 40%.
+      - Mentored team members via regular 1:1s and reached 50% promotion rate across team.
+      - Enabled transition to 100% remote during Covid.
 
-  * Maintained a healthy team environment achieving 97% team member retention, including our transition to 100% remote work as a result of a global pandemic
-  * Increased team gender and cultural diversity from 0% to 40% through strategic hiring and recruiting
-  * Mentored 10 team members in regular 1-on-1 sessions to a 50% promotion rate
-  * Organized expectations of Site Reliability Engineering (SRE) into a widely adopted Manifesto adopted by at least ~50 team members up to the CTO
-  * Drove adoption of SLIs to track an enterprise-wide SLA of 90% uptime
-  * Built partner integrations API for multiple third-party lead ingestion arrangements
-  * Deployed Kubernetes (K8s) infrastructure and migrated first 5 services as part of a plan to migrate dozens of services into the cluster
-  * Optimized AWS spend following Trusted Advisor suggestions: DB sizing, EC2 instances reservations, Lambda reserved concurrency, S3 storage selections, etc.
-  * Status Page
-
-RMA, RMO, PRO, Mobile
-
-I was responsible for the Site Reliability Engineers of all commercial client and partner facing digital storefronts, and third-party lead-buy integrations. Our clients were able to shop for, start, close, and manage the servicing of their mortgages on either the web or mobile apps as a result of the efforts of my team.
 
 #### Solutions Architect
 Nov 2015 - Mar 2018
 
-I expanded beyond my expertise in browser applications into REST and integration platforms. I took on a coaching role where my communication skills and ability to understand what technology solutions teams were trying to create allowed me to help them make smart decisions that would optimize their efforts and outcomes.
+Promoted to a hybrid role with a mix of technical responsibilities related to an AWS migration and transition to REST, while also taking on expanded responsibilities in mentoring and coaching teams.
 
-  * Focused data-driven evaluation of multi-million dollar integration platform contracts
-  * Supported teams during more than 100 integration platform service migrations
-  * Automated API deployments, reducing review time by 90% and design time by 40%
-  * Quickly learned essential AWS services and guided their adoption during pivotal transformation
-  * Provided backup UI solution for Billion Dollar Bracket sweepstakes
+  * Named to team focused on strategy for migration from on-prem to cloud-first with AWS.
+      - Contributed to decision making for AWS services (Fargate, EC2, API Gateway, DynamoDB, S3, Aurora, Cloudfront, VPCs), cost vs performance trade-offs, and subject matter expertise for HTTP API decisions.
+      - Defined enterprise standards for using AWS and championed their adoption.
+  * Served on a three-member team to define project strategy for a common integration platform and articulate value proposition to obtain buy-in on REST and API-first adoptions from hesitant engineering teams.
+      - Led a data-driven vendor evaluation and drove final decision-making for selection resulting in multi-million dollar deals with Mulesoft (ESB, API Gateway) and Software AG (MQ). ESB and MQ were optional for team use, where API Gateway was required to ensure security and consistency across the enterprise.
+      - Evangelized adoption of the API Gateway and advised teams on migrating hundreds of services to the new platform to improve reliability, availability, maintainability, and security (RAMS).
+      - Advised teams on ESB best practices.
+  * Played a critical technical role in a six-month effort to improve services scalability in preparation for Rocket Mortgage’s Super Bowl commercial that was expected to raise the company’s profile and lead to significant traffic.
+      - Built a custom RAML linter in JavaScript as a Node.js module that ran on developer machines to validate that teams were defining APIs to corporate specifications. The tool is open source at its GitHub repo and is also available as an npm module.
+      - Built a custom web app that showed API definitions were valid and deployable and included an automated deployment tool built via Python API and Angular SPA.
+      - The new tooling reduced API review time by 90% and design time by 40%.
+  * Facilitated learning sessions for teams working through migrations from SOAP to REST.
+  * Named to three-member team that held final approval for pull requests and changes to production.
+
 
 #### Senior Software Engineer
 Apr 2012 - Nov 2015
 
-I joined as one of the first software engineers to work on what would eventually become Rocket Mortgage. I also worked on some very high-profile projects before and after my time working on Rocket Mortgage as a software engineer.
+Hired to Quicken Loans as one of the first software engineers assigned to a 30-member team focused on ideation for a new project that would later become Rocket Mortgage and grow to $40B annual sales.
 
-  * Originated $40B per year Rocket Mortgage client experience
-  * Improved rule execution performance for mortgage pricing calculation 10x or more
-  * Streamlined user experience efficiency when editing mortgage pricing rules by 70%
-  * Created client experience for HARP, bringing in $12M in the first year
+  * Served as a JavaScript subject matter expert, led selection of front-end tooling (i.e. jQuery, RequireJS), and performed most front-end development across early versions of Rocket Mortgage’s user experience.
+  * Proposed, presented, and developed an innovative solution using a DSL for mortgage pricing calculation rules to improve UX, increase performance >10x, and reduce user effort in editing by 70%.
+  * Consulted with teams on web accessibility, JS frameworks and toolsets, and engineering best practices.
+  * Built client experience for a refinance program that achieved $12B first year earnings.
 
 
 ### Centurion Medical Products
@@ -62,8 +70,8 @@ Sep 2010 - Apr 2012
 
 #### Senior Software Engineer
 
-  * Cut $3M in spend during the development of a new corporate website
-  * Migrated source control from Microsoft TFS 2010 to Git
+  * Collaborated with leaders from Marketing and Technology to produce a new corporate website.
+  * Migrated source control from Microsoft TFS 2010 to Git.
 
 
 ### Michigan State University - Academic Information Systems
@@ -71,10 +79,8 @@ Sep 2008 - Jun 2010
 
 #### Software Engineer
 
-  * Assisted coaching and mentoring in agile practices
   * Defined and evangelized browser-stack standards, guidelines, and best practices
   * Modernized technology choices for version control and CI/CD tooling
-  * Consolidated user experience design of student login
 
 
 ### Michigan State University - International Business Center
