@@ -42,7 +42,7 @@ Promoted to a hybrid role with a mix of technical responsibilities related to an
   * Named to a team focused on migration strategy from on-prem to cloud-first with AWS.
       - Contributed to decision-making for AWS services (Fargate, EC2, API Gateway, DynamoDB, S3, Aurora, and others), cost versus performance trade-offs, and subject matter expertise for HTTP API decisions.
       - Defined enterprise standards for AWS and championed their adoption.
-  * Served on a three-member team to define project strategy for an enterprise-wide integration platform and articulate value proposition to obtain buy-in on REST and API-first adoptions from hesitant engineering teams.
+  * Defined strategy for an enterprise-wide integration platform and articulated value proposition to obtain buy-in on REST and API-first adoptions from hesitant engineering teams.
       - Directed a data-driven vendor evaluation and drove final decision resulting in multi-million dollar deals with Mulesoft (ESB and API Gateway) and Software AG (MQ). ESB and MQ were optional, whereas API Gateway was required to ensure security and consistency across the enterprise.
       - Evangelized the adoption of the API Gateway and advised teams on migrating hundreds of services to the new platform. Improving reliability, availability, maintainability, and security (RAMS).
   * Played a critical technical role in a six-month effort to improve services scalability in preparation for Rocket Mortgage’s Super Bowl commercial; expected to raise the company’s profile and lead to significant traffic.
