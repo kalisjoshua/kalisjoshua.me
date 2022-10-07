@@ -1,15 +1,6 @@
 ## Experience
 
 
-### Guaranteed Rate
-Jan 2021 - Jun 2022
-
-#### Engineering Manager
-
-  * Stabilized team attrition.
-  * Authored inner source development standard process.
-
-
 ### Rocket Mortgage / Quicken Loans
 Apr 2012 - Dec 2021
 
