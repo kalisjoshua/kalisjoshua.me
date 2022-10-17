@@ -20,11 +20,9 @@ Will watch for file changes and re-run the static generation process.
 
 ## TODO
 
-  * [ ] Create automated publishing pipeline (GitHub actions)
   * Add unit tests:
-      - [ ] highlighter
-      - [ ] sanguine
-  * [ ] Identify DRAFT articles; no published date
+      - [ ] public/js/highlighter.js
+      - [ ] public/js/slides.js
+      - [ ] sanguine/index.js
   * [ ] Add Sass for easier style autoring
-  * [ ] Add modern JS pipeline
   * [ ] Modularize sanguine
