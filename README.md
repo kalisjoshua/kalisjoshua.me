@@ -1,3 +1,5 @@
+[![Deploy static content to Pages](https://github.com/kalisjoshua/kalisjoshua.me/actions/workflows/github-pages-content.yml/badge.svg)](https://github.com/kalisjoshua/kalisjoshua.me/actions/workflows/github-pages-content.yml)
+
 # Joshua T Kalis - Articles
 
 Here is how I generate my personal website.
