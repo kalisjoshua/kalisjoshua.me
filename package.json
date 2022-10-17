@@ -7,7 +7,7 @@
   },
   "name": "kalisjoshua.me",
   "description": "Personal website and resume for Joshua Kalis.",
-  "version": "10.3.0",
+  "version": "10.4.0",
   "homepage": "https://kalisjoshua.me",
   "repository": {
     "type": "git",
@@ -24,8 +24,9 @@
   },
   "scripts": {
     "build": "npm run pages && npm run static",
+    "prebuild": "rm -rf docs && mkdir docs",
     "postbuild": "echo kalisjoshua.me > ./docs/CNAME",
-    "pages": "node ./sanguine",
+    "pages": "node ./sanguine docs",
     "start": "http-server ./docs/",
     "static": "cp -r ./public/* ./docs",
     "tag": "git tag v$npm_package_version && git push --tags",

@@ -6,7 +6,7 @@ const marked = require('marked')
 
 const package = require('../package.json')
 
-const output = (...args) => path.join(process.cwd(), 'docs', ...args)
+const output = (...args) => path.join(process.cwd(), `${process.argv[2]}`, ...args)
 const {html, md} = treeWalker(path.join(process.cwd(), 'content'))
 const render = handlebars.compile(html._template)
 
@@ -165,9 +165,6 @@ function visitor (acc, segment) {
 
   return acc
 }
-
-fs.rmdirSync(output(), {recursive: true})
-fs.mkdirSync(output())
 
 siteMap
   .forEach((section) => section.publish())
