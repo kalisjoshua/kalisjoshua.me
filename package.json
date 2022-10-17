@@ -7,7 +7,7 @@
   },
   "name": "kalisjoshua.me",
   "description": "Personal website and resume for Joshua Kalis.",
-  "version": "10.4.0",
+  "version": "10.5.0",
   "homepage": "https://kalisjoshua.me",
   "repository": {
     "type": "git",
@@ -16,6 +16,9 @@
   "engines": {
     "node": ">=14.3.x"
   },
+  "config": {
+    "output_dir": "docs"
+  },
   "devDependencies": {
     "handlebars": "^4.7.7",
     "http-server": "^14.1.1",
@@ -23,12 +26,13 @@
     "npm-watch": "^0.7.0"
   },
   "scripts": {
-    "build": "npm run pages && npm run static",
-    "prebuild": "rm -rf docs && mkdir docs",
-    "postbuild": "echo kalisjoshua.me > ./docs/CNAME",
-    "pages": "node ./sanguine docs",
-    "start": "http-server ./docs/",
-    "static": "cp -r ./public/* ./docs",
+    "build": "npm run pages && npm run public",
+    "postbuild": "echo kalisjoshua.me > ./$npm_package_config_output_dir/CNAME",
+    "clean": "rm -rf $npm_package_config_output_dir && mkdir $npm_package_config_output_dir",
+    "pages": "node ./sanguine $npm_package_config_output_dir",
+    "prepages": "npm run clean",
+    "public": "cp -r ./public/* ./$npm_package_config_output_dir",
+    "start": "http-server ./$npm_package_config_output_dir/",
     "tag": "git tag v$npm_package_version && git push --tags",
     "watch": "npm-watch"
   },
