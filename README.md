@@ -2,7 +2,9 @@
 
 # Joshua T Kalis - Personal Website
 
-Here is how I generate my personal website.
+  * Resume - always up to date
+  * Articles - (very) infrequently published/written
+  * Slides - presentation slides
 
 
 ## How To Generate Pages
