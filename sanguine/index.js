@@ -13,9 +13,11 @@ const render = handlebars.compile(html._template)
 const meta = {
   author: package.author.name,
   contact: marked(md.contact),
+  date: new Date(),
   description: package.description,
   header: addPronouns(package.author.name),
   projects: marked(md.projects),
+  version: package.version,
 }
 
 const siteMap = [
