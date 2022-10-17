@@ -30,19 +30,29 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Use NodeJS
         uses: actions/setup-node@v2
         with: 
-          node-version: '16'
-      - name: Build Static Assets
+          node-version: '14'
+
+      - name: Build static assets
         run: npm ci && npm run build
+
       - name: Debug
         run: ls -al docs
+
+      - name: Create archive
+        shell: bash
+        run: tar --directory "docs/" -cvf "$RUNNER_TEMP/artifact.tar" .
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-artifact@main
         with:
-          # Upload entire repository
-          path: docs/'
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
