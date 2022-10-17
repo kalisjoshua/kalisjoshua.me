@@ -36,6 +36,8 @@ jobs:
           node-version: '16'
       - name: Build Static Assets
         run: npm ci && npm run build
+      - name: Debug
+        run: ls -al
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
