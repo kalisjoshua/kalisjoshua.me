@@ -12,11 +12,11 @@ const render = handlebars.compile(html._template)
 
 const meta = {
   author: package.author.name,
-  contact: marked(md.contact),
+  contact: marked.parse(md.contact),
   date: new Date(),
   description: package.description,
   header: addPronouns(package.author.name),
-  projects: marked(md.projects),
+  projects: marked.parse(md.projects),
   version: package.version,
 }
 
@@ -24,7 +24,7 @@ const siteMap = [
   {
     cssActive: /^index/,
     href: 'index.html',
-    publish: () => publishPage('index.html', marked(md.resume), marked(md.about)),
+    publish: () => publishPage('index.html', marked.parse(md.resume), marked.parse(md.about)),
     text: 'Resume',
   },
   {
@@ -42,7 +42,7 @@ const siteMap = [
   // {
   //   cssActive: /^recruiters/,
   //   href: 'recruiters.html',
-  //   publish: () => publishPage('recruiters.html', marked(md.recruiters)),
+  //   publish: () => publishPage('recruiters.html', marked.parse(md.recruiters)),
   //   text: 'Notice to recruiters',
   // },
 ]
@@ -106,7 +106,7 @@ function publishSection (label, markdown) {
 
     fs.mkdirSync(output(label))
 
-    publishPage(`${label}/index.html`, marked(pages
+    publishPage(`${label}/index.html`, marked.parse(pages
       .flatMap(({date, intro, name, title}, index) => [
         `**[${title}](${name}.html)**${date && ' - ' + date}`,
         intro,
@@ -116,7 +116,7 @@ function publishSection (label, markdown) {
 
     pages
       .forEach(({content, name}) => {
-        publishPage(`${label}/${name}.html`, marked(content))
+        publishPage(`${label}/${name}.html`, marked.parse(content))
       })
 }
 
