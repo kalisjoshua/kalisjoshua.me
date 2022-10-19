@@ -39,6 +39,12 @@ const siteMap = [
     publish: () => publishSection('slides', md.slides),
     text: 'Slides',
   },
+  {
+    cssActive: /google doc link/,
+    href: 'https://docs.google.com/document/d/e/2PACX-1vRQe8YfYK7RYTZ8bpo55MC5xsNLhHDTWCqp8mUN0i_VwKkzbCNT8daAy8XqwbeEIiu_gZdmbeTJ0GXA/pub',
+    publish: () => {},
+    text: 'Resume (Google Doc)',
+  },
   // {
   //   cssActive: /^recruiters/,
   //   href: 'recruiters.html',
