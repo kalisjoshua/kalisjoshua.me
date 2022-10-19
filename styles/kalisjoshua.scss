@@ -1,9 +1,12 @@
-@import "cicada.css";
-@import "colors.css";
-@import "navigation.css";
-@import "resume.css";
-@import "sidebar.css";
-@import "slides.css";
+@use "./lib/normalize.css";
+@use "./lib/h5bp.css";
+
+@use "cicada.css";
+@use "colors.css";
+@use "navigation.css";
+@use "resume.css";
+@use "sidebar.css";
+@use "slides.css";
 
 *, *:before, *:after {
   box-sizing: border-box;

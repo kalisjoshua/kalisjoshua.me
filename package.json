@@ -7,7 +7,7 @@
   },
   "name": "kalisjoshua.me",
   "description": "Personal website and resume for Joshua Kalis.",
-  "version": "10.6.2",
+  "version": "10.3.0",
   "homepage": "https://kalisjoshua.me",
   "repository": {
     "type": "git",
@@ -23,12 +23,14 @@
     "handlebars": "^4.7.7",
     "http-server": "^14.1.1",
     "marked": "^4.1.1",
-    "npm-watch": "^0.7.0"
+    "npm-watch": "^0.7.0",
+    "sass": "^1.55.0"
   },
   "scripts": {
-    "build": "npm run pages && npm run public && npm run cname",
+    "build": "npm run pages && npm run public && npm run styles && npm run cname",
     "clean": "rm -rf $npm_package_config_output_dir && mkdir $npm_package_config_output_dir",
     "cname": "echo kalisjoshua.me > ./$npm_package_config_output_dir/CNAME",
+    "styles": "sass --style=compressed ./styles/kalisjoshua.scss ./$npm_package_config_output_dir/css/kalisjoshua.css",
     "pages": "node ./sanguine $npm_package_config_output_dir",
     "prepages": "npm run clean",
     "public": "cp -r ./public/* ./$npm_package_config_output_dir",

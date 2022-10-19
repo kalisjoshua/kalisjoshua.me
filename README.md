@@ -27,5 +27,4 @@ Will watch for file changes and re-run the static generation process.
   * [ ] unit tests public/js/highlighter.js
   * [ ] unit tests public/js/slides.js
   * [ ] unit tests sanguine/index.js
-  * [ ] Add Sass for styles
-  * [ ] Modularize sanguine
+  * [ ] Modularize/lib-ratize sanguine
