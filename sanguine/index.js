@@ -6,6 +6,7 @@ const marked = require('marked')
 
 const package = require('../package.json')
 
+const hrefFn = (h, r) => /^http[s]?:\/\//.test(h) ? h : [r, h].join("")
 const output = (...args) => path.join(process.cwd(), `${process.argv[2]}`, ...args)
 const {html, md} = treeWalker(path.join(process.cwd(), 'content'))
 const render = handlebars.compile(html._template)
@@ -39,6 +40,12 @@ const siteMap = [
     publish: () => publishSection('slides', md.slides),
     text: 'Slides',
   },
+  {
+    cssActive: /^--google docs resume--$/,
+    href: 'https://docs.google.com/document/d/e/2PACX-1vRQe8YfYK7RYTZ8bpo55MC5xsNLhHDTWCqp8mUN0i_VwKkzbCNT8daAy8XqwbeEIiu_gZdmbeTJ0GXA/pub',
+    publish: () => {},
+    text: 'Resume (Google Doc)',
+  },
   // {
   //   cssActive: /^recruiters/,
   //   href: 'recruiters.html',
@@ -60,7 +67,7 @@ function publishPage (file, main, about) {
   const rel = Array(length + 1).join('../')
   const navLink = ({href, cssActive: regex, text}) => `
     <li${regex.test(file) ? ' class="active"' : ''}>
-      <a href="${rel}${href}">${text}</a>
+      <a href="${hrefFn(href, rel)}">${text}</a>
     </li>
   `
 
