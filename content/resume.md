@@ -10,14 +10,14 @@ Mar 2018 - Dec 2021
 
 Guided and developed an SRE team of software and systems engineers responsible for the reliability of client and partner-facing digital storefronts, critical company infrastructure, post-incident response, root cause analysis, API development, and ad hoc projects.
 
-  * Ensured incident root causes were deeply researched and oversaw planning to prevent regressions.
-  * Managed development of a highly scalable leads ingestion API, handling a large portion of external integrations for third-party lead purchasing.
-  * Spearheaded the development of a status page aggregation to improve visibility of systems availability during incidents and outages.
-  * Authored an SRE Manifesto to organize expectations of the role across the company.
   * Built and systematized a Community of Practice for SRE and introduced monthly Lean Coffee sessions to share lessons learned and details of current projects to increase transparency.
+  * Built static site generator for aggregating status reports of a distributed system components; this status page helped reduce response times during critical technology incidents.
+  * Developed a highly scalable leads ingestion API, handling a large portion of external integrations for third-party lead purchasing.
+  * Authored an SRE Manifesto to organize expectations of the role across the company.
   * Drove the adoption of SRE best practices around Service Level Agreements (SLA) and Service Level Objectives (SLO) and adoption of Service Level Indicators (SLI) to track uptime as an enterprise SLA.
   * Led the team implementing multi-region infrastructure changes - as terraform templates - following AWS best practices.
   * Championed work on automated observability testing in preparation for chaos engineering.
+  * Ensured incident root causes were deeply researched and oversaw planning to prevent regressions.
   * Defined SRE team Objectives and Key Results (OKRs) and coached other leaders in producing their OKRs.
   * Fostered a healthy team culture and championed diversity & inclusion.  
       - Achieved 97% retention and increased team diversity to 40%.
