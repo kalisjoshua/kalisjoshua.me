@@ -42,7 +42,7 @@ const siteMap = [
   },
   {
     cssActive: /^--google docs resume--$/,
-    href: 'https://docs.google.com/document/d/e/2PACX-1vRQe8YfYK7RYTZ8bpo55MC5xsNLhHDTWCqp8mUN0i_VwKkzbCNT8daAy8XqwbeEIiu_gZdmbeTJ0GXA/pub',
+    href: 'https://docs.google.com/document/d/1ceP0j9bleh5CRmQbeaStNZs8J_8djUu_eCUd7ofMnsk',
     publish: () => {},
     text: 'Resume (Google Doc)',
   },
