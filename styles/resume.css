@@ -4,29 +4,13 @@
 
 .section-resume .main h3 {
   float: left;
+  font-weight: 100;
 }
 
 .section-resume h3 + p {
+  font-weight: 100;
+  margin: 0;
   text-align: right;
-}
-
-.section-resume h4 {
-  clear: left;
-}
-
-.section-resume h4 {
-  float: left;
-  padding-right: 1ex;
-}
-
-.section-resume h4 + p {
-  font-size: 95%;
-}
-.section-resume h4 + p:after {content: ")"}
-.section-resume h4 + p:before {content: "("}
-
-.section-resume h4 + *:not(p) {
-  clear: both;
 }
 
 #resume__non-tech {
