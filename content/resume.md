@@ -2,11 +2,9 @@
 
 
 ### Rocket Mortgage / Quicken Loans
-Apr 2012 - Dec 2021
-
+Mar 2018 - Dec 2021
 
 #### Engineering Manager
-Mar 2018 - Dec 2021
 
 Guided and developed an SRE team of software and systems engineers responsible for the reliability of client and partner-facing digital storefronts, critical company infrastructure, post-incident response, root cause analysis, API development, and ad hoc projects.
 
@@ -19,14 +17,16 @@ Guided and developed an SRE team of software and systems engineers responsible f
   * Led the team implementing multi-region infrastructure changes - as terraform templates - following AWS best practices.
   * Championed work on automated observability testing in preparation for chaos engineering.
   * Defined SRE team Objectives and Key Results (OKRs) and coached other leaders in producing their OKRs.
-  * Fostered a healthy team culture and championed diversity & inclusion.  
+  * Fostered a healthy team culture and championed diversity & inclusion.
       - Achieved 97% retention and increased team diversity to 40%.
       - Mentored team members via regular 1:1s; achieved a 50% promotion rate.
       - Transitioned - a team of 10 - to be 100% remote during Covid.
 
 
-#### Solutions Architect
+### Rocket Mortgage / Quicken Loans
 Nov 2015 - Mar 2018
+
+#### Solutions Architect
 
 Promoted to a hybrid role with a mix of technical responsibilities related to an AWS migration and transition to REST while also taking on expanded responsibilities in mentoring and coaching teams.
 
@@ -44,8 +44,10 @@ Promoted to a hybrid role with a mix of technical responsibilities related to an
   * Reviewed and approved API Gateway pull requests and deployments to production.
 
 
-#### Senior Software Engineer
+### Rocket Mortgage / Quicken Loans
 Apr 2012 - Nov 2015
+
+#### Senior Software Engineer
 
 Hired to Quicken Loans as one of the first software engineers assigned to a 30-member team focused on ideation for a new project that would later become Rocket Mortgage and grow to $40B annual sales.
 
