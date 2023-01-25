@@ -1,10 +1,22 @@
 ## Experience
 
 
+### Guaranteed Rate
+Dec 2021 - Jul 2022
+
+#### Enterprise Architect & Engineering Manager
+
+I joined the Enterprise Architecture team to focus on their front-end user experience. However, shortly after joining the company (2 days) the Engineering Manager for their core services team gave notice and the company was not going to be hiring a replacement and needed someone to step into that role and with my experience I was a perfect fit.
+
+  * Restored a positive and productive team culture for two squads focused on the loans processing platform and APIs.
+  * Facilitated discussions and negotiations with Confluent (Kafka) for an Event-driven Architecture pattern.
+  * Coordinated annual employee performance reviews.
+
+
 ### Rocket Mortgage / Quicken Loans
 Mar 2018 - Dec 2021
 
-#### Engineering Manager
+#### Engineering Manager (Team Leader)
 
 Guided and developed an SRE team of software and systems engineers responsible for the reliability of client and partner-facing digital storefronts, critical company infrastructure, post-incident response, root cause analysis, API development, and ad hoc projects.
 
@@ -20,13 +32,13 @@ Guided and developed an SRE team of software and systems engineers responsible f
   * Fostered a healthy team culture and championed diversity & inclusion.
       - Achieved 97% retention and increased team diversity to 40%.
       - Mentored team members via regular 1:1s; achieved a 50% promotion rate.
-      - Transitioned - a team of 10 - to be 100% remote during Covid.
+      - Transitioned - a team of 10 - to be 100% remote during COVID.
 
 
 ### Rocket Mortgage / Quicken Loans
 Nov 2015 - Mar 2018
 
-#### Solutions Architect
+#### Software Architect
 
 Promoted to a hybrid role with a mix of technical responsibilities related to an AWS migration and transition to REST while also taking on expanded responsibilities in mentoring and coaching teams.
 
@@ -47,7 +59,7 @@ Promoted to a hybrid role with a mix of technical responsibilities related to an
 ### Rocket Mortgage / Quicken Loans
 Apr 2012 - Nov 2015
 
-#### Senior Software Engineer
+#### Senior Software Engineer & Technical Lead
 
 Hired to Quicken Loans as one of the first software engineers assigned to a 30-member team focused on ideation for a new project that would later become Rocket Mortgage and grow to $40B annual sales.
 
@@ -69,16 +81,16 @@ Sep 2010 - Apr 2012
 ### Michigan State University - Academic Information Systems
 Sep 2008 - Jun 2010
 
-#### Software Engineer
+#### Senior Software Engineer
 
-  * Evangelized browser-stack standards, guidelines, and best practices.
   * Modernized technology for version control and CI/CD.
+  * Evangelized browser-stack standards, guidelines, and best practices.
 
 
 ### Michigan State University - International Business Center
 Apr 2003 - Sep 2008
 
-#### Software Engineer
+#### Software Engineer & Technical Lead
 
   * Developed interactive automated event scheduling utility
   * Spearheaded academic publishing book review system
