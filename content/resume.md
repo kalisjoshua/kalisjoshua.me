@@ -8,8 +8,8 @@ Dec 2021 - Jul 2022
 
 I joined the Enterprise Architecture team to focus on their front-end user experience. However, shortly after joining the company (2 days) the Engineering Manager for their core services team gave notice and the company was not going to be hiring a replacement and needed someone to step into that role and with my experience I was a perfect fit.
 
-  * Restored a positive and productive team culture for two squads focused on the loans processing platform and APIs.
-  * Facilitated discussions and negotiations with Confluent (Kafka) for an Event-driven Architecture pattern.
+  * Restored a positive and productive team culture focused on the loans processing platform.
+  * Facilitated discussions and negotiations with Confluent for an Event-driven Architecture pattern.
   * Coordinated annual employee performance reviews.
 
 
@@ -20,19 +20,20 @@ Mar 2018 - Dec 2021
 
 Guided and developed an SRE team of software and systems engineers responsible for the reliability of client and partner-facing digital storefronts, critical company infrastructure, post-incident response, root cause analysis, API development, and ad hoc projects.
 
-  * Built and systematized a Community of Practice for SRE and introduced monthly Lean Coffee sessions to share lessons learned and details of current projects to increase transparency.
-  * Built static site generator for aggregating status reports of a distributed system components; this status page helped reduce response times during critical technology incidents.
-  * Developed a highly scalable leads ingestion API, handling a large portion of external integrations for third-party lead purchasing.
+  * Ensured incident root causes were deeply researched and oversaw planning to prevent regressions.
+  * Managed development of a highly scalable leads ingestion API, handling a large portion of external integrations for third-party lead purchasing.
+  * Spearheaded the development of a status page aggregation to improve visibility of systems availability during incidents and outages.
   * Authored an SRE Manifesto to organize expectations of the role across the company.
+  * Built and systematized a Community of Practice for SRE and introduced monthly Lean Coffee sessions to share lessons learned and details of current projects to increase transparency.
   * Drove the adoption of SRE best practices around Service Level Agreements (SLA) and Service Level Objectives (SLO) and adoption of Service Level Indicators (SLI) to track uptime as an enterprise SLA.
   * Led the team implementing multi-region infrastructure changes - as terraform templates - following AWS best practices.
   * Championed work on automated observability testing in preparation for chaos engineering.
-  * Ensured incident root causes were deeply researched and oversaw planning to prevent regressions.
-  * Defined SRE team Objectives and Key Results (OKRs) and coached other leaders in producing their OKRs.
+  * Defined team Objectives and Key Results (OKRs) and coached other leaders in producing their OKRs.
   * Fostered a healthy team culture and championed diversity & inclusion.
       - Achieved 97% retention and increased team diversity to 40%.
       - Mentored team members via regular 1:1s; achieved a 50% promotion rate.
       - Transitioned - a team of 10 - to be 100% remote during COVID.
+      - Nominated for an annual company award of recognition for diversity, equity, and inclusion.
 
 
 ### Rocket Mortgage / Quicken Loans
@@ -45,12 +46,12 @@ Promoted to a hybrid role with a mix of technical responsibilities related to an
   * Named to a team focused on migration strategy from on-prem to cloud-first with AWS.
       - Contributed to decision-making for AWS services (Fargate, EC2, API Gateway, DynamoDB, S3, Aurora, and others), cost versus performance trade-offs, and subject matter expertise for HTTP API decisions.
       - Defined enterprise standards for AWS and championed their adoption.
-  * Defined strategy for an enterprise-wide integration platform and articulated value proposition to obtain buy-in on REST and API-first adoptions from hesitant engineering teams.
-      - Directed a data-driven vendor evaluation and drove final decision resulting in multi-million dollar deals with Mulesoft (ESB and API Gateway) and Software AG (MQ). ESB and MQ were optional, whereas API Gateway was required to ensure security and consistency across the enterprise.
-      - Evangelized the adoption of the API Gateway and advised teams on migrating hundreds of services to the new platform. Improving reliability, availability, maintainability, and security (RAMS).
-  * Played a critical technical role in a six-month effort to improve services scalability in preparation for Rocket Mortgage’s Super Bowl commercial; expected to raise the company’s profile and lead to significant traffic.
-      - Built a custom - open source - RAML linter in JavaScript as a Node.js module that could run on developer machines to validate APIs were adhering to corporate specifications.
-      - Built a custom web app that showed API definitions were valid and deployable and included an automated deployment tool built via Python API and Angular SPA.
+  * Served on a three-person team to define project strategy for an enterprise-wide integration platform and articulate value proposition to obtain buy-in on REST and API-first adoptions from hesitant engineering teams.
+      - Directed a data-driven vendor evaluation and final decision resulting in multi-million dollar deals with Mulesoft (ESB and API Gateway) and Software AG (MQ).
+      - Evangelized the adoption of the API Gateway and advised teams on migrating hundreds of services to the new platform. Improving reliability, availability, maintainability, and security.
+  * Played a critical technical role in a six-month effort to improve services scalability in preparation for Rocket Mortgage’s Super Bowl commercial.
+      - Developed an open source (Node.js module) for verifying (lint-ing) API definitions, in RAML.
+      - Built a Python and Angular SPA for automating the RAML lint-ing and deployment process.
       - The new tooling reduced API review time by 90% and design time by 40%.
   * Facilitated learning sessions for teams working through migrations from SOAP to REST.
   * Reviewed and approved API Gateway pull requests and deployments to production.
@@ -74,7 +75,7 @@ Sep 2010 - Apr 2012
 
 #### Senior Software Engineer
 
-  * Collaborated with leaders from Marketing and Technology to produce a new corporate website.
+  * Collaborated with leaders from Marketing and Technology to produce a new corporate website using an open source Content Management System (CMS).
   * Migrated source control from Microsoft TFS 2010 to Git.
 
 
