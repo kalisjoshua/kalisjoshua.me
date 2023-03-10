@@ -7,20 +7,21 @@
   },
   "name": "kalisjoshua.me",
   "description": "Personal website and resume for Joshua Kalis.",
-  "version": "10.7.0",
+  "version": "10.8.0",
   "homepage": "https://kalisjoshua.me",
   "repository": {
     "type": "git",
     "url": "git@github.com:kalisjoshua/kalisjoshua.me.git"
   },
   "engines": {
-    "node": ">=14.3.x"
+    "bun": ">=0.5.7"
   },
   "config": {
-    "output_dir": "docs"
+    "output_dir": "docs",
+    "source_dir": "content"
   },
   "devDependencies": {
-    "handlebars": "^4.7.7",
+    "bun": "^0.5.7",
     "http-server": "^14.1.1",
     "marked": "^4.1.1",
     "npm-watch": "^0.7.0",
@@ -28,11 +29,12 @@
   },
   "scripts": {
     "build": "npm run pages && npm run public && npm run styles && npm run cname",
-    "clean": "rm -rf $npm_package_config_output_dir && mkdir $npm_package_config_output_dir",
+    "postbuild": "echo \"Build complete.\"",
+    "prebuild": "npm run clean && mkdir $npm_package_config_output_dir",
+    "clean": "rm -rf $npm_package_config_output_dir",
     "cname": "echo kalisjoshua.me > ./$npm_package_config_output_dir/CNAME",
     "styles": "sass --style=compressed ./styles/kalisjoshua.scss ./$npm_package_config_output_dir/css/kalisjoshua.css",
-    "pages": "node ./sanguine $npm_package_config_output_dir",
-    "prepages": "npm run clean",
+    "pages": "bun ./sanguine/index.ts",
     "public": "cp -r ./public/* ./$npm_package_config_output_dir",
     "start": "http-server ./$npm_package_config_output_dir/",
     "tag": "git tag v$npm_package_version && git push --tags",

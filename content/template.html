@@ -1,0 +1,97 @@
+<!doctype html />
+<html class="no-js" lang="en-US" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>${author} ${section}</title>
+  <meta name="description" content="${description}" />
+  <meta name="date" content="${date}" />
+  <meta name="version" content="${version}" />
+
+  <link href="${rel}favicon.ico" rel="icon" />
+  <link href="${rel}jk-logo.svg" rel="icon" type="image/svg+xml" />
+
+  <link href="${rel}css/kalisjoshua.css" rel="stylesheet" />
+
+<body class="section-${section}">
+  <p class="sr-only"><a href="#main">Skip navigation</a></p>
+
+  <div class="layout">
+    <main class="main" id="main" role="main">
+      <header role="banner">
+        <h1><a href="${rel}index.html">${header}</a></h1>
+
+        <p>I build great teams and excellent software.</p>
+
+        ${includeAbout ? about : ""}
+      </header>
+
+      ${main}
+
+      {{?isArticle}}
+      <footer class="contentinfo">
+        <p>Written by <a href="${rel}index.html">${header}</a>.</p>
+      </footer>
+      {{?/}}
+    </main>
+
+    <aside role="banner">
+      <nav class="navigation" role="navigation">
+        <ul>
+          ${navigation
+            .map(({href, style, text}) => `<li class="${style}"><a href="${href}">${text}</a></li>`)
+            .join("")}
+          <li><a href="https://docs.google.com/document/d/1ceP0j9bleh5CRmQbeaStNZs8J_8djUu_eCUd7ofMnsk">Resume (Google Doc)</a></li>
+        </ul>
+      </nav>
+
+      <footer role="contentinfo">
+        ${contact}
+      </footer>
+
+      <div class="projects">
+        ${projects}
+      </div>
+
+      <a href="${rel}index.html" id="jk-logo">
+        <img height="138px" src="${rel}images/jk-logo-square.svg" title="Joshua Kalis" logo" width="138px" />
+      </a>
+
+      <figure class="dev-icons" title="Common web technologies I use.">
+        <img alt="CSS3 logo" height="30px" src="${rel}images/css3.svg" width="26px" />
+        <img alt="HTML5 logo" height="30px" src="${rel}images/html5.svg" width="26px" />
+        <img alt="JavaScript logo" height="30px" src="${rel}images/javascript.svg" width="30px" />
+        <img alt="Markdown logo" height="30px" src="${rel}images/markdown.svg" width="49px" />
+
+        <br />
+
+        <img alt="nodeJS logo" height="30px" src="${rel}images/nodejs.svg" width="105px" />
+        <img alt="npm logo" height="30px" src="${rel}images/npm.svg" width="77px" />
+
+        <br />
+
+        <img alt="Git logo" height="30px" src="${rel}images/git.svg" width="30px" />
+      </figure>
+
+      <figure id="pride-ally">
+        <a href="https://queerintheworld.com/straight-ally-pride-flag/">
+          <img alt="Pride Ally Flag" height="116px" src="${rel}images/pride-progress.svg" width="221px" />
+        </a>
+        <br />
+        <br />
+        <figcaption>Proud to be a Pride Ally</figcaption>
+      </figure>
+    </aside>
+  </div>
+
+  <div class="cicada"></div>
+
+  <script defer src="${rel}js/highlighter.js"></script>
+  <script defer src="${rel}js/slides.js"></script>
+  <script defer>
+    window.addEventListener("DOMContentLoaded", (() => {
+      document.querySelector('.navigation a[href*="docs.google.com"]')
+        .setAttribute("target", "_blank")
+      }))
+  </script>
