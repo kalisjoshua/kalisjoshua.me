@@ -1,9 +1,15 @@
 import path from "path";
 
-import { OrganizedContent } from "./types/OrganizedContent";
-import { Summary } from "./types/Summary";
+import { pipe } from "./pipe";
+import { FileNode, PageNode, SiteContentBasic } from "./SanguineTypes";
 
-type Sections = { [key: string]: Array<Summary> };
+type Summary = {
+  date: Date | string;
+  intro: string;
+  key: string;
+  sorting: number;
+  title: string;
+};
 
 const pull = (content, regex) => (content.match(regex) || []).at(1);
 
@@ -11,8 +17,10 @@ const rDate = /### ([^\n]+)/;
 const rIntro = /\n(?!#+|(?:\s*[-*+]|\d+\.\s*)[^\n]+)(.+)/;
 const rTitle = /## ([^\n]+)/;
 
-const buildSummaries = (everything) =>
-  everything.pages.reduce((acc, file) => {
+function buildSummaries(
+  pages: Array<PageNode>
+): Record<string, Array<Summary>> {
+  return pages.reduce((acc, file) => {
     const section =
       file.key.indexOf(path.sep) >= 0 ? file.key.split(path.sep).at(0) : false;
 
@@ -21,7 +29,7 @@ const buildSummaries = (everything) =>
         acc[section] = [];
       }
 
-      const summary = createSummary(file);
+      const summary = summarize(file);
 
       if (!/draft$/i.test(summary.title)) {
         acc[section].push(summary);
@@ -30,8 +38,11 @@ const buildSummaries = (everything) =>
 
     return acc;
   }, {});
+}
 
-const createIndexes = (sections) =>
+const createIndexes = (
+  sections: ReturnType<typeof buildSummaries>
+): Array<PageNode> =>
   Object.keys(sections).map((name) => {
     sections[name] = sections[name]
       .sort((a, b) => a.sorting - b.sorting)
@@ -40,6 +51,8 @@ const createIndexes = (sections) =>
     const key = path.join(name, "index.html");
 
     return {
+      includeAbout: false,
+      isArticle: false,
       key,
       raw: sections[name]
         .map(
@@ -50,24 +63,32 @@ const createIndexes = (sections) =>
         )
         .join("\n\n"),
       rel: "../".repeat(key.split(path.sep).length - 1) || "./",
-      willPublish: true,
     };
   });
 
-const createSummary = ({ key, raw }, date = pull(raw, rDate)): Summary => ({
-  date: Date.parse(date) ? date : "",
-  intro: pull(raw, rIntro),
-  key,
-  sorting: Date.parse(date) ? new Date(date).getTime() : 0,
-  title: pull(raw, rTitle),
-});
-
-function createSectionIndexes(everything: OrganizedContent): OrganizedContent {
-  const sections: Sections = buildSummaries(everything);
-
-  everything.pages.push(...createIndexes(sections));
+function createSectionIndexes(everything: SiteContentBasic): SiteContentBasic {
+  pipe([
+    everything.pages,
+    buildSummaries,
+    createIndexes,
+    (indexes: ReturnType<typeof createIndexes>): void => {
+      everything.pages.push(...indexes);
+    },
+  ]);
 
   return everything;
+}
+
+function summarize({ key, raw }: FileNode): Summary {
+  const date = pull(raw, rDate);
+
+  return {
+    date: Date.parse(date) ? date : "",
+    intro: pull(raw, rIntro),
+    key,
+    sorting: Date.parse(date) ? new Date(date).getTime() : 0,
+    title: pull(raw, rTitle),
+  };
 }
 
 export { createSectionIndexes };

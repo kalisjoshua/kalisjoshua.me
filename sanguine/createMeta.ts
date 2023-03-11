@@ -1,16 +1,25 @@
 import { marked } from "marked";
 
-import { OrganizedContent } from "./types/OrganizedContent";
+import {
+  FileNode,
+  SiteContentBasic,
+  SiteContentExtended,
+  SiteMeta,
+} from "./SanguineTypes";
 import { pronouns } from "./pronouns";
 
 const pkg = require("../package.json");
 
-function createMeta(everything: OrganizedContent) {
-  const meta = {
-    ...everything.meta.reduce(
+function createMeta(everything: SiteContentBasic): SiteContentExtended {
+  const oldMeta: Array<FileNode> = everything.meta as Array<FileNode>;
+  const meta: SiteMeta = {
+    about: "",
+    contact: "",
+    projects: "",
+    ...oldMeta.reduce(
       (acc, { key, raw }) => ({
         ...acc,
-        [key.replace(/\..*/, "")]: marked.parse(raw),
+        [key.replace(/\..*$/, "")]: marked.parse(raw),
       }),
       {}
     ),

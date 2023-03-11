@@ -3,7 +3,14 @@ import path from "path";
 
 import { marked } from "marked";
 
-function createPage(dir, config) {
+import { Link, PageNode, SiteContentComplete } from "./SanguineTypes";
+
+interface Config extends PageNode {
+  navigation: SiteContentComplete["navigation"];
+  render: SiteContentComplete["render"];
+}
+
+function createPage(dir: string, config: Config): void {
   const {
     includeAbout,
     isArticle,
@@ -16,12 +23,12 @@ function createPage(dir, config) {
   } = config;
 
   const filePath = path.join(dir, ...key.split(path.sep));
-  const main = marked.parse(raw);
+  const main: string = marked.parse(raw);
   const html = render({
     includeAbout,
     isArticle,
     main,
-    navigation: navigation.map(({ href, text }) => ({
+    navigation: (navigation as Array<Link>).map(({ href, text }) => ({
       href: `${rel}${href}`,
       style: getStyle(key, href),
       text,
@@ -41,7 +48,7 @@ function getStyle(key: string, href: string): string {
   return isActive ? "active" : "";
 }
 
-function mkdirp(filePath) {
+function mkdirp(filePath: string): void {
   const dir = filePath.split(path.sep).slice(0, -1).join(path.sep);
 
   if (!fs.existsSync(dir) && !mkdirp[dir]) {
@@ -50,7 +57,9 @@ function mkdirp(filePath) {
   }
 }
 
-function outputFiles(dir, { navigation, pages, render }) {
+function outputFiles(dir: string, siteContent: SiteContentComplete): void {
+  const { navigation, pages, render } = siteContent;
+
   pages.forEach((page) => createPage(dir, { navigation, render, ...page }));
 }
 

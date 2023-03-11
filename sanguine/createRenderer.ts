@@ -1,6 +1,14 @@
+import {
+  pageContext,
+  RenderFn,
+  SiteContentComplete,
+  SiteContentExtended,
+  SiteMeta,
+} from "./SanguineTypes";
+
 const rBlockIF = /\{\{\?(.*?)\}\}([\w\W]*?)\{\{\?\/}\}/im;
 
-function blocks(context, str) {
+function blocks(context: pageContext, str: string): string {
   let result = str;
   let match;
 
@@ -11,14 +19,20 @@ function blocks(context, str) {
   return result;
 }
 
-function create(str, meta) {
-  const fill = new Function("context", `with(context){return \`${str}\`}`);
+function create(templateLiteral: string, templateMeta: SiteMeta): RenderFn {
+  const fill = new Function(
+    "context",
+    `with(context){return \`${templateLiteral}\`}`
+  );
 
-  return (context, fullContext = { ...meta, ...context }) =>
-    blocks(fullContext, fill(fullContext));
+  return (pageContext: pageContext): string => {
+    const fullContext: pageContext = { ...templateMeta, ...pageContext };
+
+    return blocks(fullContext, fill(fullContext));
+  };
 }
 
-function createRenderer(everything) {
+function createRenderer(everything: SiteContentExtended): SiteContentComplete {
   const { meta, template, ...rest } = everything;
   const render = create(template.raw, meta);
 

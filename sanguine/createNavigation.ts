@@ -1,21 +1,28 @@
 import path from "path";
 
-function createNavigation(everything) {
-  everything.navigation = everything.pages.reduce((acc, { key }) => {
-    if (/index\.html$/.test(key)) {
-      const [h, ...t] =
-        key === "index.html" ? "resume" : key.split(path.sep)[0];
+import { Link, SiteContentExtended } from "./SanguineTypes";
 
-      acc.push({
-        href: key.replace(path.sep, "/"),
-        text: `${h.toUpperCase()}${t.join("")}`,
-      });
-    }
+function createNavigation(
+  everything: SiteContentExtended
+): SiteContentExtended {
+  const navigation: Array<Link> = everything.pages.reduce(
+    (acc: Array<Link>, { key }) => {
+      if (/index\.html$/.test(key)) {
+        const [h, ...t] =
+          key === "index.html" ? "resume" : key.split(path.sep)[0];
 
-    return acc;
-  }, []);
+        acc.push({
+          href: key.replace(path.sep, "/"),
+          text: `${h.toUpperCase()}${t.join("")}`,
+        });
+      }
 
-  return everything;
+      return acc;
+    },
+    []
+  );
+
+  return { ...everything, navigation };
 }
 
 export { createNavigation };
