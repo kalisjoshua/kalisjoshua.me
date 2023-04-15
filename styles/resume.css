@@ -1,38 +1,38 @@
-.section-resume .main h2 {
+.section-index .main h2 {
   border-bottom: 1px solid;
 }
 
-.section-resume .main h3 {
+.section-index .main h3 {
   float: left;
   font-weight: 100;
 }
 
-.section-resume h3 + p {
+.section-index h3 + p {
   font-weight: 100;
   margin: 0;
   text-align: right;
 }
 
-#resume__non-tech {
+.section-index details {
   display: none;
 }
-
-#resume__non-tech summary {
+/*
+.section-index details summary {
   cursor: pointer;
   list-style: none;
   user-select: none;
 }
 
-#resume__non-tech summary > *:before{
+.section-index details summary > *:before{
   display: inline-block;
   text-align: center;
   width: 2ex;
 }
 
-#resume__non-tech:not([open]) summary > *:before {
+.section-index details:not([open]) summary > *:before {
   content: "-";
 }
 
-#resume__non-tech[open] summary > *:before {
+.section-index details[open] summary > *:before {
   content: "+";
-}
+} */
