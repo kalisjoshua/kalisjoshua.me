@@ -92,7 +92,9 @@ function customize_prompt {
         git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(branch \1)/'
     }
 
-    export PS1="\n\w $cyan\$(git_branch)$reset \n\u$green@\h$reset $ "
+    # NOTE! "\\" below   (here) needs to be only "\"
+    export PS1="\n\w $cyan\\$(git_branch)$reset \n\u$green@\h$reset $ "
+    # NOTE! the Deno GFM parser was having troubles with only one slash
 }
 
 colorize_ls

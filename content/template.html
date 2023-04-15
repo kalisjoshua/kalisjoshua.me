@@ -23,8 +23,6 @@
         <h1><a href="${rel}index.html">${header}</a></h1>
 
         <p>I build great teams and excellent software.</p>
-
-        ${includeAbout ? about : ""}
       </header>
 
       ${main}
@@ -40,9 +38,9 @@
       <nav class="navigation" role="navigation">
         <ul>
           ${navigation
-            .map(({href, style, text}) => `<li class="${style}"><a href="${href}">${text}</a></li>`)
+            .map(({href, text}) => `<li class="${isActive(href)}"><a href="${rel}${href}">${text}</a></li>`)
             .join("")}
-          <li><a href="https://docs.google.com/document/d/1ceP0j9bleh5CRmQbeaStNZs8J_8djUu_eCUd7ofMnsk">Resume (Google Doc)</a></li>
+          <li><a href="https://docs.google.com/document/d/1ceP0j9bleh5CRmQbeaStNZs8J_8djUu_eCUd7ofMnsk" target="_blank">Resume (Google Doc)</a></li>
         </ul>
       </nav>
 
@@ -89,9 +87,3 @@
 
   <script defer src="${rel}js/highlighter.js"></script>
   <script defer src="${rel}js/slides.js"></script>
-  <script defer>
-    window.addEventListener("DOMContentLoaded", (() => {
-      document.querySelector('.navigation a[href*="docs.google.com"]')
-        .setAttribute("target", "_blank")
-      }))
-  </script>

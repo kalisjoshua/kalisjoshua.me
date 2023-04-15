@@ -1,29 +1,42 @@
-import path from "path";
+import { loadSync } from "deno/dotenv/mod.ts";
+import { walkSync } from "deno/fs/mod.ts";
+import { join } from "deno/path/mod.ts";
 
-import { collectPaths } from "./collectPaths";
-import { createMeta } from "./createMeta";
-import { createNavigation } from "./createNavigation";
-import { createRenderer } from "./createRenderer";
-import { createSectionIndexes } from "./createSectionIndexes";
-import { getContent } from "./getContent";
-import { organizeContent } from "./organizeContent";
-import { outputFiles } from "./outputFiles";
-import { pipe } from "./pipe";
+import { addFileNodeContent } from "./addFileNodeContent.ts";
+import { collectMeta } from "./collectMeta.ts";
+import { createFileNodes } from "./createFileNode.ts";
+import { createNavigation } from "./createNavigation.ts";
+import { createRenderFn } from "./createRenderFn.ts";
+import { createSectionIndexes } from "./createSectionIndexes.ts";
+import { organizeContent } from "./organizeContent.ts";
+import { pipe } from "./pipe.ts";
+import { renderPages } from "./renderPages.ts";
+import { writeFiles } from "./writeFiles.ts";
 
-const pkg = require("../package.json");
+const CWD = Deno.cwd();
+const ENV = loadSync();
+const OUTPUT: string = join(CWD, ENV["PUB_DIR"]);
+const SOURCE: string = join(CWD, ENV["SRC_DIR"]);
 
-const CWD = process.cwd();
-const OUTPUT = path.join(CWD, pkg.config.output_dir);
-const SOURCE = path.join(CWD, pkg.config.source_dir);
+const readFiles = (dir: string) =>
+  Array.from(
+    walkSync(dir, {
+      includeDirs: false,
+      match: [/\.html$/, /\.md$/],
+      skip: [/cover-letters/],
+    }),
+  );
 
-pipe([
+pipe(
   SOURCE,
-  collectPaths,
-  (data) => getContent(SOURCE, data),
+  readFiles,
+  createFileNodes.bind(null, CWD),
+  addFileNodeContent,
   organizeContent,
   createSectionIndexes,
-  createMeta,
+  collectMeta,
   createNavigation,
-  createRenderer,
-  (data) => outputFiles(OUTPUT, data),
-]);
+  createRenderFn,
+  renderPages,
+  writeFiles.bind(null, OUTPUT),
+);

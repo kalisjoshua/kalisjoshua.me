@@ -6,25 +6,11 @@
   * Articles - (very) infrequently published/written
   * Slides - presentation slides
 
-
 ## How To Generate Pages
 
-``` bash
-npm run pages
-```
-
-This will generate all content pages from the `content` folder.
-
-``` bash
-npm run watch
-```
-
-Will watch for file changes and re-run the static generation process.
-
+See `deno.jsonc` for documentation on available commands.
 
 ## TODO
 
-  * [ ] unit tests public/js/highlighter.js
-  * [ ] unit tests public/js/slides.js
-  * [ ] unit tests sanguine/index.js
-  * [ ] Modularize/lib-ratize sanguine
+  * [ ] Fix "Quirks Mode" issue with slides styling
+  * [ ] Unit test public/js/slides.js

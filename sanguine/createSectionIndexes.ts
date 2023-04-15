@@ -1,94 +1,64 @@
-import path from "path";
-
-import { pipe } from "./pipe";
-import { FileNode, PageNode, SiteContentBasic } from "./SanguineTypes";
-
-type Summary = {
-  date: Date | string;
-  intro: string;
-  key: string;
-  sorting: number;
-  title: string;
-};
-
-const pull = (content, regex) => (content.match(regex) || []).at(1);
+import { FileNodeContent } from "./addFileNodeContent.ts";
+import { organizeContent } from "./organizeContent.ts";
 
 const rDate = /### ([^\n]+)/;
+const rDraft = /draft$/i;
 const rIntro = /\n(?!#+|(?:\s*[-*+]|\d+\.\s*)[^\n]+)(.+)/;
 const rTitle = /## ([^\n]+)/;
 
-function buildSummaries(
-  pages: Array<PageNode>
-): Record<string, Array<Summary>> {
-  return pages.reduce((acc, file) => {
-    const section =
-      file.key.indexOf(path.sep) >= 0 ? file.key.split(path.sep).at(0) : false;
+const extractPattern = (regex: RegExp, content: string) =>
+  (content.match(regex) || []).at(1) || "";
+const isDraft = (title: string) => rDraft.test(title);
 
-    if (section) {
-      if (!acc[section]) {
-        acc[section] = [];
-      }
-
-      const summary = summarize(file);
-
-      if (!/draft$/i.test(summary.title)) {
-        acc[section].push(summary);
-      }
+function createSectionIndexes(siteContent: ReturnType<typeof organizeContent>) {
+  const sections = siteContent.pages.reduce((acc, item) => {
+    if (item.section && !acc[item.section]) {
+      acc[item.section] = {
+        // keeping most fields as a template
+        ...item,
+        // change name
+        name: "index",
+        // path will be empty because it will not be a real file
+        path: "",
+        // generate the index markdown (raw) content
+        raw: siteContent.pages
+          .filter((fileNode) => fileNode.section === item.section)
+          .map(summarize)
+          .sort(([a], [b]) => b - a)
+          .map(([_, summary]) => summary)
+          .join("\n\n\n"),
+      };
     }
 
     return acc;
-  }, {});
+  }, {} as Record<string, FileNodeContent>);
+
+  const indexes = Object.values(sections);
+
+  if (indexes.length) {
+    siteContent.pages.push(...indexes);
+  }
+
+  return siteContent;
 }
 
-const createIndexes = (
-  sections: ReturnType<typeof buildSummaries>
-): Array<PageNode> =>
-  Object.keys(sections).map((name) => {
-    sections[name] = sections[name]
-      .sort((a, b) => a.sorting - b.sorting)
-      .reverse();
+function summarize(fileNode: FileNodeContent): [number, string] {
+  const title = extractPattern(rTitle, fileNode.raw);
 
-    const key = path.join(name, "index.html");
+  if (isDraft(title)) {
+    return [0, ""];
+  }
 
-    return {
-      includeAbout: false,
-      isArticle: false,
-      key,
-      raw: sections[name]
-        .map(
-          ({ date, intro, key, title }) =>
-            `**[${title}](${key.replace(name, "").replace(path.sep, "")})**${
-              date && " - " + date
-            }\n\n${intro}`
-        )
-        .join("\n\n"),
-      rel: "../".repeat(key.split(path.sep).length - 1) || "./",
-    };
-  });
+  const rawDate = extractPattern(rDate, fileNode.raw);
+  const dateParsed = Date.parse(`${rawDate}`);
+  const date = dateParsed ? ` - ${rawDate}` : "";
+  const intro = extractPattern(rIntro, fileNode.raw);
 
-function createSectionIndexes(everything: SiteContentBasic): SiteContentBasic {
-  pipe([
-    everything.pages,
-    buildSummaries,
-    createIndexes,
-    (indexes: ReturnType<typeof createIndexes>): void => {
-      everything.pages.push(...indexes);
-    },
-  ]);
-
-  return everything;
-}
-
-function summarize({ key, raw }: FileNode): Summary {
-  const date = pull(raw, rDate);
-
-  return {
-    date: Date.parse(date) ? date : "",
-    intro: pull(raw, rIntro),
-    key,
-    sorting: Date.parse(date) ? new Date(date).getTime() : 0,
-    title: pull(raw, rTitle),
-  };
+  return [
+    // TODO: substitute string to number conversion for title sorting a-z
+    dateParsed || 0,
+    `**[${title}](${fileNode.name}.html)**${date}\n\n${intro}`,
+  ];
 }
 
 export { createSectionIndexes };
