@@ -2,52 +2,14 @@
   "author": {
     "email": "kalisjoshua@gmail.com",
     "name": "Joshua T Kalis",
-    "twitter": "kalisjoshua",
     "url": "https://kalisjoshua.me"
   },
   "name": "kalisjoshua.me",
   "description": "Personal website and resume for Joshua Kalis.",
-  "version": "10.8.0",
+  "version": "11.0.0",
   "homepage": "https://kalisjoshua.me",
   "repository": {
     "type": "git",
     "url": "git@github.com:kalisjoshua/kalisjoshua.me.git"
-  },
-  "engines": {
-    "bun": ">=0.5.7"
-  },
-  "config": {
-    "output_dir": "docs",
-    "source_dir": "content"
-  },
-  "devDependencies": {
-    "bun": "^0.5.7",
-    "http-server": "^14.1.1",
-    "marked": "^4.1.1",
-    "npm-watch": "^0.7.0",
-    "sass": "^1.55.0"
-  },
-  "scripts": {
-    "build": "npm run pages && npm run public && npm run styles && npm run cname",
-    "postbuild": "echo \"Build complete.\"",
-    "prebuild": "npm run clean && mkdir $npm_package_config_output_dir",
-    "clean": "rm -rf $npm_package_config_output_dir",
-    "cname": "echo kalisjoshua.me > ./$npm_package_config_output_dir/CNAME",
-    "styles": "sass --style=compressed ./styles/kalisjoshua.scss ./$npm_package_config_output_dir/css/kalisjoshua.css",
-    "pages": "bun ./sanguine/index.ts",
-    "public": "cp -r ./public/* ./$npm_package_config_output_dir",
-    "start": "http-server ./$npm_package_config_output_dir/",
-    "tag": "git tag v$npm_package_version && git push --tags",
-    "watch": "npm-watch"
-  },
-  "watch": {
-    "build": {
-      "extensions": "css,html,js,md",
-      "patterns": [
-        "content",
-        "public",
-        "sanguine"
-      ]
-    }
   }
 }

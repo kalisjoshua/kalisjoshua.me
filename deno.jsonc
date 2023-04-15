@@ -1,0 +1,26 @@
+{
+  "fmt": {
+    "files": {
+      "include": [],
+      "exclude": [
+        "."
+      ]
+    }
+  },
+  "imports": {
+    "deno/": "https://deno.land/std@0.184.0/",
+    "markdown": "https://deno.land/x/gfm@0.2.1/mod.ts"
+  },
+  "tasks": {
+    // build all site files
+    "build": "./admin/build.sh",
+    // run test coverage report
+    "cover": "./admin/cover.sh",
+    // watch files for changes and run build after files have been changed
+    "dev": "deno run --allow-read=./ --allow-run ./admin/watchDev.ts",
+    // host published files at http://localhost:8080
+    "serve": "deno run --allow-env --allow-net --allow-read ./admin/dev-server.ts",
+    // run unit tests
+    "test": "deno test --allow-read=./ --allow-write=./docs ./sanguine"
+  }
+}

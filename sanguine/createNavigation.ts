@@ -1,28 +1,34 @@
-import path from "path";
+import { collectMeta } from "./collectMeta.ts";
 
-import { Link, SiteContentExtended } from "./SanguineTypes";
+type CollectMeta = ReturnType<typeof collectMeta>;
+type Link = { href: string; text: string };
+type SiteContent = ReturnType<typeof createNavigation>;
 
-function createNavigation(
-  everything: SiteContentExtended
-): SiteContentExtended {
-  const navigation: Array<Link> = everything.pages.reduce(
-    (acc: Array<Link>, { key }) => {
-      if (/index\.html$/.test(key)) {
-        const [h, ...t] =
-          key === "index.html" ? "resume" : key.split(path.sep)[0];
+const exclude = ["recruiters"];
+const labelText = (str: string) => `${str.at(0)!.toUpperCase()}${str.slice(1)}`;
+const resumeOrSection = (str: string) => (str === "index" ? "resume" : str);
 
+function createNavigation(siteContent: CollectMeta) {
+  const navigation: Array<Link> = siteContent.pages.reduce(
+    (acc: Array<Link>, page) => {
+      const isNav = page.section === "" ||
+        page.name === "index" ||
+        page.name === page.section;
+
+      if (isNav && !exclude.includes(page.name)) {
         acc.push({
-          href: key.replace(path.sep, "/"),
-          text: `${h.toUpperCase()}${t.join("")}`,
+          href: `${page.section}/${page.name}.html`.replace(/^\//, ""),
+          text: labelText(resumeOrSection(page.section || page.name)),
         });
       }
 
       return acc;
     },
-    []
+    [],
   );
 
-  return { ...everything, navigation };
+  return { ...siteContent, navigation };
 }
 
+export type { Link, SiteContent };
 export { createNavigation };

@@ -1,0 +1,97 @@
+// .gfm-highlight,
+.highlight {
+  --ink: #FFFFFF;
+  --mint: #99B898;
+  --pink: #FECEA8;
+  --salmon: #FF847C;
+  --salmon-dark: #E84A5F;
+  --unset: #555;
+
+  --comment: #999999;
+  --constant: var(--salmon-dark);
+  --entity: var(--salmon);
+  --entity-tag: var(--unset);
+  --keyword: var(--mint);
+  --markup-deleted-bg: var(--unset);
+  --markup-deleted-text: var(--unset);
+  --markup-inserted-bg: var(--unset);
+  --markup-inserted-text: var(--unset);
+  --storage-modifier-import: var(--unset);
+  --string: var(--pink);
+  --variable: var(--salmon);
+
+  border-radius: 1ex;
+  color: var(--ink);
+  line-height: 1.3em;
+  overflow: auto;
+
+  > pre {
+    background: var(--bg-dark);
+    counter-increment: line-number;
+    float: left;
+    padding: 1ex;
+    white-space: pre;
+  }
+
+  .token {
+    &.keyword {
+      color: var(--keyword);
+    }
+
+    &.tag .token.class-name,
+    &.tag .token.script .token.punctuation {
+      color: var(--storage-modifier-import);
+    }
+
+    &.operator {
+      color: var(--comment);
+    }
+
+    &.number,
+    &.boolean,
+    &.tag .token.punctuation,
+    &.tag .token.script .token.script-punctuation,
+    &.tag .token.attr-name {
+      color: var(--constant);
+    }
+
+    &.function {
+      color: var(--entity);
+    }
+
+    &.string {
+      color: var(--string);
+    }
+
+    &.comment {
+      color: var(--comment);
+    }
+
+    &.class-name {
+      color: var(--variable);
+    }
+
+    &.regex {
+      color: var(--string);
+    }
+
+    &.regex .regex-delimiter {
+      color: var(--constant);
+    }
+
+    &.tag .token.tag,
+    &.property {
+      color: var(--entity-tag);
+    }
+
+    &.deleted {
+      color: var(--markup-deleted-text);
+      background-color: var(--markup-deleted-bg);
+    }
+
+    &.inserted {
+      color: var(--markup-inserted-text);
+      background-color: var(--markup-inserted-bg);
+    }
+  }
+}
