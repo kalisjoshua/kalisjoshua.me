@@ -1,5 +1,17 @@
 # Notes
 
+## FreightVerify
+
+  * People
+      - Clint Wren
+      - steve.asam@freightverify.com
+      - dave.damon@freightverify.com [Directory of Technology]
+      - hans.buys@freightverify.com
+      - binu.panicker@freightverify.com
+      - Evelyn Grubb
+  *
+
+
 ---
 
 # Questions to ask when interviewing for a new job
