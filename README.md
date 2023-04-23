@@ -1,4 +1,6 @@
-[![Deploy static content to Pages](https://github.com/kalisjoshua/kalisjoshua.me/actions/workflows/github-pages-content.yml/badge.svg)](https://github.com/kalisjoshua/kalisjoshua.me/actions/workflows/github-pages-content.yml)
+[![Publish to GitHub Pages](https://github.com/kalisjoshua/kalisjoshua.me/actions/workflows/publish.yml/badge.svg)](https://github.com/kalisjoshua/kalisjoshua.me/actions/workflows/publish.yml)
+
+[![Check Test Coverage](https://github.com/kalisjoshua/kalisjoshua.me/actions/workflows/coverage.yml/badge.svg)](https://github.com/kalisjoshua/kalisjoshua.me/actions/workflows/coverage.yml)
 
 # Joshua T Kalis - Personal Website
 
