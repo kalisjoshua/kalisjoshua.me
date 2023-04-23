@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to GitHub Pages
+name: Publish to GitHub Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -27,26 +27,29 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-22.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Use NodeJS
-        uses: actions/setup-node@v3
+      - uses: denoland/setup-deno@v1.1.1
         with:
-          node-version: '16'
+          deno-version: v1.x # Run with latest stable Deno.
 
-      - name: Build static assets
-        run: npm ci && npm run build
+      - name: Run tests
+        run: deno task cover
 
-      - name: Debug
-        run: ls -al docs
+      - name: Build site files
+        run: deno task build
+
+      - name: Compile CSS
+        uses: gha-utilities/sass-build@v0.5.1
+        with:
+          source: styles/kalisjoshua.scss
+          destination: ./docs/css/kalisjoshua.css
 
       - name: Create archive
         shell: bash
-        run: tar --directory "docs/" -cvf "$RUNNER_TEMP/artifact.tar" .
+        run: tar --directory ./docs/ -cvf "$RUNNER_TEMP/artifact.tar" .
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3

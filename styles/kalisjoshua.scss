@@ -3,6 +3,7 @@
 
 @use "cicada.css";
 @use "colors.css";
+@use "highlight.scss";
 @use "navigation.css";
 @use "resume.css";
 @use "sidebar.css";
@@ -14,6 +15,10 @@
 
 a {
   color: #18453b;
+}
+
+a.anchor[aria-hidden="true"] {
+  display: none;
 }
 
 body {
