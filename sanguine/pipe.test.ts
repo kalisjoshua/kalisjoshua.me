@@ -1,4 +1,4 @@
-import { assertEquals } from "deno/testing/asserts.ts";
+import { assertEquals } from "../deno.deps.ts";
 
 import { pipe } from "./pipe.ts";
 

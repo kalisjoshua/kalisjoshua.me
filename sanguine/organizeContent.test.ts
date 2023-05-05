@@ -1,4 +1,4 @@
-import { assertEquals, assertThrows } from "deno/testing/asserts.ts";
+import { assertEquals, assertThrows } from "../deno.deps.ts";
 
 import { createTestFileNode, ROOT } from "./__testUtils.ts";
 

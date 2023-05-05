@@ -1,5 +1,4 @@
-import { WalkEntry } from "deno/fs/mod.ts";
-import { join, sep } from "deno/path/mod.ts";
+import { join, sep, WalkEntry } from "../deno.deps.ts";
 
 function createFileNodes(CWD: string, all: Array<WalkEntry> = []) {
   if (!all.length) {

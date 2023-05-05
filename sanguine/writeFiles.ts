@@ -1,4 +1,4 @@
-import { join, sep } from "deno/path/mod.ts";
+import { join, sep } from "../deno.deps.ts";
 
 import { renderPages } from "./renderPages.ts";
 

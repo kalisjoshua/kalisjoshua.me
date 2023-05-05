@@ -1,7 +1,7 @@
 ## Ideas
 
     [ ] Longleet - Hypermedia API Maze
-    [ ] Gratitude Token
+    [ ] Gratitude Token / Token of Gratitude (TOG)
     [ ] Item Lineage QRs
 
 Here are some languages that I would like to work in:

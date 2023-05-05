@@ -34,6 +34,6 @@
     "https://deno.land/std@0.184.0/testing/asserts.ts": "e16d98b4d73ffc4ed498d717307a12500ae4f2cbe668f1a215632d19fcffc22f",
     "https://deno.land/std@0.184.0/testing/mock.ts": "220ed9b8151cb2cac141043d4cfea7c47673fab5d18d1c1f0943297c8afb5d13",
     "https://deno.land/std@0.184.0/testing/snapshot.ts": "df277f1fc45da1b1274f1be339efb23cd5635fe98b8899be8de11b38a9be25cf",
-    "https://raw.githubusercontent.com/markedjs/marked/28f4342d8fb9c7a1d62b1c133d5f2130c051d3a0/lib/marked.esm.js": "8da585ba07277fbed079acafdb08da48bb190d25406d043328ddcbaed8146d74"
+    "https://raw.githubusercontent.com/markedjs/marked/v4.3.0/lib/marked.esm.js": "8da585ba07277fbed079acafdb08da48bb190d25406d043328ddcbaed8146d74",
   }
 }

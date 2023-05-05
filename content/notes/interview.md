@@ -1,18 +1,5 @@
 # Notes
 
-## FreightVerify
-
-  * People
-      - Clint Wren
-      - steve.asam@freightverify.com
-      - dave.damon@freightverify.com [Directory of Technology]
-      - hans.buys@freightverify.com
-      - binu.panicker@freightverify.com
-      - Evelyn Grubb
-  *
-
-
----
 
 # Questions to ask when interviewing for a new job
 
@@ -49,16 +36,24 @@
 
 ---
 
-  * PTO policy
-      - Accrual
-      - 90 days
-  * Working hours
-      - 7:30 - 4 Eastern
-      - 40 hours weeks?
-  * Mac laptop
-  * Pay schedule is monthly or biweekly
-  * Dress code: jeans, shorts, button-down shirt
-  * daycare discounts
+  1. What are the working hours for this position and the team?
+  2. Are people in multiple time zones?
+  3. Is this expected to be a 40 hr/week position with any oncall responsibility?
+  4. Are there any dress code requirements?
+  5. How often is travel required or suggested?
+  6. Is there any regular budget for:
+      - Conferences
+      - Education
+      - Home office upkeep
+      - Phone or internet service
+      - Gym or personal health
+  7. Are there annual bonuses?
+  8. Is the PTO accrual the same for all tenure levels?
+
+---
+
+  1. Will I be able to use a MacOS workstation?
+  2. Do you require team members to sign non-compete agreements?
 
 ---
 

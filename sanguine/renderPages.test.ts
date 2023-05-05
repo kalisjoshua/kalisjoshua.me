@@ -1,4 +1,4 @@
-import { assertSnapshot } from "deno/testing/snapshot.ts";
+import { assertSnapshot } from "../deno.deps.ts";
 
 import { createTestFileNode } from "./__testUtils.ts";
 import { createRenderFn, PageContext } from "./createRenderFn.ts";

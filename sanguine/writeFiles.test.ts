@@ -1,6 +1,4 @@
-import { join } from "deno/path/mod.ts";
-import { assertEquals } from "deno/testing/asserts.ts";
-import { stub } from "deno/testing/mock.ts";
+import { assertEquals, join, stub } from "../deno.deps.ts";
 
 import { ROOT } from "./__testUtils.ts";
 

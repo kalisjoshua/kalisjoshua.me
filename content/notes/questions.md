@@ -1,5 +1,29 @@
 # New Hire Questions
 
+  * How is constructive feedback handled within the organization?
+  * What are some of your short and long term goals at the organization?
+  * What is the cycle time for automated testing?
+  * What is the oldest technology solution in place and why?
+  * How much autonomy does this role/team have in implementing change?
+  * Are there areas of my experience, or lack of, that I can address?
+
+  * What metrics do you measure success by?
+  * Career advancement/promotion within the company
+  * Can you describe a typical day in this type of role?
+  * How long have you been at the company and what makes you stay?
+  * How would you describe the work environment and corporate culture?
+  * How would my performance be measured?
+  * What monitoring is in place for site reliability?
+  * What does uptime look like and what improvements are planned or needed?
+  * Do you think you have gotten a good feeling for who I am and what I can bring to the organization?
+
+  * What are some challenges for this role?
+  * What key attribute are you seeking for this role?
+  * What goals and challenges are ahead for this team?
+  * What question(s) have I not asked that you thought I would/should have?
+  * What is the highest technical rank a woman holds in your organization?
+
+
 ## Culture
 
   * How are tie-breakers decided when competing or conflicting requirements arise?

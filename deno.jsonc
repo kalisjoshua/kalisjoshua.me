@@ -7,10 +7,6 @@
       ]
     }
   },
-  "imports": {
-    "deno/": "https://deno.land/std@0.184.0/",
-    "markdown": "https://raw.githubusercontent.com/markedjs/marked/28f4342d8fb9c7a1d62b1c133d5f2130c051d3a0/lib/marked.esm.js"
-  },
   "tasks": {
     // build all site files
     "build": "./admin/build.sh",

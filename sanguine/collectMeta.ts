@@ -1,4 +1,4 @@
-import { parse as parseMarkdown } from "markdown";
+import { marked } from "../deno.deps.ts";
 
 import { pronouns } from "./pronouns.ts";
 import { organizeContent } from "./organizeContent.ts";
@@ -15,7 +15,7 @@ const collectMeta = (siteContent: SiteContent, publishDate = new Date()) => ({
     ...siteContent.meta.reduce(
       (acc, { name, raw }) => ({
         ...acc,
-        [name]: parseMarkdown(raw),
+        [name]: marked.parse(raw),
       }),
       { contact: "", projects: "" }
     ),

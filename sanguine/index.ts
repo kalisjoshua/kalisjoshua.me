@@ -1,6 +1,4 @@
-import { loadSync } from "deno/dotenv/mod.ts";
-import { walkSync } from "deno/fs/mod.ts";
-import { join } from "deno/path/mod.ts";
+import { join, loadSync, walkSync } from "../deno.deps.ts";
 
 import { addFileNodeContent } from "./addFileNodeContent.ts";
 import { collectMeta } from "./collectMeta.ts";

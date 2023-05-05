@@ -1,5 +1,4 @@
-import { assertEquals } from "deno/testing/asserts.ts";
-import { returnsNext, stub } from "deno/testing/mock.ts";
+import { assertEquals, returnsNext, stub } from "../deno.deps.ts";
 
 import { createFileNode } from "./createFileNode.ts";
 

@@ -1,5 +1,4 @@
-import { join } from "deno/path/mod.ts";
-import { assertEquals, assertThrows } from "deno/testing/asserts.ts";
+import { assertEquals, assertThrows, join } from "../deno.deps.ts";
 
 import { createFileNode, createFileNodes } from "./createFileNode.ts";
 
