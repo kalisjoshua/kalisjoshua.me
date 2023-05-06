@@ -6,7 +6,7 @@ source .env
 rm -rf $PUB_DIR && mkdir $PUB_DIR && mkdir $PUB_DIR/css
 
 # build pages
-deno run --allow-env --allow-read=./ --allow-write=$PUB_DIR ./sanguine/index.ts
+deno run --allow-env --allow-read=./ --allow-write=$PUB_DIR ./$SRC_DIR/index.ts
 
 # copy public content
 cp -r ./public/* $PUB_DIR

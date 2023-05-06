@@ -1,4 +1,4 @@
-import { marked } from "../deno.deps.ts";
+import { parsedown } from "../deno.deps.ts";
 
 import { FileNodeContent } from "./addFileNodeContent.ts";
 import { createRenderFn } from "./createRenderFn.ts";
@@ -16,7 +16,7 @@ function genPage(siteContent: SiteContent, page: FileNodeContent) {
           ? "active"
           : "",
       isArticle: page.section === "articles" && page.name !== "index",
-      main: marked.parse(page.raw),
+      main: parsedown(page.raw),
       navigation,
       path,
       rel: page.rel,

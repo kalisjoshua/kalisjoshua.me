@@ -14,7 +14,7 @@ import { writeFiles } from "./writeFiles.ts";
 const CWD = Deno.cwd();
 const ENV = loadSync();
 const OUTPUT: string = join(CWD, ENV["PUB_DIR"]);
-const SOURCE: string = join(CWD, ENV["SRC_DIR"]);
+const CONTENT: string = join(CWD, ENV["CONTENT"]);
 
 const readFiles = (dir: string) =>
   Array.from(
@@ -26,7 +26,7 @@ const readFiles = (dir: string) =>
   );
 
 pipe(
-  SOURCE,
+  CONTENT,
   readFiles,
   createFileNodes.bind(null, CWD),
   addFileNodeContent,

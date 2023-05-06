@@ -1,4 +1,4 @@
-import { loadSync } from "deno/dotenv/mod.ts";
+import { loadSync } from "../deno.deps.ts";
 
 const PUB_DIR = loadSync()["PUB_DIR"];
 const server = Deno.listen({ port: 8080 });

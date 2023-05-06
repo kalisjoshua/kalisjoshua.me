@@ -11,11 +11,11 @@
     // build all site files
     "build": "./admin/build.sh",
     // run test coverage report
-    "cover": "./admin/cover.sh",
+    "cover": "deno run --allow-env --allow-read --allow-run --allow-write ./admin/cover.ts",
     // watch files for changes and run build after files have been changed
-    "dev": "deno run --allow-read=./ --allow-run ./admin/watchDev.ts",
+    "dev": "deno run --allow-read --allow-run ./admin/watch.ts",
     // host published files at http://localhost:8080
-    "serve": "deno run --allow-env --allow-net --allow-read ./admin/dev-server.ts",
+    "serve": "deno run --allow-env --allow-net --allow-read ./admin/serve.ts",
     // run unit tests
     "test": "deno test --allow-read=./ --allow-write=./docs ./sanguine"
   }
