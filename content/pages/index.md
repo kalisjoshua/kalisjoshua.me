@@ -7,6 +7,19 @@ Technology leader, deeply passionate about fostering great teams to solve challe
 ## Experience
 
 
+### Visiting Media
+May 2023 - Current
+
+#### Engienering Team Lead
+
+I joined a team building a new tool for customers to diagram - in 2D - floor plans for events planning to enable generation of Virtual Reality and Augmented Reality experiences.
+
+  * Coordinated annual employee performance reviews.
+  * Regular contributor to feature development
+  * Quality validation / testing: unit (isolation), functional (integration)
+  * process improvement: CI/CD pipelines, version control practices
+
+
 ### Guaranteed Rate
 Dec 2021 - Jul 2022
 
