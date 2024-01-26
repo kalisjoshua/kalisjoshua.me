@@ -12,12 +12,12 @@ May 2023 - Current
 
 #### Engienering Team Lead
 
-I joined a team building a new tool for customers to diagram - in 2D - floor plans for events planning to enable generation of Virtual Reality and Augmented Reality experiences.
+At Visiting Media I lead a talented group of software engineers building B2B Software as a Service (SaaS) for the hospitality sales industry. We are building a sales enablement platform to enable our customers to have "super powers" with respect to selling their properties' amenities to their customers.
 
-  * Coordinated annual employee performance reviews.
-  * Regular contributor to feature development
-  * Quality validation / testing: unit (isolation), functional (integration)
-  * process improvement: CI/CD pipelines, version control practices
+  * I have built a culture of trust and collaboration with a globally diverse team.
+  * We are maturing the SDLC continuously by adopting best practices: trunk-based development, continuous integration and continuous deployment (CI/CD), code review, architectural decision records (ADRs), and more.
+  * Conducted annual and quarterly employee performance reviews in addition to regular one-on-ones.
+
 
 
 ### Guaranteed Rate
