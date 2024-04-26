@@ -3,36 +3,16 @@
 }
 
 .section-index .main h3 {
-  float: left;
   font-weight: 100;
+  margin: 1em 0 0;
 }
 
 .section-index h3 + p {
+  float: right;
   font-weight: 100;
   margin: 0;
-  text-align: right;
 }
 
 .section-index details {
   display: none;
 }
-/*
-.section-index details summary {
-  cursor: pointer;
-  list-style: none;
-  user-select: none;
-}
-
-.section-index details summary > *:before{
-  display: inline-block;
-  text-align: center;
-  width: 2ex;
-}
-
-.section-index details:not([open]) summary > *:before {
-  content: "-";
-}
-
-.section-index details[open] summary > *:before {
-  content: "+";
-} */
