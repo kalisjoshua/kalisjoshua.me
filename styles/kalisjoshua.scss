@@ -1,15 +1,15 @@
 @use "./lib/normalize.css";
 @use "./lib/h5bp.css";
 
-@use "cicada.css";
-@use "colors.css";
-@use "highlight.scss";
-@use "navigation.css";
-@use "resume.css";
-@use "sidebar.css";
-@use "slides.css";
+@use "./cicada.css";
+@use "./colors.css";
+@use "./highlight.scss";
+@use "./navigation.css";
+@use "./resume.css";
+@use "./sidebar.css";
+@use "./slides.css";
 
-@use "print.css";
+@use "./print.scss";
 
 *, *:before, *:after {
   box-sizing: border-box;
