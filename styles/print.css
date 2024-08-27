@@ -1,0 +1,56 @@
+@media print {
+    @page {
+        margin: .05in .5in !important;
+        padding: 0 !important;
+    }
+    
+    * {
+        color: black !important;
+        font-size: 11pt !important;
+    }
+
+    a[href]:after {
+        content: "";
+    }
+
+    h1 {
+        font-size: 18pt !important;
+        font-weight: 900 !important;
+        text-align: center;
+
+        & > small {
+            display: block;
+            font-size: 11pt !important;
+            font-weight: 100;
+
+            &:before {
+                content: "517.803.9806 - kalisjoshua@gmail.com - ";
+            }
+        }
+    }
+
+    h2 {
+        border: 0 !important;
+        font-size: 12pt !important;
+    }
+
+    h3 {
+        font-size: 11pt !important;
+        line-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    aside,
+    header p,
+    .cicada,
+    .sr-only {
+        display: none;
+    }
+
+    .layout {
+        box-shadow: unset;
+        display: block !important;
+        max-width: unset;
+    }
+}

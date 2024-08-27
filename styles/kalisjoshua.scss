@@ -9,6 +9,8 @@
 @use "sidebar.css";
 @use "slides.css";
 
+@use "print.css";
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -82,45 +84,6 @@ pre code[class*="language-"] {
 .main h4 {
   margin: 0;
 }
-
-@media print {
-  @page {
-    margin: 2mm;
-    padding: 0;
-  }
-
-  * {color: black !important;}
-
-  a[href]:after {content: "" !important;}
-
-  h1 {line-height: 0; text-align: right;}
-
-  h2 {font-size: 120%;}
-
-  .main .resume h3 {margin-bottom: unset;}
-  .resume h4 strong {margin-right: 1ex; width: unset;}
-
-  aside,
-  header p,
-  .cicada,
-  .sr-only,
-  #resume__non-tech {display: none;}
-
-  .layout {
-    box-shadow: unset;
-    display: block !important;
-    max-width: unset;
-  }
-
-  .main {
-    padding-top: 0;
-  }
-
-  .resume h3 {
-    border: 0;
-    padding-top: unset;
-  }
-} /* @media print */
 
 @media screen and (min-width: 900px) {
   .layout {
