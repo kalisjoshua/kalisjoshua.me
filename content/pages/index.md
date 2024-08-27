@@ -2,7 +2,7 @@ Seasoned software engineering professional with extensive experience in developi
 
 ## Experience
 
-### 05/2023 - 09/2024 | Visiting Media | __Team Lead - Software Engineering__
+### 05/2023 - 09/2024 | Visiting Media | __Software Engineering Team Lead__
 
 - Elevated Code Quality: Introduced comprehensive JavaScript and TypeScript quality standards, raising code coverage from 0% to 80% overall, with all new code achieving 100% coverage, significantly enhancing the team's sense of ownership and confidence in code changes.
 - Modernized Development Practices: Spearheaded the automation of CI/CD pipelines, established ephemeral environments for pull requests, implemented code review metrics, and introduced containerization, improving developer safety and efficiency in a complex codebase.
@@ -10,12 +10,12 @@ Seasoned software engineering professional with extensive experience in developi
 - Implemented UATaaS: Integrated automated user acceptance testing within the SDLC, ensuring consistent and rigorous testing, preventing regressions, and maintaining feature integrity.
 - Built a High-Performing Team: Interviewed and rigorously evaluated candidates to assemble a top-talent team of software engineers, providing a strong foundation for project success.
 
-### 12/2021 - 07/2022 | Guaranteed Rate | __Team Lead - Software Engineering__
+### 12/2021 - 07/2022 | Guaranteed Rate | __Software Engineering Team Lead__
 
 - Optimized Legacy Systems: Led a data-driven initiative to deprecate and sunset low-value legacy services, reducing the burden on core services teams and streamlining overall operations.
 - Boosted Team Morale: Established a structured and considerate team evaluation process, significantly improving morale and retention in a previously underserved environment.
 
-### 03/2018 - 12/2021 | Rocket Mortgage | __Team Lead - Software Engineering__
+### 03/2018 - 12/2021 | Rocket Mortgage | __Software Engineering Team Lead__
 
 - Established SRE Team: Created the first Site Reliability Engineering (SRE) team, aligning with industry best practices and enhancing site stability through multi-region solutions on AWS.
 - Built Core Services: Developed services using Node.js for top-of-funnel traffic and third-party integration APIs with native AWS services, supporting business growth and ensuring reliability.
