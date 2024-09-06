@@ -3,6 +3,12 @@
   - [kalisjoshua.me](https://github.com/kalisjoshua/kalisjoshua.me) -
     My personal website; this site.
 
+  - [Jasper](https://github.com/kalisjoshua/Jasper) -
+    An extremely effective technical interviewing tool; testing software development skills in basic Javascript.
+
+  - [Vizier Dashboard](https://github.com/kalisjoshua/vizier-dashboard) -
+    A dashboard for project metrics mostly based off GitHub PR life cycle.
+
   - [Zaephyr.us](https://github.com/kalisjoshua/zaephyrus) -
     An API for serving various side projects I build for fun.
 
@@ -17,9 +23,6 @@
 
   - [KoanJS](https://github.com/kalisjoshua/koans-js) -
     JavaScript koans to progressively learn JavaScript through TDD in the browser.
-
-  - [Jasper](https://github.com/kalisjoshua/Jasper) -
-    A series of JavaScript challenges run in the browser console.
 
   - [BrowserSlides](https://github.com/kalisjoshua/BrowserSlides) -
     Markdown-based slides library to generate presentation slide that display in a browser.
