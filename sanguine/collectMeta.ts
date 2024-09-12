@@ -5,7 +5,7 @@ import { organizeContent } from "./organizeContent.ts";
 
 type SiteContent = ReturnType<typeof organizeContent>;
 
-import pkg from "../package.json" with { type: "json" };
+import pkg from "../package.json" assert { type: "json" };
 
 type SemVer = `${number}.${number}.${number}`;
 
