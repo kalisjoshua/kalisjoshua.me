@@ -3,7 +3,7 @@
 source .env
 
 # clean out
-rm -rf $PUB_DIR && mkdir $PUB_DIR && mkdir $PUB_DIR/css
+rm -rf $PUB_DIR && mkdir $PUB_DIR
 
 # build pages
 deno run --allow-env --allow-read=./ --allow-write=$PUB_DIR ./sanguine/index.ts

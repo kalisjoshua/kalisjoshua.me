@@ -29,9 +29,9 @@ jobs:
 
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - uses: denoland/setup-deno@v1.1.1
+      - uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x # Run with latest stable Deno.
 
@@ -41,18 +41,12 @@ jobs:
       - name: Build site files
         run: deno task build
 
-      - name: Compile CSS
-        uses: gha-utilities/sass-build@v0.5.1
-        with:
-          source: styles/kalisjoshua.scss
-          destination: ./docs/css/kalisjoshua.css
-
       - name: Create archive
         shell: bash
         run: tar --directory ./docs/ -cvf "$RUNNER_TEMP/artifact.tar" .
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: github-pages
           path: ${{ runner.temp }}/artifact.tar
@@ -60,4 +54,4 @@ jobs:
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
