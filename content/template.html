@@ -1,4 +1,4 @@
-<!DOCTYPE html />
+<!DOCTYPE html>
 <html class="no-js" lang="en-US" />
 <head>
   <meta charset="utf-8" />
@@ -12,14 +12,25 @@
   <link href="${rel}favicon.ico" rel="icon" />
   <link href="${rel}jk-logo.svg" rel="icon" type="image/svg+xml" />
 
-  <link href="${rel}css/kalisjoshua.css" rel="stylesheet" />
+  <link href="${rel}styles/kalisjoshua.css" rel="stylesheet" />
 
   <body class="section-${section}">
     <p class="sr-only"><a href="#main">Skip navigation</a></p>
 
     <div class="layout">
-      <main class="main" id="main" role="main">
+      <main id="main" role="main">
         <header role="banner">
+          {{?isResume}}
+          <div style="float: right; font-size: 90%; text-align: right">
+            <a
+              href="https://docs.google.com/document/d/16GFGZeztNEwdKGehjKxG0H2y9EbETrOUOW5qHBXa42c/edit?usp=sharing"
+              target="_blank"
+              title="This page also has a print style sheet so ctrl+p will also be printable to PDF"
+              >Google Document</a
+            >
+          </div>
+          {{?/}}
+
           <h1><a href="${rel}index.html">${header}</a></h1>
 
           <p>I build great teams and excellent software.</p>
@@ -33,20 +44,13 @@
       </main>
 
       <aside role="banner">
-        <nav class="navigation" role="navigation">
+        <nav role="navigation">
           <ul>
-            ${navigation .map(({href, text}) => `
+            ${navigation.map(({href, text}) => `
             <li class="${isActive(href)}">
               <a href="${rel}${href}">${text}</a>
             </li>
             `) .join("")}
-            <li>
-              <a
-                href="https://docs.google.com/document/d/16GFGZeztNEwdKGehjKxG0H2y9EbETrOUOW5qHBXa42c/edit?usp=sharing"
-                target="_blank"
-                >Resume (Google Doc)</a
-              >
-            </li>
           </ul>
         </nav>
 
@@ -54,10 +58,19 @@
 
         <div class="projects">${projects}</div>
 
-        <a href="${rel}index.html" id="jk-logo">
-          <img height="138px" src="${rel}images/jk-logo-square.svg"
-          title="Joshua Kalis" logo" width="138px" />
-        </a>
+        <figure id="pride-ally">
+          <a href="https://queerintheworld.com/straight-ally-pride-flag/">
+            <img
+              alt="Pride Ally Flag"
+              height="116px"
+              src="${rel}images/pride-progress.svg"
+              width="221px"
+            />
+          </a>
+          <br />
+          <br />
+          <figcaption>Proud to be a Pride Ally</figcaption>
+        </figure>
 
         <figure class="dev-icons" title="Common web technologies I use.">
           <img
@@ -110,19 +123,12 @@
           />
         </figure>
 
-        <figure id="pride-ally">
-          <a href="https://queerintheworld.com/straight-ally-pride-flag/">
-            <img
-              alt="Pride Ally Flag"
-              height="116px"
-              src="${rel}images/pride-progress.svg"
-              width="221px"
-            />
-          </a>
-          <br />
-          <br />
-          <figcaption>Proud to be a Pride Ally</figcaption>
-        </figure>
+        <a href="${rel}index.html" id="jk-logo">
+          <figure>
+            <img height="138px" src="${rel}images/jk-logo-square.svg"
+            title="Joshua Kalis" logo" width="138px" />
+          </figure>
+        </a>
       </aside>
     </div>
 
@@ -130,5 +136,22 @@
 
     <script defer src="${rel}js/highlighter.js"></script>
     <script defer src="${rel}js/slides.js"></script>
+
+    <script>
+      addEventListener("click", (event) => {
+        const isContactLink = /^contact$/.test(
+          event.target.parentElement.parentElement.previousElementSibling?.id
+        );
+
+        if (isContactLink && event.altKey) {
+          event.preventDefault();
+
+          navigator.clipboard
+            .writeText(event.target.href)
+            .catch(() => "Failed to copy link href.")
+            .then((str = event.target.href) => alert(str));
+        }
+      });
+    </script>
   </body>
 </head>

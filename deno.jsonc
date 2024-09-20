@@ -2,9 +2,7 @@
   "fmt": {
     "files": {
       "include": [],
-      "exclude": [
-        "."
-      ]
+      "exclude": ["."]
     }
   },
   "tasks": {
@@ -13,7 +11,7 @@
     // run test coverage report
     "cover": "./admin/cover.sh",
     // watch files for changes and run build after files have been changed
-    "dev": "deno run --allow-read=./ --allow-run ./admin/watchDev.ts",
+    "dev": "deno run --allow-read --allow-run ./admin/watchDev.ts",
     // host published files at http://localhost:8080
     "serve": "deno run --allow-env --allow-net --allow-read ./admin/dev-server.ts",
     // run unit tests

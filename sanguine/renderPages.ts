@@ -16,6 +16,7 @@ function genPage(siteContent: SiteContent, page: FileNodeContent) {
           ? "active"
           : "",
       isArticle: page.section === "articles" && page.name !== "index",
+      isResume: page.name === "index" && !page.section,
       main: marked.parse(page.raw),
       navigation,
       path,

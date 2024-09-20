@@ -1,4 +1,4 @@
-import { loadSync } from "deno/dotenv/mod.ts";
+import { loadSync } from "../deno.deps.ts";
 
 const PUB_DIR = loadSync()["PUB_DIR"];
 const server = Deno.listen({ port: 8080 });
@@ -52,7 +52,7 @@ async function serveHttp(conn: Deno.Conn) {
         new Response(decoder.decode(data), {
           headers: { ...mime },
           status: 200,
-        }),
+        })
       );
     } catch (error) {
       if (error.name === Deno.errors.NotFound.name) {
@@ -60,7 +60,7 @@ async function serveHttp(conn: Deno.Conn) {
         req.respondWith(new Response("Not found.", { status: 404 }));
       } else {
         req.respondWith(
-          new Response("Sorry, something went wrong.", { status: 500 }),
+          new Response("Sorry, something went wrong.", { status: 500 })
         );
         throw error;
       }

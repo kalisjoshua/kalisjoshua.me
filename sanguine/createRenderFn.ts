@@ -4,6 +4,7 @@ import { createNavigation } from "./createNavigation.ts";
 interface PageContext {
   isActive?: (h: string) => string;
   isArticle?: boolean;
+  isResume?: boolean;
   main: string;
   navigation: Array<Link>;
   path?: string;
@@ -33,7 +34,7 @@ function createRenderFn({
 }: ReturnType<typeof createNavigation>) {
   const fill = new Function(
     "context",
-    `with(context){return \`${template.raw}\`}`,
+    `with(context){return \`${template.raw}\`}`
   );
 
   return {

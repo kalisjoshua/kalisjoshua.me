@@ -1,0 +1,283 @@
+@import "./lib/normalize.css";
+@import "./lib/h5bp.css";
+
+@import "./cicada.css";
+@import "./slides.css";
+
+:root {
+  --bg: rgb(224, 223, 209);
+  --bg-dark: #2a363b;
+  --bg-dark: #18453b;
+  --gold: rgba(200, 200, 50, 0.5);
+  --green: rgba(0, 170, 70, 0.5);
+  --magenta: rgba(140, 35, 70, 0.5);
+  --pink: rgba(163, 44, 120, 0.5);
+  --purple: rgba(119, 64, 152, 0.5);
+  --teal: rgba(50, 100, 100, 0.5);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  background: var(--bg);
+  padding-top: 2em;
+
+  & a {
+    color: var(--bg-dark);
+  }
+
+  & a.anchor[aria-hidden="true"] {
+    display: none;
+  }
+
+  & h1 {
+    color: var(--bg-dark);
+    font-weight: 100;
+    margin: 1ex 0 0;
+
+    & a {
+      text-decoration: none;
+    }
+  }
+
+  & pre {
+    & code {
+      background: gainsboro;
+      display: block;
+      overflow: auto;
+
+      &[class*="language-"] {
+        border-radius: 1ex;
+        padding: 1ex;
+      }
+    }
+  }
+
+  & ul {
+    padding-left: 2ex;
+  }
+}
+
+aside {
+  background: #18453b;
+  color: #e5e5e5;
+  overflow: hidden;
+  padding: 2ex;
+
+  & a {
+    color: inherit;
+  }
+
+  & .dev-icons {
+    background: #612e3f;
+    border: 8px solid gainsboro;
+    border-left: 0;
+    border-right: 0;
+    box-shadow: inset 0 100px 100px 0px rgba(0, 0, 0, 0.2),
+      0 0 100px 10px rgba(0, 0, 0, 0.5);
+    box-sizing: unset;
+    margin: 0 -2ex;
+    padding: 4ex 2ex;
+    text-align: center;
+
+    & img {
+      background: white;
+      border-radius: 5px;
+      box-sizing: unset;
+      height: 30px;
+      margin: 5px;
+      padding: 6px;
+    }
+  }
+
+  & #jk-logo img {
+    background: white;
+    display: table !important;
+    height: 150px;
+    margin: 10ex auto;
+    padding: 6px;
+  }
+
+  & #pride-ally {
+    margin: 8ex 0;
+    text-align: center;
+  }
+}
+
+main {
+  padding: 1px 1em 0;
+
+  & h2 {
+    border-bottom: 1px solid;
+  }
+
+  & h3 {
+    font-size: 100%;
+    font-weight: 400;
+    margin: 1em 0 0;
+  }
+
+  & h4 {
+    margin: 0;
+  }
+
+  & header {
+    & h1 {
+      margin-bottom: 0;
+
+      & + p {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+nav {
+  &,
+  & ul,
+  & ul li {
+    margin: 0 -2ex;
+    padding: 0 2ex;
+  }
+
+  & ul li {
+    list-style-type: none;
+    margin: 0 -2ex 3px;
+    overflow: hidden;
+    padding: 0 2ex;
+    transition: background 300ms;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    &.active {
+      background: white;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    & a {
+      cursor: pointer;
+      display: block;
+      padding: 1ex 0;
+      position: relative;
+      text-decoration: none;
+
+      &:after {
+        border-top: 3ex solid transparent;
+        border-bottom: 3ex solid transparent;
+        border-right: 1.5ex solid transparent;
+        content: "";
+        height: 0;
+        right: -2ex;
+        margin-top: -3ex;
+        position: absolute;
+        top: 50%;
+        transition: border 300ms;
+        width: 0;
+        z-index: 99999;
+      }
+    }
+
+    &:hover a:after,
+    &.active a:after {
+      border-right-color: white;
+    }
+  }
+}
+
+.layout {
+  background: white;
+}
+
+@media screen and (min-width: 900px) {
+  .layout {
+    box-shadow: 2rem 6rem 3rem 2rem rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-areas:
+      "aside header"
+      "aside content";
+    grid-template-columns: 1fr minmax(400px, 2fr);
+    grid-template-rows: auto;
+    margin: 0 auto 12em;
+    max-width: 120ex;
+    min-height: 80%;
+    position: relative;
+    z-index: 99;
+
+    & aside {
+      grid-area: aside;
+    }
+
+    & header {
+      grid-area: header;
+    }
+  }
+} /* @media screen and (min-width: 900px) */
+
+@media print {
+  @page {
+    margin: 0 0.5in !important;
+  }
+
+  * {
+    color: black !important;
+  }
+
+  p,
+  li {
+    font-size: 11pt;
+  }
+
+  a[href]:after {
+    content: "";
+  }
+
+  a[href*="docs.google.com"] {
+    display: none;
+  }
+
+  h1 {
+    font-size: 16pt !important;
+    font-weight: 900 !important;
+    text-align: center;
+
+    & small {
+      display: block;
+      font-size: 11pt !important;
+      font-weight: 200;
+
+      & :before {
+        content: "517.803.9806 - kalisjoshua@gmail.com - https://linkedin.com/in/kalisjoshua - ";
+      }
+    }
+  }
+
+  h2 {
+    border: 0 !important;
+    font-size: 14pt !important;
+  }
+
+  h3 {
+    font-size: 12pt !important;
+    line-height: 0 !important;
+  }
+
+  aside,
+  header p,
+  .cicada,
+  .sr-only {
+    display: none;
+  }
+
+  .layout {
+    box-shadow: unset;
+    display: block !important;
+    max-width: unset;
+  }
+}

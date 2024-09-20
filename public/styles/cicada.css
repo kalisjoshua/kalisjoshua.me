@@ -1,0 +1,53 @@
+.cicada {
+  position: absolute;
+  z-index: -1;
+
+  &:after {
+    --grad: linear-gradient(
+      90deg,
+      var(--teal) 0%,
+      var(--teal) 10%,
+      transparent 10%,
+      transparent 20%,
+      var(--magenta) 20%,
+      var(--magenta) 30%,
+      transparent 30%,
+      transparent 40%,
+      var(--gold) 40%,
+      var(--gold) 50%,
+      transparent 50%,
+      transparent 60%,
+      var(--green) 60%,
+      var(--green) 70%,
+      var(--pink) 70%,
+      var(--pink) 80%,
+      var(--purple) 80%,
+      var(--purple) 90%,
+      transparent 90%
+    );
+
+    background-color: var(--bg);
+    background-image: var(--grad), var(--grad), var(--grad), var(--grad);
+    background-blend-mode: darken, color-burn, multiply;
+    background-size: 17%, 19%, 33%, 33%;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+  }
+
+  &:before {
+    background-image: linear-gradient(180deg, transparent, var(--bg) 30%);
+    box-shadow: inset 0 3em 3em 0 rgba(0, 0, 0, 0.2);
+    content: "";
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+}

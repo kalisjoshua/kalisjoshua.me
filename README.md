@@ -13,5 +13,7 @@ See `deno.jsonc` for documentation on available commands.
 
 ## TODO
 
+  * [ ] portfolio page including descriptions of big projects
+  * [ ] -
   * [ ] Fix "Quirks Mode" issue with slides styling
   * [ ] Unit test public/js/slides.js
