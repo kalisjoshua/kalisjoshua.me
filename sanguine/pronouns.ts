@@ -3,6 +3,6 @@ const HREF =
 const title = "Why I put my pronouns on my email signature and you should too.";
 
 const pronouns = (name: string, href = HREF) =>
-  `${name} <small><a href="${href}" title="${title}">he/him/his</a></small>`;
+  `${name} <small><a href="${href}" title="${title}">(he/him/his)</a></small>`;
 
 export { HREF, pronouns };

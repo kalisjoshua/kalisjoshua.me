@@ -1,19 +1,14 @@
 @import "./lib/normalize.css";
 @import "./lib/h5bp.css";
 
-@import "./cicada.css";
 @import "./slides.css";
 
 :root {
-  --bg: rgb(224, 223, 209);
-  --bg-dark: #2a363b;
-  --bg-dark: #18453b;
-  --gold: rgba(200, 200, 50, 0.5);
-  --green: rgba(0, 170, 70, 0.5);
-  --magenta: rgba(140, 35, 70, 0.5);
-  --pink: rgba(163, 44, 120, 0.5);
-  --purple: rgba(119, 64, 152, 0.5);
-  --teal: rgba(50, 100, 100, 0.5);
+  --blue: #0b3142;
+  --green: #2b3736;
+  --pink: #d75b93;
+  --purple: #452136;
+  --white: #f5f5f5;
 }
 
 *,
@@ -24,11 +19,11 @@
 
 html {
   font-family: sans-serif;
-  background: var(--bg);
-  padding-top: 2em;
+  background: var(--green);
+  color: var(--white);
 
   & a {
-    color: var(--bg-dark);
+    color: var(--purple);
   }
 
   & a.anchor[aria-hidden="true"] {
@@ -36,7 +31,7 @@ html {
   }
 
   & h1 {
-    color: var(--bg-dark);
+    color: var(--purple);
     font-weight: 100;
     margin: 1ex 0 0;
 
@@ -64,8 +59,6 @@ html {
 }
 
 aside {
-  background: #18453b;
-  color: #e5e5e5;
   overflow: hidden;
   padding: 2ex;
 
@@ -110,6 +103,8 @@ aside {
 }
 
 main {
+  background: #f5f5f5;
+  color: black;
   padding: 1px 1em 0;
 
   & h2 {
@@ -146,6 +141,9 @@ nav {
   }
 
   & ul li {
+    border: 1px solid transparent;
+    border-right: 0;
+    border-radius: 9px 0 0 9px;
     list-style-type: none;
     margin: 0 -2ex 3px;
     overflow: hidden;
@@ -153,12 +151,12 @@ nav {
     transition: background 300ms;
 
     &:hover {
-      background: rgba(0, 0, 0, 0.4);
+      border-color: var(--pink);
     }
 
     &.active {
-      background: white;
-      background: rgba(255, 255, 255, 0.2);
+      background: var(--pink);
+      color: var(--white);
     }
 
     & a {
@@ -176,6 +174,7 @@ nav {
         height: 0;
         right: -2ex;
         margin-top: -3ex;
+        opacity: 0.6;
         position: absolute;
         top: 50%;
         transition: border 300ms;
@@ -186,18 +185,17 @@ nav {
 
     &:hover a:after,
     &.active a:after {
-      border-right-color: white;
+      border-right-color: var(--white);
+    }
+
+    &.active a:after {
+      opacity: 1;
     }
   }
 }
 
-.layout {
-  background: white;
-}
-
 @media screen and (min-width: 900px) {
   .layout {
-    box-shadow: 2rem 6rem 3rem 2rem rgba(0, 0, 0, 0.2);
     display: grid;
     grid-template-areas:
       "aside header"

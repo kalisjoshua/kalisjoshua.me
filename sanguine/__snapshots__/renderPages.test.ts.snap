@@ -1,69 +1,67 @@
 export const snapshot = {};
 
 snapshot[`renderPages 1`] = `
-'about.html
-
-<ul>
-<li><a class="" href="./index.html">Resume</a></li>
-<li><a class="isActive" href="./about.html">About</a></li>
-<li><a class="" href="./articles/index.html">Articles</a></li>
-</ul>
-<main>
-<h1 id="hello">Hello</h1>
-<p>About me.</p>
-
-</main>
-
----
-index.html
-
-<ul>
-<li><a class="isActive" href="./index.html">Resume</a></li>
-<li><a class="" href="./about.html">About</a></li>
-<li><a class="" href="./articles/index.html">Articles</a></li>
-</ul>
-<main>
-<h1 id="resume">Resume</h1>
-
-</main>
-
----
-articles/index.html
-
-<ul>
-<li><a class="" href="../index.html">Resume</a></li>
-<li><a class="" href="../about.html">About</a></li>
-<li><a class="isActive" href="../articles/index.html">Articles</a></li>
-</ul>
-<main>
-<h1 id="articles-index">Articles Index</h1>
-
-</main>
-
----
-articles/something.html
-
-<ul>
-<li><a class="" href="../index.html">Resume</a></li>
-<li><a class="" href="../about.html">About</a></li>
-<li><a class="isActive" href="../articles/index.html">Articles</a></li>
-</ul>
-<main>
-<h1 id="somthing">Somthing</h1>
-
-</main>
-
----
-articles/another.html
-
-<ul>
-<li><a class="" href="../index.html">Resume</a></li>
-<li><a class="" href="../about.html">About</a></li>
-<li><a class="isActive" href="../articles/index.html">Articles</a></li>
-</ul>
-<main>
-<h1 id="another">Another</h1>
-
-</main>
-'
+[
+  "about.html",
+  "",
+  "<ul>",
+  '<li><a class="" href="./index.html">Resume</a></li>',
+  '<li><a class="isActive" href="./about.html">About</a></li>',
+  '<li><a class="" href="./articles/index.html">Articles</a></li>',
+  "</ul>",
+  "<main>",
+  '<h1 id="hello">Hello</h1>',
+  "<p>About me.</p>",
+  "",
+  "</main>",
+  "",
+  "index.html",
+  "",
+  "<ul>",
+  '<li><a class="isActive" href="./index.html">Resume</a></li>',
+  '<li><a class="" href="./about.html">About</a></li>',
+  '<li><a class="" href="./articles/index.html">Articles</a></li>',
+  "</ul>",
+  "<main>",
+  '<h1 id="resume">Resume</h1>',
+  "",
+  "</main>",
+  "",
+  "articles/index.html",
+  "",
+  "<ul>",
+  '<li><a class="" href="../index.html">Resume</a></li>',
+  '<li><a class="" href="../about.html">About</a></li>',
+  '<li><a class="isActive" href="../articles/index.html">Articles</a></li>',
+  "</ul>",
+  "<main>",
+  '<h1 id="articles-index">Articles Index</h1>',
+  "",
+  "</main>",
+  "",
+  "articles/something.html",
+  "",
+  "<ul>",
+  '<li><a class="" href="../index.html">Resume</a></li>',
+  '<li><a class="" href="../about.html">About</a></li>',
+  '<li><a class="isActive" href="../articles/index.html">Articles</a></li>',
+  "</ul>",
+  "<main>",
+  '<h1 id="somthing">Somthing</h1>',
+  "",
+  "</main>",
+  "",
+  "articles/another.html",
+  "",
+  "<ul>",
+  '<li><a class="" href="../index.html">Resume</a></li>',
+  '<li><a class="" href="../about.html">About</a></li>',
+  '<li><a class="isActive" href="../articles/index.html">Articles</a></li>',
+  "</ul>",
+  "<main>",
+  '<h1 id="another">Another</h1>',
+  "",
+  "</main>",
+  "",
+]
 `;

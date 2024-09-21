@@ -3,7 +3,7 @@ import { assertEquals } from "../deno.deps.ts";
 import { createTestFileNode } from "./__testUtils.ts";
 
 import { collectMeta } from "./collectMeta.ts";
-import pkg from "../package.json" assert { type: "json" };
+import pkg from "../package.json" with { type: "json" };
 
 import { pronouns } from "./pronouns.ts";
 

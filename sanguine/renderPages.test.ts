@@ -11,7 +11,7 @@ const isActive = (href: string, section: string, path = "") =>
   href === path || (!!section && href.startsWith(section)) ? "isActive" : "";
 const render = ({ main, navigation, path, rel, section }: PageContext) => `
 <ul>
-${navigation!
+${navigation
   .map(
     ({ href, text }) =>
       `<li><a class="${isActive(
@@ -43,10 +43,12 @@ const siteContent: SiteContent = {
   render,
 };
 
-Deno.test("renderPages", async (snapshot) => {
-  const result = renderPages(siteContent)
-    .map((page: Record<string, string>) => `${page.path}\n${page.html}`)
-    .join("\n---\n");
+Deno.test("renderPages", async (testContext) => {
+  const result = renderPages(siteContent).flatMap(
+    (page: Record<string, string>) => `${page.path}\n${page.html}`.split("\n")
+  );
 
-  await assertSnapshot(snapshot, result);
+  // this formatting - array of strings (one per line) - is preferrable to the
+  // default multiline formatting done by Deno
+  await assertSnapshot<string[]>(testContext, result);
 });

@@ -20,7 +20,7 @@ Strategic technology leader with a proven track record of driving innovation and
 
 -	__Pioneered SRE Practices__: Established the company’s first Site Reliability Engineering (SRE) team, enhancing site reliability through multi-region cloud solutions and improved incident response times.
 -	__Aligned Engineering with Business Growth__: Developed and scaled core services using Node.js and AWS-native services, directly supporting top-of-funnel traffic and third-party integrations.
-- Improved Incident Resolution: Achieved a 10% reduction in mean time to resolution for incidents by implementing a status page for distributed service applications.
+- __Improved Incident Resolution__: Achieved a 10% reduction in mean time to resolution for incidents by implementing a status page for distributed service applications.
 -	__Leadership in DEI__: Fostered a team culture rooted in __diversity, equity, and inclusion__, making the team a top destination for both internal and external talent.
 -	__Attracted and Developed Top Talent__: Led efforts to attract and hire top engineering talent by promoting a strong team culture and fostering a sense of ownership and pride within the team, resulting in a high retention rate and a preferred destination for internal and external candidates.
 
