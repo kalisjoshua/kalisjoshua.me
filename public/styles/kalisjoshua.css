@@ -194,6 +194,12 @@ nav {
   }
 }
 
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 150%;
+  }
+}
+
 @media screen and (min-width: 900px) {
   .layout {
     display: grid;
