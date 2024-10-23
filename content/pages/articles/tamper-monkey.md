@@ -1,6 +1,8 @@
 ## Google Chrome Tampermonkey Scripts
 ### 23 Oct 2024
 
+Get rid of "promoted" content on some sites.
+
 ```javascript
 // ==UserScript==
 // @name         Simple Promotion Blocker (LinkedIn)
