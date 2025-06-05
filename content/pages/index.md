@@ -2,6 +2,11 @@ Strategic technology leader with a proven track record of driving innovation and
 
 ## Experience
 
+### 10/2024 - current | Hypergiant | __Lead Full Stack Engineer__
+
+- __Open Source Libraries__: Wrote and reviewed common libraries for React and TypeScript; specifically coordinate parsing library and page layout component for reuse across company React projects
+- __Internal R&D__: Built the “starting point” project for new product launches
+
 ### 05/2023 - 09/2024 | Visiting Media | __Software Engineering Team Lead__
 
 - __Transformed Engineering Quality__: Introduced comprehensive quality standards across JavaScript and TypeScript, improving code coverage from 0% to 80%, with all new code achieving 100%. This boosted team ownership and resulted in more stable, maintainable code.
