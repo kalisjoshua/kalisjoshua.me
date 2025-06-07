@@ -1,57 +1,63 @@
-Strategic technology leader with a proven track record of driving innovation and building high-performance engineering teams. Expertise in developing cloud-native, scalable software solutions and leading complex, distributed systems. Adept at translating business objectives into engineering roadmaps, mentoring teams, and fostering inclusive environments that encourage diversity and creativity. Passionate about empowering teams to deliver high-quality solutions with measurable impact.
+<!-- Strategic technology leader with a proven track record of driving innovation and building high-performance engineering teams. Expertise in developing cloud-native, scalable software solutions and leading complex, distributed systems. Adept at translating business objectives into engineering roadmaps, mentoring teams, and fostering inclusive environments that encourage diversity and creativity. Passionate about empowering teams to deliver high-quality solutions with measurable impact. -->
+
+Execution-focused software engineer with a strong record of delivering scalable, cloud-native solutions across complex, distributed systems. Skilled in translating business goals into high-impact technical implementations, driving quality through modern tooling, and solving real-world problems with measurable outcomes. Adept at building resilient applications, optimizing developer workflows, and contributing to both frontend and backend architecture. Passionate about writing clean code, improving system performance, and shipping reliable software.
 
 ## Experience
 
-### 10/2024 - current | Hypergiant | __Lead Full Stack Engineer__
+### 10/2024 – Present | Hypergiant | __Lead Full Stack Engineer__
 
-- __Open Source Libraries__: Wrote and reviewed common libraries for React and TypeScript; specifically coordinate parsing library and page layout component for reuse across company React projects
-- __Internal R&D__: Built the “starting point” project for new product launches
+- __Cross-Functional Collaboration__: Partnered with business, product, and technical stakeholders to plan and execute software initiatives aligned with mission objectives.
+- __Reusable UI Architecture__: Built and maintained reusable components for a custom, open-source design system using React and TypeScript.
+- __Modern Web Development__: Developed responsive, secure web applications from Figma designs using Next.js, Vite, Testing Library, and React Server Components.
+- __Pattern-Driven Engineering__: Established and documented architectural patterns, creating an internal blueprint for new and existing projects.
+- __System Design Leadership__: Led design discussions to ensure long-term maintainability and alignment across multiple teams.
+- __Secure Delivery Environments__: Supported full lifecycle delivery across both unclassified and classified environments.
 
-### 05/2023 - 09/2024 | Visiting Media | __Software Engineering Team Lead__
+### 05/2023 – 09/2024 | Visiting Media | __Software Engineering Team Lead__
 
-- __Transformed Engineering Quality__: Introduced comprehensive quality standards across JavaScript and TypeScript, improving code coverage from 0% to 80%, with all new code achieving 100%. This boosted team ownership and resulted in more stable, maintainable code.
--	__Attracted and Retained Top Talent__: Successfully built and retained a high-performing team by creating a collaborative culture, identifying talent through strategic hiring practices, and fostering a growth-oriented environment with clear development paths.
-- __Drove Process Modernization__: Led the implementation of CI/CD automation and ephemeral environments for pull requests, streamlining workflows and increasing developer efficiency.
-- __Enhanced Product Usability__: Applied usage patterns based on user research to create features that simplified onboarding and enhanced the overall user experience.
-- __Scaled Team Operations__: Led the integration of automated user acceptance testing (UATaaS), ensuring product integrity through consistent testing.
-- __Leadership in Talent Development__: Assembled a high-caliber team through strategic hiring, rigorous candidate evaluation, and ongoing mentorship.
+- __Transformed Engineering Quality__: Introduced quality standards for JavaScript and TypeScript, raising test coverage from 0% to 80% (100% for new code), increasing stability and ownership.
+- __Attracted and Retained Top Talent__: Built a high-performing team through strategic hiring, fostering a collaborative, growth-oriented culture.
+- __Drove Process Modernization__: Led CI/CD automation and ephemeral environments for PRs, improving delivery speed and consistency.
+- __Enhanced Product Usability__: Applied user research insights to design features that improved onboarding and user experience.
+- __Scaled Team Operations__: Integrated automated user acceptance testing (UATaaS), ensuring consistent product integrity.
+- __Leadership in Talent Development__: Mentored and coached engineers through structured evaluation and feedback systems.
 
-### 12/2021 - 07/2022 | Guaranteed Rate | __Software Engineering Team Lead__
+### 12/2021 – 07/2022 | Guaranteed Rate | __Software Engineering Team Lead__
 
--	__Optimized Technical Debt Reduction__: Spearheaded initiatives to retire low-value legacy services, freeing up core service teams and optimizing operational efficiency.
--	__Cultivated Team Engagement__: Created a structured evaluation process that significantly boosted morale and retention in a high-turnover environment.
+- __Optimized Technical Debt Reduction__: Retired low-value legacy services, enabling core teams to focus on high-impact development.
+- __Cultivated Team Engagement__: Boosted morale and retention through a structured performance evaluation process in a high-turnover environment.
 
-### 03/2018 - 12/2021 | Rocket Mortgage | __Software Engineering Team Lead__
+### 03/2018 – 12/2021 | Rocket Mortgage | __Software Engineering Team Lead__
 
--	__Pioneered SRE Practices__: Established the company’s first Site Reliability Engineering (SRE) team, enhancing site reliability through multi-region cloud solutions and improved incident response times.
--	__Aligned Engineering with Business Growth__: Developed and scaled core services using Node.js and AWS-native services, directly supporting top-of-funnel traffic and third-party integrations.
-- __Improved Incident Resolution__: Achieved a 10% reduction in mean time to resolution for incidents by implementing a status page for distributed service applications.
--	__Leadership in DEI__: Fostered a team culture rooted in __diversity, equity, and inclusion__, making the team a top destination for both internal and external talent.
--	__Attracted and Developed Top Talent__: Led efforts to attract and hire top engineering talent by promoting a strong team culture and fostering a sense of ownership and pride within the team, resulting in a high retention rate and a preferred destination for internal and external candidates.
+- __Pioneered SRE Practices__: Launched the company’s first Site Reliability Engineering team, implementing multi-region cloud solutions and incident management improvements.
+- __Aligned Engineering with Business Growth__: Built scalable services with Node.js and AWS to support top-of-funnel traffic and integrations.
+- __Improved Incident Resolution__: Reduced MTTR by 10% by introducing a status page for distributed service observability.
+- __Leadership in DEI__: Fostered a team culture rooted in diversity, equity, and inclusion, making the team a preferred internal destination.
+- __Attracted and Developed Top Talent__: Promoted a strong culture of ownership and accountability, resulting in high retention and internal mobility.
 
-### 11/2015 - 03/2018 | Rocket Mortgage | __Software Architect__
+### 11/2015 – 03/2018 | Rocket Mortgage | __Software Architect__
 
-- __Architected Fintech Services__: Designed high-value, high-traffic, and secure networks for distributed fintech services, ensuring a robust and scalable infrastructure.
-- __Led Cloud Migration__: Promoted cloud-native application development standards across the enterprise, facilitating a smooth migration from on-premises data centers to AWS.
-- __Enhanced Developer Experience__: Developed an open-source API specification linter, improving developer experience and reducing cycle times during crucial migrations.
--	__Empowered Engineering Teams__: Delivered educational workshops on REST principles, facilitating a smooth transition from SOAP to RESTful APIs and improving overall team proficiency.
+- __Architected Fintech Services__: Designed secure, scalable networks for distributed fintech applications.
+- __Led Cloud Migration__: Championed cloud-native standards for AWS migration across the enterprise.
+- __Enhanced Developer Experience__: Created an open-source API spec linter to improve development workflows and reduce review times.
+- __Empowered Engineering Teams__: Delivered internal workshops on RESTful design principles, accelerating API adoption and skill development.
 
-### 04/2012 - 11/2015 | Rocket Mortgage | __Staff Software Engineer__
+### 04/2012 – 11/2015 | Rocket Mortgage | __Staff Software Engineer__
 
-- __Fostered Collaboration__: Built a community of practice that improved communication and code-sharing across organizational units, driving cross-team collaboration.
-- __Enhanced UX and Design__: Improved user experience and design patterns for internal and external web applications, resulting in more intuitive and user-friendly interfaces.
-- __Collaborated on Solutions__: Worked closely with design and business partners to discover and implement solutions that best met user needs.
+- __Fostered Collaboration__: Established a community of practice to enhance code reuse and cross-team communication.
+- __Enhanced UX and Design__: Improved design systems and usability across internal and external-facing applications.
+- __Collaborated on Solutions__: Worked closely with design and business teams to deliver user-centric technical solutions.
+- __Innovation__: Designed and implemented a domain-specific language (DSL) and custom editor for defining mortgage pricing rules, reducing user input time and improving execution speed.
 
-<!-- ### 09/2010 - 04/2012 | Centurion Medical Products | __Senior Software Engineer__
+### 09/2010 – 04/2012 | Centurion Medical Products | __Senior Software Engineer__
 
-- Directed CMS Selection: Led a data-driven CMS product evaluation, selecting an open-source option that saved millions in licensing and training costs while delivering more value in a shorter timeline.
-- Centralized Marketing Resources: Consolidated marketing materials and interactive tools into a single, accessible location, improving access and awareness for field sales teams. -->
+- __Directed CMS Selection__: Led a strategic CMS evaluation, choosing an open-source solution that reduced costs and accelerated delivery.
+- __Centralized Marketing Resources__: Consolidated marketing tools and materials, improving access and usage for field teams.
 
-<!-- ### 04/2003 - 06/2010 | Michigan State University | __Software Engineer__
+### 04/2003 – 06/2010 | Michigan State University | __Software Engineer__
 
-- Established JavaScript Development Patterns: Created more responsive applications by reducing round-trip server requests, leading to improved performance and user experience.
-- Rebuilt Legacy Systems: Redesigned the database schema using common CMS design patterns, enabling more dynamic data linking and enhancing content search performance.
-- Enhanced User Experience and Interface: Refreshed the information architecture based on user behavior, improving usability and ensuring that resources are more accessible and intuitive. -->
+- __Database Normalization__: Reorganized content storage and redesigned database schema to improve data classification and searchability, supporting more dynamic linking across the CMS.
+- __Researcher UX__: Implemented early AJAX patterns to replace full-page reloads, enabling responsive interfaces and better supporting researchers in discovering relevant data.
 
 ## Education
 
