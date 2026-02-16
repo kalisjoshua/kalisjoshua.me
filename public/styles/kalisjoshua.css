@@ -8,7 +8,10 @@
   --green: #2b3736;
   --pink: #d75b93;
   --purple: #452136;
-  --white: #f5f5f5;
+  --silver: #f2f2f2;
+
+  --radius-bg: 12px;
+  --radius-sm: 4px;
 }
 
 *,
@@ -20,28 +23,27 @@
 html {
   font-family: sans-serif;
   background: var(--green);
-  color: var(--white);
+  color: var(--silver);
 
-  & a {
+  a {
     color: var(--purple);
+
+    &.anchor[aria-hidden="true"] {
+      display: none;
+    }
   }
 
-  & a.anchor[aria-hidden="true"] {
-    display: none;
-  }
-
-  & h1 {
+  h1 {
     color: var(--purple);
-    font-weight: 100;
     margin: 1ex 0 0;
 
-    & a {
+    a {
       text-decoration: none;
     }
   }
 
-  & pre {
-    & code {
+  pre {
+    code {
       background: gainsboro;
       display: block;
       overflow: auto;
@@ -53,17 +55,31 @@ html {
     }
   }
 
-  & ul {
+  ul {
     padding-left: 2ex;
   }
 }
 
 aside {
+  container-type: inline-size;
   overflow: hidden;
   padding: 2ex;
 
   & a {
     color: inherit;
+  }
+
+  @container (width > 600px) {
+    nav {
+      float: right;
+      width: 50%;
+    }
+  }
+
+  h2#projects + ul {
+    @container (width > 600px) {
+      column-count: 3;
+    }
   }
 
   & .dev-icons {
@@ -88,12 +104,21 @@ aside {
     }
   }
 
-  & #jk-logo img {
-    background: white;
-    display: table !important;
-    height: 150px;
-    margin: 10ex auto;
-    padding: 6px;
+  & #jk-logo {
+    &,
+    & * {
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      background: white;
+      height: 80px;
+      margin: 0;
+      padding: 4px;
+      position: relative;
+      width: 80px;
+    }
   }
 
   & #pride-ally {
@@ -103,36 +128,81 @@ aside {
 }
 
 main {
-  background: #f5f5f5;
+  background: var(--silver);
   color: black;
-  padding: 1px 1em 0;
 
-  & h2 {
-    border-bottom: 1px solid;
+  strong {
+    color: var(--purple);
   }
 
-  & h3 {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: serif;
+  }
+
+  h2 {
+    border-bottom: 1px solid;
+    color: var(--pink);
+
+    &#impact + ul {
+      @media (min-width: 400px) {
+        column-count: 2;
+      }
+
+      li {
+        break-inside: avoid;
+        padding: 0 0 1ex;
+      }
+    }
+  }
+
+  h3 {
     font-size: 100%;
     font-weight: 400;
     margin: 1em 0 0;
   }
 
-  & h4 {
+  h4 {
     margin: 0;
   }
 
-  & header {
-    & h1 {
-      margin-bottom: 0;
+  header {
+    h1 {
+      font-size: 2.5em;
+      margin: 0;
+      padding-top: 1em;
 
-      & + p {
+      + p {
         margin-top: 0;
+      }
+    }
+
+    #google-doc-link {
+      background: var(--pink);
+      border-radius: 0 0 4px 4px;
+      padding: 1ex;
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      a {
+        color: var(--silver);
+        text-decoration: none;
       }
     }
   }
 }
 
 nav {
+  display: flex;
+  gap: 2em;
+
+  & > ul {
+    flex-grow: 1;
+  }
+
   &,
   & ul,
   & ul li {
@@ -156,7 +226,7 @@ nav {
 
     &.active {
       background: var(--pink);
-      color: var(--white);
+      color: var(--silver);
     }
 
     & a {
@@ -185,11 +255,53 @@ nav {
 
     &:hover a:after,
     &.active a:after {
-      border-right-color: var(--white);
+      border-right-color: var(--silver);
     }
 
     &.active a:after {
       opacity: 1;
+    }
+  }
+}
+
+@media screen {
+  #contact,
+  #projects {
+    & + ul a {
+      border-bottom: 1px solid var(--pink);
+      text-decoration: none;
+      transition: all 200ms ease-in-out;
+
+      &:hover {
+        border-bottom-color: white;
+      }
+    }
+  }
+
+  main {
+    padding: 0 1em 1em;
+  }
+
+  #education + ul,
+  #employment + ul {
+    span {
+      float: right;
+    }
+  }
+
+  main > header + p,
+  #education + ul {
+    background: white;
+    border-left: var(--radius-sm) solid var(--pink);
+    border-radius: var(--radius-bg);
+    list-style-type: none;
+    margin: 1em 0;
+    padding: 1em;
+  }
+
+  main {
+    ul ::marker {
+      color: var(--pink);
     }
   }
 }
@@ -208,7 +320,7 @@ nav {
       "aside content";
     grid-template-columns: 1fr minmax(400px, 2fr);
     grid-template-rows: auto;
-    margin: 0 auto 12em;
+    margin: 0 auto;
     max-width: 120ex;
     min-height: 80%;
     position: relative;
@@ -265,11 +377,18 @@ nav {
   h2 {
     border: 0 !important;
     font-size: 14pt !important;
+    margin: 0;
+    padding: 0;
   }
 
   h3 {
     font-size: 12pt !important;
     line-height: 0 !important;
+  }
+
+  ul {
+    margin: 1ex 0;
+    padding: 0;
   }
 
   aside,
