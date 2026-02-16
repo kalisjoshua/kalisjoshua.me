@@ -20,17 +20,17 @@ Execution-focused software engineer with a strong record of delivering scalable,
 
 ## Employment
 
-- __Software Engineer__ | Khan Academy <span>01/2026 - current</span>
-- __Software Engineer__ | Hypergiant <span>10/2024 - 01/2026</span>
-- __Software Engineering Team Lead__ | Visiting Media <span>05/2023 - 09/2024</span>
-- __Software Engineering Team Lead__ | Guaranteed Rate <span>12/2021 - 07/2022</span>
-- __Software Engineering Team Lead__ | Rocket Mortgage <span>04/2012 - 12/2021</span>
-<!-- - __Software Engineering Team Lead__ | Rocket Mortgage <span>03/2018 - 12/2021</span> -->
-<!-- - __Software Architect__ | Rocket Mortgage <span>11/2015 - 03/2018</span> -->
-<!-- - __Software Engineer__ | Rocket Mortgage <span>04/2012 – 11/2015</span> -->
-<!-- - __Software Engineer__ | Centurion Medical Products <span>09/2010 – 04/2012</span> -->
-<!-- - __Software Engineer__ | Michigan State University <span>04/2003 – 06/2010</span> -->
+- <span>01/2026 - current</span> <i>|</i> __Software Engineer__ <i>|</i> Khan Academy
+- <span>10/2024 - 01/2026</span> <i>|</i> __Software Engineer__ <i>|</i> Hypergiant
+- <span>05/2023 - 09/2024</span> <i>|</i> __Team Leader__ <i>|</i> Visiting Media
+- <span>12/2021 - 07/2022</span> <i>|</i> __Team Leader__ <i>|</i> Guaranteed Rate
+- <span>04/2012 - 12/2021</span> <i>|</i> __Team Leader__ <i>|</i> Rocket Mortgage
+<!-- - <span>03/2018 - 12/2021</span> <i>|</i> __Team Leader__ <i>|</i> Rocket Mortgage -->
+<!-- - <span>11/2015 - 03/2018</span> <i>|</i> __Software Architect__ <i>|</i> Rocket Mortgage -->
+<!-- - <span>04/2012 – 11/2015</span> <i>|</i> __Software Engineer__ <i>|</i> Rocket Mortgage -->
+<!-- - <span>09/2010 – 04/2012</span> <i>|</i> __Software Engineer__ <i>|</i> Centurion Medical Products -->
+<!-- - <span>04/2003 – 06/2010</span> <i>|</i> __Software Engineer__ <i>|</i> Michigan State University -->
 
 ## Education
 
-- __Michigan State University__ | BA, Information Science <span>05/2006</span>
+- __Michigan State University__ <i>|</i> BA, Information Science <span>05/2006</span>
