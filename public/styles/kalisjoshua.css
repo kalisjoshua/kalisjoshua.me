@@ -303,6 +303,39 @@ nav {
     ul ::marker {
       color: var(--pink);
     }
+
+    #impact + ul {
+      list-style-type: none;
+      li {
+        position: relative;
+
+        &:before {
+          --size: 14px;
+
+          align-items: center;
+          background: var(--pink);
+          background: linear-gradient(135deg, var(--pink), var(--purple));
+          border-radius: 50%;
+          content: "+";
+          color: var(--silver);
+          display: flex;
+          font-size: var(--size);
+          font-weight: bold;
+          height: var(--size);
+          justify-content: center;
+          left: calc(var(--size) * -1.2);
+          margin-top: 2px;
+          position: absolute;
+          top: calc(var(--size) / 2);
+          top: 0;
+          width: var(--size);
+        }
+      }
+    }
+
+    #employment + ul {
+      line-height: 2em;
+    }
   }
 }
 
