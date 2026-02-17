@@ -266,6 +266,32 @@ nav {
 }
 
 @media screen {
+  html {
+    --left: var(--silver);
+    --right: var(--green);
+
+    background-color: var(--right);
+    background-image: linear-gradient(
+      to right,
+      var(--left) 0%,
+      var(--left) 50%,
+      var(--right) 50%,
+      var(--right) 100%
+    );
+    background-position: -167px 0;
+    background-repeat: no-repeat;
+  }
+
+  aside {
+    background: var(--green);
+  }
+
+  body {
+    @media (min-width: 1000px) {
+      margin: 2em auto;
+    }
+  }
+
   #contact,
   #projects {
     & + ul a {

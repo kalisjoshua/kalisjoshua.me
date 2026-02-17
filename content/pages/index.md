@@ -1,26 +1,22 @@
-Execution-focused software engineer with a strong record of delivering scalable, cloud-native solutions across complex, distributed systems. Skilled in translating business goals into high-impact technical implementations.
+I've spent 20+ years building teams and shipping high-impact software. At Rocket Mortgage, I led frontend development for Warren Buffett's Billion Dollar Bracket, built their first SRE team from scratch achieving 99.99% uptime, and worked on systems supporting over $100 billion in closed loans. More recently, I've been transforming engineering quality and culture, like taking test coverage from 0 to 80% in 8 months while building high-performing teams that people want to join.
 
 ## Impact
 
-- __Cross-Functional__ Collaboration: Partnered with business, product, and technical stakeholders to plan and execute software initiatives aligned with mission objectives.
-- __Reusable UI__ Architecture: Built and maintained reusable components for a custom, open-source design system using React and TypeScript.
-- __System Design__ Leadership: Led design discussions to ensure long-term maintainability and alignment across multiple teams.
-- __Secure Delivery__ Environments: Supported full lifecycle delivery across both unclassified and classified environments.
-- Transformed __Engineering Quality__: Introduced quality standards for JavaScript and TypeScript, raising test coverage from 0% to 80% (100% for new code), increasing stability and ownership.
-- Drove __Process Modernization__: Led CI/CD automation and ephemeral environments for PRs, improving delivery speed and consistency.
-- Optimized __Technical Debt Reduction__: Retired low-value legacy services, enabling core teams to focus on high-impact development.
-- Cultivated __Team Engagement__: Boosted morale and retention through a structured performance evaluation process in a high-turnover environment.
-- Pioneered __SRE Practices__: Launched the company’s first Site Reliability Engineering team, implementing multi-region cloud solutions and incident management improvements.
-- Leadership in __Talent Development__: Mentored and coached engineers through structured evaluation and feedback systems.
-- __Architected__ Fintech Services: Designed secure and scalable distributed fintech applications.
-- Empowered __Engineering Teams__: Delivered internal workshops on RESTful design principles, accelerating API adoption and skill development.
-- Modern __Web Development__: Developed responsive, secure web applications from Figma designs using Next.js, Vite, Testing Library, and React Server Components.
-- Led __Cloud Migration__: Championed cloud-native standards for AWS migration across the enterprise.
-- Pattern-Driven Engineering: Established and documented architectural patterns, creating an internal blueprint for new and existing projects.
+- Engineered Warren Buffett's __Billion Dollar Bracket__: Led frontend development for Quicken Loans' legendary $1 billion NCAA tournament contest, handling national marketing exposure, massive traffic spikes, and secure identity verification, and concealment, under aggressive timelines
+- Supported __$100B+ in Closed Loans__: Led engineering for mortgage pricing systems handling all company pricing rules via custom DSL, supporting over $100 billion in closed loan revenue
+- Built __Zero-Downtime__ SRE Organization: Grew Site Reliability Engineering team from 0 to 11 members, achieving 99.9-99.99% uptime, zero self-inflicted outages, highest team approval ratings, and reduced MTTR by 10%
+- Delivered __Secure Systems Across Environments__: Supported full lifecycle delivery across both unclassified and classified government environments, maintaining security compliance and operational excellence
+- Champion of __Inclusive Engineering Culture__: Nominated for company DEI award for fostering collaborative environments where all viewpoints are valued; consistently built teams that became preferred internal destinations with strong retention
+- Drove __$12M+ Monthly Revenue__ Initiative: Led frontend development for HARP project serving millions of daily users
+- Delivered High-Stakes __Super Bowl Campaigns__: Engineered secure, performant systems for Rocket Mortgage's 2016-2018 Super Bowl commercials, handling massive traffic bursts while maintaining security and responsiveness
+- Established Enterprise-Wide __Architecture Standards__: Designed and rolled out RESTful API framework adopted by 100+ microservices and hundreds of developers, creating productivity economies of scale
+- Transformed __Engineering Quality__: Raised test coverage from 0% to 80% in 8 months (100% for new code), while implementing CI/CD automation and ephemeral PR environments
+- Led High-Volume __Talent Acquisition__: Conducted 100+ technical interviews over 7 years, hired dozens of engineers, and mentored multiple engineers and leaders to promotions
+- Innovated __Domain-Specific Solutions__: Designed custom DSL and editor for complex mortgage pricing rules, significantly reducing input time and accuracy while improving execution speed
 
 ## Employment
 
-- <span>01/2026 - current</span> <i>|</i> __Software Engineer__ <i>|</i> Khan Academy
+- <span>01/2026 - __current__</span> <i>|</i> __Software Engineer__ <i>|</i> Khan Academy
 - <span>10/2024 - 01/2026</span> <i>|</i> __Software Engineer__ <i>|</i> Hypergiant
 - <span>05/2023 - 09/2024</span> <i>|</i> __Team Leader__ <i>|</i> Visiting Media
 - <span>12/2021 - 07/2022</span> <i>|</i> __Team Leader__ <i>|</i> Guaranteed Rate
