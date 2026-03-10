@@ -17,7 +17,7 @@ I've spent 20+ years building teams and shipping high-impact software. At Rocket
 ## Employment
 
 - <span>01/2026 - __current__</span> <i>|</i> __Software Engineer__ <i>|</i> Khan Academy
-- <span>10/2024 - 01/2026</span> <i>|</i> __Software Engineer__ <i>|</i> Hypergiant
+- <span>10/2024 - 01/2026</span> <i>|</i> __Lead Fullstack Engineer__ <i>|</i> Hypergiant
 - <span>05/2023 - 09/2024</span> <i>|</i> __Team Leader__ <i>|</i> Visiting Media
 - <span>12/2021 - 07/2022</span> <i>|</i> __Team Leader__ <i>|</i> Guaranteed Rate
 - <span>04/2012 - 12/2021</span> <i>|</i> __Team Leader__ <i>|</i> Rocket Mortgage
