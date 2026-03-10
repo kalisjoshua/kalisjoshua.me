@@ -394,6 +394,7 @@ nav {
 @media screen and (min-width: 900px) {
   .layout {
     display: grid;
+    filter: drop-shadow(0 10px 20px #333);
     grid-template-areas:
       "aside header"
       "aside content";
