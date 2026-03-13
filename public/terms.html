@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms</title>
+    <style>
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
+
+      section {
+        display: grid;
+        gap: 1em;
+        grid-template-columns: 1fr 3fr 3fr;
+        grid-template-rows: auto;
+
+        fieldset {
+          border: 0;
+          display: flex;
+          flex-direction: column;
+          min-width: 0;
+          padding: 0;
+
+          div {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1ex;
+            padding: 1ex 0;
+
+            span {
+              /* background: gainsboro; */
+              border: 2px solid transparent;
+              border-radius: 2ex;
+              padding: 3px 1.5ex;
+
+              .altKey &:hover {
+                background: hotpink;
+                cursor: pointer;
+              }
+
+              &.Avoid {
+                background: white;
+                border-color: red;
+              }
+              &.Target {
+                background: white;
+                border-color: green;
+              }
+            }
+          }
+
+          input,
+          label {
+            display: block;
+          }
+
+          textarea {
+            flex: 1 0 auto;
+            resize: none;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <fieldset>
+        <label for="Haystack">Haystack</label>
+        <textarea id="Haystack" name="Haystack"></textarea>
+      </fieldset>
+
+      <fieldset>
+        <label for="Target">Target</label>
+        <input id="Target" name="Target" />
+        <div></div>
+      </fieldset>
+
+      <fieldset>
+        <label for="Avoid">Avoid</label>
+        <input id="Avoid" name="Avoid" />
+        <div></div>
+      </fieldset>
+    </section>
+
+    <script type="module">
+      const DATA_PROP = "field";
+      const FIELD = { AVOID: "Avoid", TARGET: "Target" };
+      const TOKENS_KEY = "tokens";
+
+      const q$ = document.querySelector.bind(document);
+      const termRegex = (term) => new RegExp(`(?<!\\S)${term}(?!\\S)`, "i");
+
+      document.addEventListener("click", ({ altKey, target }) => {
+        const name = target.dataset[DATA_PROP];
+
+        if (altKey && name) {
+          termRemove(name, target.innerHTML);
+        }
+      });
+
+      document.addEventListener("keydown", ({ altKey }) => {
+        if (altKey) {
+          document.body.classList.add("altKey");
+        }
+      });
+
+      document.addEventListener("keyup", ({ altKey }) => {
+        if (!altKey) {
+          document.body.classList.remove("altKey");
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        q$("[name='Haystack']").addEventListener("keyup", searchHaystack);
+
+        initTermField(FIELD.AVOID);
+        initTermField(FIELD.TARGET);
+      });
+
+      function initTermField(name) {
+        const el = q$(`[name='${name}']`);
+
+        el.addEventListener("keyup", ({ key, target }) => {
+          if (/enter/i.test(key)) {
+            termAdd(target.name, target.value);
+            target.value = "";
+          }
+        });
+        termTags(el.name);
+      }
+
+      function readTerms(name = "") {
+        const all = JSON.parse(localStorage.getItem(TOKENS_KEY) ?? "{}");
+
+        return name?.length ? all[name] : all;
+      }
+
+      function searchHaystack({ target }) {
+        Array.from(document.querySelectorAll("div span")).forEach((tag) =>
+          tag.classList.remove(FIELD.AVOID, FIELD.TARGET),
+        );
+
+        const haystack = target.value.toLowerCase();
+
+        if (!haystack?.trim().length) {
+          return;
+        }
+
+        const store = { [FIELD.AVOID]: [], [FIELD.TARGET]: [], ...readTerms() };
+
+        for (const term of store[FIELD.AVOID]) {
+          if (termRegex(term).test(haystack)) {
+            q$(`[data-term="${term}"]`)?.classList.add(FIELD.AVOID);
+          }
+        }
+
+        for (const term of store[FIELD.TARGET]) {
+          if (termRegex(term).test(haystack)) {
+            q$(`[data-term="${term}"]`)?.classList.add(FIELD.TARGET);
+          }
+        }
+      }
+
+      function termAdd(name, value) {
+        const store = { [name]: [], ...readTerms() };
+
+        store[name] = Array.from(
+          new Set(store[name].concat(value.trim().toLowerCase())),
+        );
+
+        localStorage.setItem(TOKENS_KEY, JSON.stringify(store));
+
+        termTags(name);
+      }
+
+      function termRemove(name, value) {
+        const store = { [name]: [], ...readTerms() };
+
+        store[name] = store[name].filter((item) => item !== value);
+
+        localStorage.setItem(TOKENS_KEY, JSON.stringify(store));
+
+        termTags(name);
+      }
+
+      function termTags(name) {
+        const el = q$(`[name='${name}']`).nextElementSibling;
+        const terms = readTerms(name);
+
+        el.innerHTML = terms?.length
+          ? terms
+              ?.map(
+                (term) =>
+                  `<span data-${DATA_PROP}="${name}" data-term="${term}">${term}</span>`,
+              )
+              .join("\n")
+          : "";
+      }
+    </script>
+  </body>
+</html>
