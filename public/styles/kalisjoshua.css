@@ -418,7 +418,7 @@ nav {
 
 @media print {
   @page {
-    margin: 0 0.5in !important;
+    margin: 0.25in 0.5in !important;
   }
 
   * {
@@ -467,6 +467,7 @@ nav {
   }
 
   ul {
+    line-height: 14pt;
     margin: 1ex 0;
     padding: 0;
   }
