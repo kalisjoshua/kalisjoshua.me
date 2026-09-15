@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -140,7 +140,7 @@
 
       function searchHaystack({ target }) {
         Array.from(document.querySelectorAll("div span")).forEach((tag) =>
-          tag.classList.remove(FIELD.AVOID, FIELD.TARGET),
+          tag.classList.remove(FIELD.AVOID, FIELD.TARGET)
         );
 
         const haystack = target.value.toLowerCase();
@@ -168,7 +168,7 @@
         const store = { [name]: [], ...readTerms() };
 
         store[name] = Array.from(
-          new Set(store[name].concat(value.trim().toLowerCase())),
+          new Set(store[name].concat(value.trim().toLowerCase()))
         );
 
         localStorage.setItem(TOKENS_KEY, JSON.stringify(store));
@@ -194,7 +194,7 @@
           ? terms
               ?.map(
                 (term) =>
-                  `<span data-${DATA_PROP}="${name}" data-term="${term}">${term}</span>`,
+                  `<span data-${DATA_PROP}="${name}" data-term="${term}">${term}</span>`
               )
               .join("\n")
           : "";
