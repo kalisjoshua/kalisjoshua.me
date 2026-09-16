@@ -9,17 +9,19 @@ on team culture means the teams I build become places people want to stay.
 - <span>01/2026 - 10/2026</span> <i>|</i> **Software Engineer** <i>|</i> Khan
   Academy
   - **Full-Stack Contract Expiration Tracking**: Authored the design doc and
-    implemented a system end-to-end (Go / GraphQL / React + TypeScript):
-    encrypted multi-valued contact storage, a derived state machine, a scheduled
-    reconciliation job with an auditable transition ledger, and an admin UI
+    implemented a system end-to-end (Go / GraphQL / React + TypeScript) serving
+    a partnership forest of thousands of district and meta-district nodes:
+    encrypted multi-valued contact storage, a derived state machine, a daily
+    reconciliation job with a fail-closed circuit breaker and auditable
+    transition ledger, and an admin UI
   - **CI/CD Security Vulnerability**: Root-caused and patched a zero-review
     auto-merge hole where a PR touching one workflow file could land its entire
-    diff to production, then fixed and verified live by triggering the patch
-    against its own landing PR
+    diff to production; landed a scoped 6-PR fix stack, verifying it live by
+    triggering the patch against its own landing PR
   - **Parity-Validated Migration Pattern**: Designed a reusable pipeline
-    migration pattern (hidden-URL shadow traffic, schema-driven diff engine,
-    PII-safe structured logging) adopted as the team standard for every future
-    report migration
+    migration pattern (shadow-run the new pipeline against the legacy one,
+    diff before cutover, PII-safe structured logging) as the team's
+    verification model for reporting pipeline rewrites
   - **Architecture Benchmarking**: Benchmarked pure-Go, in-process SQLite, and
     DuckDB for a CSV roll-ups pipeline at 10K-student scale, ruling out DuckDB
     at 4.85s vs. a 30.55ms baseline (158× slower) with measured numbers
