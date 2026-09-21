@@ -9,9 +9,9 @@ on team culture means the teams I build become places people want to stay.
 - <span>01/2026 - 10/2026</span> <i>|</i> **Software Engineer** <i>|</i> Khan
   Academy
   - **Full-Stack Contract Expiration Tracking**: Authored the design doc and
-    implemented a system end-to-end (Go / GraphQL / React + TypeScript):
-    encrypted multi-valued contact storage, a derived state machine, a scheduled
-    reconciliation job with an auditable transition ledger, and an admin UI
+    built a contract-expiration tracking system end-to-end in Go, GraphQL,
+    React, and TypeScript, supporting encrypted multi-valued contact storage, a
+    derived state machine, and an auditable transition ledger
   - **CI/CD Security Vulnerability**: Root-caused and patched a zero-review
     auto-merge hole where a PR touching one workflow file could land its entire
     diff to production, then fixed and verified live by triggering the patch

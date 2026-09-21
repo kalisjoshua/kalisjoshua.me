@@ -87,7 +87,8 @@ aside {
     border: 8px solid gainsboro;
     border-left: 0;
     border-right: 0;
-    box-shadow: inset 0 100px 100px 0px rgba(0, 0, 0, 0.2),
+    box-shadow:
+      inset 0 100px 100px 0px rgba(0, 0, 0, 0.2),
       0 0 100px 10px rgba(0, 0, 0, 0.5);
     box-sizing: unset;
     margin: 0 -2ex;
@@ -309,26 +310,30 @@ nav {
     padding: 0 1em 1em;
   }
 
-  #education + ul,
-  #employment + ul {
-    li {
-      i {
-        display: none;
-        font-style: normal;
+  #education,
+  #employment,
+  #independent-work,
+  #skills {
+    & + ul {
+      li {
+        i {
+          display: none;
+          font-style: normal;
 
-        @media (min-width: 600px) {
-          display: inline;
+          @media (min-width: 600px) {
+            display: inline;
+          }
         }
-      }
 
-      span {
-        display: block;
+        span {
+          display: block;
 
-        @media (min-width: 500px) {
-          float: right;
+          @media (min-width: 500px) {
+            float: right;
 
-          & + I {
-            display: none;
+            & + i {
+              display: none;
+            }
           }
         }
       }
@@ -350,37 +355,13 @@ nav {
       color: var(--pink);
     }
 
-    #impact + ul {
-      list-style-type: none;
-      li {
-        position: relative;
-
-        &:before {
-          --size: 14px;
-
-          align-items: center;
-          background: var(--pink);
-          background: linear-gradient(135deg, var(--pink), var(--purple));
-          border-radius: 50%;
-          content: "+";
-          color: var(--silver);
-          display: flex;
-          font-size: var(--size);
-          font-weight: bold;
-          height: var(--size);
-          justify-content: center;
-          left: calc(var(--size) * -1.2);
-          margin-top: 2px;
-          position: absolute;
-          top: calc(var(--size) / 2);
-          top: 0;
-          width: var(--size);
-        }
+    #education,
+    #employment,
+    #independent-work,
+    #skills {
+      & + ul li {
+        margin: 0.5em 0;
       }
-    }
-
-    #employment + ul {
-      line-height: 2em;
     }
   }
 }
