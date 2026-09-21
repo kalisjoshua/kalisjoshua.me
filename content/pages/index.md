@@ -6,8 +6,8 @@ on team culture means the teams I build become places people want to stay.
 
 ## Employment
 
-- <span>01/2026 - 10/2026</span> <i>|</i> **Software Engineer** <i>|</i> Khan
-  Academy
+- <span>01/2026 - 10/2026</span> <i>|</i> **Staff Fullstack Engineer** <i>|</i>
+  Khan Academy
   - **Full-Stack Contract Expiration Tracking**: Authored the design doc and
     built a contract-expiration tracking system end-to-end in Go, GraphQL,
     React, and TypeScript, supporting encrypted multi-valued contact storage, a
@@ -25,7 +25,7 @@ on team culture means the teams I build become places people want to stay.
     at 4.85s vs. a 30.55ms baseline (158× slower) with measured numbers
   - **AI-Assisted Engineering**: Applied Claude Code for design, planning, and
     implementation with strict PII discipline maintained throughout under FERPA
-- <span>10/2024 - 01/2026</span> <i>|</i> **Lead Fullstack Engineer** <i>|</i>
+- <span>10/2024 - 01/2026</span> <i>|</i> **Staff Fullstack Engineer** <i>|</i>
   Hypergiant
   - **Secure Delivery Across Classification Levels**: Built and delivered
     Next.js applications (Vite, React Server Components) across unclassified and
