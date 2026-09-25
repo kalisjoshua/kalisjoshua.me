@@ -10,7 +10,7 @@ on team culture means the teams I build become places people want to stay.
   Khan Academy
   - **Full-Stack Contract Expiration Tracking**: Authored the design doc and
     built a contract-expiration tracking system end-to-end in Go, GraphQL,
-    React, and TypeScript, supporting encrypted multi-valued contact storage, a
+    React, and TypeScript, supporting encrypted multivalued contact storage, a
     derived state machine, and an auditable transition ledger
   - **CI/CD Security Vulnerability**: Root-caused and patched a zero-review
     auto-merge hole where a PR touching one workflow file could land its entire
