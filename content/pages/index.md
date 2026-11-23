@@ -1,4 +1,4 @@
-I've spent 20+ years building teams and shipping high-impact software across
+I've spent years building teams and shipping high-impact software across
 mortgage, real estate, education, and government domains. A background in
 graphic and visual design gives my frontend work an eye for detail and user
 experience that's rare at the senior engineering level, and a consistent focus
@@ -133,4 +133,3 @@ on team culture means the teams I build become places people want to stay.
 ## Education
 
 - **Michigan State University** <i>|</i> BA, Information Science
-  <span>05/2006</span>

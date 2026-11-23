@@ -6,3 +6,5 @@ test_coverage/
 docs/
 node_modules/
 npm-debug.log
+job-app/
+

@@ -11,5 +11,13 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:kalisjoshua/kalisjoshua.me.git"
+  },
+  "scripts": {
+    "resume": "node admin/render-resume-pdf.mjs --input job-app/resume.md job-app/resume.pdf",
+    "cover-letter": "node admin/render-resume-pdf.mjs --input job-app/cover-letter.md job-app/cover-letter.pdf"
+  },
+  "devDependencies": {
+    "marked": "^18.1.1",
+    "puppeteer": "^25.14.0"
   }
 }
